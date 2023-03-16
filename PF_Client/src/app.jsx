@@ -1,32 +1,34 @@
-import { useState } from 'preact/hooks'
-import preactLogo from './assets/preact.svg'
-import './app.css'
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import './App.css'
 
-export function App() {
+function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div className="App">
       <div>
         <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" class="logo" alt="Vite logo" />
+          <img src="/vite.svg" className="logo" alt="Vite logo" />
         </a>
-        <a href="https://preactjs.com" target="_blank">
-          <img src={preactLogo} class="logo preact" alt="Preact logo" />
+        <a href="https://reactjs.org" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + Preact</h1>
-      <div class="card">
+      <h1>Vite + React</h1>
+      <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
         <p>
-          Edit <code>src/app.jsx</code> and save to test HMR
+          Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <p class="read-the-docs">
-        Click on the Vite and Preact logos to learn more
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
       </p>
-    </>
+    </div>
   )
 }
+
+export default App
