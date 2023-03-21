@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+      name="My seam"
+      content="Web site to offer your sew services or products"
+    />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">    
+
+  <!-- Icon -->
+  <link rel="icon" href="./src/assets/sewing.png" />
+
+  <!-- Title -->
+  <title>My seam</title> 
+
+  <!-- JavaScript -->
+  <script>
+    let previousTitle = document.title;
+
+    window.addEventListener('blur', () => {
+      previousTitle = document.title
+      document.title = `😱 ¡Regresa, no te vayas!`
+    })
+
+    window.addEventListener('focus', () => {
+      document.title = previousTitle;
+    })
+  </script>
+
+</head>  
+<body>
+  <!-- NavBar -->
+  <nav class="navbar navbar-expand-lg" style="background-color: #3b4562;" data-bs-theme="dark">
+    <div class="container-fluid">
+      
+      <!-- Logo -->
+      <img src='./src/assets/sewing.png' width="50px" alt="Logo My seam"/>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        
+        <!-- Links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Mi perfil
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Ventas</a></li>
+              <li><a class="dropdown-item" href="#">Compras</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Configuración</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/create">Mis compras</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">Favoritos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categorías
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Servicios</a></li>
+              <li><a class="dropdown-item" href="#">Productos</a></li>
+              <li><a class="dropdown-item" href="#">Ofertas</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- SearchBar  -->
+        <form class= "d-flex" role="search">
+          <img class="m-3" src='./src/assets/cart-shopping-solid.svg' width="50px" height="30px" alt="Logo My seam"/>
+          <input class="form-control me-2 m-2" type="search" placeholder="Buscar..." aria-label="Search" />
+          <button 
+            class= "btn btn-primary m-2" 
+            id='btnAlert' 
+            type="submit"
+          >Buscar
+          </button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Cards -->
+  <main>
+    <h2 class="d-flex justify-content-center align-items-center mt-2">Servicios</h2>
+    <div class="d-flex flex-wrap">
+      <div class="card text-bg-light m-3" style="max-width: 16rem;">
+        <div class="card-header"><img src="./src/assets/sewCard1.jpg" width="100%" alt="SewService" style="border-radius: 10px;"/></div>
+        <div class="card-body">
+          <h5 class="card-title">Servicio de costura</h5>
+          <p class="card-text">$9.99
+            <img class="float-end" src="./src/assets/heart-solid.svg" width="20px" alt="Icono Favoritos"/>
+          </p>
+        </div>
+      </div>
+
+      <div class="card text-bg-light m-3" style="max-width: 16rem;">
+        <div class="card-header"><img src="./src/assets/sewCard1.jpg" width="100%" alt="SewService" style="border-radius: 10px;"/></div>
+        <div class="card-body">
+          <h5 class="card-title">Servicio de costura</h5>
+          <p class="card-text">$9.99
+            <img class="float-end" src="./src/assets/heart-solid.svg" width="20px" alt="Icono Favoritos"/>
+          </p>
+        </div>
+      </div>
+
+      <div class="card text-bg-light m-3" style="max-width: 16rem;">
+        <div class="card-header"><img src="./src/assets/sewCard1.jpg" width="100%" alt="SewService" style="border-radius: 10px;"/></div>
+        <div class="card-body">
+          <h5 class="card-title">Servicio de costura</h5>
+          <p class="card-text">$9.99
+            <img class="float-end" src="./src/assets/heart-solid.svg" width="20px" alt="Icono Favoritos"/>
+          </p>
+        </div>
+      </div>
+
+      <div class="card text-bg-light m-3" style="max-width: 16rem;">
+        <div class="card-header"><img src="./src/assets/sewCard1.jpg" width="100%" alt="SewService" style="border-radius: 10px;"/></div>
+        <div class="card-body">
+          <h5 class="card-title">Servicio de costura</h5>
+          <p class="card-text">$9.99
+            <img class="float-end" src="./src/assets/heart-solid.svg" width="20px" alt="Icono Favoritos"/>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="d-flex justify-content-center align-items-center">Ofertas</h2>
+    <div class="d-flex flex-wrap">
+      <div class="card text-bg-light m-3" style="max-width: 16rem;">
+        <div class="card-header"><img src="./src/assets/sewCard2.jpg" width="100%" alt="SewService" style="border-radius: 10px;"/></div>
+        <div class="card-body">
+          <h5 class="card-title">Oferta del día</h5>
+          <p class="card-text">$3.99
+            <img class="float-end" src="./src/assets/heart-solid.svg" width="20px" alt="Icono Favoritos"/>
+          </p>
+        </div>
+      </div>
+
+      <div class="card text-bg-light m-3" style="max-width: 16rem;">
+        <div class="card-header"><img src="./src/assets/sewCard2.jpg" width="100%" alt="SewService" style="border-radius: 10px;"/></div>
+        <div class="card-body">
+          <h5 class="card-title">Oferta del día</h5>
+          <p class="card-text">$3.99
+            <img class="float-end" src="./src/assets/heart-solid.svg" width="20px" alt="Icono Favoritos"/>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <section>
+    <footer class="d-flex flex-column align-items-center justify-content-center mt-4">
+      <div>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-linkedin display-6 m-1"></i>
+        </a>
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" >
+          <i class="bi bi-github display-6 m-1"></i>
+        </a>
+        <a href="mailto:" target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-envelope display-6 m-1"></i>
+        </a>
+      </div>
+      <div>
+        <h5>Creado por Grupo PT-10A (2023) &#169;</h5>
+      </div>
+    </footer>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
