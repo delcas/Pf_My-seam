@@ -2,13 +2,16 @@ const { User } = require('../db.js');
 
 
 module.exports = {
-    userCreator: async () => {
-        await User.create()
+    userCreator: async ({name, image}) => {
+        await User.create({
+            name, 
+            image
+        });
     },
-    getAUser: async () => {
-        await User.findByPk()
+    getAUser: async (id) => {
+        return await User.findByPk(id)
     },
     getUsers: async () => {
-        await User.findAll()
+        return await User.findAll()
     },
 }
