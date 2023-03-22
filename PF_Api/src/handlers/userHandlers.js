@@ -1,4 +1,4 @@
-const {} = require("../controllers/userControllers.js");
+const {userCreator, getAUser, getUsers} = require("../controllers/userControllers.js");
 
 module.exports = {
   postUserHandler: async (req, res) => {},
