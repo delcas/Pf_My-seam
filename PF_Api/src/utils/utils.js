@@ -4,12 +4,14 @@ const { Product } = require("../db");
 // funcion asincrona traer la data de la API con las propiedades deseadas
 async function getApiProducts() {
   try {
-    const response = await axios.get("https://dummyjson.com/products");
-    // console.log(response.data.products.length);
-    let product = await response.data.products.map((p) => {
-      return getJson(p);
-    });
-    // console.log(product);
+    let product = [];
+    const response = await axios
+      .get("https://dummyjson.com/products")
+      .then((response) => {
+        product = response.data.products.map((p) => {
+          return getJson(p);
+        });
+      });
     return product;
   } catch (error) {
     console.log(error.message);
@@ -21,12 +23,14 @@ async function getApiProducts() {
 async function fillTableProducts() {
   const products = await getApiProducts();
   await products.forEach((e) => {
-    Product.create({
-      name: e.name,
-      description: e.description,
-      price: e.price,
-      image: e.image,
-      stock: e.stock,
+    Product.findOrCreate({
+      where: {
+        name: e.name,
+        description: e.description,
+        price: e.price,
+        image: e.image,
+        stock: e.stock,
+      },
     });
   });
 }
