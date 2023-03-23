@@ -11,15 +11,21 @@ module.exports = {
     // await Product.findByPk();
   },
   getProduct: async (name) => {
-    if (name) {
-      // obtener 1 producto por nombre
-      console.log(`GET product name request ${name}`);
-      return productDB(name);
+    const productDB = async() => {
+      const findDB = await Product.findAll();
+      const productDB = findDB.map((e) => e.toJSON());
+      return productDB;
+    };
+    let findProduct = await productDB?.filter((e) => e.name === name);
+    if (findProduct[0]) {
+      return findProduct[0];
     } else {
-      console.log("GET all dogs request");
-      // obtener todos los productos
-      const allProducts = await getDBproducts();
-      return allProducts;
+      return `Porduct whit name ${name}: NOT FOUND`;
     }
   },
+  getProducts: async () => {
+    const findDB = await Product.findAll();
+    const productDB = findDB.map((e) => e.toJSON());
+    return productDB;
+  }
 };
