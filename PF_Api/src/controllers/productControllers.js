@@ -2,13 +2,24 @@ const { Product } = require('../db.js');
 
 
 module.exports = {
-    productCreator: async () => {
-        await Product.create()
+    productCreator: async ({ name, description, price, image, stock }) => {
+        await Product.create({
+            name,
+            description,
+            price,
+            image,
+            stock
+        });
+        return await Product.findAll({
+            where: {
+                name: name
+            }
+        })
     },
-    getAProduct: async () => {
-        await Product.findByPk()
+    getAProduct: async (id) => {
+        return await Product.findByPk(id)
     },
     getProducts: async () => {
-        await Product.findAll()
+        return await Product.findAll()
     },
 }
