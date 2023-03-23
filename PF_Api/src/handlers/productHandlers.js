@@ -1,4 +1,4 @@
-const {} = require("../controllers/productControllers.js");
+const {productCreator, getAProduct, getProducts} = require("../controllers/productControllers.js");
 
 module.exports = {
   postProductHandler: async (req, res) => {},
