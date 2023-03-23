@@ -3,17 +3,12 @@ const { fillTableProducts } = require("../utils/utils");
 const { getProduct } = require("../controllers/productControllers");
 const productRouter = Router();
 
-//llenar la tabla products
-try {
-  fillTableProducts();
-} catch (error) {
-  console.log(error.message);
-}
-//-------------------------------------
-
 productRouter.get("/", async (req, res) => {
   const { name } = req.query;
   try {
+    //llenar la tabla products
+    await fillTableProducts();
+    //-------------------------
     res.status(200).json(await getProduct(name));
   } catch (error) {
     res.status(404).json({ err: error.message });

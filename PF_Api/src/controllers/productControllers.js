@@ -16,7 +16,7 @@ module.exports = {
       console.log(`GET product name request ${name}`);
       return productDB(name);
     } else {
-      console.log("GET all dogs request");
+      console.log("GET all products request");
       // obtener todos los productos
       const allProducts = await getDBproducts();
       return allProducts;
