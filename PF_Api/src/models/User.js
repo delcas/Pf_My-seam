@@ -17,6 +17,53 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
 
+      birthdate:{
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+
+      address:{
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      
+      access_level:{
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      
+      username:{
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: true,
+      },
+      
+      password:{
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
+      email:{
+        type: DataTypes.STRING,
+        allowNull: true,
+        unique: true
+      },
+
+      country:{
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      
+      city:{
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+
+      isActive:{
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+
       image: {
         type: DataTypes.STRING(500),
         allowNull: true,
