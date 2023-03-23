@@ -16,6 +16,14 @@ module.exports = (sequelize) => {
         allowNull: false,
         unique: true,
       },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      price: {
+        type: DataTypes.DOUBLE,
+        allowNull: false,
+      },
     },
     {
       timestamps: false,
