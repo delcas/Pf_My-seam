@@ -31,6 +31,30 @@ async function fillTableProducts() {
   });
 }
 //----------------------------------------------------------------------
+// funcion asincrona para buscar producto por su nombre
+async function productDB(name) {
+  try {
+    const productDB = await getDBproducts();
+    let findProduct = await productDB.filter((e) => e.name === name);
+    if (findProduct[0]) {
+      return findProduct[0];
+    } else {
+      return `Porduct whit name ${name}: NOT FOUND`;
+    }
+  } catch (error) {
+    console.log(error.message);
+    return "Data API error, not found";
+  }
+}
+
+//----------------------------------------------------------------------
+// funcion asincrona para traer toda la data de la tabla Product
+async function getDBproducts() {
+  const findDB = await Product.findAll();
+  const productDB = findDB.map((e) => e.toJSON());
+  return productDB;
+}
+//----------------------------------------------------------------------
 //formato de objeto .JSON para enviar a la tabla Products
 const getJson = (product) => {
   return {
@@ -46,4 +70,6 @@ const getJson = (product) => {
 module.exports = {
   fillTableProducts,
   getApiProducts,
+  productDB,
+  getDBproducts,
 };
