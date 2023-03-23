@@ -8,6 +8,7 @@ module.exports = (sequelize) => {
     {
       id: {
         type: DataTypes.INTEGER,
+        allowNull:false,
         primaryKey: true,
         autoIncrement: true,
       },
@@ -15,6 +16,14 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      price: {
+        type: DataTypes.DOUBLE,
+        allowNull: false,
       },
     },
     {
