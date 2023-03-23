@@ -1,0 +1,39 @@
+.containerLanding {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonToHome {
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 2rem;
+  transition: all 0.7s ease;
+  background-color: #f46337;
+  font-weight: bolder;
+  margin-top: 50vh;
+}
+
+.buttonToHome:hover {
+  font-size: 2.5rem;
+  color: #f46337;
+  background-color: black;
+  font-weight: bolder;
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 600px) {
+  .buttonToHome {
+    margin: 30px 0;
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .buttonToHome {
+    margin: 20px 0;
+    font-size: 1rem;
+  }
+}

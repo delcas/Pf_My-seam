@@ -1,0 +1,39 @@
+.inputSearchDark {
+  color: black;
+  font-size: 20px;
+  max-width: 220px;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: 1px solid black;
+}
+
+.inputSearchLight {
+  color: white;
+  font-size: 20px;
+  max-width: 220px;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: 1px solid white;
+}
+
+.buttonSearch {
+  margin-right: 30px;
+}
+
+/* Responsive SearchBar */
+
+@media only screen and (max-width: 323px) {
+  .containerSerchBar {
+    flex-wrap: wrap;
+  }
+
+  .buttonSearch {
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (max-width: 244px) {
+  .inputSearch {
+    max-width: 170px;
+  }
+}
