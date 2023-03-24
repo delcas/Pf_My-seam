@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './NavBar.module.css';
-import Logo from '../../assets/images/sewing.png';
+import Logo from '../../assets/images/react.svg';
 import { SearchBar } from './SearchBar/SearchBar'
 import { FaMoon, FaSun } from "react-icons/fa";
 //Chakra
@@ -37,25 +37,25 @@ export const NavBar = () => {
               {/* Categorías */}
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Categorías
+                  Categories
                 </a>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Servicios</a></li>
-                  <li><a className="dropdown-item" href="#">Productos</a></li>
-                  <li><a className="dropdown-item" href="#">Ofertas</a></li>
+                  <li><a className="dropdown-item" href="#">Services</a></li>
+                  <li><a className="dropdown-item" href="#">Products</a></li>
+                  <li><a className="dropdown-item" href="#">Offers</a></li>
                 </ul>
               </li>
 
               {/* Mi perfil */}
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Mi perfil
+                  My profile
                 </a>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Ventas</a></li>
-                  <li><a className="dropdown-item" href="#">Compras</a></li>
+                  <li><a className="dropdown-item" href="#">My sells</a></li>
+                  <li><a className="dropdown-item" href="#">My shopping</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
-                  <li><a className="dropdown-item" href="#">Configuración</a></li>
+                  <li><a className="dropdown-item" href="#">Settings</a></li>
                 </ul>
               </li>
             </ul>
