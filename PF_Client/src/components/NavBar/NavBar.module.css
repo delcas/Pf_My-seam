@@ -1,0 +1,9 @@
+.imgLogo {
+  width: auto; 
+  height: 50px;
+  border-radius: 5px;
+}
+
+.containerNavThemeLight {
+  background-color: #cccccc;
+}
