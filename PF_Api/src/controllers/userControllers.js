@@ -43,61 +43,34 @@ let users = [
   },
 ];
 module.exports = {
-  userCreator: async (req, res, next) => {
-    //{name, image}
-    const { name, birthdate, username, email, image } = req.body;
-    try {
-      const user = await User.create({
+  userCreator: async ({ name, birthdate, username, email, image }) => {
+      return await User.create({
         name,
         birthdate,
         username,
         email,
         image,
-      });
-      //tengo pendiente aún hacer el envío de validación email
-      res.status(200).send(user);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
+      })
   },
 
-  getAUser: async (req, res, next) => {
-    //id
-    try {
-      const { id } = req.params;
-      const userInfo = await User.findByPk(id);
-      res.send(userInfo);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
+  getAUser: async () => {
+      return await User.findByPk(id);      
   },
 
-  deleteUser: async (req, res, next) => {
-    try {
-      const { id } = req.params;
+  deleteUser: async (id) => {
       await User.destroy({
         where:{
           id,
         }
-      });
-      res.send("Successfully removed");
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
+      });      
   },
 
-  editUser: async (req, res, next) => {
-    const update=req.body;
-    try {
+  editUser: async(id, update)=>{
       await User.update(update, {
         where:{
-          id: req.params.id
+          id,
         }
       });
-      res.send("Successfully edited");
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
   },
 
   getUsers: async () => {
