@@ -43,7 +43,7 @@ let users = [
   },
 ];
 module.exports = {
-  userCreator: async () => {
+  userCreator: async ({ name, birthdate, username, email, image }) => {
       return await User.create({
         name,
         birthdate,
