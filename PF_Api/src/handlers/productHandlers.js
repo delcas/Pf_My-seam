@@ -1,11 +1,27 @@
 const {
-  productCreator,
-  getAProduct,
-  getProducts,
-} = require("../controllers/productControllers.js");
+  getProduct,
+  postProduct,
+} = require("../controllers/productControllers");
+const { fillTableProducts } = require("../utils/utils");
 
 module.exports = {
-  // postProductHandler: async (req, res) => {},
-  // getProductsHandler: async (req, res) => {},
-  // getAProductHandler: async (req, res) => {},
+  getProductHandler: async (req, res) => {
+    const { name } = req.query;
+    try {
+      //llenar la tabla products
+      await fillTableProducts();
+      //-------------------------
+      res.status(200).json(await getProduct(name));
+    } catch (error) {
+      res.status(404).json({ err: error.message });
+    }
+  },
+  postProductHandler: async (req, res) => {
+    const data = req.body;
+    try {
+      res.status(200).json(await postProduct(data));
+    } catch (error) {
+      res.status(404).json({ err: error.message });
+    }
+  },
 };
