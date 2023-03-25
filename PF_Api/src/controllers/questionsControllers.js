@@ -10,15 +10,17 @@ module.exports = {
       });
     }
     if (offertype === "product") {
-      await QuestProd.create({
+      const quest = await QuestProd.create({
         question,
         user_id: customerId,
         product_id: offerId,
       });
+      console.log('quest recien creado Controller', quest);
+      return quest;
     };
   },
   getQuestion: async (id) => {
-    return await Service.findByPk(id);
+    return await QuestProd.findByPk({id});
   },
   getSellerQuestions: async () => {
     await Service.findByPk();

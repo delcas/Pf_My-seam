@@ -3,7 +3,7 @@ const { getQuestionsHandler, postQuestionsHandler } = require("../handlers/quest
 const questionsRouter = Router();
 
 questionsRouter.get("/", getQuestionsHandler );
-questionsRouter.post("/", postQuestionsHandler );
+questionsRouter.post("/:offerId", postQuestionsHandler );
 
 
 module.exports = questionsRouter;
