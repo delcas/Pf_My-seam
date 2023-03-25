@@ -1,9 +1,5 @@
 const { Router } = require("express");
-const { 
-  getAServiceHandler,
-  getServicesHandler,
-  postServiceHandler } = require("../handlers/serviceHandlers")
-const { Service } = require("../db");
+const { getAServiceHandler, getServicesHandler, postServiceHandler } = require("../handlers/serviceHandlers")
 const serviceRouter = Router();
 
 serviceRouter.get("/", getServicesHandler);
