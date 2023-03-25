@@ -53,29 +53,16 @@ module.exports = {
       })
   },
 
-  getAUser: async (req, res, next) => {
-    //id
-    try {
-      const { id } = req.params;
-      const userInfo = await User.findByPk(id);
-      res.send(userInfo);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
+  getAUser: async () => {
+      return await User.findByPk(id);      
   },
 
-  deleteUser: async (req, res, next) => {
-    try {
-      const { id } = req.params;
+  deleteUser: async () => {
       await User.destroy({
         where:{
           id,
         }
-      });
-      res.send("Successfully removed");
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
+      });      
   },
 
   editUser: async (req, res, next) => {
