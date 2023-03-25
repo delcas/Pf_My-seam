@@ -10,5 +10,7 @@ const questionsRouter = require("./questionsRouter");
 
 router.use("/product", productRouter);
 router.use("/users", userRouter);
+router.use("/service",serviceRouter);
+router.use("/question", questionsRouter);
 
 module.exports = router;
