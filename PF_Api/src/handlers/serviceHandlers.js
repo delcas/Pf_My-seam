@@ -23,9 +23,9 @@ const getServicesHandler = async (req,res) => {
 }
 
 const postServiceHandler = async (req,res) => {
-  const { name, description, price, id } = req.body;
+  const data = req.body;
   try {
-    const service = await serviceCreator(name, description, price, id);
+    const service = await serviceCreator(data);
     res.status(201).json(service);
   }
   catch(error) {
