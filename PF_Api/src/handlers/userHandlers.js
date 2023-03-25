@@ -45,7 +45,7 @@ module.exports = {
   deleteUserHandler: async (req, res, next) => {
     try {
       const { id } = req.params;
-      await deleteUser(id, update)
+      await deleteUser(id, update);
       res.send("Successfully removed");
     } catch (error) {
       res.status(400).json({ error: error.message });
@@ -55,9 +55,10 @@ module.exports = {
     const { update } = req.body;
     const { id } = req.params;
     try {
-      await editUser(id, update)
+      await editUser(id, update);
       res.send("Successfully edited");
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  },
 };
