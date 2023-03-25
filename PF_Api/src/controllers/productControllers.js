@@ -5,7 +5,7 @@ module.exports = {
   getProduct: async (name) => {
     if (name) {
       // obtener 1 producto por nombre
-      console.log(`GET product name request ${name}`);
+      console.log(`GET product or products by name request ${name}`);
       return productDB(name);
     } else {
       console.log("GET all products request");
