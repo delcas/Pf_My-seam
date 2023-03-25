@@ -43,22 +43,14 @@ let users = [
   },
 ];
 module.exports = {
-  userCreator: async (req, res, next) => {
-    //{name, image}
-    const { name, birthdate, username, email, image } = req.body;
-    try {
-      const user = await User.create({
+  userCreator: async () => {
+      return await User.create({
         name,
         birthdate,
         username,
         email,
         image,
-      });
-      //tengo pendiente aún hacer el envío de validación email
-      res.status(200).send(user);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
+      })
   },
 
   getAUser: async (req, res, next) => {
