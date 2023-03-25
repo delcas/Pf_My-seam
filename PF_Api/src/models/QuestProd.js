@@ -4,7 +4,7 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define(
-    "questions",
+    "questprod",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -13,11 +13,11 @@ module.exports = (sequelize) => {
         autoIncrement: true,
       },
       question: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       answer: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: true,
       },
     },
