@@ -57,7 +57,7 @@ module.exports = {
       return await User.findByPk(id);      
   },
 
-  deleteUser: async () => {
+  deleteUser: async (id) => {
       await User.destroy({
         where:{
           id,
@@ -65,18 +65,12 @@ module.exports = {
       });      
   },
 
-  editUser: async (req, res, next) => {
-    const update=req.body;
-    try {
+  editUser: async(id, update)=>{
       await User.update(update, {
         where:{
-          id: req.params.id
+          id,
         }
       });
-      res.send("Successfully edited");
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
   },
 
   getUsers: async () => {
