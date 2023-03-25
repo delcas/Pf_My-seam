@@ -1,39 +1,31 @@
-.inputSearchDark {
+/* General */
+
+.quantityResults {
   color: black;
   font-size: 20px;
-  max-width: 220px;
-  border-radius: 5px;
   margin-right: 10px;
-  border: 1px solid black;
+  text-align: center;
 }
 
-.inputSearchLight {
-  color: white;
-  font-size: 20px;
-  max-width: 220px;
-  border-radius: 5px;
-  margin-right: 10px;
-  border: 1px solid white;
-}
-
-.buttonSearch {
-  margin-right: 30px;
+.conatinerResults {
+  position: absolute;
+  background-color: rgb(204, 199, 199);
 }
 
 /* Responsive SearchBar */
 
-@media only screen and (max-width: 323px) {
+@media only screen and (max-width: 830px) {
+  .inputSearch {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 330px) {
   .containerSerchBar {
     flex-wrap: wrap;
   }
-
   .buttonSearch {
-    margin-top: 15px;
+    margin: 10px 0 0 0;
   }
 }
 
-@media only screen and (max-width: 244px) {
-  .inputSearch {
-    max-width: 170px;
-  }
-}

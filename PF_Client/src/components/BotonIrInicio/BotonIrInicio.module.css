@@ -1,0 +1,13 @@
+.botonArriba {
+  position: fixed;
+  bottom: 20px;
+  right: 2px;
+  transition: all 1s;
+}
+
+.hideBotonArriba {
+  position: fixed;
+  bottom: 20px;
+  right: -100px;
+  transition: all 1s;
+}

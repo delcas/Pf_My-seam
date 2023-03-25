@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './NavBar.module.css';
+import { useSelector } from 'react-redux';
 import Logo from '../../assets/images/react.svg';
 import { SearchBar } from './SearchBar/SearchBar'
 import { FaMoon, FaSun } from "react-icons/fa";
@@ -11,6 +12,9 @@ export const NavBar = () => {
   // Cambiar el tema entre oscuro/claro 
   const { toggleColorMode, colorMode } = useColorMode();  
   const currentTheme = useColorMode().colorMode
+
+  // Me traigo los estados del reducer 
+  const allProducts = useSelector((state) => state.allProducts);
 
   return (
     <div>
@@ -60,9 +64,9 @@ export const NavBar = () => {
               </li>
             </ul>
 
-            <SearchBar currentTheme={currentTheme} />
+            <SearchBar allProducts={allProducts} />
 
-            <IconButton rounded="full" onClick={toggleColorMode} 
+            <IconButton rounded="full" onClick={toggleColorMode} className={styles.buttonTheme}
             icon={colorMode === "dark" ? <FaSun /> : <FaMoon />} />
         
           </div>
