@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { Op } = require("sequelize");
 const { Product } = require("../db");
 
 // funcion asincrona traer la data de la API con las propiedades deseadas
@@ -38,12 +39,19 @@ async function fillTableProducts() {
 // funcion asincrona para buscar producto por su nombre
 async function productDB(name) {
   try {
-    const productDB = await getDBproducts();
-    let findProduct = await productDB.filter((e) => e.name === name);
-    if (findProduct[0]) {
-      return findProduct[0];
+    let productsDb = await Product.findAll({
+      where: {
+        name: {
+          [Op.iLike]: `%${name}%`,
+        },
+      },
+    });
+    productsDb = productsDb.map((e) => e.toJSON());
+    console.log(productsDb);
+    if (productsDb[0]) {
+      return productsDb;
     } else {
-      return `Porduct whit name ${name}: NOT FOUND`;
+      return `Porducts whit name ${name}: NOT FOUND`;
     }
   } catch (error) {
     console.log(error.message);
