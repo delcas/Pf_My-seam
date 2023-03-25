@@ -45,7 +45,7 @@ module.exports = {
   deleteUserHandler: async (req, res, next) => {
     try {
       const { id } = req.params;
-      await deleteUser(id, update);
+      await deleteUser(id);
       res.send("Successfully removed");
     } catch (error) {
       res.status(400).json({ error: error.message });
