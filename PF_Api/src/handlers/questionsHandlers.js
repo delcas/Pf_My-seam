@@ -1,7 +1,22 @@
-const {serviceCreator, getAService, getServices} = require("../controllers/serviceControllers.js");
+const { createQuestion, getSellerQuestions, getCustomerQuestions, getProductQuestions, getServiceQuestions, setAnswer, deleteQuestion} = require("../controllers/serviceControllers.js");
 
 module.exports = {
-  postServiceHandler: async (req, res) => {},
-  getServicesHandler: async (req, res) => {},
-  getAServiceHandler: async (req, res) => {},
+  postQuestionsHandler: async (req, res) => {
+    try {
+      const { question, offertype, customerId } = req.body;
+      const { offerId } = req.params;
+      console.log('Creating Question-(Handler)-');
+      await createQuestion();
+      res.status(200).send('Question sent')
+    } catch (error) {
+      
+    }
+  },
+  getQuestionsHandler: async (req, res) => {
+    try {
+      
+    } catch (error) {
+      
+    }
+  },
 };
