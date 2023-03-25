@@ -15,7 +15,10 @@ module.exports = {
         user_id: customerId,
         product_id: offerId,
       });
-    }
+    };
+  },
+  getQuestion: async (id) => {
+    return await Service.findByPk(id);
   },
   getSellerQuestions: async () => {
     await Service.findByPk();
@@ -29,7 +32,7 @@ module.exports = {
   getServiceQuestions: async () => {
     await Service.findAll();
   },
-  setAnswer: async () => {
+  setAnswer: async ({ id, answer }) => {
     await Service.findAll();
   },
   deleteQuestion: async () => {
