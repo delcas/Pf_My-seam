@@ -3,7 +3,7 @@ const { QuestServ, QuestProd } = require("../db.js");
 module.exports = {
   createQuestion: async ({ question, offertype, customerId, offerId }) => {
     if (offertype === "service") {
-      await QuestServ.create({
+      return await QuestServ.create({
         question,
         user_id: customerId,
         service_id: offerId,

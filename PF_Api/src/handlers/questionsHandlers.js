@@ -23,8 +23,9 @@ module.exports = {
       if(!offerId) throw new Error('Question unrelated to an offer')
       if (offertype === "service" || offertype === "product") {
         console.log("Creating Question -(Handler)-");
-        await createQuestion({ question, offertype, customerId, offerId });
-        res.status(201).send("Question sent");
+        const quest = await createQuestion({ question, offertype, customerId, offerId });
+        console.log(quest);
+        res.status(201).json(quest);
       } else {
         throw new Error("Offer type is not specified correctly");
       }
