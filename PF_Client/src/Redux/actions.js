@@ -31,7 +31,7 @@ export const getProductById = (ID) =>{
 
 export const getProductQuestions = ()=>{
     return async function(dispatch){
-        const productQuestionData = await axios.get(`/question`); //deberia quedar /productQuestion  (y /serviceQuestion para servicios)?        
+        const productQuestionData = await axios.get(`/question`); //deberia quedar /productQuestion (y /serviceQuestion para servicios)?        
         const ProductQuestions = productQuestionData.data
         dispatch({type: GET_PRODUCT_QUESTION, payload: ProductQuestions});
     };

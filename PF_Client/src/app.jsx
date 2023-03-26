@@ -12,7 +12,7 @@ function App() {
         <Route exact path = '/' element = {<Landing />}/>
         <Route path = '/home' element = {<Home />}/>
         <Route path = '/create' element = {<Create />}/>
-      </Routes >
+      </Routes>
     </BrowserRouter>
   );
 }

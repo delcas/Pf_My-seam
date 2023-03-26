@@ -50,7 +50,7 @@ export const ProductDetail = (id) => {
         <th colspan="2">Preguntas:</th>
       </tr>
       <tr>
-        <td>Aqui deben cargarse las preguntas</td>
+        <td>Aqui deben cargarse las preguntas!</td>
       </tr>  
       </table>
     </div>    

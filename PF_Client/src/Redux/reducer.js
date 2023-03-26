@@ -8,7 +8,7 @@ const initialState = {
     products: [],
     services: [],  
     details: [],
-    productQuestions: [],  
+    productQuestions: [],
 };
 
 const rootReducer = (state = initialState, action) => {
