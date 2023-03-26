@@ -47,7 +47,6 @@ async function productDB(name) {
       },
     });
     productsDb = productsDb.map((e) => e.toJSON());
-    console.log(productsDb);
     if (productsDb[0]) {
       return productsDb;
     } else {
