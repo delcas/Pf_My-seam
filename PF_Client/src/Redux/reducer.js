@@ -1,10 +1,11 @@
 import {GET_PRODUCTS,    
-        GET_SERVICES, 
+       GET_SERVICES,
         } from "./actions";
 
 const initialState = {
     products: [],
-    services: [],    
+    services: [],  
+    
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -14,7 +15,9 @@ const rootReducer = (state = initialState, action) => {
                 products: action.payload};  
         case GET_SERVICES:
             return {...state, 
-                services: action.payload};  
+                services: action.payload
+            }; 
+        
         default:
             return {...state};
     }

@@ -28,10 +28,10 @@ export const NavBar = () => {
             {/* Links */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" href="/home">Home</a>
+                <a className="nav-link active" href="/home">Inicio</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" href="/create">Create</a>
+                <a className="nav-link active" href="/create">Crear producto</a>
               </li>
 
               {/* Categorías */}
@@ -40,22 +40,22 @@ export const NavBar = () => {
                   Categories
                 </a>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Services</a></li>
-                  <li><a className="dropdown-item" href="#">Products</a></li>
-                  <li><a className="dropdown-item" href="#">Offers</a></li>
+                  <li><a className="dropdown-item" href="#">Servicios</a></li>
+                  <li><a className="dropdown-item" href="#">Productos</a></li>
+                  <li><a className="dropdown-item" href="#">Ofertas</a></li>
                 </ul>
               </li>
 
               {/* Mi perfil */}
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  My profile
+                  Mi perfil
                 </a>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">My sells</a></li>
-                  <li><a className="dropdown-item" href="#">My shopping</a></li>
+                  <li><a className="dropdown-item" href="#">Mis ventas</a></li>
+                  <li><a className="dropdown-item" href="#">Mis compras</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
-                  <li><a className="dropdown-item" href="#">Settings</a></li>
+                  <li><a className="dropdown-item" href="#">Configuracion</a></li>
                 </ul>
               </li>
             </ul>
