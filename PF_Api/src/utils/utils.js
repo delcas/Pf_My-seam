@@ -16,7 +16,7 @@ async function getApiProducts() {
     return product;
   } catch (error) {
     console.log(error.message);
-    return "Data API error, not found";
+    return "Data API error, no encontrado";
   }
 }
 //----------------------------------------------------------------------
@@ -50,11 +50,11 @@ async function productDB(name) {
     if (productsDb[0]) {
       return productsDb;
     } else {
-      return `Porducts whit name ${name}: NOT FOUND`;
+      return `Productos con nombre ${name}: NO ENCONTRADO`;
     }
   } catch (error) {
     console.log(error.message);
-    return "Data API error, not found";
+    return "Data API error, no encontrado";
   }
 }
 
