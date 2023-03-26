@@ -38,23 +38,18 @@ async function fillTableProducts() {
 //----------------------------------------------------------------------
 // funcion asincrona para buscar producto por su nombre
 async function productDB(name) {
-  try {
-    let productsDb = await Product.findAll({
-      where: {
-        name: {
-          [Op.iLike]: `%${name}%`,
-        },
+  let productsDb = await Product.findAll({
+    where: {
+      name: {
+        [Op.iLike]: `%${name}%`,
       },
-    });
-    productsDb = productsDb.map((e) => e.toJSON());
-    if (productsDb[0]) {
-      return productsDb;
-    } else {
-      return `Productos con nombre ${name}: NO ENCONTRADO`;
-    }
-  } catch (error) {
-    console.log(error.message);
-    return "Data API error, no encontrado";
+    },
+  });
+  productsDb = productsDb.map((e) => e.toJSON());
+  if (productsDb[0]) {
+    return productsDb;
+  } else {
+    throw new Error(`Productos con nombre ${name}: NO ENCONTRADO`);
   }
 }
 
