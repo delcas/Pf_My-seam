@@ -47,15 +47,15 @@ Product.belongsTo(User, { foreignKey: "userId" });
 User.hasMany(Service, { foreignKey: "userId" });
 Service.belongsTo(User, { foreignKey: "userId" });
 
-// Product.hasMany(QuestProd, { foreignKey: 'product_id' });
-// QuestProd.belongsTo(Product, { foreignKey: 'product_id' });
-// User.hasMany(QuestProd, { foreignKey: 'user_id' });
-// QuestProd.belongsTo(User, { foreignKey: 'user_id' });
+Product.hasMany(QuestProd, { foreignKey: 'product_id' });
+QuestProd.belongsTo(Product, { foreignKey: 'product_id' });
+User.hasMany(QuestProd, { foreignKey: 'user_id' });
+QuestProd.belongsTo(User, { foreignKey: 'user_id' });
 
-// Service.hasMany(QuestServ, { foreignKey: 'service_id' });
-// QuestServ.belongsTo(Service, { foreignKey: 'service_id' });
-// User.hasMany(QuestServ, { foreignKey: 'user_id' });
-// QuestServ.belongsTo(User, { foreignKey: 'user_id' });
+Service.hasMany(QuestServ, { foreignKey: 'service_id' });
+QuestServ.belongsTo(Service, { foreignKey: 'service_id' });
+User.hasMany(QuestServ, { foreignKey: 'user_id' });
+QuestServ.belongsTo(User, { foreignKey: 'user_id' });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

@@ -43,9 +43,10 @@ let users = [
   },
 ];
 module.exports = {
-  userCreator: async ({ name, birthdate, username, email, image }) => {
+  userCreator: async ( name, password, birthdate, username, email, image ) => {
       return await User.create({
         name,
+        password,
         birthdate,
         username,
         email,
@@ -53,7 +54,7 @@ module.exports = {
       })
   },
 
-  getAUser: async () => {
+  getAUser: async (id) => {
       return await User.findByPk(id);      
   },
 
@@ -65,7 +66,7 @@ module.exports = {
       });      
   },
 
-  editUser: async(id, update)=>{
+  editUser: async(update, id)=>{
       await User.update(update, {
         where:{
           id,
