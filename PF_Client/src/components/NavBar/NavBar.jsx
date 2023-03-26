@@ -31,7 +31,7 @@ export const NavBar = () => {
                 <a className="nav-link active" href="/home">Inicio</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" href="/create">Crear</a>
+                <a className="nav-link active" href="/create">Crear producto</a>
               </li>
 
               {/* Categorías */}

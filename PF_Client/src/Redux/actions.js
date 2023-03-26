@@ -4,11 +4,11 @@ export const GET_SERVICES = "GET_SERVICES";
 export const SEARCH_PRODUCT_BY_NAME = "SEARCH_PRODUCT_BY_NAME";
 
 
-export const getProducts = () => {
-    return async function (dispatch) {
-        const json = await axios.get('http://localhost:3001/product');
-        const products = json.data
-        dispatch({ type: GET_PRODUCTS, payload: products });
+export const getProducts = ()=>{
+    return async function(dispatch){
+        const productsData = await axios.get(`/product`);
+        const products = productsData.data
+        dispatch({type: GET_PRODUCTS, payload: products});
     };
 };
 
