@@ -1,6 +1,12 @@
 import axios from "axios";
+
+
+
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_SERVICES = "GET_SERVICES";
+
+
+
 
 
 export const getProducts = ()=>{
@@ -18,3 +24,6 @@ export const getServices = ()=>{
         dispatch({type: GET_SERVICES, payload: services});
     };
 };
+
+
+
