@@ -35,7 +35,7 @@ export const SearchBar = ({ currentTheme }) => {
           onChange={(e) => handleChange(e)} 
           value={search} 
           type="search" 
-          placeholder="Search..." 
+          placeholder="Buscar productos..." 
           aria-label="Search" 
         />
         <button 
