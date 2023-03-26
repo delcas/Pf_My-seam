@@ -2,20 +2,24 @@ const {
   userCreator,
   getAUser,
   getUsers,
+  deleteUser,
+  editUser
 } = require("../controllers/userControllers.js");
 
 module.exports = {
   postUserHandler: async (req, res, next) => {
-    const { name, birthdate, username, email, image } = req.body;
+    const { name, password, birthdate, username, email, image } = req.body;
+    console.log(req.body);
     try {
       //tengo pendiente aún hacer el envío de validación email
-      const user = await userCreator({
+      const user = await userCreator(
         name,
+        password,
         birthdate,
         username,
         email,
         image,
-      });
+      );
       res.status(200).send(user);
     } catch (error) {
       res.status(400).json({ error: error.message });
@@ -30,21 +34,20 @@ module.exports = {
       res.status(400).send("User no encontrado");
     }
   },
-  getAUserHandler: async (req, res) => {
-    async (req, res, next) => {
-      //id
-      try {
-        const { id } = req.params;
-        const userInfo = await getAUser(id);
-        res.send(userInfo);
-      } catch (error) {
-        res.status(400).json({ error: error.message });
-      }
-    };
+  getAUserHandler: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const userInfo = await getAUser(id);
+      res.send(userInfo);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
   },
+
   deleteUserHandler: async (req, res, next) => {
     try {
       const { id } = req.params;
+      console.log("Eliminando el id " + id);
       await deleteUser(id);
       res.send("Successfully removed");
     } catch (error) {
@@ -52,10 +55,11 @@ module.exports = {
     }
   },
   setUserHandler: async (req, res, next) => {
-    const { update } = req.body;
+    const update = req.body;
     const { id } = req.params;
+    console.log(update, id);
     try {
-      await editUser(id, update);
+      await editUser(update, id);
       res.send("Successfully edited");
     } catch (error) {
       res.status(400).json({ error: error.message });
