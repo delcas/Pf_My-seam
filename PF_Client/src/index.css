@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Mulish', cursive, sans-serif;
+  src: url('./ruta/de/la/fuente/MiFuentePersonalizada.ttf') format('truetype');
+}
+
+* {
+  font-family: 'Quicksand', cursive, sans-serif;
+}
+
+  /* font-family: 'Mulish', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-family: 'Rubik Dirt', cursive;
+  font-family: 'Share Tech Mono', monospace;  -webkit-font-smoothing: antialiased; */

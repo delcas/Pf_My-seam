@@ -37,7 +37,7 @@ export const NavBar = () => {
               {/* Categorías */}
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Categories
+                  Categorías
                 </a>
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="#">Servicios</a></li>
@@ -55,14 +55,14 @@ export const NavBar = () => {
                   <li><a className="dropdown-item" href="#">Mis ventas</a></li>
                   <li><a className="dropdown-item" href="#">Mis compras</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
-                  <li><a className="dropdown-item" href="#">Configuracion</a></li>
+                  <li><a className="dropdown-item" href="#">Configuración</a></li>
                 </ul>
               </li>
             </ul>
 
-            <SearchBar currentTheme={currentTheme} />
+            <SearchBar  />
 
-            <IconButton rounded="full" onClick={toggleColorMode} 
+            <IconButton rounded="full" onClick={toggleColorMode} className={styles.buttonTheme}
             icon={colorMode === "dark" ? <FaSun /> : <FaMoon />} />
         
           </div>

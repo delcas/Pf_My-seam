@@ -7,3 +7,10 @@
 .containerNavThemeLight {
   background-color: #cccccc;
 }
+
+/* Responsive */
+@media only screen and (max-width: 767px) {
+  .buttonTheme {
+    float: right;
+  }
+}

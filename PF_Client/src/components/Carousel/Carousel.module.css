@@ -1,0 +1,78 @@
+.containerCarousel {
+  height: 350px;
+  transition-duration: 2s;
+  --carousel-control-transition: var(--carousel-control-transition);
+  --carousel-indicator-transition: var(--carousel-indicator-transition);
+  --carousel-transition-duration: var(--carousel-transition-duration);
+}
+
+:root {
+  --carousel-control-transition: opacity 3s ease;
+  --carousel-indicator-transition: opacity 3s ease;
+  --carousel-transition-duration: 3s;
+}
+
+.carousel {
+  --carousel-control-transition: var(--carousel-control-transition);
+  --carousel-indicator-transition: var(--carousel-indicator-transition);
+  --carousel-transition-duration: var(--carousel-transition-duration);
+}
+
+.imgCarousel {
+  width: 100%;
+  height: 350px;
+  display: block;
+}
+
+.promocion1 {
+  padding: 15px 0 2px 0;
+  background-color: rgba(31, 65, 119, 0.801);
+  width: 200px;
+  color: black;
+  border-radius: 40px;
+  font-weight: bolder;
+  font-size: 15px;
+  position: relative;
+  bottom: 90px;
+} 
+
+.descuento1 {
+  font-size: 30px;
+  font-weight: bolder;
+  color: white;
+}
+
+.terminosCondiciones {
+  position: relative;
+  top: 55px;
+}
+
+.hideCarousel {
+  display: none;
+}
+
+
+/* Responsive */
+
+@media only screen and (max-width: 767px) {
+  .promocion1 {
+    width: 180px;
+    padding: 2px 0 1 0;
+    font-size: 12px;
+  }
+  .descuento1 {
+    font-size: 23px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .promocion1 {
+    width: 120px;
+    padding: 10px 0 0.001rem 0;
+    bottom: 110px;
+    font-size: 10px;
+  }
+  .descuento1 {
+    font-size: 18px;
+  }
+}
