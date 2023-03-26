@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './NavBar.module.css';
-import Logo from '../../assets/images/react.svg';
+import Logo from '../../images/logo_MySeam_full.png' /*'../../assets/images/react.svg'*/;
 import { SearchBar } from './SearchBar/SearchBar'
 import { FaMoon, FaSun } from "react-icons/fa";
 //Chakra
