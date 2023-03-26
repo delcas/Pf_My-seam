@@ -3,6 +3,7 @@ const {
   getProductHandler,
   postProductHandler,
   getProductId,
+  deleteProduct,
 } = require("../handlers/productHandlers");
 
 const productRouter = Router();
@@ -10,8 +11,8 @@ const productRouter = Router();
 productRouter.get("/", getProductHandler);
 productRouter.post("/", postProductHandler);
 productRouter.get("/:id", getProductId);
+productRouter.delete("/", deleteProduct);
 
-productRouter.delete("/:idProduct", (req, res) => {});
 productRouter.put("/:idProduct", (req, res) => {});
 
 module.exports = productRouter;
