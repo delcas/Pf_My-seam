@@ -5,7 +5,7 @@ const productRouter = require("./productRouter");
 const userRouter = require("./userRouter");
 const serviceRouter = require("./serviceRouter");
 const cartRouter = require("./cartRouter")
-const questionsRouter = require("./questionsRouter");
+const questionsRouter = require("./questServRouter");
 
 // Configurar los routers
 
@@ -13,6 +13,7 @@ router.use("/product", productRouter);
 router.use("/users", userRouter);
 router.use("/service",serviceRouter);
 router.use("/cart", cartRouter)
-router.use("/question", questionsRouter);
+router.use("/questserv", questServRouter);
+router.use("/questprod", questProdRouter);
 
 module.exports = router;
