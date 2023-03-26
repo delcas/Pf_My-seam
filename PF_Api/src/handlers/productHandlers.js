@@ -1,6 +1,7 @@
 const {
   getProduct,
   postProduct,
+  getIdProduct,
 } = require("../controllers/productControllers");
 const { fillTableProducts } = require("../utils/utils");
 
@@ -20,6 +21,14 @@ module.exports = {
     const data = req.body;
     try {
       res.status(200).json(await postProduct(data));
+    } catch (error) {
+      res.status(404).json({ err: error.message });
+    }
+  },
+  getProductId: async (req, res) => {
+    const { id } = req.params;
+    try {
+      res.status(200).json(await getIdProduct(id));
     } catch (error) {
       res.status(404).json({ err: error.message });
     }
