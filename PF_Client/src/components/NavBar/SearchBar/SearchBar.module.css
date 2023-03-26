@@ -10,6 +10,7 @@
 .conatinerResults {
   position: absolute;
   background-color: rgb(204, 199, 199);
+  z-index: 1;
 }
 
 /* Responsive SearchBar */

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './SearchBar.module.css';
 import { searchProductByName } from '../../../redux/actions';
 import { Results } from '../Results/Results'
@@ -7,7 +7,7 @@ import { Results } from '../Results/Results'
 import { IconButton, Input  } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
 
-export const SearchBar = ({ allProducts }) => {
+export const SearchBar = () => {
   // Ejecuto las funciones de las actions
   const dispatch = useDispatch();
 
@@ -19,6 +19,9 @@ export const SearchBar = ({ allProducts }) => {
 
   // Deshabilitar botón "Search" si esta vacío el estado search
   const disabled = !search.length
+
+  // Me traigo los estados del reducer 
+  const allProducts = useSelector((state) => state.allProducts);
 
   // Actualizar el estado de la búsqueda 
   const handleChange = (e) => {
@@ -51,7 +54,7 @@ export const SearchBar = ({ allProducts }) => {
     <div>
       <form className={`${styles.containerSerchBar} d-flex`} role="search" onSubmit={handleSubmit}>
         {/* Input search & Button Search */}
-        <Input className={styles.inputSearch} mr={3} width='250px' placeholder='Search...' onChange={(e) => handleChange(e)} value={search} type="search" />
+        <Input className={styles.inputSearch} mr={3} width='250px' placeholder='Buscar productos...' onChange={(e) => handleChange(e)} value={search} type="search" />
         <IconButton className={styles.buttonSearch} mr={3} rounded="full" icon={<SearchIcon />} isDisabled={disabled} onClick={handleSubmit} />
       </form>
 

@@ -25,8 +25,8 @@ export const Footer = () => {
         </div>
         {/* Derechos de autor */}
         <div className={styles.footerDerechosAutor}>
-          Created by Team-10A (2023) 
-          <p className='text-center'>All rights reserved &#169;</p>
+          Creado por Equipo-10A (2023) 
+          <p className='text-center'>Todos los derechos reservados &#169;</p>
         </div>
       </footer>
     </div>

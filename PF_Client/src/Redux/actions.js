@@ -8,7 +8,7 @@ export const getProducts = () => {
     return async function (dispatch) {
         const json = await axios.get('http://localhost:3001/product');
         const products = json.data
-        dispatch({type: GET_PRODUCTS, payload: products});
+        dispatch({ type: GET_PRODUCTS, payload: products });
     };
 };
 
@@ -20,34 +20,14 @@ export const getServices = () => {
     };
 };
 
-/* export const searchProductByName = (search) => {
-    return async function (dispatch) {
-        try {
-            const json = await axios.get(`http://localhost:3001/product?name=${search}`);
-            console.log(json);
-            const search = json.data
-            console.log(search);
-            
-            return dispatch({type: SEARCH_PRODUCT_BY_NAME, payload: search})
-        }
-        catch(error) {
-            alert(`Product "${search}" not found, try with another`)
-          }
-    };
-}; */
-
 export const searchProductByName = (search) => {
     return async (dispatch) => {
       try {
         let json = await axios.get(`http://localhost:3001/product?name=${search}`);
-        let data = json.data        
-        return dispatch({
-          type: 'SEARCH_PRODUCT_BY_NAME',
-          payload: data
-        })
+        dispatch({ type: SEARCH_PRODUCT_BY_NAME, payload: json.data })
       }
       catch(error) {
-        alert(`Product "${search}" not found, try with another`)
+        alert(`El producto "${search}" no existe, intenta con otro`)
       }
     }
   };

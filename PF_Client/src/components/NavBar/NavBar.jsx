@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './NavBar.module.css';
-import { useSelector } from 'react-redux';
 import Logo from '../../assets/images/react.svg';
 import { SearchBar } from './SearchBar/SearchBar'
 import { FaMoon, FaSun } from "react-icons/fa";
@@ -12,9 +11,6 @@ export const NavBar = () => {
   // Cambiar el tema entre oscuro/claro 
   const { toggleColorMode, colorMode } = useColorMode();  
   const currentTheme = useColorMode().colorMode
-
-  // Me traigo los estados del reducer 
-  const allProducts = useSelector((state) => state.allProducts);
 
   return (
     <div>
@@ -32,39 +28,39 @@ export const NavBar = () => {
             {/* Links */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" href="/home">Home</a>
+                <a className="nav-link active" href="/home">Inicio</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" href="/create">Create</a>
+                <a className="nav-link active" href="/create">Crear</a>
               </li>
 
               {/* Categorías */}
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Categories
+                  Categorías
                 </a>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Services</a></li>
-                  <li><a className="dropdown-item" href="#">Products</a></li>
-                  <li><a className="dropdown-item" href="#">Offers</a></li>
+                  <li><a className="dropdown-item" href="#">Servicios</a></li>
+                  <li><a className="dropdown-item" href="#">Productos</a></li>
+                  <li><a className="dropdown-item" href="#">Ofertas</a></li>
                 </ul>
               </li>
 
               {/* Mi perfil */}
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  My profile
+                  Mi perfil
                 </a>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">My sells</a></li>
-                  <li><a className="dropdown-item" href="#">My shopping</a></li>
+                  <li><a className="dropdown-item" href="#">Mis ventas</a></li>
+                  <li><a className="dropdown-item" href="#">Mis compras</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
-                  <li><a className="dropdown-item" href="#">Settings</a></li>
+                  <li><a className="dropdown-item" href="#">Configuración</a></li>
                 </ul>
               </li>
             </ul>
 
-            <SearchBar allProducts={allProducts} />
+            <SearchBar  />
 
             <IconButton rounded="full" onClick={toggleColorMode} className={styles.buttonTheme}
             icon={colorMode === "dark" ? <FaSun /> : <FaMoon />} />
