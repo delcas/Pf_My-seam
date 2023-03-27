@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getQuestionsHandler, postQuestionsHandler } = require("../handlers/questionsHandlers.js");
+const { getQuestionsHandler, postQuestionsHandler, setAnswerHandler } = require("../handlers/questionsHandlers.js");
 const questServRouter = Router();
 
 const prod_path = '/service'
