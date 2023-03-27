@@ -6,7 +6,9 @@ import {GET_PRODUCTS,
 const initialState = {
     products: [],
     allProducts: [],
-    services: [],    
+    services: [],  
+    details: [],
+    productQuestions: [],  
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -21,8 +23,12 @@ const rootReducer = (state = initialState, action) => {
         case SEARCH_PRODUCT_BY_NAME:
             return {...state, 
                 products: action.payload};
-                
-        
+        case GET_PRODUCT_QUESTION:
+            return {...state, 
+                productQuestions: action.payload}; 
+        case GET_PRODUCT_BY_ID:
+            return {...state,
+                details: action.payload };               
         default:
             return {...state};
     }
