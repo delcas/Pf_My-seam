@@ -2,6 +2,7 @@ import axios from "axios";
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_SERVICES = "GET_SERVICES";
 export const SEARCH_PRODUCT_BY_NAME = "SEARCH_PRODUCT_BY_NAME";
+export const ORDER_BY_ALPHABET = "ORDER_BY_ALPHABET";
 
 
 export const getProducts = ()=>{
@@ -20,6 +21,7 @@ export const getServices = () => {
     };
 };
 
+
 export const searchProductByName = (search) => {
     return async (dispatch) => {
       try {
@@ -31,3 +33,17 @@ export const searchProductByName = (search) => {
       }
     }
   };
+
+
+export const orderByAlphabet = (type) => {
+    return {
+        type: ORDER_BY_ALPHABET,
+        payload: type
+    }
+}
+
+// export const nameAlphabet = (a, b) => {
+//     if(a.name < b.name) return -1
+//   if(b.name < a.name) return 1 
+//   return 0
+// }

@@ -6,6 +6,8 @@ import { BotonIrInicio } from '../../components/BotonIrInicio/BotonIrInicio'
 import { Carousel } from '../../components/Carousel/Carousel'
 import { Pagination } from '../../components/Pagination/Pagination'
 
+
+
 export const Home = () => {
   return (
     <div id='home'>

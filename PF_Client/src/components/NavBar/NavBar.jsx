@@ -3,6 +3,7 @@ import styles from './NavBar.module.css';
 import Logo from '../../images/logo_MySeam_full.png' /*'../../assets/images/react.svg'*/;
 import { SearchBar } from './SearchBar/SearchBar'
 import { FaMoon, FaSun } from "react-icons/fa";
+ import { FilterAlphabet } from '../../components/Filters/FilterAlphabet'
 //Chakra
 import { IconButton, useColorMode } from '@chakra-ui/react'
 
@@ -59,7 +60,9 @@ export const NavBar = () => {
                 </ul>
               </li>
             </ul>
-
+            
+            <FilterAlphabet />
+            
             <SearchBar  />
 
             <IconButton rounded="full" onClick={toggleColorMode} className={styles.buttonTheme}
