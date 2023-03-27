@@ -11,19 +11,25 @@ const {
 
 module.exports = {
   postQuestionsHandler: async (req, res) => {
-    const { question, offertype, customerId } = req.body;
+    const { question, customerId } = req.body;
     const { offerId } = req.params;
-    console.log('handler question, line16', question);
-    console.log('handler offertpye, line17', offertype);
-    console.log('handler custID, line18', customerId);
-    console.log('handler ProdID, line19', offerId);
+    const offertype = req.path.split('/')[1];
+    console.log("handler question, line16", question);
+    console.log("handler offertpye, line17-PATH", offertype);
+    console.log("handler custID, line18", customerId);
+    console.log("handler ProdID, line19-PARAM", offerId);
     try {
-      if(!question) throw new Error('Question content missing')
-      if(!customerId) throw new Error('Customer unknown')
-      if(!offerId) throw new Error('Question unrelated to an offer')
+      if (!question) throw new Error("Question content missing");
+      if (!customerId) throw new Error("Customer unknown");
+      if (!offerId) throw new Error("Question unrelated to an offer");
       if (offertype === "service" || offertype === "product") {
         console.log("Creating Question -(Handler)-");
-        const quest = await createQuestion({ question, offertype, customerId, offerId });
+        const quest = await createQuestion({
+          question,
+          offertype,
+          customerId,
+          offerId,
+        });
         console.log(quest);
         res.status(201).json(quest);
       } else {
@@ -36,7 +42,7 @@ module.exports = {
   setAnswerHandler: async (req, res) => {
     const { id, answer } = req.body;
     try {
-      await setAnswer({ id, answer })
+      await setAnswer({ id, answer });
     } catch (error) {}
   },
   getQuestionsHandler: async (req, res) => {
@@ -45,7 +51,7 @@ module.exports = {
       const quest = await getQuestion({ id });
       res.status(200).json(quest);
     } catch (error) {
-      res.status(404).send(error.message)
+      res.status(404).send(error.message);
     }
   },
 };

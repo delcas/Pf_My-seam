@@ -1,9 +1,10 @@
 const { Router } = require("express");
-const { getQuestionsHandler, postQuestionsHandler } = require("../handlers/questProdHandlers.js");
+const { getQuestionsHandler, postQuestionsHandler } = require("../handlers/questionsHandlers.js");
 const questProdRouter = Router();
 
-questProdRouter.get("/", getQuestionsHandler );
-questProdRouter.post("/:offerId", postQuestionsHandler );
+const prod_path = '/product'
+questProdRouter.get(prod_path, getQuestionsHandler );
+questProdRouter.post(`${prod_path}/:offerId`, postQuestionsHandler );
 
 
 module.exports = questProdRouter;

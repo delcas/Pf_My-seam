@@ -5,7 +5,8 @@ const productRouter = require("./productRouter");
 const userRouter = require("./userRouter");
 const serviceRouter = require("./serviceRouter");
 const cartRouter = require("./cartRouter")
-const questionsRouter = require("./questServRouter");
+const questServRouter = require("./questServRouter");
+const questProdRouter = require("./questProdRouter");
 
 // Configurar los routers
 
