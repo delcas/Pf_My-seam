@@ -1,0 +1,2 @@
+### // Buscar producto por nombre
+GET http://localhost:3001/product?name=OPPOF

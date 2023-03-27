@@ -1,7 +1,7 @@
 const { Questserv, Questprod } = require("../db.js");
 
 module.exports = {
-  createQuestion: async ({ question, offertype, customerId, offerId }) => {
+  createQuestion: async ({ offertype, question, customerId, offerId }) => {
     if (offertype === "service") {
       return await Questserv.create({
         question,
@@ -19,25 +19,42 @@ module.exports = {
       return quest;
     };
   },
-  getQuestion: async (id) => {
-    return await Questprod.findByPk({id});
+  setAnswer: async ({ offertype, questId, answer }) => {
+    if (offertype === "service") {
+      const quest = await Questserv.findByPk(questId);
+      await quest.update({answer});
+      return await quest.save();
+    }
+    if (offertype === "product") {
+      console.log('answering prod quest controller');
+      const quest = await Questprod.findByPk(questId);
+      await quest.update({answer});
+      return await quest.save();
+    }
+  },
+  getQuestion: async ({ offertype, questId }) => {
+    if (offertype === "service") {
+      console.log('Controlling q-serv getter');
+    return await Questserv.findByPk(questId);
+  }
+  if (offertype === "product") {
+    console.log('Controlling q-prod getter');
+    return await Questprod.findByPk(questId);
+  }
   },
   getSellerQuestions: async () => {
-    await Service.findByPk();
+    await Questserv.findByPk();
   },
   getCustomerQuestions: async () => {
-    await Service.findAll();
+    await Questserv.findAll();
   },
   getProductQuestions: async () => {
-    await Service.findAll();
+    await Questserv.findAll();
   },
   getServiceQuestions: async () => {
-    await Service.findAll();
-  },
-  setAnswer: async ({ id, answer }) => {
-    await Service.findAll();
+    await Questserv.findAll();
   },
   deleteQuestion: async () => {
-    await Service.findAll();
+    await Questserv.findAll();
   },
 };

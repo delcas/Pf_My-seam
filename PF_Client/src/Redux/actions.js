@@ -4,7 +4,7 @@ export const GET_SERVICES = "GET_SERVICES";
 export const SEARCH_PRODUCT_BY_NAME = "SEARCH_PRODUCT_BY_NAME";
 export const GET_PRODUCT_QUESTION = "GET_PRODUCT_QUESTION";
 export const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID";
-
+export const GET_PROMOTIONS = "GET_PROMOTIONS";
 
 export const getProducts = ()=>{
     return async function(dispatch){
@@ -49,3 +49,13 @@ export const getProductQuestions = ()=>{
         dispatch({type: GET_PRODUCT_QUESTION, payload: ProductQuestions});
     };
 };
+
+  export const getPromotions = ()=>{
+    return async function(dispatch){
+        const productsData = await axios.get(`/product`);
+        let products = productsData.data
+        products = products.slice(8, 12)        
+        dispatch({type: GET_PROMOTIONS, payload: products});
+    };
+};
+
