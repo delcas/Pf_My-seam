@@ -2,8 +2,9 @@ import axios from "axios";
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_SERVICES = "GET_SERVICES";
 export const SEARCH_PRODUCT_BY_NAME = "SEARCH_PRODUCT_BY_NAME";
+export const GET_PRODUCT_QUESTION = "GET_PRODUCT_QUESTION";
+export const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID";
 export const GET_PROMOTIONS = "GET_PROMOTIONS";
-
 
 export const getProducts = ()=>{
     return async function(dispatch){
@@ -33,6 +34,22 @@ export const searchProductByName = (search) => {
     }
   };
 
+  export const getProductById = (ID) =>{
+    return async function (dispatch) {
+        const res = await axios.get(`/product/${ID}`)
+        const details = res.data
+        dispatch({type: GET_PRODUCT_BY_ID, payload: details});        
+    };
+};
+
+export const getProductQuestions = ()=>{
+    return async function(dispatch){
+        const productQuestionData = await axios.get(`/questprod/product`); 
+        const ProductQuestions = productQuestionData.data
+        dispatch({type: GET_PRODUCT_QUESTION, payload: ProductQuestions});
+    };
+};
+
   export const getPromotions = ()=>{
     return async function(dispatch){
         const productsData = await axios.get(`/product`);
@@ -41,3 +58,4 @@ export const searchProductByName = (search) => {
         dispatch({type: GET_PROMOTIONS, payload: products});
     };
 };
+
