@@ -2,6 +2,9 @@ import {GET_PRODUCTS,
         GET_SERVICES, 
         SEARCH_PRODUCT_BY_NAME,
         GET_PROMOTIONS,
+        GET_PRODUCT_QUESTION,
+        GET_PRODUCT_BY_ID
+
         } from "./actions";
 
 const initialState = {
