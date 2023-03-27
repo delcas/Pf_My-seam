@@ -15,7 +15,6 @@ module.exports = {
         user_id: customerId,
         product_id: offerId,
       });
-      console.log('quest recien creado Controller', quest);
       return quest;
     };
   },
@@ -48,11 +47,23 @@ module.exports = {
   getCustomerQuestions: async () => {
     await Questserv.findAll();
   },
-  getProductQuestions: async () => {
-    await Questserv.findAll();
-  },
-  getServiceQuestions: async () => {
-    await Questserv.findAll();
+  getOfferQuestions: async ({ offertype, offerId }) => {
+    if (offertype === "service") {
+      console.log('Controlling q-serv getter');
+    return await Questserv.findAll({
+      where: {
+        service_id: offerId
+      }
+    });
+  }
+  if (offertype === "product") {
+    console.log('Controlling q-prod getter');
+    return await Questprod.findAll({
+      where: {
+        product_id: offerId
+      }
+    });
+  }
   },
   deleteQuestion: async () => {
     await Questserv.findAll();
