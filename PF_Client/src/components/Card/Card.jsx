@@ -1,16 +1,28 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './Card.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../redux/actions';
 import { CardProducts } from './CardProducts/CardProducts';
+import { Pagination } from '../Pagination/Pagination';
 
 export const Card = () => {
 
-  // Para ejecutar las funciones de las actions
-  const dispatch = useDispatch();
+    // Estado para actualizar la página actual
+    const [currentPage, setCurrentPage] = useState(1);
 
-  // Me traigo los estados del reducer 
-  const products = useSelector((state) => state.products);
+    // Estado de los productos que se muestran por página
+    const [productsPerPage, setProductsPerPage] = useState(8);
+
+    // Para ejecutar las funciones de las actions
+    const dispatch = useDispatch();
+    
+    // Me traigo los estados del reducer 
+    let products = useSelector((state) => state.products);
+
+    // Delimitar el indíce de los productos a paginar
+    const lastProductIndex = currentPage * productsPerPage;
+    const firstProductIndex = lastProductIndex - productsPerPage;
+    const  currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
   // Ejecuto en automático la action para obtener la info de la DB y actualizar las card
   useEffect(() => {
@@ -22,8 +34,8 @@ export const Card = () => {
       <ul className={styles.cardContainer}>
 
       {
-        products.length > 0 ? 
-        products.map((el) => {
+        currentProducts.length > 0 ? 
+        currentProducts.map((el) => {
           return ( 
             <CardProducts el={el} key={el.id} />
           )
@@ -32,6 +44,11 @@ export const Card = () => {
        }
 
       </ul>  
+       <Pagination 
+       totalProducts={products.length}
+       productsPerPage={productsPerPage}
+       setCurrentPage={setCurrentPage} 
+       currentPage={currentPage} />
     </div>
   )
 }
