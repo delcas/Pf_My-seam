@@ -2,6 +2,7 @@ import axios from "axios";
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_SERVICES = "GET_SERVICES";
 export const SEARCH_PRODUCT_BY_NAME = "SEARCH_PRODUCT_BY_NAME";
+export const GET_PROMOTIONS = "GET_PROMOTIONS";
 
 
 export const getProducts = ()=>{
@@ -31,3 +32,12 @@ export const searchProductByName = (search) => {
       }
     }
   };
+
+  export const getPromotions = ()=>{
+    return async function(dispatch){
+        const productsData = await axios.get(`/product`);
+        let products = productsData.data
+        products = products.slice(8, 12)        
+        dispatch({type: GET_PROMOTIONS, payload: products});
+    };
+};

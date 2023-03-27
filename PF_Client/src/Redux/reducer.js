@@ -1,12 +1,14 @@
 import {GET_PRODUCTS,    
         GET_SERVICES, 
         SEARCH_PRODUCT_BY_NAME,
+        GET_PROMOTIONS,
         } from "./actions";
 
 const initialState = {
     products: [],
     allProducts: [],
-    services: [],    
+    services: [], 
+    promotions: [],   
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -21,6 +23,9 @@ const rootReducer = (state = initialState, action) => {
         case SEARCH_PRODUCT_BY_NAME:
             return {...state, 
                 products: action.payload};
+        case GET_PROMOTIONS:
+            return {...state, 
+                promotions: action.payload};
                 
         
         default:
