@@ -1,4 +1,4 @@
-const {serviceCreator, getAService, getServices} = require("../controllers/serviceControllers.js");
+const {serviceCreator, getAService, getServices, deleteService} = require("../controllers/serviceControllers.js");
 
 const getAServiceHandler = async (req,res) => {
   const { id } = req.params;
@@ -33,8 +33,20 @@ const postServiceHandler = async (req,res) => {
   }
 }
 
+const deleteServiceHandler = async (req,res) => {
+  const { id } = req.params;
+  try{
+    await deleteService(id);
+    res.status(200).json(`Successfully deleted service with id ${id}`);
+  }
+  catch (error) {
+    res.status(404).json({ error: error.message })
+  }
+}
+
 module.exports = {
   postServiceHandler,
   getServicesHandler,
   getAServiceHandler,
+  deleteServiceHandler,
 };
