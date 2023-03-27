@@ -53,4 +53,17 @@ module.exports = {
       throw new Error("Producto no encontrado");
     }
   },
+  productUpdate: async (id, data) => {
+    console.log("PUT request /product/:ID update product by ID");
+    const { name, description, price, image, stock } = data;
+    const product = await Product.findOne({ where: { id } });
+    if (product) {
+      await product.update({ name, description, price, image, stock });
+      return product;
+    } else {
+      throw new Error(
+        `No se encontro Producto con el Id:${id} solicitado para modificar`
+      );
+    }
+  },
 };
