@@ -7,6 +7,7 @@ import { Carousel } from '../../components/Carousel/Carousel'
 import { Filters } from '../../components/Filters/Filters'
 import { Sections } from '../../components/Sections/Sections'
 
+
 export const Home = () => {
   return (
     <div id='home'>

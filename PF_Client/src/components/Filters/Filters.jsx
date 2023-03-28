@@ -2,7 +2,7 @@ import { React, useRef} from 'react'
 import styles from './Filters.module.css'
 import { useDisclosure } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
-import { filterByPrice } from '../../Redux/actions';
+import { filterByPrice,orderByAlphabet,getProducts  } from '../../Redux/actions';
 import { Button, Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton,
         } from '@chakra-ui/react'
 
@@ -20,6 +20,17 @@ export const Filters = () => {
     console.log('por precio', e.target.value)
     dispatch(filterByPrice(e.target.value)) 
     // setCurrentPage(1)
+  }
+
+  const handleChange = (e) => {
+    dispatch(orderByAlphabet(e.target.value))
+    
+  } 
+
+const handleFilterClick = (e) => {
+    e.preventDefault();
+    dispatch(getProducts())
+    
   }
 
 
@@ -48,7 +59,23 @@ export const Filters = () => {
               <option value='Mas de $ 500'>Mas de $ 500</option>
             </select>
         {/* <button className='borrar-filtro'>X</button> */}
-        </div>
+            </div>
+            
+            <div onChange={(e) => handleChange(e)}>
+              <label>Por orden alfabetico</label>
+              <br />
+            <select> 
+            <option value="reset">-</option>
+            <option value='a-z'>A - Z</option>
+            <option value='z-a'>Z - A</option>
+          </select>
+            </div>
+            
+            <div>
+
+              <br />
+              <Button onClick={e => { handleFilterClick(e) }} variant='outline' mr={3} >Limpiar filtros</Button>
+            </div>
       </DrawerBody>
       <DrawerFooter>
             <Button variant='outline' mr={3} onClick={onClose}>
