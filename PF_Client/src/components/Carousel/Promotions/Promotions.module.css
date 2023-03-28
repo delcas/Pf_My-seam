@@ -1,15 +1,11 @@
 .containerCarousel {
-  height: 350px;
+  height: 200px;
   transition-duration: 2s;
-}
-
-.containerPromotion {
-  cursor: pointer;
 }
 
 .imgCarousel {
   width: 100%;
-  height: 350px;
+  height: 200px;
   display: block;
 }
 
@@ -22,7 +18,6 @@
   font-weight: bolder;
   font-size: 15px;
   position: relative;
-  bottom: 90px;
 } 
 
 .descuento1 {
@@ -36,10 +31,22 @@
   top: 55px;
 }
 
-.hideCarousel {
-  display: none;
+
+.tituloPromocion {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 3rem;
+  font-weight: bolder;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* Card */
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, min(min(100%, 25%)));
+  transition: all 0.8s ease;
+}
 
 /* Responsive */
 

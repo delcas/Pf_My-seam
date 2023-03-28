@@ -1,16 +1,22 @@
 import {GET_PRODUCTS,    
         GET_SERVICES, 
         SEARCH_PRODUCT_BY_NAME,
-        ORDER_BY_ALPHABET,
+        GET_PROMOTIONS,
+        GET_PRODUCT_QUESTION,
+       GET_PRODUCT_BY_ID,
+        ORDER_BY_ALPHABET
         } from "./actions";
 
 
-// import { nameAlphabet } from "./actions";
+ import { nameAlphabet } from "./actions";
 
 const initialState = {
     products: [],
     allProducts: [],
-    services: [],    
+    services: [],  
+    details: [],
+    productQuestions: [],  
+    promotions: [],   
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -26,26 +32,35 @@ const rootReducer = (state = initialState, action) => {
                 services: action.payload};  
         case SEARCH_PRODUCT_BY_NAME:
             return {...state, 
-                products: action.payload
+                products: action.payload};
+        case GET_PRODUCT_QUESTION:
+            return {...state, 
+                productQuestions: action.payload}; 
+        case GET_PRODUCT_BY_ID:
+            return {...state,
+                details: action.payload };  
+        case GET_PROMOTIONS:
+            return {...state, 
+                promotions: action.payload
             };
         case ORDER_BY_ALPHABET:
-            aux = [...state.products]
-            if (action.payload === "AZ") {
-                    aux.sort((a,b)=> {
-                    if (b.name > a.name) return -1
-                })
-            } else if (action.payload === "ZA") {
-                    aux.sort((a,b)=> {
-                    if (a.name > b.name) return -1
-                })
-            } else {
-                aux = [...state.products]
-            }
-            return {
-                ...state,
-                products: [...aux]
-            }
+            console.log("ORDER_BY_ALPHABET",action.payload);
+            {
+           if(action.payload === 'a-z') {
+               return {
+              ...state,
+              allProducts: state.allProducts.slice().sort(nameAlphabet),
                 
+           }
+          } else {
+             return {
+               ...state,
+                allProducts: state.allProducts.slice().sort(nameAlphabet).reverse(),
+          
+              }
+          }
+        }
+        
         default:
             return {...state};
     }

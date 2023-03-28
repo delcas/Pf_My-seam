@@ -41,10 +41,6 @@ body {
   text-decoration: none;
 }
 
-.hideElement {
-  display: none;
-}
-
 /* Button Load */
 
 .buttonLoad {
@@ -67,12 +63,6 @@ body {
 
 /* Card */
 
-.cardContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, min(min(100%, 25%)));
-  transition: all 0.8s ease;
-}
-
 .cardDarkTheme {
   display: block;
   border: 2px solid black;
@@ -86,7 +76,7 @@ body {
   border: 2px solid black;
   margin: 20px 30px 10px 0;
   transition: all 0.8s ease;
-  background-color: rgb(188, 187, 187);
+  background-color: rgb(207, 207, 207);
 }
 
 .cardDarkTheme:hover, .cardLightTheme:hover {
@@ -103,48 +93,4 @@ body {
   display: block;
 }
 
-/* Loading */
-
-.loader {
-  width: 100px;
-  height: 110px;
-  border: 5px solid #ec9c9c;
-  border-bottom-color: #FF3D00;
-  border-radius: 50%;
-  position: absolute;
-  top: 100%;
-  left: 45%;
-  margin: 0 auto;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-} 
-
-/* Responsive */
-
-@media only screen and (max-width: 900px) {
-  .cardContainer {
-    grid-template-columns: repeat(auto-fill, min(min(100%, 33%)));
-  }  
-}
-
-@media only screen and (max-width: 700px) {
-  .cardContainer {
-    grid-template-columns: repeat(auto-fill, min(min(100%, 50%)));
-  }  
-}
-
-@media only screen and (max-width: 400px) {
-  .cardContainer {
-    grid-template-columns: repeat(auto-fill, min(min(100%, 100%)));
-  }  
-}
 

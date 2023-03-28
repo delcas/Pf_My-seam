@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './BotonIrInicio.module.css';
-import botonArriba from '../../assets/images/circle-up-solid.svg'
+import botonArriba from '../../images/circle-up-solid.svg'
 export const BotonIrInicio = () => {
 
   // Posicionarse en el inicio de la página con un botón

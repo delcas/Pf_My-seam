@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './NavBar.module.css';
-import Logo from '../../images/logo_MySeam_full.png' /*'../../assets/images/react.svg'*/;
-import { SearchBar } from './SearchBar/SearchBar'
+import Logo from '../../assets/images/logo_MySeam_full.png';
+import { SearchBar } from './SearchBar/SearchBar';
 import { FaMoon, FaSun } from "react-icons/fa";
- import { FilterAlphabet } from '../../components/Filters/FilterAlphabet'
 //Chakra
 import { IconButton, useColorMode } from '@chakra-ui/react'
 
@@ -16,11 +15,11 @@ export const NavBar = () => {
   return (
     <div>
       {/* NavBar */}
-      <nav className="navbar navbar-expand-md bg-body-tertiary" data-bs-theme={currentTheme === "dark" ? "dark" : 'light'}>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme={currentTheme === "dark" ? "dark" : 'light'}>
         <div className= "container-fluid">
           
           {/* Logo */}
-          <img className={styles.imgLogo} src={Logo} alt='Logo'/>
+          <a href="/home"><img className={styles.imgLogo} src={Logo} alt='Logo My Seam'/></a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -28,9 +27,6 @@ export const NavBar = () => {
             
             {/* Links */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" href="/home">Inicio</a>
-              </li>
               <li className="nav-item">
                 <a className="nav-link active" href="/create">Crear producto</a>
               </li>
@@ -61,7 +57,7 @@ export const NavBar = () => {
               </li>
             </ul>
             
-            <FilterAlphabet />
+      
             
             <SearchBar  />
 

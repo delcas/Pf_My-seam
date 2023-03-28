@@ -4,20 +4,22 @@ import { orderByAlphabet } from "../../Redux/actions"
 
 
 export const FilterAlphabet = () => {
+    
+
 
     const dispatch = useDispatch();
 
-    const handleChange = (e) => {
-      dispatch(orderByAlphabet(e.target.value))
-      console.log(dispatch);
+  const handleChange = (e) => {
+    dispatch(orderByAlphabet(e.target.value))
+    
   } 
    
   return (
-      <div>
-           <select onChange={handleChange}>
+      <div onChange={(e) => handleChange(e)}>
+           <select>
             <option value="reset">Por orden alfabetico</option>
-            <option value="AZ">A - Z</option>
-            <option value="ZA">Z - A</option>
+            <option value="a-z">A - Z</option>
+            <option value="z-a">Z - A</option>
           </select>
      </div>
   )
