@@ -3,7 +3,8 @@ import {GET_PRODUCTS,
         SEARCH_PRODUCT_BY_NAME,
         GET_PROMOTIONS,
         GET_PRODUCT_QUESTION,
-        GET_PRODUCT_BY_ID
+        GET_PRODUCT_BY_ID,
+        FILTER_BY_PRICE,
 
         } from "./actions";
 
@@ -37,6 +38,23 @@ const rootReducer = (state = initialState, action) => {
         case GET_PROMOTIONS:
             return {...state, 
                 promotions: action.payload};
+                case FILTER_BY_PRICE:
+            console.log('reducer: action.payload: ', action.payload )
+            let productsShown = state.allProducts
+            let productsFiltered = []
+            if(action.payload === 'none'){
+                productsFiltered = productsShown
+            } else if(action.payload === 'Hasta $ 100'){
+                productsFiltered = productsShown.filter(p => p.price < 100)
+            } else if (action.payload === '$ 100 a $ 500' ){
+                productsFiltered = productsShown.filter( p => p.price > 100 && p.price < 500)
+            } else {
+                productsFiltered = productsShown.filter(p => p.price > 500)
+            }
+            return {...state,
+                products: productsFiltered
+            }
+            
         default:
             return {...state};
     }
