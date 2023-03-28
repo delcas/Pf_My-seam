@@ -5,6 +5,7 @@ import { getProducts } from '../../redux/actions';
 import { CardProducts } from './CardProducts/CardProducts';
 import { Paginado } from '../Paginado/Paginado';
 
+
 export const Card = () => {
 
   // Estado para actualizar la página actual
@@ -31,6 +32,7 @@ export const Card = () => {
 
   return (
     <div>
+     
       <ul className={styles.cardContainer}>
       {
         currentProducts.length > 0 ? 

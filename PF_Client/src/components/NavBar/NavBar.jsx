@@ -56,7 +56,9 @@ export const NavBar = () => {
                 </ul>
               </li>
             </ul>
-
+            
+      
+            
             <SearchBar  />
 
             <IconButton rounded="full" onClick={toggleColorMode} className={styles.buttonTheme}

@@ -9,9 +9,13 @@ import {
   Input,
   Button,
   Box,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 } from "@chakra-ui/react";
+
 import { validate } from "./validate";
-import { useDispatch } from "react-redux";
 import style from "./Create.module.css"
 import axios from "axios"
 
@@ -20,7 +24,11 @@ import axios from "axios"
 
 export const Create = () => {
   
-   const url = 'http://localhost:3001';
+  const url = 'http://localhost:3001';
+  
+  const [showAlert, setShowAlert] = useState(false)
+  
+  const [camposVacios, setCamposVacios] = useState(false);
   
   const [error, setError] = useState({});
    
@@ -54,14 +62,18 @@ export const Create = () => {
   };
   
 
-   function handleSubmit(e) {
+  
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    
     if (    error.name !== undefined 
                 || error.description !== undefined 
                 || error.price !== undefined 
                 || error.image !== undefined 
                 || error.stock !== undefined 
         )  {
-            return alert("Sorry, all fields are required");
+            return setCamposVacios(true);
         } else if (form.name === "" 
             || form.description === "" 
             || form.price === "" 
@@ -69,7 +81,7 @@ export const Create = () => {
             || form.stock?.length === 0
              ) {
                 
-            return alert("Sorry, all fields are required");
+            return setCamposVacios(true);
         } else {  
            
       //  console.log(form)
@@ -82,11 +94,9 @@ export const Create = () => {
                 image: [],
                 stock: '',
             })
-      
+      setShowAlert(true)
+      setCamposVacios(false)
     }
-     
-     
-      
   }
   
   return (
@@ -151,9 +161,50 @@ export const Create = () => {
             </FormControl>
              
                   <Button  type="submit" size='lg'  onClick={handleSubmit} className={style.btnPrimary} >Crear producto</Button>
- 
-                 
+               
+          {showAlert && (
+            <Alert
+                 status='success'
+                 variant='subtle'
+                 flexDirection='column'
+                 alignItems='center'
+                 justifyContent='center'
+                 textAlign='center'
+                 height='200px'
+               >
+                  <AlertIcon boxSize='40px' mr={0} />
+               <AlertTitle mt={4} mb={1} fontSize='lg'>
+                  Producto creado con exito!
+                 </AlertTitle>
+                <AlertDescription maxWidth='sm'>
+                      My seam te desea exitos con tus ventas ♥!
+                </AlertDescription>
+                 </Alert>
                   
+           )}       
+          
+            {camposVacios &&  (
+            <Alert
+                 status='error'
+                 variant='subtle'
+                 flexDirection='column'
+                 alignItems='center'
+                 justifyContent='center'
+                 textAlign='center'
+                 height='auto'
+               >
+                  <AlertIcon boxSize='40px' mr={0} />
+               <AlertTitle mt={4} mb={1} fontSize='lg'>
+                  Todos los campos son requeridos!
+                 </AlertTitle>
+                <AlertDescription maxWidth='sm'>
+                      Para publicar un producto debes llenar todos los datos!
+                </AlertDescription>
+                 </Alert>
+                  
+                )}       
+
+          
           </Box>
          </Flex>
       </>
