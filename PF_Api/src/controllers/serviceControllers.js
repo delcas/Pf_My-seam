@@ -1,6 +1,5 @@
 const { Service, User } = require("../db.js");
 const { Op } = require("sequelize");
-const services = require('../utils/services.json');
 
 module.exports = {
   serviceCreator: async (data) => {

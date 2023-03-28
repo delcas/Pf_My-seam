@@ -1,5 +1,4 @@
 const { Questserv, Questprod } = require("../db.js");
-const preloadquests = require('../utils/services.json');
 
 module.exports = {
   createQuestion: async ({ offertype, question, customerId, offerId }) => {
