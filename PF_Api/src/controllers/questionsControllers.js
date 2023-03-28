@@ -58,7 +58,7 @@ module.exports = {
       }
     })
   },
-  // getSellerQuestions: async ({ offertype, offerId }) => {
+  // getSellerQuestions: async ({ offertype, sellerId }) => {
   //   const serv_quest = await Questserv.findAll({
   //     
   //   });
@@ -69,3 +69,26 @@ module.exports = {
   //    return ans;
   // }
 };
+/*
+SELECT *  FROM questprods q
+JOIN products p
+  ON p.id = q.offer_id WHERE p.userId IN (SELECT * FROM products WHERE userId = 1)
+
+SELECT q.id, q.question, p.name FROM questprods q
+LEFT JOIN products p
+  ON p.id = q.offer_id
+ORDER BY p.name;
+
+SELECT q.id, q.question, p.name FROM questprods q
+LEFT JOIN products p
+  ON p.id = q.offer_id
+ORDER BY p.name;
+
+SELECT p.name, u.name FROM products p
+JOIN users u
+ON u.id = p.userId
+WHERE u.id = 1;
+
+
+*/
+
