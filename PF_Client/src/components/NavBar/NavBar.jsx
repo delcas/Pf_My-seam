@@ -28,7 +28,7 @@ export const NavBar = () => {
             {/* Links */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" href="/create">Crear producto</a>
+                <a className="nav-link active" href="/create">Publicar producto</a>
               </li>
 
               {/* Categorías */}

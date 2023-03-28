@@ -4,8 +4,7 @@ import { Footer } from '../../components/Footer/Footer'
 import { Card } from '../../components/Card/Card'
 import { BotonIrInicio } from '../../components/BotonIrInicio/BotonIrInicio'
 import { Carousel } from '../../components/Carousel/Carousel'
-import { FilterAlphabet } from '../../components/Filters/FilterAlphabet'
-
+import { Filters } from '../../components/Filters/Filters'
 
 
 export const Home = () => {
@@ -13,7 +12,7 @@ export const Home = () => {
     <div id='home'>
       <NavBar />
       <Carousel />
-      <FilterAlphabet/>
+      <Filters />
       <BotonIrInicio />
       <Card />
       <Footer />
