@@ -54,7 +54,7 @@ module.exports = {
   },
   getQuestionsHandler: async (req, res) => {
     const offertype = req.path.split("/")[1];
-    const { offerId } = req.body;
+    const { offerId, sellerId, customerId } = req.body;
     const { questId } = req.query;
     try {
       console.log("Handling getter");
@@ -64,6 +64,14 @@ module.exports = {
       }
       if (offerId) {
         const quest = await getOfferQuestions({ offertype, offerId });
+        res.status(200).json(quest);
+      }
+      if (customerId) {
+        const quest = await getCustomerQuestions({ offertype, customerId });
+        res.status(200).json(quest);
+      }
+      if (sellerId) {
+        const quest = await getSellerQuestions({ offertype, sellerId });
         res.status(200).json(quest);
       }
     } catch (error) {
