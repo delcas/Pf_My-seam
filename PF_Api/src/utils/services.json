@@ -1,0 +1,26 @@
+[
+    {
+    "name":"Costura",
+    "description":"Costura fina",
+    "price":150.23,
+    "userId": 1
+},
+{
+    "name":"Refaccion",
+    "description":"Arreglo todo",
+    "price":103,
+    "userId": 1
+},
+{
+    "name":"Agregados",
+    "description":"Diseño de agregados",
+    "price":1023,
+    "userId": 1
+},
+{
+    "name":"Costura reparacion",
+    "description":"Arreglo de pantalones y camisas de la dama y el caballero",
+    "price":1523,
+    "userId": 2
+}
+]
