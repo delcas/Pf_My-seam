@@ -13,7 +13,7 @@ export const CardProducts = ({ id, image, name, price, description }) => {
     <div>
       <div key = {id} >
         <li className={currentTheme === "dark" ? styles.cardDarkTheme : styles.cardLightTheme}>          
-          <Link className={styles.Link} to= {`/details/${id}`}>
+          <Link className={styles.Link} to= {`/ProductDetail/${id}`}>
             {/* Elementos de la card */}
             <img className={styles.imgCenter} src={image[0]} alt={name} width='200px' height='200px'/>
             <h1 className={styles.textBig}>{name}</h1>
