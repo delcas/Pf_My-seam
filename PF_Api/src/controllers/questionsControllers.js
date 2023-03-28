@@ -1,72 +1,71 @@
 const { Questserv, Questprod } = require("../db.js");
-const preloadquests = require('../utils/services.json');
+const preloadquests = require("../utils/services.json");
+
+let Offer;
 
 module.exports = {
   createQuestion: async ({ offertype, question, customerId, offerId }) => {
-    if (offertype === "service") {
-      return await Questserv.create({
-        question,
-        user_id: customerId,
-        service_id: offerId,
-      });
-    }
-    if (offertype === "product") {
-      const quest = await Questprod.create({
-        question,
-        user_id: customerId,
-        product_id: offerId,
-      });
-      return quest;
-    };
+    offertype === "service" && (Offer = Questserv);
+    offertype === "product" && (Offer = Questprod);
+    console.log("Creating quest controller");
+    return await Offer.create({
+      question,
+      user_id: customerId,
+      offer_id: offerId,
+    });
   },
   setAnswer: async ({ offertype, questId, answer }) => {
-    if (offertype === "service") {
-      const quest = await Questserv.findByPk(questId);
-      await quest.update({answer});
-      return await quest.save();
-    }
-    if (offertype === "product") {
-      console.log('answering prod quest controller');
-      const quest = await Questprod.findByPk(questId);
-      await quest.update({answer});
-      return await quest.save();
-    }
+    offertype === "service" && (Offer = Questserv);
+    offertype === "product" && (Offer = Questprod);
+    console.log("Answering quest controller");
+    const quest = await Offer.findByPk(questId);
+    await quest.update({ answer });
+    return await quest.save();
   },
   getQuestion: async ({ offertype, questId }) => {
-    if (offertype === "service") {
-      console.log('Controlling q-serv getter');
-    return await Questserv.findByPk(questId);
-  }
-  if (offertype === "product") {
-    console.log('Controlling q-prod getter');
-    return await Questprod.findByPk(questId);
-  }
-  },
-  getSellerQuestions: async () => {
-    await Questserv.findByPk();
-  },
-  getCustomerQuestions: async () => {
-    await Questserv.findAll();
+    offertype === "service" && (Offer = Questserv);
+    offertype === "product" && (Offer = Questprod);
+    console.log("Controlling quest getter");
+    return await Offer.findByPk(questId);
   },
   getOfferQuestions: async ({ offertype, offerId }) => {
-    if (offertype === "service") {
-      console.log('Controlling q-serv getter');
-    return await Questserv.findAll({
+    offertype === "service" && (Offer = Questserv);
+    offertype === "product" && (Offer = Questprod);
+    console.log("Controlling quest by offer getter");
+    return await Offer.findAll({
       where: {
-        service_id: offerId
-      }
+        offer_id: offerId,
+      },
     });
-  }
-  if (offertype === "product") {
-    console.log('Controlling q-prod getter');
-    return await Questprod.findAll({
+  },
+  getCustomerQuestions: async ({ offertype, customerId }) => {
+    offertype === "service" && (Offer = Questserv);
+    offertype === "product" && (Offer = Questprod);
+    console.log("Controlling quest by offer getter");
+    return await Offer.findAll({
       where: {
-        product_id: offerId
-      }
+        user_id: customerId,
+      },
     });
-  }
   },
-  deleteQuestion: async () => {
-    await Questserv.findAll();
+  deleteQuestion: async ({ offertype, questId }) => {
+    offertype === "service" && (Offer = Questserv);
+    offertype === "product" && (Offer = Questprod);
+    console.log("Controlling quest getter");
+    return await Offer.destroy({
+      where: {
+        id: questId
+      }
+    })
   },
+  // getSellerQuestions: async ({ offertype, offerId }) => {
+  //   const serv_quest = await Questserv.findAll({
+  //     
+  //   });
+  //   const prod_quest = await Questprod.findAll({
+  //     
+  //   });
+  //    const ans = serv_quest.concat(prod_quest);
+  //    return ans;
+  // }
 };

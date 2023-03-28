@@ -70,4 +70,14 @@ module.exports = {
       res.status(404).send(error.message);
     }
   },
+  deleteHandler: async (req, res) => {
+    const offertype = req.path.split("/")[1];
+    const { questId } = req.body;
+try {
+  await deleteQuestion({ offertype, questId });
+        res.status(200).send('Pregunta borrada con éxito')
+} catch (error) {
+  res.status(404).send(error.message);  
+}
+  }
 };
