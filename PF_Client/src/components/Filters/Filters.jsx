@@ -1,4 +1,5 @@
 import { React, useRef} from 'react'
+import styles from './Filters.module.css'
 import { useDisclosure } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { filterByPrice,orderByAlphabet,getProducts  } from '../../Redux/actions';
@@ -34,7 +35,7 @@ const handleFilterClick = (e) => {
 
 
   return (
-    <div className='filtrado'>
+    <div className={`${styles.containerFilters} filtrado`}>
       <Button ref={btnRef} colorScheme='teal' onClick={onOpen} mt='20px' ml='35px'>
         Filtros
       </Button>

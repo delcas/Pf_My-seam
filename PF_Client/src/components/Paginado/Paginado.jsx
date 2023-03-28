@@ -13,7 +13,7 @@ export const Paginado = ({totalProducts,productsPerPage, setCurrentPage,currentP
   return (
     <div className={totalProducts > 0 ? styles.containerPaginate : styles.hidePaginate}>
       <nav className="d-flex justify-content-center" aria-label="...">
-        <ul className="pagination flex-wrap  mt-4">
+        <ul className="pagination flex-wrap mt-4">
 
           {/* Botón Previous */}
           <li className= {currentPage  === 1 ? "page-item disabled" : "page-item"}>
