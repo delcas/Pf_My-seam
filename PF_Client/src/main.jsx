@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './app';
+import { BrowserRouter } from 'react-router-dom';
 
 // Configuración Chakra
 import { ChakraProvider } from '@chakra-ui/react'
@@ -15,7 +16,9 @@ root.render(
   <Provider store={store}>
     <StrictMode>
       <ChakraProvider>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ChakraProvider>
     </StrictMode>
   </Provider>
