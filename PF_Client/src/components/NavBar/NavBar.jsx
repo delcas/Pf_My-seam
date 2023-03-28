@@ -28,7 +28,7 @@ export const NavBar = () => {
             {/* Links */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" href="/create">Crear producto</a>
+                <a className="nav-link active" href="/create">Vender</a>
               </li>
 
               {/* Categorías */}
@@ -38,8 +38,8 @@ export const NavBar = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="#">Servicios</a></li>
-                  <li><a className="dropdown-item" href="#">Productos</a></li>
-                  <li><a className="dropdown-item" href="#">Ofertas</a></li>
+                  <li><a className="dropdown-item" href="/home">Productos</a></li>
+                  <li><a className="dropdown-item" href="/promotions">Ofertas</a></li>
                 </ul>
               </li>
 

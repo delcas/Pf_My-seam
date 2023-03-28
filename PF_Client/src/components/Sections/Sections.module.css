@@ -1,0 +1,144 @@
+.containerSections {
+  width: 100%;
+  height: 400px;
+  display: flex;
+}
+
+.containerImg {
+  flex-direction: column;
+}
+
+.titleSections {
+  margin-left: 30px;
+  font-weight: bolder;
+}
+
+.hideSections {
+  display: none;
+}
+
+/* Imagenes */
+
+.techImage {
+  height: 400px;
+  width: 300px;
+  padding: 10px 7px 20px 30px;
+  cursor: pointer;
+}
+
+.homeImage {
+  height: 400px;
+  width: 600px;
+  padding: 10px 7px 20px 7px;
+  cursor: pointer;
+}
+
+.seamImage {
+  height: 200px;
+  width: 450px;
+  padding: 10px 30px 7px 7px;
+  cursor: pointer;
+}
+
+.seamImage2 {
+  height: 200px;
+  width: 450px;
+  padding: 7px 30px 20px 7px;
+  cursor: pointer;
+}
+
+.techImage:hover, .homeImage:hover, .seamImage:hover, .seamImage2:hover {
+  opacity: 50%;
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 900px) {
+  .containerSections {
+    flex-wrap: wrap;
+  }
+  .containerSeamImg {
+   display: flex;
+  }
+  .techImage {
+    width: 300px;
+    height: 200px;
+  }
+  .homeImage {
+    width: 300px;
+    height: 200px;
+  }
+  .seamImage {
+    width: 295px;
+    height: 200px;
+    padding: 0 0 0 30px;
+  }
+  .seamImage2 {
+    width: 300px;
+    height: 200px;
+    padding: 0 0 0 15px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .techImage {
+    width: 200px;
+    height: 200px;
+  }
+  .homeImage {
+    width: 200px;
+    height: 200px;
+  }
+  .seamImage {
+    width: 195px;
+    height: 200px;
+    padding: 0 0 0 30px;
+  }
+  .seamImage2 {
+    width: 200px;
+    height: 200px;
+    padding: 0 0 0 15px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .techImage {
+    width: 150px;
+    height: 200px;
+  }
+  .homeImage {
+    width: 150px;
+    height: 200px;
+  }
+  .seamImage {
+    width: 145px;
+    height: 200px;
+    padding: 0 0 0 30px;
+  }
+  .seamImage2 {
+    width: 150px;
+    height: 200px;
+    padding: 0 0 0 15px;
+  }
+}
+
+@media only screen and (max-width: 310px) {
+  .techImage {
+    width: 120px;
+    height: 200px;
+  }
+  .homeImage {
+    width: 120px;
+    height: 200px;
+  }
+  .seamImage {
+    width: 115px;
+    height: 200px;
+    padding: 0 0 0 30px;
+  }
+  .seamImage2 {
+    width: 120px;
+    height: 200px;
+    padding: 0 0 0 15px;
+  }
+}
