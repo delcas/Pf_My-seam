@@ -35,19 +35,19 @@ export const Filters = () => {
       >
       <DrawerOverlay />
       <DrawerContent>
-      <DrawerHeader>Filtra Productos</DrawerHeader>
-      <DrawerBody>
-      <div className='precio' onChange={(e) => handleFilterByPrice(e)} >
-        <label>Por Precio</label>
-        <br></br>
-        <select>
-          <option value='none'>-</option>
-          <option value='Hasta $ 100'>Hasta $ 100</option>
-          <option value='$ 100 a $ 500'>$ 100 a $ 500</option>
-          <option value='Mas de $ 500'>Mas de $ 500</option>
-        </select>
+        <DrawerHeader>Filtra Productos</DrawerHeader>
+        <DrawerBody>
+          <div className='precio' onChange={(e) => handleFilterByPrice(e)} >
+            <label>Por Precio</label>
+            <br></br>
+            <select>
+              <option value='none'>-</option>
+              <option value='Hasta $ 100'>Hasta $ 100</option>
+              <option value='$ 100 a $ 500'>$ 100 a $ 500</option>
+              <option value='Mas de $ 500'>Mas de $ 500</option>
+            </select>
         {/* <button className='borrar-filtro'>X</button> */}
-      </div>
+        </div>
       </DrawerBody>
       <DrawerFooter>
             <Button variant='outline' mr={3} onClick={onClose}>
