@@ -47,13 +47,13 @@ Product.belongsTo(User, { foreignKey: "userId" });
 User.hasMany(Service, { foreignKey: "userId" });
 Service.belongsTo(User, { foreignKey: "userId" });
 
-Product.hasMany(Questprod, { foreignKey: 'product_id' });
-Questprod.belongsTo(Product, { foreignKey: 'product_id' });
+Product.hasMany(Questprod, { foreignKey: 'offer_id' });
+Questprod.belongsTo(Product, { foreignKey: 'offer_id' });
 User.hasMany(Questprod, { foreignKey: 'user_id' });
 Questprod.belongsTo(User, { foreignKey: 'user_id' });
 
-Service.hasMany(Questserv, { foreignKey: 'service_id' });
-Questserv.belongsTo(Service, { foreignKey: 'service_id' });
+Service.hasMany(Questserv, { foreignKey: 'offer_id' });
+Questserv.belongsTo(Service, { foreignKey: 'offer_id' });
 User.hasMany(Questserv, { foreignKey: 'user_id' });
 Questserv.belongsTo(User, { foreignKey: 'user_id' });
 
