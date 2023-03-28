@@ -38,13 +38,34 @@ module.exports = {
       },
     });
   },
-  getSellerQuestions: async () => {
-    await Questserv.findByPk();
+  getCustomerQuestions: async ({ offertype, customerId }) => {
+    offertype === "service" && (Offer = Questserv);
+    offertype === "product" && (Offer = Questprod);
+    console.log("Controlling quest by offer getter");
+    return await Offer.findAll({
+      where: {
+        user_id: customerId,
+      },
+    });
   },
-  getCustomerQuestions: async () => {
-    await Questserv.findAll();
+  deleteQuestion: async ({ offertype, questId }) => {
+    offertype === "service" && (Offer = Questserv);
+    offertype === "product" && (Offer = Questprod);
+    console.log("Controlling quest getter");
+    return await Offer.destroy({
+      where: {
+        id: questId
+      }
+    })
   },
-  deleteQuestion: async () => {
-    await Questserv.findAll();
-  },
+  // getSellerQuestions: async ({ offertype, offerId }) => {
+  //   const serv_quest = await Questserv.findAll({
+  //     
+  //   });
+  //   const prod_quest = await Questprod.findAll({
+  //     
+  //   });
+  //    const ans = serv_quest.concat(prod_quest);
+  //    return ans;
+  // }
 };
