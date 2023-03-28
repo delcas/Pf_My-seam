@@ -5,15 +5,17 @@ import { Card } from '../../components/Card/Card'
 import { BotonIrInicio } from '../../components/BotonIrInicio/BotonIrInicio'
 import { Carousel } from '../../components/Carousel/Carousel'
 import { Filters } from '../../components/Filters/Filters'
+import { Sections } from '../../components/Sections/Sections'
 
 export const Home = () => {
   return (
     <div id='home'>
       <NavBar />
       <Carousel />
+      <Sections />
       <Filters />
-      <BotonIrInicio />
       <Card />
+      <BotonIrInicio />
       <Footer />
     </div>
   )

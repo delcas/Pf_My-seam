@@ -22,7 +22,7 @@ export const Card = () => {
   // Delimitar el indíce de los productos a paginar
   const lastProductIndex = currentPage * productsPerPage;
   const firstProductIndex = lastProductIndex - productsPerPage;
-  const  currentProducts = products.slice(firstProductIndex, lastProductIndex);
+  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
   // Ejecuto en automático la action para obtener la info de la DB y actualizar las card
   useEffect(() => {
