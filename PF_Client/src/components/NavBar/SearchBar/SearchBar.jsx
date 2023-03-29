@@ -33,7 +33,7 @@ export const SearchBar = () => {
     setSearch(e.target.value.toLowerCase());
   };
 
-  // Hacer la búsqueda de productos por nombre
+  // Hacer la búsqueda de productos por nombre con el botón search
   const handleSubmit = (e) => {
     e.preventDefault();
     window.location.href === 'http://localhost:3000/home' ? ''
@@ -48,8 +48,7 @@ export const SearchBar = () => {
     setResults(items);
   };
 
-
-  // Actualizar el producto seleccionado
+  // Hacer la búsqueda de productos por nombre con la lista de resultados
   const handleItemSelected = (item) => {  
     window.location.href === 'http://localhost:3000/home' ? ''
     : navigate('/home')
@@ -64,19 +63,19 @@ export const SearchBar = () => {
       <form className={`${styles.containerSerchBar} d-flex`} role="search" onSubmit={handleSubmit}>
         {/* Input search & Button Search */}
         <Input className={styles.inputSearch} mr={3} width='250px' placeholder='Buscar productos...' onChange={(e) => handleChange(e)} value={search} type="search" />
-        <IconButton className={styles.buttonSearch} mr={3} rounded="full" icon={<SearchIcon />} isDisabled={disabled} onClick={handleSubmit} />
+        <a href="#card"><IconButton className={styles.buttonSearch} mr={3} rounded="full" icon={<SearchIcon />} isDisabled={disabled} onClick={handleSubmit} /></a>
       </form>
 
       <div className={styles.conatinerResults}>
       {/* Quantity Results */}
       { search.length > 0 && <div className={styles.quantityResults}>{results.length > 5 ? 5 : results.length} results </div>}
         {/* Search results */}
-        { allProducts && <Results 
+        { allProducts && <a href="#card"><Results 
           allProducts={allProducts} 
           onItemSelected={handleItemSelected} 
           search={search} 
           onResultsCalculated={handleResults}
-          />
+          /></a>
         }
       </div>
     </div>

@@ -2,42 +2,45 @@ import { React, useRef} from 'react'
 import styles from './Filters.module.css'
 import { useDisclosure } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { filterByPrice,orderByAlphabet,getProducts  } from '../../Redux/actions';
 import { Button, Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton,
         } from '@chakra-ui/react'
 
-export const Filters = () => {
+export const Filters = ({ setCurrentPage }) => {
 
   const dispatch = useDispatch()
 
   // estilos
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
+
+  // Me traigo los estados del reducer 
+  let products = useSelector((state) => state.products);
   
   // funciones
   function handleFilterByPrice(e){
     // e.preventDefault()
     console.log('por precio', e.target.value)
     dispatch(filterByPrice(e.target.value)) 
-    // setCurrentPage(1)
+    setCurrentPage(1)
   }
 
   const handleChange = (e) => {
     dispatch(orderByAlphabet(e.target.value))
-    
+    setCurrentPage(1)
   } 
 
 const handleFilterClick = (e) => {
     e.preventDefault();
     dispatch(getProducts())
-    
   }
 
 
   return (
-    <div className={`${styles.containerFilters} filtrado`}>
-      <Button ref={btnRef} colorScheme='teal' onClick={onOpen} mt='20px' ml='35px'>
-        Filtros
+    <div className={products.length > 0 ? `${styles.containerFilters} filtrado` : styles.hideFilters}>
+      <Button className={styles.buttonFilters} ref={btnRef} colorScheme='teal' onClick={onOpen} mt='20px' ml='35px'>
+        Filtrar productos
       </Button>
       <Drawer
         isOpen={isOpen}

@@ -69,6 +69,7 @@ body {
   margin: 20px 30px 10px 0;
   transition: all 0.8s ease;
   background-color: white;
+  min-height: 365px;
 }
 
 .cardLightTheme {

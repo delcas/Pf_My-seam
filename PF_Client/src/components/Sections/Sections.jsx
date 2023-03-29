@@ -18,17 +18,27 @@ export const Sections = () => {
           {/* Imagen 1 */}
           <div className={styles.containerImg}>
             <img className={styles.techImage} src={imgTech} alt='imgCostura'/>
+            <p className={styles.titleImage}>Tecnología</p>
           </div>
 
           {/* Imagen 2 */}
-          <div>
+          <div className={styles.containerImg}>
             <img className={styles.homeImage} src={imgHome} alt='imgCostura'/>
+            <p className={styles.titleImage}>Hogar</p>
           </div>
 
-          {/* Imagen 3 y 4 */}
-          <div className={styles.containerSeamImg}>
-            <img className={styles.seamImage} src={imgCostura} alt='imgCostura'/>
-            <img className={styles.seamImage2} src={imgCostura2} alt='imgCostura'/>
+          {/* Imagen 3 */}
+          <div className={styles.containerImg3Y4}>
+            <div className={styles.containerImg}>
+              <img className={styles.seamImage} src={imgCostura} alt='imgCostura'/>
+              <p className={styles.titleImage}>Costura</p>
+            </div>
+
+            {/* Imagen 4 */}
+            <div className={styles.containerImg}>
+              <img className={styles.seamImage2} src={imgCostura2} alt='imgCostura'/>
+              <p className={styles.titleImage}>Servicios</p>
+            </div>
           </div>
 
         </div>
