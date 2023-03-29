@@ -67,10 +67,10 @@ export const NavBar = () => {
       
             <SearchBar  />
             {isAuthenticated ? <>
-              <Profile />
+              {/* <Profile /> */}
               <LogoutButton />
             
-            </> : <LoginButton /> }
+            </> : <LoginButton /> } 
              
 
             <IconButton rounded="full" onClick={toggleColorMode} className={styles.buttonTheme}
