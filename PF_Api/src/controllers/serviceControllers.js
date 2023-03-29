@@ -8,7 +8,7 @@ module.exports = {
     const image = "https://www.objetivobienestar.com/uploads/s1/18/19/76/6/la-importancia-y-los-beneficios-de-la-costura.jpeg"
     // imagen dummy
     if (price <= 0) throw new Error("El precio debe ser mayor a 0");
-    return Service.create({
+    return await Service.create({
       name,
       description,
       price,
@@ -35,11 +35,15 @@ module.exports = {
     return services;
   },
   deleteService: async (id) => {
-    const service = await Service.destroy({
-      where: {
-        id: id
-      }
-    });
-    return service;
+    try {
+      const service = await Service.destroy({
+        where: {
+          id: id
+        }
+      });
+      if(!service) throw `id ${id} not found`;
+    } catch (ex) {
+      return {error: ex}
+    }
   },
 };
