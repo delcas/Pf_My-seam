@@ -25,13 +25,13 @@ module.exports = {
   getQuestion: async ({ offertype, questId }) => {
     offertype === "service" && (OfferQ = Questserv);
     offertype === "product" && (OfferQ = Questprod);
-    console.log("Controlling quest getter");
+    console.log("Controller quest getter by id");
     return await OfferQ.findByPk(questId);
   },
   getOfferQuestions: async ({ offertype, offerId }) => {
     offertype === "service" && (OfferQ = Questserv);
     offertype === "product" && (OfferQ = Questprod);
-    console.log("Controlling quest by offer getter");
+    console.log("Controller quest getter by offer");
     return await OfferQ.findAll({
       where: {
         offer_id: offerId,
@@ -41,7 +41,7 @@ module.exports = {
   getCustomerQuestions: async ({ offertype, customerId }) => {
     offertype === "service" && (OfferQ = Questserv);
     offertype === "product" && (OfferQ = Questprod);
-    console.log("Controlling quest by offer getter");
+    console.log("Controller quest getter by customer");
     return await OfferQ.findAll({
       where: {
         user_id: customerId,
@@ -51,7 +51,7 @@ module.exports = {
   deleteQuestion: async ({ offertype, questId }) => {
     offertype === "service" && (OfferQ = Questserv);
     offertype === "product" && (OfferQ = Questprod);
-    console.log("Controlling quest getter");
+    console.log("Controller quest delete");
     return await Offer.destroy({
       where: {
         id: questId,
@@ -59,7 +59,6 @@ module.exports = {
     });
   },
   getSellerQuestions: async ({ offertype, sellerId }) => {
-    // if (offertype) {
     let Offer;
     if (offertype === "service") {
       OfferQ = Questserv;
@@ -69,7 +68,7 @@ module.exports = {
       OfferQ = Questprod;
       Offer = Product;
     }
-    console.log("Controlling quest getter");
+    console.log("Controller quest getter by seller");
     return await OfferQ.findAll({
       include: [
         {
@@ -79,26 +78,5 @@ module.exports = {
         },
       ],
     });
-    // };
-    /*
-    const serv_quest = await Questserv.findAll({
-    attributes: ['*'],
-      include: [{
-    model: Service,
-    where: { userid: sellerId },
-    required: false 
-  }],
-    });
-    const prod_quest = await Questprod.findAll({
-      attributes: ['*'],
-      include: [{
-    model: Product,
-    where: { userid: sellerId },
-    required: false 
-  }],
-    });
-     const ans = serv_quest.concat(prod_quest);
-     return ans;
-     */
   },
 };
