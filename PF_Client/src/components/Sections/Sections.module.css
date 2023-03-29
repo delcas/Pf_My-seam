@@ -5,12 +5,23 @@
 }
 
 .containerImg {
-  flex-direction: column;
+  position: relative;
+}
+
+.titleImage {
+  display: block;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+  font-weight: bolder;
+  transition: all 0.3s ease-in-out;
 }
 
 .titleSections {
-  margin: 100px 0 0 30px;
-  
+  margin: 100px 0 10px 30px;
   font-weight: bolder;
 }
 
@@ -49,7 +60,7 @@
 }
 
 .techImage:hover, .homeImage:hover, .seamImage:hover, .seamImage2:hover {
-  opacity: 50%;
+  opacity: 40%;
 }
 
 /* Responsive */
@@ -58,8 +69,8 @@
   .containerSections {
     flex-wrap: wrap;
   }
-  .containerSeamImg {
-   display: flex;
+  .containerImg3Y4 {
+    display: flex;
   }
   .techImage {
     width: 300px;
@@ -100,6 +111,9 @@
     height: 200px;
     padding: 0 0 0 15px;
   }
+  .titleImage {
+    font-size: 1.6rem;
+  }
 }
 
 @media only screen and (max-width: 420px) {
@@ -121,6 +135,9 @@
     height: 200px;
     padding: 0 0 0 15px;
   }
+  .titleImage {
+    font-size: 1.1rem;
+  }
 }
 
 @media only screen and (max-width: 310px) {
@@ -141,5 +158,8 @@
     width: 120px;
     height: 200px;
     padding: 0 0 0 15px;
+  }
+  .titleImage {
+    font-size: 0.7rem;
   }
 }

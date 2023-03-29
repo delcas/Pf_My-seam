@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../redux/actions';
 import { CardProducts } from './CardProducts/CardProducts';
 import { Paginado } from '../Paginado/Paginado';
+import { Filters } from '../../components/Filters/Filters'
 
 
 export const Card = () => {
@@ -31,26 +32,29 @@ export const Card = () => {
   }, [])
 
   return (
-    <div>
-     
-      <ul className={styles.cardContainer}>
-      {
-        currentProducts.length > 0 ? 
-        currentProducts.map((el) => {
-          return ( 
-            <CardProducts 
-              id = {el.id} 
-              key = {el.id}
-              image = {el.image}
-              name = {el.name} 
-              price = {el.price}
-              description = {el.description}
-            />
-          )
-        }) 
-        : <span className={styles.loader}></span>
-       }
-      </ul>  
+    <div>  
+      <Filters setCurrentPage={setCurrentPage} />
+      <div><h4 className={currentProducts.length > 0 ? styles.titleSections : styles.hideCards}>Productos destacados</h4>
+        
+        <ul className={styles.cardContainer}>
+        {
+          currentProducts.length > 0 ? 
+          currentProducts.map((el) => {
+            return ( 
+              <CardProducts 
+                id = {el.id} 
+                key = {el.id}
+                image = {el.image}
+                name = {el.name} 
+                price = {el.price}
+                description = {el.description}
+              />
+            )
+          }) 
+          : <span className={styles.loader}></span>
+        }
+        </ul>  
+      </div>
       <Paginado 
        totalProducts={products.length}
        productsPerPage={productsPerPage}

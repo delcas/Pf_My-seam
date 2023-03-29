@@ -8,6 +8,7 @@
     justify-content: left;
     margin-left: auto;
     margin-right: auto; 
+    margin-top: 50px;
 }
 
 .detailTable-wrapper {
@@ -23,16 +24,19 @@
 }
 
 .tdRight{
-    text-align: right;
-}  
-.tdLeft{
     text-align: left;
 }  
+
+.tdLeft{
+    text-align: left;
+}
+
 .FlagImg{
-    width: 40%;
-    height:40%;    
+    width: 50%;
+    height:50%;    
     box-shadow: 5px 5px 5px 0px rgba(216, 206, 206, 0.3);   
 }
+
 .box{
     color: aqua;
 }

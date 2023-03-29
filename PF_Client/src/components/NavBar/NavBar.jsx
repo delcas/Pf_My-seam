@@ -40,6 +40,8 @@ export const NavBar = () => {
                   <li><a className="dropdown-item" href="#">Servicios</a></li>
                   <li><a className="dropdown-item" href="/home">Productos</a></li>
                   <li><a className="dropdown-item" href="/promotions">Ofertas</a></li>
+                  <li><hr className="dropdown-divider"></hr></li>
+                  <li><a className="dropdown-item" href="/categories">Todo</a></li>
                 </ul>
               </li>
 
