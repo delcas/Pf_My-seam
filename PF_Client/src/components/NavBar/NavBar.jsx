@@ -2,15 +2,24 @@ import React from 'react';
 import styles from './NavBar.module.css';
 import Logo from '../../assets/images/logo_MySeam_full.png';
 import { SearchBar } from './SearchBar/SearchBar';
+// Chakra
 import { FaMoon, FaSun } from "react-icons/fa";
-//Chakra
 import { IconButton, useColorMode } from '@chakra-ui/react'
+// Auth0
+import LoginButton from '../Auth0/Logiin/LoginButton';
+import LogoutButton from '../Auth0/Logout/LogoutButton';
+import Profile from '../Auth0/Profile/Profile';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
 
 export const NavBar = () => {
 
   // Cambiar el tema entre oscuro/claro 
   const { toggleColorMode, colorMode } = useColorMode();  
   const currentTheme = useColorMode().colorMode
+
+  // Info de Auth0
+  const { isAuthenticated, user } = useAuth0();
 
   return (
     <div>
@@ -28,7 +37,7 @@ export const NavBar = () => {
             {/* Links */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" href="/create">Crear producto</a>
+                <a className="nav-link active" href="/create">Vender</a>
               </li>
 
               {/* Categorías */}
@@ -38,30 +47,42 @@ export const NavBar = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="#">Servicios</a></li>
-                  <li><a className="dropdown-item" href="#">Productos</a></li>
-                  <li><a className="dropdown-item" href="#">Ofertas</a></li>
+                  <li><a className="dropdown-item" href="/home">Productos</a></li>
+                  <li><a className="dropdown-item" href="/promotions">Ofertas</a></li>
+                  <li><hr className="dropdown-divider"></hr></li>
+                  <li><a className="dropdown-item" href="/categories">Todo</a></li>
                 </ul>
               </li>
 
               {/* Mi perfil */}
-              <li className="nav-item dropdown">
+              <li className={isAuthenticated ? "nav-item dropdown" : styles.hideMiPerfil}>
                 <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Mi perfil
                 </a>
                 <ul className="dropdown-menu">
+                  <li><a className="dropdown-item" href="/profile">Mi Información</a></li>
                   <li><a className="dropdown-item" href="#">Mis ventas</a></li>
                   <li><a className="dropdown-item" href="#">Mis compras</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
                   <li><a className="dropdown-item" href="#">Configuración</a></li>
                 </ul>
               </li>
+              <li className="nav-item">
+                <a className={`${styles.welcomeUser} nav-link disabled`}>{isAuthenticated ? <u>Hola {user.name}</u> : ''}</a>
+              </li>
+                
             </ul>
-
-            <SearchBar  />
+            
+            <SearchBar  /> 
 
             <IconButton rounded="full" onClick={toggleColorMode} className={styles.buttonTheme}
             icon={colorMode === "dark" ? <FaSun /> : <FaMoon />} />
-        
+         
+            {isAuthenticated ? <>
+            {/* <Profile /> */}
+            <LogoutButton />
+            </> : <LoginButton /> }
+
           </div>
         </div>
       </nav>      

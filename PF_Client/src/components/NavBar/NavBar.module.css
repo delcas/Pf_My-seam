@@ -6,12 +6,17 @@
   cursor: pointer;
 }
 
-.containerNavThemeLight {
-  background-color: #cccccc;
+.hideMiPerfil {
+  display: none;
+}
+
+
+.buttonTheme {
+  margin-right: 20px;
 }
 
 /* Responsive */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 990px) {
   .buttonTheme {
     float: right;
   }

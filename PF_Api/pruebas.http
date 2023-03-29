@@ -1,2 +1,30 @@
+### // Buscar todos los productos
+GET http://localhost:3001/product
+
+
 ### // Buscar producto por nombre
 GET http://localhost:3001/product?name=OPPOF
+
+
+### // Buscar todos los servicios
+GET http://localhost:3001/service
+
+
+### // Buscar servicio por nombre
+GET http://localhost:3001/service?name=B
+
+
+### // Crear servicio 
+POST http://localhost:3001/service HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "B",
+    "description": "Costura fina",
+    "price": 250.23,
+    "userId": 1
+}
+
+
+### // Borrar servicio por ID
+DELETE http://localhost:3001/service/1

@@ -15,9 +15,9 @@ module.exports = {
     }
   },
   postProduct: async (data) => {
-    const { name, description, price, image, stock, userId } = data;
+    const { name, description, price, image, stock, userid } = data;
     //validar si existe la informacion necesaria para hacer el post
-    if (name || description || price || image || stock || userId) {
+    if (name || description || price || image || stock || userid) {
       console.log("POST request /product: creating new dproduct");
       if (price < 0) throw new Error("error: valor de precio Negativo");
       const product = await Product.create({
@@ -26,7 +26,7 @@ module.exports = {
         price,
         image,
         stock,
-        userId,
+        userid,
       });
       return product;
     } else {

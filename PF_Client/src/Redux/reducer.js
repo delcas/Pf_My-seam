@@ -3,9 +3,14 @@ import {GET_PRODUCTS,
         SEARCH_PRODUCT_BY_NAME,
         GET_PROMOTIONS,
         GET_PRODUCT_QUESTION,
-        GET_PRODUCT_BY_ID
+        ORDER_BY_ALPHABET,
+        GET_PRODUCT_BY_ID,
+        FILTER_BY_PRICE,
 
         } from "./actions";
+
+
+  import { nameAlphabet } from "./actions";
 
 const initialState = {
     products: [],
@@ -17,6 +22,8 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
+    // let aux = [];   
+
     switch (action.type){
         case GET_PRODUCTS:
             return {...state, 
@@ -37,6 +44,37 @@ const rootReducer = (state = initialState, action) => {
         case GET_PROMOTIONS:
             return {...state, 
                 promotions: action.payload};
+                case FILTER_BY_PRICE:
+            console.log('reducer: action.payload: ', action.payload )
+            let productsShown = state.allProducts
+            let productsFiltered = []
+            if(action.payload === 'none'){
+                productsFiltered = productsShown
+            } else if(action.payload === 'Hasta $ 100'){
+                productsFiltered = productsShown.filter(p => p.price < 100)
+            } else if (action.payload === '$ 100 a $ 500' ){
+                productsFiltered = productsShown.filter( p => p.price > 100 && p.price < 500)
+            } else {
+                productsFiltered = productsShown.filter(p => p.price > 500)
+            }
+            return {...state,
+                products: productsFiltered
+            }
+        
+            case ORDER_BY_ALPHABET: {
+           if(action.payload === 'a-z') {
+            return {
+             ...state,
+             products: state.products.slice().sort(nameAlphabet)
+           }
+         } else {
+           return {
+             ...state,
+            products: state.products.slice().sort(nameAlphabet).reverse()
+          }
+        }
+      }
+
         default:
             return {...state};
     }

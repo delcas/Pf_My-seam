@@ -1,6 +1,16 @@
-.titleSections {
-  margin: 0px 0 10px 30px;
+.containerCategories {
+  display: flex;
+  justify-content: center;
+}
+
+.currentCategory {
+  text-align: center;
   font-weight: bolder;
+  margin: 30px 0;
+}
+
+.buttonCategorie {
+  margin: 0 20px 20px 20px;
 }
 
 /* Card */
@@ -9,10 +19,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, min(min(100%, 25%)));
   transition: all 0.8s ease;
-}
-
-.hideCards {
-  display: none;
 }
 
 /* Loading */
@@ -59,4 +65,3 @@
     grid-template-columns: repeat(auto-fill, min(min(100%, 100%)));
   }  
 }
-
