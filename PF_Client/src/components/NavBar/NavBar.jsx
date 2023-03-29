@@ -2,9 +2,10 @@ import React from 'react';
 import styles from './NavBar.module.css';
 import Logo from '../../assets/images/logo_MySeam_full.png';
 import { SearchBar } from './SearchBar/SearchBar';
+// Chakra
 import { FaMoon, FaSun } from "react-icons/fa";
-//Chakra
 import { IconButton, useColorMode } from '@chakra-ui/react'
+// Auth0
 import LoginButton from '../Auth0/Logiin/LoginButton';
 import LogoutButton from '../Auth0/Logout/LogoutButton';
 import Profile from '../Auth0/Profile/Profile';
@@ -63,21 +64,18 @@ export const NavBar = () => {
                   <li><a className="dropdown-item" href="#">Configuración</a></li>
                 </ul>
               </li>
-
             </ul>
             
-      
-            <SearchBar  />
-            {isAuthenticated ? <>
-              {/* <Profile /> */}
-              <LogoutButton />
-            
-            </> : <LoginButton /> } 
-             
+            <SearchBar  /> 
 
             <IconButton rounded="full" onClick={toggleColorMode} className={styles.buttonTheme}
             icon={colorMode === "dark" ? <FaSun /> : <FaMoon />} />
-        
+         
+            {isAuthenticated ? <>
+            {/* <Profile /> */}
+            <LogoutButton />
+            </> : <LoginButton /> }
+
           </div>
         </div>
       </nav>      

@@ -6,8 +6,8 @@
   cursor: pointer;
 }
 
-.containerNavThemeLight {
-  background-color: #cccccc;
+.buttonTheme {
+  margin-right: 20px;
 }
 
 /* Responsive */
