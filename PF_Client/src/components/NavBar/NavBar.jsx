@@ -9,6 +9,7 @@ import LoginButton from '../Auth0/Logiin/LoginButton';
 import LogoutButton from '../Auth0/Logout/LogoutButton';
 import Profile from '../Auth0/Profile/Profile';
 import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
 
 export const NavBar = () => {
 
@@ -50,23 +51,27 @@ export const NavBar = () => {
               </li>
 
               {/* Mi perfil */}
+              {isAuthenticated &&
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Mi perfil
                 </a>
                 <ul className="dropdown-menu">
+                  <li className="dropdown-item"><Link to="/profile">Mi info</Link></li>
                   <li><a className="dropdown-item" href="#">Mis ventas</a></li>
                   <li><a className="dropdown-item" href="#">Mis compras</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
                   <li><a className="dropdown-item" href="#">Configuración</a></li>
                 </ul>
               </li>
+              }
 
             </ul>
             
       
             <SearchBar  />
             {isAuthenticated ? <>
+            
               {/* <Profile /> */}
               <LogoutButton />
             
