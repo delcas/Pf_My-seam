@@ -36,8 +36,8 @@ const postServiceHandler = async (req,res) => {
 const deleteServiceHandler = async (req,res) => {
   const { id } = req.params;
   try{
-    await deleteService(id);
-    res.status(200).json(`Successfully deleted service with id ${id}`);
+    const service = await deleteService(id);
+    res.status(200).json(service);
   }
   catch (error) {
     res.status(404).json({ error: error.message })
