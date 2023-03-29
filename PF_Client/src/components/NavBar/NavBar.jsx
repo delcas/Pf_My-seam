@@ -17,7 +17,8 @@ export const NavBar = () => {
   const { toggleColorMode, colorMode } = useColorMode();  
   const currentTheme = useColorMode().colorMode
 
-  const {isAuthenticated} = useAuth0();
+  // Info de Auth0
+  const { isAuthenticated, user } = useAuth0();
 
   return (
     <div>
@@ -53,17 +54,22 @@ export const NavBar = () => {
               </li>
 
               {/* Mi perfil */}
-              <li className="nav-item dropdown">
+              <li className={isAuthenticated ? "nav-item dropdown" : styles.hideMiPerfil}>
                 <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Mi perfil
                 </a>
                 <ul className="dropdown-menu">
+                  <li><a className="dropdown-item" href="/profile">Mi Información</a></li>
                   <li><a className="dropdown-item" href="#">Mis ventas</a></li>
                   <li><a className="dropdown-item" href="#">Mis compras</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
                   <li><a className="dropdown-item" href="#">Configuración</a></li>
                 </ul>
               </li>
+              <li className="nav-item">
+                <a className={`${styles.welcomeUser} nav-link disabled`}>{isAuthenticated ? <u>Hola {user.name}</u> : ''}</a>
+              </li>
+                
             </ul>
             
             <SearchBar  /> 

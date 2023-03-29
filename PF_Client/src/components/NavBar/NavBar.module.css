@@ -6,6 +6,11 @@
   cursor: pointer;
 }
 
+.hideMiPerfil {
+  display: none;
+}
+
+
 .buttonTheme {
   margin-right: 20px;
 }
