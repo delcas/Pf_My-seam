@@ -5,12 +5,18 @@ import { SearchBar } from './SearchBar/SearchBar';
 import { FaMoon, FaSun } from "react-icons/fa";
 //Chakra
 import { IconButton, useColorMode } from '@chakra-ui/react'
+import LoginButton from '../Auth0/Logiin/LoginButton';
+import LogoutButton from '../Auth0/Logout/LogoutButton';
+import Profile from '../Auth0/Profile/Profile';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export const NavBar = () => {
 
   // Cambiar el tema entre oscuro/claro 
   const { toggleColorMode, colorMode } = useColorMode();  
   const currentTheme = useColorMode().colorMode
+
+  const {isAuthenticated} = useAuth0();
 
   return (
     <div>
@@ -57,11 +63,17 @@ export const NavBar = () => {
                   <li><a className="dropdown-item" href="#">Configuración</a></li>
                 </ul>
               </li>
+
             </ul>
             
       
-            
             <SearchBar  />
+            {isAuthenticated ? <>
+              {/* <Profile /> */}
+              <LogoutButton />
+            
+            </> : <LoginButton /> } 
+             
 
             <IconButton rounded="full" onClick={toggleColorMode} className={styles.buttonTheme}
             icon={colorMode === "dark" ? <FaSun /> : <FaMoon />} />

@@ -42,10 +42,10 @@ const { Product, Service, User, Questprod, Questserv } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-User.hasMany(Product, { foreignKey: "userId" });
-Product.belongsTo(User, { foreignKey: "userId" });
-User.hasMany(Service, { foreignKey: "userId" });
-Service.belongsTo(User, { foreignKey: "userId" });
+User.hasMany(Product, { foreignKey: "userid" });
+Product.belongsTo(User, { foreignKey: "userid" });
+User.hasMany(Service, { foreignKey: "userid" });
+Service.belongsTo(User, { foreignKey: "userid" });
 
 Product.hasMany(Questprod, { foreignKey: 'offer_id' });
 Questprod.belongsTo(Product, { foreignKey: 'offer_id' });

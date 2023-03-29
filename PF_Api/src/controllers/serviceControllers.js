@@ -4,7 +4,7 @@ const services = require('../utils/services.json');
 
 module.exports = {
   serviceCreator: async (data) => {
-    const { name, description, price, userId } = data;
+    const { name, description, price, userid } = data;
     // imagen dummy
     const image = "https://www.objetivobienestar.com/uploads/s1/18/19/76/6/la-importancia-y-los-beneficios-de-la-costura.jpeg"
     // imagen dummy
@@ -14,7 +14,7 @@ module.exports = {
       description,
       price,
       image,
-      userId,
+      userid,
     });
   },
   getAService: async (id) => {
