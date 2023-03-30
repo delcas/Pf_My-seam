@@ -18,7 +18,8 @@ const initialState = {
     services: [],  
     details: [],
     productQuestions: [],  
-    promotions: [],   
+    promotions: [],  
+    cart: [], 
 };
 
 const rootReducer = (state = initialState, action) => {

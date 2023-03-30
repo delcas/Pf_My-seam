@@ -59,9 +59,9 @@ export const Card = () => {
        totalProducts={products.length}
        productsPerPage={productsPerPage}
        setCurrentPage={setCurrentPage} 
-       currentPage={currentPage} />
+       currentPage={currentPage} 
+      />
 
-   
     </div>
   )
 }
