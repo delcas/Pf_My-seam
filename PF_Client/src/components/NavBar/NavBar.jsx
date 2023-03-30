@@ -8,9 +8,8 @@ import { IconButton, useColorMode } from '@chakra-ui/react'
 // Auth0
 import LoginButton from '../Auth0/Logiin/LoginButton';
 import LogoutButton from '../Auth0/Logout/LogoutButton';
-import Profile from '../Auth0/Profile/Profile';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Link } from 'react-router-dom';
+import { Cart } from '../Cart/Cart';
 
 export const NavBar = () => {
 
@@ -78,6 +77,8 @@ export const NavBar = () => {
             <IconButton rounded="full" onClick={toggleColorMode} className={styles.buttonTheme}
             icon={colorMode === "dark" ? <FaSun /> : <FaMoon />} />
          
+            <Cart />
+
             {isAuthenticated ? <>
             {/* <Profile /> */}
             <LogoutButton />

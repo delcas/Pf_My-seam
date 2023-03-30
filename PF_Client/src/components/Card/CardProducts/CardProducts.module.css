@@ -8,10 +8,15 @@ body {
   font-family: 'Share Tech Mono', monospace;  -webkit-font-smoothing: antialiased; */
 }
 
+.hide {
+  display: none;
+}
+
 .textBig {
   font-size: 25px;
   color: black;
   text-align: center;
+  display: none;
 }
 
 .textMedium {
@@ -41,6 +46,27 @@ body {
   text-decoration: none;
 }
 
+/* Cart */
+
+.buttonCart {
+  cursor: pointer;
+  margin: 5px 0 2px 5px;
+}
+
+.buttonCart:hover {
+  color: rgb(40, 63, 167);
+}
+
+.buttonFavourites {
+  cursor: pointer;
+  margin: 5px 5px 0 0px;
+  float: right;
+}
+
+.buttonFavourites:hover {
+  color: red;
+}
+
 /* Button Load */
 
 .buttonLoad {
@@ -68,8 +94,7 @@ body {
   border: 2px solid black;
   margin: 20px 30px 10px 0;
   transition: all 0.8s ease;
-  background-color: white;
-  min-height: 365px;
+  background-color: rgba(255, 255, 255, 0.396);
 }
 
 .cardLightTheme {
@@ -80,18 +105,40 @@ body {
   background-color: rgb(207, 207, 207);
 }
 
-.cardDarkTheme:hover, .cardLightTheme:hover {
-  box-shadow: 20px 20px 20px rgb(0, 0, 0);
-  padding: 10px;  
-  filter: contrast(120%);
-}
-
-.cardDarkTheme:hover .textSmall { 
+.cardDarkTheme:hover .textBig {
   display: block;
 }
 
-.cardLightTheme:hover .textSmall { 
+.cardLightTheme:hover .textBig {
   display: block;
+}
+
+/* Alerta producto agregado */
+
+.notifySlideIn {
+    animation-duration: 4s;
+    animation-delay: -1s;
+    animation-name: slidein;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slidein {
+    0% {
+        top: -100%;
+    }
+
+    40% {
+        top: 90px;
+    }
+
+    60% {
+        top: 90px;
+    }
+
+    100% {
+        top: -100%;
+    }
 }
 
 

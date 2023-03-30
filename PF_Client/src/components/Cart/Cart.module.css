@@ -1,0 +1,52 @@
+/* General */
+
+.containerBody {
+  margin-top: 30px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+.LogIn {
+  margin-bottom: 40px;
+}
+
+a {
+  cursor: pointer;
+}
+
+/* Buttons  */
+
+.buttonCart {
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.buttonClose {
+  float: right;
+}
+
+/* Cart */
+
+.notificationsCart {
+  left: 50%;
+}
+
+.titleCart {
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 990px) {
+  .containerIconCart {
+    margin: 20px 0 10px 0;
+  }
+}

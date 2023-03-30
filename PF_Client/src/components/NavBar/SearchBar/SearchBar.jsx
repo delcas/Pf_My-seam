@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { json, useNavigate  } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './SearchBar.module.css';
-import { searchProductByName } from '../../../redux/actions';
+import { searchProductByName, getProductById } from '../../../redux/actions';
 import { Results } from '../Results/Results'
 //Chakra
-import { IconButton, Input, Alert, AlertIcon  } from '@chakra-ui/react'
+import { IconButton, Input } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
 
 export const SearchBar = () => {
@@ -26,6 +26,7 @@ export const SearchBar = () => {
 
   // Me traigo los estados del reducer 
   const allProducts = useSelector((state) => state.allProducts);
+  const products = useSelector((state) => state.products);
 
   // Actualizar el estado de la búsqueda 
   const handleChange = (e) => {
@@ -55,7 +56,6 @@ export const SearchBar = () => {
     setSearch(item)
     dispatch(searchProductByName(item))
     setSearch('');
-    // setCurrentPage(1);
   }
 
   return (
