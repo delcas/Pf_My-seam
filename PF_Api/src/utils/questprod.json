@@ -1,30 +1,26 @@
 [
     {
-        "id": 1,
         "question": "Te queda el Iphoe 9 en stock?",
         "answer": null,
-        "product_id": 1,
+        "offer_id": 1,
         "user_id": 1
     },
     {
-        "id": 2,
         "question": "Queres queso frito?",
         "answer": null,
-        "product_id": 3,
+        "offer_id": 3,
         "user_id": 2
     },
     {
-        "id": 3,
         "question": "Queres papas",
         "answer": null,
-        "product_id": 3,
+        "offer_id": 3,
         "user_id": 2
     },
     {
-        "id": 4,
         "question": "tenes plata?",
         "answer": null,
-        "product_id": 3,
+        "offer_id": 3,
         "user_id": 2
     }
 ]
