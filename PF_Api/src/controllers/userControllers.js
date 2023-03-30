@@ -48,7 +48,7 @@ module.exports = {
           country: user.country,
           city: user.city,
           isActive: user.isActive,
-          image: "https://i.dummyjson.com/data/products/1/1.jpg",
+          image: user.image
         },
       });
     });
