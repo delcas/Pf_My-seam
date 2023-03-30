@@ -10,7 +10,9 @@ async function getApiProducts() {
       .get("https://dummyjson.com/products")
       .then((response) => {
         product = response.data.products.map((p) => {
-          return getJson(p);
+          const UsId = (m) => { return Math.ceil(Math.random()*m) };
+          const id = UsId(5);
+          return getJson(p, id);
         });
       });
     return product;
@@ -31,6 +33,7 @@ async function fillTableProducts() {
         price: e.price,
         image: e.image,
         stock: e.stock,
+        userid: e.userid
       },
     });
   });
@@ -62,13 +65,14 @@ async function getDBproducts() {
 }
 //----------------------------------------------------------------------
 //formato de objeto .JSON para enviar a la tabla Products
-const getJson = (product) => {
+const getJson = (product, id) => {
   return {
     name: product.title,
     description: product.description,
     price: product.price,
     image: product.images,
     stock: product.stock,
+    userid: id
   };
 };
 

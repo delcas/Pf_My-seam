@@ -26,14 +26,16 @@ module.exports = {
   },
   getServices: async (name) => {
     if (!name) {
-      servicesJSON.map(
+      servicesJSON.forEach(
         async (serv) =>
-          await Service.create({
+          await Service.findOrCreate({
+            where: {
             name: serv.name,
             description: serv.description,
             price: serv.price,
             image: serv.image,
             userid: serv.userid,
+            }
           })
       );
       return await Service.findAll();

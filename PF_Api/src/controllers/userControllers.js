@@ -35,8 +35,8 @@ module.exports = {
   },
 
   getUsers: async () => {
-    users.forEach((user) => {
-      User.findOrCreate({
+    users.forEach( async (user) => {
+      await User.findOrCreate({
         where: {
           name: user.name,
           birthdate: user.birthdate,
