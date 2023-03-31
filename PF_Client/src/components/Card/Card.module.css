@@ -15,31 +15,6 @@
   display: none;
 }
 
-/* Loading */
-
-.loader {
-  width: 100px;
-  height: 110px;
-  border: 5px solid #ec9c9c;
-  border-bottom-color: #FF3D00;
-  border-radius: 50%;
-  position: absolute;
-  top: 100%;
-  left: 45%;
-  margin: 0 auto;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-} 
-
 /* Responsive */
 
 @media only screen and (max-width: 900px) {
