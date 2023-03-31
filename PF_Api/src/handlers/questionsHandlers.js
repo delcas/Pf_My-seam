@@ -16,7 +16,10 @@ module.exports = {
     try {
       if (!question) throw new Error("Question content missing");
       if (!customerId) throw new Error("Customer unknown");
+      if (isNaN(customerId))
+        throw new Error("The customer Id must be a number");
       if (!offerId) throw new Error("Question unrelated to an offer");
+      if (isNaN(offerId)) throw new Error("The customer Id must be a number");
       if (offertype === "service" || offertype === "product") {
         console.log("Creating Question -(at Handler)-");
         const quest = await createQuestion({
@@ -41,6 +44,7 @@ module.exports = {
     try {
       if (!answer) throw new Error("Answer content missing");
       if (!questId) throw new Error("Missing question reference");
+      if (isNaN(questId)) throw new Error("The customer Id must be a number");
       if (offertype === "service" || offertype === "product") {
         console.log("answering prod quest handler");
         const quest = await setAnswer({ offertype, questId, answer });
@@ -59,18 +63,24 @@ module.exports = {
     try {
       console.log("Handling getter");
       if (questId) {
+        if (isNaN(questId)) throw new Error("Question Id must be a number");
         const quest = await getQuestion({ offertype, questId });
         res.status(200).json(quest);
       }
       if (offerId) {
+        if (isNaN(offerId))
+          throw new Error(`The ${offertype} Id must be a number`);
         const quest = await getOfferQuestions({ offertype, offerId });
         res.status(200).json(quest);
       }
       if (customerId) {
+        if (isNaN(customerId))
+          throw new Error("The customer Id must be a number");
         const quest = await getCustomerQuestions({ offertype, customerId });
         res.status(200).json(quest);
       }
       if (sellerId) {
+        if (isNaN(sellerId)) throw new Error("The seller Id must be a number");
         const quest = await getSellerQuestions({ offertype, sellerId });
         res.status(200).json(quest);
       }
@@ -81,11 +91,12 @@ module.exports = {
   deleteHandler: async (req, res) => {
     const offertype = req.path.split("/")[1];
     const { questId } = req.body;
-try {
-  await deleteQuestion({ offertype, questId });
-        res.status(200).send('Pregunta borrada con éxito')
-} catch (error) {
-  res.status(404).send(error.message);  
-}
-  }
+    try {
+      if (isNaN(questId)) throw new Error("Question Id must be a number");
+      await deleteQuestion({ offertype, questId });
+      res.status(200).send("Pregunta borrada con éxito");
+    } catch (error) {
+      res.status(404).send(error.message);
+    }
+  },
 };
