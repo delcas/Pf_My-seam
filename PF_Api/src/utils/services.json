@@ -3,24 +3,28 @@
     "name":"Costura",
     "description":"Costura fina",
     "price":150.23,
-    "userId": 1
+    "image": ["https://gdurl.com/ljVA"],
+    "userid": 3
 },
 {
     "name":"Refaccion",
     "description":"Arreglo todo",
     "price":103,
-    "userId": 1
+    "image": ["https://gdurl.com/gV5Cy"],
+    "userid": 3
 },
 {
     "name":"Agregados",
     "description":"Diseño de agregados",
     "price":1023,
-    "userId": 1
+    "image": ["https://gdurl.com/dQsS"],
+    "userid": 4
 },
 {
     "name":"Costura reparacion",
     "description":"Arreglo de pantalones y camisas de la dama y el caballero",
     "price":1523,
-    "userId": 2
+    "image": ["https://gdurl.com/RdMH"],
+    "userid": 4
 }
 ]

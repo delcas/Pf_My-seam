@@ -1,0 +1,26 @@
+[
+    {
+        "question": "¿Cuanto cuesta arreglar una camisa con botones?",
+        "answer": null,
+        "offer_id": 4,
+        "user_id": 1
+    },
+    {
+        "question": "¿Por donde queda tu negocio?",
+        "answer": null,
+        "offer_id": 1,
+        "user_id": 1
+    },
+    {
+        "question": "¿Sabes coser cuero?",
+        "answer": null,
+        "offer_id": 3,
+        "user_id": 2
+    },
+    {
+        "question": "¿Me podes hacer un traje a medida?",
+        "answer": null,
+        "offer_id": 1,
+        "user_id": 2
+    }
+]
