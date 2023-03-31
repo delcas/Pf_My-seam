@@ -6,7 +6,6 @@ import {GET_PRODUCTS,
         ORDER_BY_ALPHABET,
         GET_PRODUCT_BY_ID,
         FILTER_BY_PRICE,
-
         } from "./actions";
 
 
@@ -62,19 +61,20 @@ const rootReducer = (state = initialState, action) => {
                 products: productsFiltered
             }
         
-            case ORDER_BY_ALPHABET: {
-           if(action.payload === 'a-z') {
-            return {
-             ...state,
-             products: state.products.slice().sort(nameAlphabet)
-           }
-         } else {
-           return {
-             ...state,
-            products: state.products.slice().sort(nameAlphabet).reverse()
-          }
+        case ORDER_BY_ALPHABET: {
+            if(action.payload === 'a-z') {
+                return {
+                    ...state,
+                    products: state.products.slice().sort(nameAlphabet)
+                }
+                } else {
+                    return {
+                        ...state,
+                        products: state.products.slice().sort(nameAlphabet).reverse()
+                    }
+            }
         }
-      }
+
 
         default:
             return {...state};

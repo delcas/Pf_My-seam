@@ -24,8 +24,14 @@ export const CardProducts = ({ id, image, name, price, description }) => {
 
   // Agregar producto al carrito de compras
   const handleCart = () => {
-    const findProduct = allProducts.find(el => el.id == id)
-    cart.push(findProduct)
+    const newProduct = allProducts.find(el => el.id == id)
+    // Validar si ya existe el producto en el carrito de compras
+    if (cart.find(el => el === newProduct)) {   
+      newProduct.quantity +=  1 
+    } else {
+        newProduct.quantity = 1 
+        cart.push(newProduct)
+      }
     showNotify();
   }
 
@@ -45,7 +51,7 @@ export const CardProducts = ({ id, image, name, price, description }) => {
           <Icon as={BsFillHeartFill} w={8} h={8} className={styles.buttonFavourites} />
           <Link className={styles.Link} to= {`/ProductDetail/${id}`}>
             {/* Elementos de la card */}
-            <img className={styles.imgCenter} src={image[0]} alt={name} width='200px' height='200px'/>
+            <img className={styles.imgCenter} src={image[0]} alt={name} width='200px' height='200px' />
             <h1 className={styles.textBig}>{name}</h1>
             <h2 className={styles.textMedium}> ${price}</h2>
             <h3 className={styles.textSmall}> {description}</h3>
