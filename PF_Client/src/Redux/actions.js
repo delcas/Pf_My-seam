@@ -8,12 +8,20 @@ export const GET_PROMOTIONS = "GET_PROMOTIONS";
 export const ORDER_BY_ALPHABET = "ORDER_BY_ALPHABET";
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
 export const SET_PRODUCT_CHANGE = "SET_PRODUCT_CHANGE";
+export const GET_USERS = "GET_USERS";
 
 export const getProducts = () => {
   return async function (dispatch) {
     const productsData = await axios.get(`/product`);
     const products = productsData.data;
     dispatch({ type: GET_PRODUCTS, payload: products });
+  };
+};
+export const getUsers = () => {
+  return async function (dispatch) {
+    const usersData = await axios.get(`/users`);
+    const users = usersData.data;
+    dispatch({ type: GET_USERS, payload: users });
   };
 };
 

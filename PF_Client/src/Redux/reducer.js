@@ -19,7 +19,8 @@ const initialState = {
     details: [],
     productQuestions: [],  
     promotions: [],  
-    cart: [], 
+    cart: [],
+    users: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -63,8 +64,7 @@ const rootReducer = (state = initialState, action) => {
             }
             return {...state,
                 products: productsFiltered
-            }
-        
+            }        
         case ORDER_BY_ALPHABET: {
             if(action.payload === 'a-z') {
                 return {
@@ -78,6 +78,10 @@ const rootReducer = (state = initialState, action) => {
                     }
             }
         }
+        case GET_USERS: {
+            return {...state, 
+                users: action.payload}; 
+            }
 
         default:
             return {...state};
