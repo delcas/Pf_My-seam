@@ -35,8 +35,8 @@ module.exports = {
   },
 
   getUsers: async () => {
-    users.forEach((user) => {
-      User.findOrCreate({
+    users.forEach( async (user) => {
+      await User.findOrCreate({
         where: {
           name: user.name,
           birthdate: user.birthdate,
@@ -48,7 +48,7 @@ module.exports = {
           country: user.country,
           city: user.city,
           isActive: user.isActive,
-          image: "https://i.dummyjson.com/data/products/1/1.jpg",
+          image: user.image
         },
       });
     });

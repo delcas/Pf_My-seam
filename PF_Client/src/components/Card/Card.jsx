@@ -5,6 +5,7 @@ import { getProducts } from '../../redux/actions';
 import { CardProducts } from './CardProducts/CardProducts';
 import { Paginado } from '../Paginado/Paginado';
 import { Filters } from '../../components/Filters/Filters'
+import { Loading } from '../Loading/Loading';
 
 
 export const Card = () => {
@@ -51,7 +52,7 @@ export const Card = () => {
               />
             )
           }) 
-          : <span className={styles.loader}></span>
+          : <Loading />
         }
         </ul>  
       </div>
@@ -59,9 +60,9 @@ export const Card = () => {
        totalProducts={products.length}
        productsPerPage={productsPerPage}
        setCurrentPage={setCurrentPage} 
-       currentPage={currentPage} />
+       currentPage={currentPage} 
+      />
 
-   
     </div>
   )
 }

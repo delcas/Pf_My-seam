@@ -4,6 +4,7 @@ import { NavBar } from '../../NavBar/NavBar'
 import { CardProducts } from '../../Card/CardProducts/CardProducts';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPromotions } from '../../../redux/actions';
+import { Loading } from '../../Loading/Loading'
 
 export const Promotions = () => {
   // Me traigo los estados del reducer 
@@ -39,7 +40,7 @@ export const Promotions = () => {
             />
           )
         }) 
-        : <span className={styles.loader}></span>
+        : <Loading />
        }
       </ul>  
     </div>
