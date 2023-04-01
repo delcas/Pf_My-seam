@@ -9,7 +9,11 @@ export const ProductDetail = () => {
   const [question, setQuestion] = useState("");
   const questions = details.questions;
   //Variable provisoria que a futuro deberá llegar desde el estado global
-  const [userId, setuserId] = useState(1);
+  const [userId, setuserId] = useState(4);
+  const [edit, setEdit] = useState({
+    e: false,
+    s: 'none'
+  });
 
   useEffect(() => {
     const urlID = window.location.href;
@@ -27,6 +31,17 @@ export const ProductDetail = () => {
       setActivity("");
     }
   }
+  function handleEdition(ev){
+edit.e ? setEdit({...edit, e: false}) : setEdit({...edit, e: true})
+console.log(edit, 'Line 36');
+  }
+  function EditionPDetail(ev) {
+    edit.s !== ev.target.name ?
+    setEdit({...edit, s: ev.target.name}) :
+    setEdit({...edit, s: 'none'})
+    console.log(edit, 'Line 42');
+    };
+  //<EditionPDetail/>
 
   return (
     <div>
@@ -34,6 +49,7 @@ export const ProductDetail = () => {
       {details.length !== 0 ? (
         <div>
           <h1> Detalle del producto </h1>
+          { userId === details.userid ? <button onClick={handleEdition}>Habilitar Edición 🖊</button> : ''}
           <table className={style.detailTable}>
             <tr>
               <td className={style.box} rowSpan="6">
@@ -44,9 +60,9 @@ export const ProductDetail = () => {
                 />
               </td>
               <td className={style.tdLeft}>
-                {userId === details.userid ? <th>Editar 🖊
-            </th> : ''}
-                <tr>Producto: {details.name}</tr>
+                <tr> 
+                  <td>Producto: {edit.s === 'name' ? <input/> : details.name}</td> 
+                  <td>{edit.e ? <button name='name' onClick={ EditionPDetail }> 🖊 </button> : ''}</td> </tr>
                 <tr>Descripcion: {details.description}</tr>
                 <tr>Precio: {details.price}</tr>
                 <tr>Stock: {details.stock}</tr>
