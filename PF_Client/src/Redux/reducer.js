@@ -7,6 +7,7 @@ import {GET_PRODUCTS,
         GET_PRODUCT_BY_ID,
         FILTER_BY_PRICE,
         SET_PRODUCT_CHANGE,
+        GET_USERS,
         } from "./actions";
 
 
