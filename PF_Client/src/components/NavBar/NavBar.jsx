@@ -1,18 +1,16 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import styles from "./NavBar.module.css";
-import Logo from "../../assets/images/logo_MySeam_full.png";
-import { SearchBar } from "./SearchBar/SearchBar";
+import React from 'react';
+import styles from './NavBar.module.css';
+import Logo from '../../assets/images/logo_MySeam_full.png';
+import { SearchBar } from './SearchBar/SearchBar';
+import { Cart } from '../Cart/Cart';
 // Chakra
 import { FaMoon, FaSun } from "react-icons/fa";
 import { IconButton, useColorMode } from "@chakra-ui/react";
-import { Wrap, WrapItem } from "@chakra-ui/react";
 import { Avatar } from "@chakra-ui/react";
 // Auth0
-import LoginButton from "../Auth0/Logiin/LoginButton";
-import LogoutButton from "../Auth0/Logout/LogoutButton";
-import { useAuth0 } from "@auth0/auth0-react";
-import { Cart } from "../Cart/Cart";
+import LoginButton from '../Auth0/Logiin/LoginButton';
+import LogoutButton from '../Auth0/Logout/LogoutButton';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export const NavBar = () => {
   // Cambiar el tema entre oscuro/claro
@@ -48,21 +46,13 @@ export const NavBar = () => {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             {/* Links */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" href="/create">
-                  Vender
-                </a>
+              <li className="nav-item" title="Publicar producto">
+                <a className="nav-link active" href="/create">Vender</a>
               </li>
 
               {/* Categorías */}
               <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle active"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+                <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                   Categorías
                 </a>
                 <ul className="dropdown-menu">
@@ -156,7 +146,8 @@ export const NavBar = () => {
             <SearchBar />
 
             <IconButton
-              rounded="full"
+              title= "Cambiar tema"
+              rounded= "full"
               onClick={toggleColorMode}
               className={styles.buttonTheme}
               icon={colorMode === "dark" ? <FaSun /> : <FaMoon />}

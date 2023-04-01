@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from './CartProducts.module.css';
+import { DeleteIcon } from '@chakra-ui/icons'
 
 export const CartProducts = ({ cart, totalPrice, setTotalPrice, quantity, setQuantity, el }) => {
   
@@ -55,8 +56,8 @@ export const CartProducts = ({ cart, totalPrice, setTotalPrice, quantity, setQua
             </div>
 
             <div className={styles.cartRight}>
-              <h2 className={styles.textMedium}> <b>${el.price}</b></h2>
-              <button className={styles.buttonDeleteItem} onClick={handleDeleteItem}><b>X</b></button>
+              <h2 className={styles.textMedium}> <b>Subtotal: ${el.price * el.quantity}</b></h2>
+              <button className={styles.buttonDeleteItem} onClick={handleDeleteItem}><DeleteIcon /></button>
             </div>
         </li>                      
     </div>
