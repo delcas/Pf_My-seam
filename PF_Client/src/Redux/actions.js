@@ -1,4 +1,5 @@
 import axios from "axios";
+export const GET_USERS = "GET_USERS";
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_SERVICES = "GET_SERVICES";
 export const SEARCH_PRODUCT_BY_NAME = "SEARCH_PRODUCT_BY_NAME";
@@ -8,21 +9,24 @@ export const GET_PROMOTIONS = "GET_PROMOTIONS";
 export const ORDER_BY_ALPHABET = "ORDER_BY_ALPHABET";
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
 export const SET_PRODUCT_CHANGE = "SET_PRODUCT_CHANGE";
-export const GET_USERS = "GET_USERS";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
 
-export const getProducts = () => {
-  return async function (dispatch) {
-    const productsData = await axios.get(`/product`);
-    const products = productsData.data;
-    dispatch({ type: GET_PRODUCTS, payload: products });
-  };
-};
+
+
 export const getUsers = () => {
   return async function (dispatch) {
     const usersData = await axios.get(`/users`);
     const users = usersData.data;
     console.log('get users result: ', users.length);
     dispatch({ type: GET_USERS, payload: users });
+  };
+};
+
+export const getProducts = () => {
+  return async function (dispatch) {
+    const productsData = await axios.get(`/product`);
+    const products = productsData.data;
+    dispatch({ type: GET_PRODUCTS, payload: products });
   };
 };
 
@@ -99,5 +103,12 @@ export function setProductChange(id, change) {
       type: SET_PRODUCT_CHANGE,
       payload: detail,
     });
+  };
+}
+
+export function deleteProduct(id) {
+  return async function () {
+    await axios.delete(`/product/${id}`)
+    .then(getProducts())
   };
 }
