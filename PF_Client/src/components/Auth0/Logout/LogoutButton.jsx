@@ -8,6 +8,7 @@ const LogoutButton = () => {
   return (
     <button
       className={styles.LogoutButton}
+      title="Cerrar sesión"
       onClick={() =>
         logout({ logoutParams: { returnTo: window.location.origin } })
       }

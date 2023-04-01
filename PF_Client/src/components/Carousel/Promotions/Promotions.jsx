@@ -35,7 +35,7 @@ export const Promotions = () => {
               key = {el.id}
               image = {el.image}
               name = {el.name} 
-              price = {el.price * .8}
+              price = {Math.round(el.price * .8)}
               description = {el.description}
             />
           )

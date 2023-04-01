@@ -9,6 +9,7 @@ import { Login } from './views/Login/Login';
 import { ProductDetail } from './views/ProductDetail/ProductDetail'
 import { Categories } from './components/Categories/Categories';
 import Profile from './components/Auth0/Profile/Profile';
+import { Checkout } from './views/Checkout/Checkout'
 
 function App() {
   const location = useLocation();
@@ -22,6 +23,7 @@ function App() {
       <Route path = '/categories' element = {<Categories />}/>
       <Route path = '/ProductDetail/:id' element = {<ProductDetail />}/>
       <Route path = '/profile' element = {<Profile />}/> 
+      <Route path = '/checkout' element = {<Checkout />}/> 
     </Routes >
   );
 }
