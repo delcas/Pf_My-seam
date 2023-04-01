@@ -1,4 +1,4 @@
-const {serviceCreator, getAService, getServices, deleteService} = require("../controllers/serviceControllers.js");
+const {serviceCreator, getAService, getServices, deleteService, updateService} = require("../controllers/serviceControllers.js");
 
 const getAServiceHandler = async (req,res) => {
   const { id } = req.params;
@@ -40,7 +40,19 @@ const deleteServiceHandler = async (req,res) => {
     res.status(200).json(service);
   }
   catch (error) {
-    res.status(404).json({ error: error.message })
+    res.status(404).json({ error: error.message });
+  }
+}
+
+const putServiceHandler = async (req,res) => {
+  const { id } = req.params;
+  const data = req.body;
+  try{
+    const service = await updateService(id,data);
+    res.status(200).json(service);
+  }
+  catch (error) {
+    res.status(404).json({ error: error.message });
   }
 }
 
@@ -49,4 +61,5 @@ module.exports = {
   getServicesHandler,
   getAServiceHandler,
   deleteServiceHandler,
+  putServiceHandler,
 };
