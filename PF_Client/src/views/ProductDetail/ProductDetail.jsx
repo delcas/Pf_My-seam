@@ -14,7 +14,7 @@ export const ProductDetail = () => {
   const questions = details.questions;
   const [currentImg, setCurrentImg] = useState(0);
   //Variable provisoria que a futuro deberá llegar desde el estado global
-  const [userId, setuserId] = useState(4);
+  const userId = 4;
   const [edit, setEdit] = useState({
     e: false,
     s: "none",
