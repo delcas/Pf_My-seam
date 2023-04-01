@@ -8,8 +8,8 @@ export const ProductDetail = () => {
   const dispatch = useDispatch();
   const [question, setQuestion] = useState('')
   const questions = details.questions 
-
-
+  const [currentImg, setCurrentImg] = useState (0)
+  
   useEffect(()=>{    
     const urlID = (window.location.href)
     let prodID =urlID.split('/')
@@ -19,6 +19,7 @@ export const ProductDetail = () => {
     getProductQuestions()
   },[dispatch])  
 
+  
   function onChange(event) {
     if(event !== '-') {
       setQuestion(questions.find(q => q.name === event))       
@@ -26,7 +27,8 @@ export const ProductDetail = () => {
     setActivity('')
     }
   }    
-  
+
+   
   return (
     <div>
       <NavBar />
@@ -36,16 +38,20 @@ export const ProductDetail = () => {
         <h1> Detalle del producto </h1>
         <table className={style.detailTable}>
         <tr>                
+          <td><button name="leftBtn" className={currentImg===0 ? style.ArrowButtonDisabled :style.ArrowButton} 
+            onClick={()=> currentImg===0 ? setCurrentImg(0) : setCurrentImg(currentImg-1)}>{"◀"}</button></td>
           <td className={style.box} rowSpan="6">
-              <img className={style.FlagImg} src={details.image[0]} alt={`imagen del producto ${details.name}`} />
-            </td>
-            <td className={style.tdLeft}>
-              <tr>Producto: {details.name}</tr>   
-              <tr>Descripcion: {details.description}</tr>  
-              <tr>Precio: {details.price}</tr>  
-              <tr>Stock: {details.stock}</tr> 
-              <tr>Vendedor: {details.userId}</tr> 
-              <tr>Disponible: NYI</tr>                 
+              <img className={style.FlagImg} src={details.image[currentImg]} alt={`imagen del producto ${details.name}`} />
+          </td>
+          <td><button name="rightBtn" className={currentImg===(details.image.length -1) ? style.ArrowButtonDisabled :style.ArrowButton} 
+onClick={()=> currentImg===(details.image.length -1) ? setCurrentImg(currentImg) : setCurrentImg(currentImg+1)}>{"▶"}</button></td>
+          <td className={style.tdLeft}>
+            <tr>Producto: {details.name}</tr>   
+            <tr>Descripcion: {details.description}</tr>  
+            <tr>Precio: {details.price}</tr>  
+            <tr>Stock: {details.stock}</tr> 
+            <tr>Vendedor: {details.userId}</tr> 
+            <tr>Disponible: NYI</tr>                 
           </td>
           </tr>
           </table>

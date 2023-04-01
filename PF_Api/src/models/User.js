@@ -60,7 +60,7 @@ module.exports = (sequelize) => {
       },
 
       isActive:{
-        type: DataTypes.STRING,
+        type: DataTypes.BOOLEAN,
         allowNull: true,
       },
 
