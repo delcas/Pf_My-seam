@@ -7,7 +7,7 @@ module.exports = {
     const { name, description, price, userid } = data;
     // imagen dummy
     const image =
-      "https://www.objetivobienestar.com/uploads/s1/18/19/76/6/la-importancia-y-los-beneficios-de-la-costura.jpeg";
+      ["https://www.objetivobienestar.com/uploads/s1/18/19/76/6/la-importancia-y-los-beneficios-de-la-costura.jpeg"];
     // imagen dummy
     if (price <= 0) throw new Error("El precio debe ser mayor a 0");
     return await Service.create({
