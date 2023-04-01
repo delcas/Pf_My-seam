@@ -1,38 +1,6 @@
 .detail{
     color: aqua;
 }
-.ArrowButton{ 
-    border: 2px solid #ffffff;
-    border-radius: 12px; 
-    height: 4em;   
-    transition-duration: 0.4s;
-}
-.ArrowButton:hover{ 
-    background-color: white; 
-    color: black;
-}
-.ArrowButton:active{ 
-    color: red; 
-    background-color: orange; 
-}
-.ArrowButtonDisabled {
-    cursor: not-allowed;
-    background-color: grey;
-    border: 2px solid #3d3c3c;
-    color: #3d3c3c;
-    border-radius: 12px; 
-    height: 4em;       
-}
-
-
-.detailTable{    
-    font-size: 120%;
-    text-shadow: 1px 1px 2px red, 0 0 1em rgb(255, 136, 0), 0 0 0.2em rgb(255, 123, 0);
-    justify-content: left;
-    margin-left: auto;
-    margin-right: auto; 
-    margin-top: 50px;
-}
 
 .detailTable-wrapper {
     display: flex;
@@ -44,22 +12,4 @@
     background-size: 80%;
     background-position: center;
     height: 35em;
-}
-
-.tdRight{
-    text-align: left;
-}  
-
-.tdLeft{
-    text-align: left;
-}
-
-.FlagImg{
-    width: 50%;
-    height:50%;    
-    box-shadow: 5px 5px 5px 0px rgba(216, 206, 206, 0.3);      
-}
-
-.box{
-    width: 25em;     
 }
