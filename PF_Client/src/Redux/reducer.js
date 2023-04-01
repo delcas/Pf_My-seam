@@ -6,6 +6,7 @@ import {GET_PRODUCTS,
         ORDER_BY_ALPHABET,
         GET_PRODUCT_BY_ID,
         FILTER_BY_PRICE,
+        SET_PRODUCT_CHANGE,
         } from "./actions";
 
 
@@ -73,6 +74,9 @@ const rootReducer = (state = initialState, action) => {
                         products: state.products.slice().sort(nameAlphabet).reverse()
                     }
             }
+        }
+        case SET_PRODUCT_CHANGE: {
+            
         }
 
 
