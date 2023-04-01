@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "./ProductDetail.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  deleteProduct,
   getProductById,
   getProductQuestions,
   setProductChange,
@@ -14,7 +15,7 @@ export const ProductDetail = () => {
   const questions = details.questions;
   const [currentImg, setCurrentImg] = useState(0);
   //Variable provisoria que a futuro deberá llegar desde el estado global
-  const userId = 4;
+  const userId = 3;
   const [edit, setEdit] = useState({
     e: false,
     s: "none",
@@ -39,13 +40,14 @@ export const ProductDetail = () => {
   }
   function handleEdition() {
     edit.e ? setEdit({ ...edit, e: false }) : setEdit({ ...edit, e: true });
-    console.log(edit, "Line 36");
+  }
+  function handleDelete() {
+    dispatch(deleteProduct(details.id));
   }
   function EditionPDetail(ev) {
     edit.s !== ev.target.name
       ? setEdit({ ...edit, s: ev.target.name })
       : setEdit({ ...edit, s: "none" });
-    console.log(edit, "Line 42");
   }
   function InputHandler(event) {
     setInpEd({ [event.target.name]: event.target.value });
@@ -62,7 +64,10 @@ export const ProductDetail = () => {
         <div>
           <h1> Detalle del producto </h1>
           {userId === details.userid ? (
-            <button onClick={handleEdition}>Habilitar Edición 🖊</button>
+            <div>
+              <button onClick={handleEdition}>Habilitar Edición 🖊</button>
+              <button onClick={handleDelete}>Eliminar</button>
+            </div>
           ) : (
             ""
           )}
@@ -87,13 +92,13 @@ export const ProductDetail = () => {
               </td>
               <tr>
                 <td className={style.box} rowSpan="6">
-                <img
-                  className={style.FlagImg}
-                  src={details.image[currentImg]}
-                  alt={`imagen del producto ${details.name}`}
-                />
-              </td>
-              {/* <td>{edit.s === "image" ?
+                  <img
+                    className={style.FlagImg}
+                    src={details.image[currentImg]}
+                    alt={`imagen del producto ${details.name}`}
+                  />
+                </td>
+                {/* <td>{edit.s === "image" ?
               (
                 <span>
                   <input
@@ -116,7 +121,7 @@ export const ProductDetail = () => {
                     )}
                   </td> */}
               </tr>
-              
+
               <td>
                 <button
                   name="rightBtn"
@@ -191,7 +196,7 @@ export const ProductDetail = () => {
                 </tr>
                 <tr>
                   <td>
-                Precio:
+                    Precio:
                     {edit.s === "price" ? (
                       <span>
                         <input
@@ -215,10 +220,10 @@ export const ProductDetail = () => {
                       ""
                     )}
                   </td>
-                  </tr>
+                </tr>
                 <tr>
                   <td>
-                Stock:
+                    Stock:
                     {edit.s === "stock" ? (
                       <span>
                         <input
@@ -242,7 +247,7 @@ export const ProductDetail = () => {
                       ""
                     )}
                   </td>
-                  </tr>
+                </tr>
                 <tr>Vendedor: {details.userid}</tr>
                 <tr>Disponible: NYI</tr>
               </td>

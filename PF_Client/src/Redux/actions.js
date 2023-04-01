@@ -107,8 +107,9 @@ export function setProductChange(id, change) {
 }
 
 export function deleteProduct(id) {
-  return async function () {
-    await axios.delete(`/product/${id}`)
-    .then(getProducts())
+  return async function (dispatch) {
+    await axios.delete(`/product/?id=${id}`)
+    .then(dispatch(getProducts()))
+    console.log(`Se ejecutó la funcion de borrado del producto ${id}`);
   };
 }
