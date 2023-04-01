@@ -42,9 +42,22 @@ module.exports = {
           id: id
         }
       });
-      if(!service) throw `id ${id} not found`;
-    } catch (ex) {
-      return {error: ex}
+      if(!service) throw new Error(`id ${id} not found`);
+    } catch (error) {
+      return { error: error };
+    }
+  },
+  updateService: async (id, data) => {
+    const { name, description, price } = data
+    try{
+      const service = await Service.update({ name, description, price },{
+        where: {
+          id: id
+        }
+      })
+    }
+    catch (error) {
+      return { error: error };
     }
   },
 };
