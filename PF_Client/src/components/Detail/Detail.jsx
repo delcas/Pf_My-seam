@@ -9,6 +9,7 @@ import { useDisclosure,
     ModalBody,
     ModalCloseButton,} from "@chakra-ui/react";
 import st from "./Detail.module.css";
+import DetImage from "./DetImages/DetImages";
 
 export default function Detail({ userId, handleEdition, handleDelete, details, currentImg, setCurrentImg, InputHandler, SendCange, EditionPDetail, edit }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -35,72 +36,7 @@ export default function Detail({ userId, handleEdition, handleDelete, details, c
       )}
       <table className={st.detailTable}>
         <tr>
-          <td>
-            <button
-              name="leftBtn"
-              className={
-                currentImg === 0
-                  ? st.ArrowButtonDisabled
-                  : st.ArrowButton
-              }
-              onClick={() =>
-                currentImg === 0
-                  ? setCurrentImg(0)
-                  : setCurrentImg(currentImg - 1)
-              }
-            >
-              {"◀"}
-            </button>
-          </td>
-          <tr>
-            <td className={st.box} rowSpan="6">
-              <img
-                className={st.FlagImg}
-                src={details.image[currentImg]}
-                alt={`imagen del producto ${details.name}`}
-              />
-            </td>
-            {/* <td>{edit.s === "image" ?
-          (
-            <span>
-              <input
-                type="text"
-                name="image"
-                onChange={InputHandler}
-              />
-              <button onClick={SendCange}>OK</button>
-            </span>
-          ) : ''}
-          </td>
-          <td>
-                {edit.e ? (
-                  <button name="image" onClick={EditionPDetail}>
-                    {" "}
-                    🖊{" "}
-                  </button>
-                ) : (
-                  ""
-                )}
-              </td> */}
-          </tr>
-
-          <td>
-            <button
-              name="rightBtn"
-              className={
-                currentImg === details.image.length - 1
-                  ? st.ArrowButtonDisabled
-                  : st.ArrowButton
-              }
-              onClick={() =>
-                currentImg === details.image.length - 1
-                  ? setCurrentImg(currentImg)
-                  : setCurrentImg(currentImg + 1)
-              }
-            >
-              {"▶"}
-            </button>
-          </td>
+        <DetImage details={details} setCurrentImg={setCurrentImg} currentImg={currentImg}/>
           <td className={st.tdLeft}>
             <tr>
               <td>

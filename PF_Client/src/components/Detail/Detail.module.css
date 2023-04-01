@@ -7,40 +7,6 @@
     margin-top: 50px;
 }
 
-.ArrowButton{ 
-    border: 2px solid #ffffff;
-    border-radius: 12px; 
-    height: 4em;   
-    transition-duration: 0.4s;
-}
-
-.ArrowButton:hover{ 
-    background-color: white; 
-    color: black;
-}
-.ArrowButton:active{ 
-    color: red; 
-    background-color: orange; 
-}
-.ArrowButtonDisabled {
-    cursor: not-allowed;
-    background-color: grey;
-    border: 2px solid #3d3c3c;
-    color: #3d3c3c;
-    border-radius: 12px; 
-    height: 4em;       
-}
-
-.FlagImg{
-    width: 50%;
-    height:50%;    
-    box-shadow: 5px 5px 5px 0px rgba(216, 206, 206, 0.3);      
-}
-
-.box{
-    width: 25em;     
-}
-
 .tdRight{
     text-align: left;
 }  

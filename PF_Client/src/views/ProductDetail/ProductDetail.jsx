@@ -8,15 +8,6 @@ import {
   getProductQuestions,
   setProductChange,
 } from "../../Redux/actions";
-import { useDisclosure,
-  Button,
- Modal,
- ModalOverlay,
- ModalContent,
- ModalHeader,
- ModalFooter,
- ModalBody,
- ModalCloseButton,} from "@chakra-ui/react";
 import { NavBar } from "../../components/NavBar/NavBar";
 import Detail from "../../components/Detail/Detail";
 export const ProductDetail = () => {
