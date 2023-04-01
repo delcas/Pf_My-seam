@@ -23,7 +23,7 @@ export const CardProducts = ({ id, image, name, price, description }) => {
   };
 
   // Agregar producto al carrito de compras
-  const handleCart = () => {
+  const handleCart =  () => {
     const newProduct = allProducts.find(el => el.id == id)
     // Validar si ya existe el producto en el carrito de compras
     if (cart.find(el => el === newProduct)) {   
@@ -32,9 +32,11 @@ export const CardProducts = ({ id, image, name, price, description }) => {
         newProduct.quantity = 1 
         cart.push(newProduct)
       }
+    // window.localStorage.setItem('mycart', JSON.stringify(cart))
+
     showNotify();
   }
-
+ 
   return (
     <div>
       {/* Alerta producto agregado */}
@@ -47,13 +49,15 @@ export const CardProducts = ({ id, image, name, price, description }) => {
 
       <div key = {id} >
         <li className={currentTheme === "dark" ? styles.cardDarkTheme : styles.cardLightTheme}>          
-          <Icon as={BsFillCartPlusFill} w={8} h={8} className={styles.buttonCart} onClick={handleCart} />
-          <Icon as={BsFillHeartFill} w={8} h={8} className={styles.buttonFavourites} />
           <Link className={styles.Link} to= {`/ProductDetail/${id}`}>
             {/* Elementos de la card */}
-            <img className={styles.imgCenter} src={image[0]} alt={name} width='200px' height='200px' />
-            <h1 className={styles.textBig}>{name}</h1>
-            <h2 className={styles.textMedium}> ${price}</h2>
+            <img className={styles.imgCenter} src={image[0]} alt={name} width='200px' height='210px' title="Haz clic para ver más detalles" />
+          </Link>
+          <Icon as={BsFillCartPlusFill} w={8} h={8} className={styles.buttonCart} onClick={handleCart} title="Agregar al carrito"/>
+          <Icon as={BsFillHeartFill} w={8} h={8} className={styles.buttonFavourites} title="Agregar a favoritos"/>
+          <Link className={styles.Link} to= {`/ProductDetail/${id}`}>
+            <h1 className={styles.textBig} title="Haz clic para ver más detalles">{name}</h1>
+            <h2 className={styles.textMedium} title="Haz clic para ver más detalles"> ${price}</h2>
             <h3 className={styles.textSmall}> {description}</h3>
           </Link>
         </li>                      

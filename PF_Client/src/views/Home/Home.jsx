@@ -11,8 +11,8 @@ export const Home = () => {
   return (
     <div id='home'>
       <NavBar />
-      <Carousel />
-      <Sections />
+      {/* <Carousel />
+      <Sections /> */}
       <div id='card'>
         <Card />
       </div>
