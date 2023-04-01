@@ -21,6 +21,7 @@ export const getUsers = () => {
   return async function (dispatch) {
     const usersData = await axios.get(`/users`);
     const users = usersData.data;
+    console.log('get users result: ', users.length);
     dispatch({ type: GET_USERS, payload: users });
   };
 };
