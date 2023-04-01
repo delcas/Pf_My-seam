@@ -42,6 +42,9 @@ const rootReducer = (state = initialState, action) => {
         case GET_PRODUCT_BY_ID:
             return {...state,
                 details: action.payload };  
+        case SET_PRODUCT_CHANGE:
+            return {...state,
+                details: action.payload }; 
         case GET_PROMOTIONS:
             return {...state, 
                 promotions: action.payload};
@@ -75,9 +78,14 @@ const rootReducer = (state = initialState, action) => {
                     }
             }
         }
-        case SET_PRODUCT_CHANGE: {
-            
-        }
+        
+        // case SET_PRODUCT_CHANGE: {
+        //     // const prod = state.allProducts.findIndex((e)=>{ e.id === action.payload.id});
+        //     // state.allProducts.splice(prod, 1, action.payload);
+        //     // state.products.splice(prod, 1, action.payload);
+        //     return {...state,
+        //         details: action.payload };
+        // }
 
 
         default:

@@ -82,10 +82,10 @@ export function filterByPrice(payload) {
 }
 
 export function setProductChange(id, change) {
-  console.log('generando cambio al Producto: ', change);
   return async function (dispatch) {
     const res = await axios.put(`/product/${id}`, change);
     const detail = res.data;
+    console.log('generando cambio al Producto: ', detail);
     dispatch({
       type: SET_PRODUCT_CHANGE,
       payload: detail,

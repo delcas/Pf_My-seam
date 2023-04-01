@@ -46,7 +46,7 @@ export const ProductDetail = () => {
     setInpEd({[event.target.name]: event.target.value})
 };
 function SendCange() {
-  dispatch(setProductChange(details.id, input_ed))
+  dispatch(setProductChange(details.id, input_ed));
 }
 
   return (
