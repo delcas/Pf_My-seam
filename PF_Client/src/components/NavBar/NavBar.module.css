@@ -3,7 +3,7 @@ body {
 }
 
 .imgLogo {
-  width: auto; 
+  width: auto;
   height: 50px;
   border-radius: 5px;
   margin-right: 15px;
@@ -12,8 +12,8 @@ body {
 
 .hideMiPerfil {
   display: none;
+  text-decoration: none;
 }
-
 
 .buttonTheme {
   margin-right: 20px;

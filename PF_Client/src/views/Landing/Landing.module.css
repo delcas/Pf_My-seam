@@ -1,7 +1,16 @@
-.containerLanding {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.landingVideo{
+  position:absolute;
+  z-index:-1;
+  top:0;
+  left:0;
+  width:100%; 
+  height:100vh;
+}
+
+.containerLanding {  
+ display: flex;
+ justify-content: center;
+ align-items: center;
 }
 
 .buttonToHome {
@@ -36,4 +45,4 @@
     margin: 20px 0;
     font-size: 1rem;
   }
-}
+} 
