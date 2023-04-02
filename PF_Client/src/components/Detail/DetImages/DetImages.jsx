@@ -2,7 +2,7 @@ import imstyle from "./DetImages.module.css";
 
 export default function DetImage({ details, setCurrentImg, currentImg }){
 
-return <tr><td>
+return <tr className={imstyle.row}><td>
             <button
               name="leftBtn"
               className={

@@ -1,7 +1,12 @@
+.row {
+    width: 45vw;
+}
+
 .ArrowButton{ 
+    margin: 1px;
     border: 2px solid #ffffff;
     border-radius: 12px; 
-    height: 4em;   
+    height: 30vh;   
     transition-duration: 0.4s;
 }
 
@@ -19,12 +24,13 @@
     border: 2px solid #3d3c3c;
     color: #3d3c3c;
     border-radius: 12px; 
-    height: 4em;       
+    height: 30vh;       
 }
 
-.FlagImg{
-    height:50%;    
-    box-shadow: 5px 5px 5px 0px rgba(216, 206, 206, 0.3);      
+.FlagImg{ 
+    padding: 2px;
+    box-shadow: 5px 5px 5px 0px rgba(216, 206, 206, 0.3); 
+    overflow-clip-margin: unset;     
 }
 
 .box{
