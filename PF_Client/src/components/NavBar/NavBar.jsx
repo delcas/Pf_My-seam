@@ -57,7 +57,7 @@ export const NavBar = () => {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/service">
                       Servicios
                     </a>
                   </li>

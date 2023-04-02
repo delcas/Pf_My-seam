@@ -6,6 +6,7 @@ import {GET_PRODUCTS,
         ORDER_BY_ALPHABET,
         GET_PRODUCT_BY_ID,
         FILTER_BY_PRICE,
+        GET_SERVICE_BY_ID
         } from "./actions";
 
 
@@ -18,7 +19,7 @@ const initialState = {
     details: [],
     productQuestions: [],  
     promotions: [],  
-    cart: [], 
+    cart: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -73,6 +74,10 @@ const rootReducer = (state = initialState, action) => {
                         products: state.products.slice().sort(nameAlphabet).reverse()
                     }
             }
+        }
+        case GET_SERVICE_BY_ID:{
+            return {...state,
+                details: action.payload };  
         }
 
 

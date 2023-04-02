@@ -7,6 +7,7 @@ export const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID";
 export const GET_PROMOTIONS = "GET_PROMOTIONS";
 export const ORDER_BY_ALPHABET = "ORDER_BY_ALPHABET";
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
+export const GET_SERVICE_BY_ID = "GET_SERVICE_BY_ID"
 
 
 export const getProducts = ()=>{
@@ -24,6 +25,14 @@ export const getServices = () => {
         dispatch({type: GET_SERVICES, payload: services});
     };
 };
+
+export const getServiceById = (id) =>{
+  return async function (dispatch){
+    const json = await axios.get(`/service/${id}`)
+    const details = json.data
+    dispatch({type: GET_SERVICE_BY_ID, payload: details})
+  }
+}
 
 
 export const searchProductByName = (search) => {
