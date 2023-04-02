@@ -73,25 +73,62 @@ body {
   display: block;
   border: 2px solid black;
   margin: 20px 30px 10px 0;
-  transition: all 0.8s ease;
-  background-color: rgba(255, 255, 255, 0.468);
+  transition: all 1.8s ease;
+  background-color: rgba(61, 61, 121, 0.673);
 }
 
 .cardLightTheme {
   display: block;
   border: 2px solid black;
   margin: 20px 30px 10px 0;
-  transition: all 0.8s ease;
+  transition: all 1.8s ease;
   background-color: rgb(255, 255, 255);
 }
 
-.cardDarkTheme:hover .textBig {
+/* .cardDarkTheme:hover .textBig {
   display: block;
+  transition: all 1.8s ease;
+
 }
 
 .cardLightTheme:hover .textBig {
   display: block;
+  transition: all 1.8s ease;
+} */
+
+.cardLightTheme:hover .textBig {
+	-webkit-animation: swing-top-fwd 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: swing-top-fwd 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+          display: block;
 }
+
+.cardDarkTheme:hover .textBig {
+	-webkit-animation: rotateCenter 0.6s ease-in-out both;
+	        animation: rotateCenter 0.6s ease-in-out both;
+          display: block;
+}
+
+@-webkit-keyframes rotateCenter {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotateCenter {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 
 /* Alerta producto agregado al carrito */
 

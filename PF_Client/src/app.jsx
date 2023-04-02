@@ -10,6 +10,7 @@ import { ProductDetail } from './views/ProductDetail/ProductDetail'
 import { Categories } from './components/Categories/Categories';
 import Profile from './components/Auth0/Profile/Profile';
 import { Checkout } from './views/Checkout/Checkout'
+import { Error404 } from './components/Error404/Error404';
 
 function App() {
   const location = useLocation();
@@ -24,6 +25,7 @@ function App() {
       <Route path = '/ProductDetail/:id' element = {<ProductDetail />}/> 
       <Route path = '/profile' element = {<Profile />}/> 
       <Route path = '/checkout' element = {<Checkout />}/> 
+      <Route path = '*' element = {<Error404 />}/> 
     </Routes >
   );
 }
