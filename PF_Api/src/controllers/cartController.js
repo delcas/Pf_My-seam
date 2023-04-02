@@ -1,12 +1,12 @@
 
 
 module.exports={
+    postCartProduct:async({ cartid, productid, quantity })=>{
+
+    },
     getCartProducts:async()=>{
 
-    },
-    postCartProduct:async()=>{
-
-    },
+    },    
     deleteCartProduct: async()=>{
         
     },

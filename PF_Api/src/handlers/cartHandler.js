@@ -16,16 +16,14 @@ let cartItem = [];
 //   }
 // };)
 
-// const postCartProduct = async (req, res) => {
-//   try {
-//     const { name, description, price, image } = req.body;
-//     const item = req.body;
-//     cartItem.push(item);
-//     localStorage.setItem("cartItem", JSON.stringify(cartItem));
-//   } catch (error) {
-//     res.status(500).send("Add product to cart error", error);
-//   }
-// };
+const createCartProduct = async (req, res) => {
+    const { cartid, productid, quantity } = req.body;
+  try {
+  const new_cart = await postCartProduct({ cartid, productid, quantity })
+  } catch (error) {
+    res.status()
+  }
+};
 
 // const deleteCartProduct = async (req, res) => {};
 
