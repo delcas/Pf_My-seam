@@ -2,8 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import styles from './Landing.module.css'
 import BackgroundVideo from "../../assets/images/MySeamVideo.mp4"
+import { getUsers } from '../../Redux/actions';
+import { useDispatch } from 'react-redux';
 
 export const Landing = () => {
+  const dispatch = useDispatch();
   return (
     <div className={styles.containerLanding}>
       <video className={styles.landingVideo} autoPlay muted id="background-video">
@@ -11,7 +14,7 @@ export const Landing = () => {
       </video>
 
       <Link to='/home'>
-        <button className={styles.buttonToHome}>Go HomePage</button>
+        <button className={styles.buttonToHome} onClick={()=>dispatch(getUsers())}>Go HomePage</button>
       </Link>
     </div>
   )
