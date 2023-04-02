@@ -21,7 +21,7 @@ function App() {
       <Route path = '/create' element = {<Create />}/>
       <Route path = '/promotions' element = {<Promotions />}/>
       <Route path = '/categories' element = {<Categories />}/>
-      <Route path = '/ProductDetail/:id' element = {<ProductDetail />}/> 
+      <Route path = '/ProductDetail/:id' element = {<ProductDetail />}/>
       <Route path = '/profile' element = {<Profile />}/> 
       <Route path = '/checkout' element = {<Checkout />}/> 
     </Routes >
