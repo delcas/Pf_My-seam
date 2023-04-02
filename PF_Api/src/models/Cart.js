@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
           },
           state: {
             type: DataTypes.STRING(30),
-            allowNull:false,
+            defaultValue: "En Compra",
           }
     },
     {

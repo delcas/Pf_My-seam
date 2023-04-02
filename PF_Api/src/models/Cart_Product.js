@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
       },
       conclusion: {
         type: DataTypes.STRING,
-        allowNull: false,
+        defaultValue: "Pendiente"
       },
     },
     {
