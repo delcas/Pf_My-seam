@@ -16,7 +16,9 @@ export const Landing = () => {
     console.log("Entro a este condicional");
     const post={
       name:user.name,
-      email: user.email
+      email: user.email,
+      username: user.nickname,
+      image: user.picture
     }
    axios.post("/users", post)
    console.log(post);
