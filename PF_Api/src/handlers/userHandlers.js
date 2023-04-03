@@ -41,7 +41,6 @@ module.exports = {
   getUsersHandler: async (req, res) => {
     try {
       const { email } = req.query;
-      console.log("este es el correo: " + email);
       // const allUsers = await getUsers();
       const results = email ? await getUserByEmail(email) : await getUsers();
       
