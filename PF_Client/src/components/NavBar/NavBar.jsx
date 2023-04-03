@@ -11,6 +11,7 @@ import { Avatar } from "@chakra-ui/react";
 import LoginButton from '../Auth0/Logiin/LoginButton';
 import LogoutButton from '../Auth0/Logout/LogoutButton';
 import { useAuth0 } from '@auth0/auth0-react';
+import { NavLink } from 'react-router-dom';
 
 export const NavBar = () => {
   // Cambiar el tema entre oscuro/claro
