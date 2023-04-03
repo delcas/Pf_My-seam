@@ -30,9 +30,9 @@ export const NavBar = () => {
       >
         <div className="container-fluid">
           {/* Logo */}
-          <a href="/home">
+          <NavLink to={"/home"}>
             <img className={styles.imgLogo} src={Logo} alt="Logo My Seam" />
-          </a>
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"

@@ -10,32 +10,25 @@ import { Text } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserByEmail } from "../../../Redux/actions";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user, isAuthenticated, isLoading } = useAuth0();
-
-  useEffect( () => {
-    dispatch(getUserByEmail(user.email));
-  }, [dispatch]);
-
   const userInfo = useSelector((state)=>state.userInfo);
-  console.log(userInfo);
-
-  
-
   const [form, setForm]= useState({
-    username: userInfo.username,
-    name: userInfo.name,
-    email: userInfo.email,
-    birthdate: userInfo.birthdate,
-    country: userInfo.country,
-    city: userInfo.city,
-    address: userInfo.address,
-    image: userInfo.image
+      username: userInfo.username,
+      name: userInfo.name,
+      email: userInfo.email,
+      birthdate: userInfo.birthdate,
+      country: userInfo.country,
+      city: userInfo.city,
+      address: userInfo.address,
+      image: userInfo.image
   })
-  console.log(form);
 
+  console.log(userInfo);
 
 
 
@@ -51,18 +44,22 @@ const Profile = () => {
       .put(`/users/${userInfo.id}`, form)
       .then((res) => alert(res))
       .catch((err) => alert(err));
-    await dispatch(getUserByEmail(user.email));
+    
 
     setForm({
       username: userInfo.username,
       name: userInfo.name,
       email: userInfo.email,
       birthdate: userInfo.birthdate,
-      pais: userInfo.country,
-      ciudad: userInfo.city,
+      country: userInfo.country,
+      city: userInfo.city,
       address: userInfo.address,
       image: userInfo.image
     });
+    setTimeout(() => {
+      dispatch(getUserByEmail(user.email));
+      navigate('/home');
+    }, 1500);
   }
 
 
@@ -113,14 +110,34 @@ const Profile = () => {
               {/* <Text as="b" fontSize="3xl">
                 Nombre de usuario: {userInfo.username}
               </Text> */}
-
               <Text></Text>
               <Text>Nombre: {form.name}</Text>
               <Text>Email: {form.email}</Text>
-              <Text>Fecha de nacimiento: {form.birthdate}</Text>
-              <Text>País: {form.country}</Text>
-              <Text>Ciudad: {form.city}</Text>
-              <Text>Dirección: {form.address}</Text>
+              {/* <Text>Fecha de nacimiento: {form.birthdate}</Text> */}
+              <label>Fecha de nacimiento: </label>
+              <input type="text" value={form.birthdate} onChange={(e) => {
+                changeHandler(e);
+              }} size="50" name="birthdate"
+              placeholder="...🖊"
+            />
+              {/* <Text>País: {form.country}</Text> */}
+              <label>País: </label>
+              <input type="text" value={form.country} onChange={(e) => {
+                changeHandler(e);
+              }} size="50" name="country"
+              placeholder="...🖊"/>
+              {/* <Text>Ciudad: {form.city}</Text> */}
+              <label>Ciudad: </label>
+              <input type="text" value={form.city} onChange={(e) => {
+                changeHandler(e);
+              }} size="50" name="city"
+              placeholder="...🖊"/>
+              {/* <Text>Dirección: {form.address}</Text> */}
+              <label>Dirección: </label>
+              <input type="text" value={form.address} onChange={(e) => {
+                changeHandler(e);
+              }} size="50" name="address"
+              placeholder="...🖊"/>
             </Box>
 
             <button type="submit">Actualizar Info✔</button>
