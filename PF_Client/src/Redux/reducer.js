@@ -8,6 +8,7 @@ import {GET_PRODUCTS,
         FILTER_BY_PRICE,
         SET_PRODUCT_CHANGE,
         GET_USERS,
+        GET_SERVICE_BY_ID
         } from "./actions";
 
 
@@ -82,6 +83,10 @@ const rootReducer = (state = initialState, action) => {
         case GET_USERS: {
             return {...state, 
                 users: action.payload}; 
+            }
+            case GET_SERVICE_BY_ID:{
+                return {...state,
+                    details: action.payload };  
             }
 
         default:
