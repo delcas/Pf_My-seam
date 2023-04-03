@@ -56,7 +56,7 @@ export const CardProducts = ({ id, image, name, price, description }) => {
           <Icon as={BsFillCartPlusFill} w={8} h={8} className={styles.buttonCart} onClick={handleCart} title="Agregar al carrito"/>
           <Icon as={BsFillHeartFill} w={8} h={8} className={styles.buttonFavourites} title="Agregar a favoritos"/>
           <Link className={styles.Link} to= {`/ProductDetail/${id}`}>
-            <h1 className={styles.textBig} title="Haz clic para ver más detalles">{name}</h1>
+            <h1 className={styles.textMedium} title="Haz clic para ver más detalles">{name}</h1>
             <h2 className={styles.textMedium} title="Haz clic para ver más detalles"> ${price}</h2>
             <h3 className={styles.textSmall}> {description}</h3>
           </Link>

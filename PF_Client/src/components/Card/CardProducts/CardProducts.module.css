@@ -37,9 +37,10 @@ body {
 .imgCenter {
   display: block;
   margin-bottom: 2%;
-  background-color: #6e83bb;
+  background-color: #f18100;
   width: 100%;
   height: 220px;
+  border-radius: 15px;
 }
 
 .Link {
@@ -71,18 +72,20 @@ body {
 
 .cardDarkTheme {
   display: block;
-  border: 2px solid black;
+  border: 4px solid rgb(198, 11, 11);
   margin: 20px 30px 10px 0;
   transition: all 0.8s ease;
   background-color: rgba(255, 255, 255, 0.468);
+  border-radius: 15px;
 }
 
 .cardLightTheme {
   display: block;
-  border: 2px solid black;
+  border: 4px solid rgb(225, 85, 4);
   margin: 20px 30px 10px 0;
   transition: all 0.8s ease;
   background-color: rgb(255, 255, 255);
+  border-radius: 15px;
 }
 
 .cardDarkTheme:hover .textBig {
