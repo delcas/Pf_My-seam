@@ -7,6 +7,16 @@ export const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID";
 export const GET_PROMOTIONS = "GET_PROMOTIONS";
 export const ORDER_BY_ALPHABET = "ORDER_BY_ALPHABET";
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
+export const GET_USERS = "GET_USERS"
+
+
+export const getUsers = ()=>{
+    return async function(dispatch){
+        const usersData = await axios.get(`/users`);
+        const users = usersData.data
+        dispatch({type: GET_USERS, payload: users});
+    };
+};
 
 
 export const getProducts = ()=>{

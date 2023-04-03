@@ -6,6 +6,7 @@ import {GET_PRODUCTS,
         ORDER_BY_ALPHABET,
         GET_PRODUCT_BY_ID,
         FILTER_BY_PRICE,
+        GET_USERS
         } from "./actions";
 
 
@@ -19,6 +20,7 @@ const initialState = {
     productQuestions: [],  
     promotions: [],  
     cart: [], 
+    users: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -28,7 +30,13 @@ const rootReducer = (state = initialState, action) => {
         case GET_PRODUCTS:
             return {...state, 
                 products: action.payload,
-                allProducts: action.payload};  
+                allProducts: action.payload
+            }; 
+        case GET_USERS:
+            return {
+                ...state,
+               users: action.payload
+            }
         case GET_SERVICES:
             return {...state, 
                 services: action.payload};  
