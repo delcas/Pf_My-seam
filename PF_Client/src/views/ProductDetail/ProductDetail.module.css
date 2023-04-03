@@ -1,0 +1,15 @@
+.detail{
+    color: aqua;
+}
+
+.detailTable-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+.bg{
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    height: 35em;
+}

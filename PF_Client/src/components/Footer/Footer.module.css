@@ -1,0 +1,41 @@
+/* General */
+
+.hideFooter {
+  display: none;
+}
+
+/* Footer */
+
+.containerFooterIcons {
+  font-size: 2rem;
+}
+
+.containerFooterIcons a {
+  padding: 3px;
+  margin: 10px;
+  border-radius: 50%;
+  transition: all 0.5s ease-in;
+}
+
+.containerFooterIcons i {
+  color: rgb(13, 110, 253);
+  font-size: 1.8rem;
+  transition: all 0.5s ease-in;
+}
+
+.containerFooterIcons a:hover i {
+  color: black;
+  font-size: 2.2rem;
+}
+
+.containerFooterIcons {
+  font-size: 18px;
+  font-weight: bolder;
+  padding: 10px ;
+}
+
+.footerDerechosAutor {
+  font-weight: bolder;
+  font-size: 18px;
+  text-align: center;
+}

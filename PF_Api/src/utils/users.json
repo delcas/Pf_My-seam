@@ -1,0 +1,67 @@
+[
+{
+    "name": "Gus",
+    "password": "lalala",
+    "birthdate": "04/1/86",
+    "username": "Guto",
+    "email": "gperettig@gmail.com",
+    "image": "https://i.dummyjson.com/data/products/1/1.jpg",
+    "address": "Mi casa",
+    "access_level": null,
+    "country": "Argentina",
+    "city": "Salta",
+    "isActive": true
+},
+{
+    "name": "Nado",
+    "password": "lalsg",
+    "birthdate": "04/10/96",
+    "username": "Nuces",
+    "email": "nuggdrgnn@gmail.com",
+    "image": "https://i.dummyjson.com/data/products/1/1.jpg",
+    "address": null,
+    "access_level": null,
+    "country": null,
+    "city": null,
+    "isActive": true
+},
+{
+    "name": "Mirta Flores",
+    "birthdate": "04/03/62",
+    "address": "address1",
+    "access_level": "access_level1",
+    "username": "username1",
+    "password": "password1",
+    "email": "email1",
+    "country": "country1",
+    "city": "city1",
+    "isActive": true,
+    "image": "https://gdurl.com/ljVA"
+  },
+  {
+    "name": "Gloria Soria",
+    "birthdate": "04/10/66",
+    "address": "address2",
+    "access_level": "access_level2",
+    "username": "username2",
+    "password": "password2",
+    "email": "email2",
+    "country": "country2",
+    "city": "city2",
+    "isActive": true,
+    "image": "https://i.dummyjson.com/data/products/1/1.jpg"
+  },
+  {
+    "name": "Nancy Mamani",
+    "birthdate": "04/10/56",
+    "address": "address3",
+    "access_level": "access_level3",
+    "username": "username3",
+    "password": "password3",
+    "email": "email3",
+    "country": "country3",
+    "city": "city3",
+    "isActive": true,
+    "image": "https://i.dummyjson.com/data/products/1/1.jpg"
+  }
+]

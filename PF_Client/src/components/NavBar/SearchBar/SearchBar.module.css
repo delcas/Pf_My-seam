@@ -1,0 +1,32 @@
+/* General */
+
+.quantityResults {
+  color: black;
+  font-size: 20px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.conatinerResults {
+  position: absolute;
+  background-color: rgb(228, 225, 225);
+  z-index: 1;
+}
+
+/* Responsive SearchBar */
+
+@media only screen and (max-width: 830px) {
+  .inputSearch {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .containerSerchBar {
+    flex-wrap: wrap;
+  }
+  .buttonSearch {
+    margin: 10px 0 0 0;
+  }
+}
+

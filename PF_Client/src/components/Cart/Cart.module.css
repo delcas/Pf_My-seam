@@ -1,0 +1,62 @@
+/* General */
+
+.hide {
+  display: none;
+}
+
+/* Containers */
+
+.containerBody {
+  font-size: 20px;
+}
+
+.containerBody p {
+  font-size: 27px;
+}
+
+.cartContainer {
+  overflow: auto;
+  padding: 0;
+  height: 350px;
+}
+
+/* Buttons  */
+
+.buttonCart {
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.buttonClose {
+  float: right;
+}
+
+.buttonKeepBuying{
+  margin-left: 30px;
+}
+
+/* Cart */
+
+.notificationsCart {
+  left: 50%;
+}
+
+.titleCart {
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.imgCarrito {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 990px) {
+  .containerIconCart {
+    margin: 20px 0 10px 0;
+  }
+}
