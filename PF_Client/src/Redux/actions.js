@@ -10,6 +10,8 @@ export const ORDER_BY_ALPHABET = "ORDER_BY_ALPHABET";
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
 export const SET_PRODUCT_CHANGE = "SET_PRODUCT_CHANGE";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
+export const GET_SERVICE_BY_ID = "GET_SERVICE_BY_ID"
+
 
 
 
@@ -50,6 +52,14 @@ export const searchProductByName = (search) => {
     }
   };
 };
+
+export const getServiceById = (id) =>{
+  return async function (dispatch){
+    const json = await axios.get(`/service/${id}`)
+    const details = json.data
+    dispatch({type: GET_SERVICE_BY_ID, payload: details})
+  }
+}
 
 export const getProductById = (ID) => {
   return async function (dispatch) {
