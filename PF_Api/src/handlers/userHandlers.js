@@ -5,7 +5,8 @@ const {
   deleteUser,
   editUser,
   enviarMail,
-} = require("../controllers/userControllers.js");
+  getUserByEmail,
+} = require("../controllers/userControllers");
 const { User } = require("../db");
 
 module.exports = {
@@ -15,10 +16,10 @@ module.exports = {
     let findEmail = await User.findAll({ where: { email: email } });
     try {
       //tengo pendiente aún hacer el envío de validación email
-      if (!name || !email || !password) {
+      if (!name || !email ) {
         return res
           .status(412)
-          .send("Parameters name, email and password cant be null");
+          .send("Parameters name and email cant be null");
       } else if (findEmail.length) {
         return res.status(409).send("User already exist");
       } else {
@@ -31,7 +32,7 @@ module.exports = {
           image
         );
       }
-      enviarMail(email, name).catch((e) => console.log(e));
+      // enviarMail(email, name).catch((e) => console.log(e));
       res.status(200).send(`Usuario creado exitosamente`);
     } catch (error) {
       res.status(400).json({ error: error.message });
@@ -39,9 +40,12 @@ module.exports = {
   },
   getUsersHandler: async (req, res) => {
     try {
-      const allUsers = await getUsers();
-      console.log(allUsers);
-      res.status(200).send(allUsers);
+      const { email } = req.query;
+      console.log("este es el correo: " + email);
+      // const allUsers = await getUsers();
+      const results = email ? await getUserByEmail(email) : await getUsers();
+      
+      res.status(200).send(results);
     } catch (error) {
       res.status(400).send("User no encontrado");
     }
