@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavBar } from "../../NavBar/NavBar";
 import { Footer } from "../../Footer/Footer";
@@ -7,9 +7,23 @@ import { Image } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserByEmail } from "../../../Redux/actions";
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state)=>state.userInfo);
+
+  console.log(user.email, userInfo);
+
+  useEffect(() => {
+    dispatch(getUserByEmail(user.email));
+  }, [dispatch]);
+
+
+
+
   if (isLoading) {
     return <Spinner color="red.500" size="xl" />;
   }
@@ -42,15 +56,15 @@ const Profile = () => {
             <Box fontSize="xl" ml="2" px={100} as="h4">
               {/* <img src={user.picture} alt={user.name} /> */}
               <Text as="b" fontSize="3xl">
-                Nombre de usuario: {user.nickname}
+                Nombre de usuario: {userInfo.username}
               </Text>
               <Text></Text>
-              <Text>Nombre: {user.name}</Text>
-              <Text>Email: {user.email}</Text>
-              <Text>Fecha de acimiento: {user.email}</Text>
-              <Text>País: {user.email}</Text>
-              <Text>Ciudad: {user.email}</Text>
-              <Text>Dirección: {user.email}</Text>
+              <Text>Nombre: {userInfo.name}</Text>
+              <Text>Email: {userInfo.email}</Text>
+              <Text>Fecha de nacimiento: {userInfo.birthdate}</Text>
+              <Text>País: {userInfo.country}</Text>
+              <Text>Ciudad: {user.city}</Text>
+              <Text>Dirección: {user.address}</Text>
             </Box>
           </Box>
         </Box>
