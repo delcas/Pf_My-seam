@@ -15,6 +15,7 @@ export default function Questions({ userId, details }) {
 
   function onChange(event) {
     if (event !== "-") {
+      dispatch(getProductQuestions(details.id));
       setQuestion(productQuestions.find((q) => q.name === event));
     } else {
       setActivity("");
