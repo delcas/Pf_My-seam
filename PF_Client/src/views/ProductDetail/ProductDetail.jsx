@@ -10,12 +10,12 @@ import {
 } from "../../Redux/actions";
 import { NavBar } from "../../components/NavBar/NavBar";
 import Detail from "../../components/Detail/Detail";
+import Questions from "../../components/Questions/Questions";
 export const ProductDetail = () => {
+
   const details = useSelector((state) => state.details);
   const userInfo = useSelector((state) => state.userInfo);
   const dispatch = useDispatch();
-  const [question, setQuestion] = useState("");
-  const questions = details.questions;
   const [currentImg, setCurrentImg] = useState(0);
   //Variable provisoria que a futuro deberá llegar desde el estado global
   const userId = userInfo.id;
@@ -30,17 +30,11 @@ export const ProductDetail = () => {
     let prodID = urlID.split("/");
     // eslint-disable-next-line
     dispatch(getProductById(prodID[prodID.length - 1]));
+    dispatch(getProductQuestions(prodID[prodID.length - 1]));
     // dispatch(getProductById(id));
-    getProductQuestions();
   }, [dispatch]);
 
-  function onChange(event) {
-    if (event !== "-") {
-      setQuestion(questions.find((q) => q.name === event));
-    } else {
-      setActivity("");
-    }
-  }
+  
   function handleEdition() {
     edit.e ? setEdit({ ...edit, e: false }) : setEdit({ ...edit, e: true });
   }
@@ -78,40 +72,10 @@ export const ProductDetail = () => {
           EditionPDetail={EditionPDetail}
           edit={edit}
           />
-          <table className={style.detailTable}>
-            <tr>
-              <th colSpan="2">Preguntas:</th>
-            </tr>
+          <Questions
+          userId={userId}
 
-            <select
-              onChange={(e) => {
-                onChange(e.target.value);
-              }}
-            >
-              <option value="-">ver preguntas</option>
-              {questions &&
-                questions.map((q) => (
-                  <option value={`${q.id}`} key={`${q.id}`}>
-                    {q.id}
-                  </option>
-                ))}
-            </select>
-
-            {question ? (
-              <>
-                <tr>
-                  <td>Pregunta: </td>
-                  <td>{question.question}</td>
-                </tr>
-                <tr>
-                  <td>Respuesta: </td>
-                  <td>{question.answer}</td>
-                </tr>
-              </>
-            ) : (
-              ""
-            )}
-          </table>
+          />
         </div>
       ) : (
         "No se encontró el ID"

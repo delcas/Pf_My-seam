@@ -70,9 +70,9 @@ export const getProductById = (ID) => {
   };
 };
 
-export const getProductQuestions = () => {
+export const getProductQuestions = (offerId) => {
   return async function (dispatch) {
-    const productQuestionData = await axios.get(`/questprod/product`);
+    const productQuestionData = await axios.get(`/questprod/product`, offerId);
     const ProductQuestions = productQuestionData.data;
     dispatch({ type: GET_PRODUCT_QUESTION, payload: ProductQuestions });
   };
