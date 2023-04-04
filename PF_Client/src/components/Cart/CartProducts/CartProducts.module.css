@@ -52,12 +52,20 @@
   width: 1.7rem;
 }
 
-.quantity p {
+.quantity input {
   font-size: 1.14rem;
   outline: 2px solid #000;
+  background-color: white;
+  color: black;
   outline-offset: -2px;
   text-align: center;
   width: 2rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
 
 .buttonLess {
@@ -72,6 +80,7 @@
 
 .quantity {
   display: flex;
+  margin-bottom: 10px;
 }
 
 .imgCenter {
