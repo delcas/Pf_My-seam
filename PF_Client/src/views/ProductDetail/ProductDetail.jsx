@@ -12,12 +12,13 @@ import { NavBar } from "../../components/NavBar/NavBar";
 import Detail from "../../components/Detail/Detail";
 export const ProductDetail = () => {
   const details = useSelector((state) => state.details);
+  const userInfo = useSelector((state) => state.userInfo);
   const dispatch = useDispatch();
   const [question, setQuestion] = useState("");
   const questions = details.questions;
   const [currentImg, setCurrentImg] = useState(0);
   //Variable provisoria que a futuro deberá llegar desde el estado global
-  const userId = 1;
+  const userId = userInfo.id;
   const [edit, setEdit] = useState({
     e: false,
     s: "none",

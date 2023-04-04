@@ -17,13 +17,14 @@ import {
 
 import { validate } from "./validate";
 import style from "./Create.module.css"
-import axios from "axios"
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 
 
 
 export const Create = () => {
-  
+  const userInfo = useSelector((state) => state.userInfo);
   const url = 'http://localhost:3001';
   
   const [showAlert, setShowAlert] = useState(false)
@@ -38,7 +39,7 @@ export const Create = () => {
     price: "",
     image: [],
     stock: "",
-    
+    userid: userInfo.id
    });
 
   const changeHandler = (event) => {

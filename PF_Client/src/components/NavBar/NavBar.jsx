@@ -11,7 +11,7 @@ import { Avatar } from "@chakra-ui/react";
 import LoginButton from '../Auth0/Logiin/LoginButton';
 import LogoutButton from '../Auth0/Logout/LogoutButton';
 import { useAuth0 } from '@auth0/auth0-react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export const NavBar = () => {
   // Cambiar el tema entre oscuro/claro
@@ -48,37 +48,37 @@ export const NavBar = () => {
             {/* Links */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item" title="Publicar producto">
-                <a className="nav-link active" href="/create">Vender</a>
+                <Link to="/create" className="nav-link active" >Vender</Link>
               </li>
 
               {/* Categorías */}
               <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                <Link className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                   Categorías
-                </a>
+                </Link>
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="/service">
+                    <Link className="dropdown-item" href="/service">
                       Servicios
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/home">
+                    <Link className="dropdown-item" href="/home">
                       Productos
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/promotions">
+                    <Link className="dropdown-item" href="/promotions">
                       Ofertas
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider"></hr>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/categories">
+                    <Link className="dropdown-item" href="/categories">
                       Todo
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
