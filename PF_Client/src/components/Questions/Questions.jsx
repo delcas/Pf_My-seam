@@ -1,62 +1,48 @@
-import { useEffect, useState } from "react";
 import questyle from "./Questions.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { getProductQuestions } from "../../Redux/actions";
+import { useSelector } from "react-redux";
+import {
+  Box,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from "@chakra-ui/react";
 
-export default function Questions({ userId, details }) {
-  const dispatch = useDispatch();
+export default function Questions() {
   const productQuestions = useSelector((state) => state.productQuestions);
-  const [question, setQuestion] = useState();
-//   useEffect(() => {
-//     // eslint-disable-next-line
-//     dispatch(getProductQuestions(details.id));
-//     // dispatch(getProductById(id));
-//   }, [dispatch]);
 
-  function onChange(event) {
-    if (event !== "-") {
-      dispatch(getProductQuestions(details.id));
-      setQuestion(productQuestions.find((q) => q.name === event));
-    } else {
-      setActivity("");
-    }
-  }
+  // const acordionHandler = (productQuestions) => {
+  //   if (productQuestions){
+  //   return
+  //   });}
+  // }
 
   return (
-    <table className={questyle.detailTable}>
-      <tr>
-        <th colSpan="2">Preguntas:</th>
-      </tr>
-
-      <select
-        onChange={(e) => {
-          onChange(e.target.value);
-        }}
-      >
-        <option value="-">ver preguntas</option>
-        {productQuestions.length > 0
-          ? productQuestions.map((q) => (
-              <option value={`${q.id}`} key={`${q.id}`}>
-                {q.id}
-              </option>
-            ))
-          : ""}
-      </select>
-
-      {question ? (
-        <>
-          <tr>
-            <td>Pregunta: </td>
-            <td>{question.question}</td>
-          </tr>
-          <tr>
-            <td>Respuesta: </td>
-            <td>{question.answer}</td>
-          </tr>
-        </>
-      ) : (
-        ""
-      )}
-    </table>
+    <div className={questyle.detailTable}>
+      <div>
+        <label colSpan="2">Preguntas:</label>
+      </div>
+      <div>
+        {productQuestions.length > 0 ? (
+          <Accordion>
+            {productQuestions.map((q) => <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box as="span" flex="1" textAlign="left">
+                      {q.question}
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>{q.answer}</AccordionPanel>
+              </AccordionItem>
+            )}
+          </Accordion>
+        ) : (
+          ""
+        )}
+      </div>
+    </div>
   );
 }
