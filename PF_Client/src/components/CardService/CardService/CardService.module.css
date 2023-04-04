@@ -1,4 +1,5 @@
 /* General*/
+
 body {
     margin: 0;
     font-family: 'Mulish', cursive, sans-serif;
@@ -21,7 +22,9 @@ body {
   
   .textMedium {
     font-size: 20px;
-    color: rgb(27, 27, 72);
+    color:white;
+    text-shadow: 2px 2px black;
+    font-weight: 300;
     text-align: center;
   }
   
@@ -37,9 +40,10 @@ body {
     margin: auto;
     margin-top: 2%;
     margin-bottom: 2%;
-    background-color: #6e83bb;
-    width: 95%;
+    background-color: grey;
+    width: 100%;
     height: 220px;
+    border-radius: 15px;
   }
   
   .Link {
@@ -63,10 +67,14 @@ body {
     float: right;
   }
   
-  .buttonFavourites:hover {
-    color: red;
+  .buttonFavourites:hover {    
+    color: rgb(167, 13, 13);    
   }
   
+  .buttonFavourites i:before {
+    display: inline;
+  }
+
   /* Button Load */
   
   .buttonLoad {
@@ -91,18 +99,18 @@ body {
   
   .cardDarkTheme {
     display: block;
-    border: 2px solid black;
-    margin: 20px 30px 10px 0;
+        margin: 20px 30px 10px 0;
     transition: all 0.8s ease;
-    background-color: rgba(255, 255, 255, 0.396);
+    background-color: rgb(255, 102, 0);
+    border-radius: 15px;
   }
   
   .cardLightTheme {
-    display: block;
-    border: 2px solid black;
+    display: block;   
     margin: 20px 30px 10px 0;
     transition: all 0.8s ease;
-    background-color: rgb(207, 207, 207);
+    background-color: #f18100;
+    border-radius: 15px;
   }
   
   .cardDarkTheme:hover .textBig {
@@ -139,7 +147,4 @@ body {
       100% {
           top: -100%;
       }
-  }
-  
-  
-  
+  }  

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 // key = "name"
 // initialValue = objeto/string a guardar
+
 export const UseLocalStorage = (key, initialValue) => {
 
   // Guardar initialValue en Local storage formato "String"

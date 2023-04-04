@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './CardProducts.module.css';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { UseLocalStorage } from '../../../hooks/UseLocalStorage';
 //Chakra
 import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
 import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
@@ -12,9 +13,10 @@ export const CardProducts = ({ id, image, name, price, description }) => {
   const currentTheme = useColorMode().colorMode
 
   // Me traigo el estado del reducer 
-  const cart = useSelector(state => state.cart)
   const allProducts = useSelector(state => state.allProducts)
-  
+  const cart = useSelector(state => state.cart)
+  const [cartLocalStorage, setCartLocalStorage] = UseLocalStorage('cart', []);
+
   // Muestra alerta/notificación del producto añadido al carrito de compras
   const [notify, setNotify] = useState(false);
 
@@ -31,9 +33,8 @@ export const CardProducts = ({ id, image, name, price, description }) => {
     } else {
         newProduct.quantity = 1 
         cart.push(newProduct)
+        setCartLocalStorage(newProduct)
       }
-    // window.localStorage.setItem('mycart', JSON.stringify(cart))
-
     showNotify();
   }
  
