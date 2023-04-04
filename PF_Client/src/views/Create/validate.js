@@ -11,7 +11,6 @@ export const validate = (form) => {
     if (form.description.length > 40 ) { error.description = "Ingrese menos de 40 caracteres" }
     if (!form.price || form.price === " ") { error.price = "El precio es requerido" } 
     if (form.price >2000 || form.price < 1)  { error.price = "El precio maximo es de $2000 y el minimo de $1"}
-    if (!form.image || form.image === " ") { error.image = "La imagen es requerida" } 
     if (!form.stock || form.stock === '-') { error.stock = "Ingrese el numero de stock"}
      return error;
 }
