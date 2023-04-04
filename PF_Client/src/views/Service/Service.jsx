@@ -1,24 +1,20 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { NavBar } from '../../components/NavBar/NavBar'
 import { Footer } from '../../components/Footer/Footer'
-import { Card } from '../../components/Card/Card'
 import { BotonIrInicio } from '../../components/BotonIrInicio/BotonIrInicio'
 import { Carousel } from '../../components/Carousel/Carousel'
 import { Sections } from '../../components/Sections/Sections'
-import { useDispatch } from 'react-redux'
-import { getUserByEmail } from '../../redux/actions'
-import { useAuth0 } from "@auth0/auth0-react";
+import { CardServices } from '../../components/CardService/CardServices'
 
 
-export const Home = () => {
-
+export const Service = () => {
   return (
-    <div id='home'>
+    <div id='service'>
       <NavBar />
       <Carousel />
-      <Sections />
+      <Sections/>
       <div id='card'>
-        <Card />
+      <CardServices/>
       </div>
       <BotonIrInicio />
       <Footer />

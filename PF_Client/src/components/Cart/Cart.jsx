@@ -1,8 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './Cart.module.css'
 import EmptyCart from '../../images/empty-cart.png'
 import { useSelector } from 'react-redux';
 import { CartProducts } from './CartProducts/CartProducts';
+import { Loading } from '../Loading/Loading'
 // Chakra
 import { BsFillCartFill } from "react-icons/bs";
 import { Icon, useDisclosure, Button, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent } from '@chakra-ui/react'
@@ -14,11 +16,25 @@ export const Cart = () => {
   
   // Me traigo el estado del reducer 
   let cart = useSelector(state => state.cart)
-
+  
   // Estado del precio total del carrito de compras
   const [totalPrice, setTotalPrice] = useState(0);
+
   // Estado de la cantidad de productos en el carrito de compras
   const [quantity, setQuantity] = useState(0);
+  
+
+  const [copyCart, setCopyCart] = useState('');
+  
+  // Guardar carrito de compras en Local Storage
+  // useEffect(() => {
+  //   const myCartJSON = window.localStorage.getItem('mycart')
+  //   if (myCartJSON) {
+  //     const myCart = JSON.parse(myCartJSON)
+  //     cart = myCart
+  //   }
+  // }, [])  
+
 
   const calculatePriceQuantity = () => {
     let totalPrice = 0
@@ -32,12 +48,16 @@ export const Cart = () => {
     setQuantity(totalQuantity)
     onOpen()
   }
-  
+
+  useEffect(() => {
+    setQuantity(cart.length)
+  }, [cart])
+
   return (
     <div>
       {/* Ícono NavBar */}
       <button type="button" className={`${styles.containerIconCart} position-relative`}>
-        <Icon as={BsFillCartFill} onClick={calculatePriceQuantity} boxSize='2em' className={styles.buttonCart} />
+        <Icon as={BsFillCartFill} onClick={calculatePriceQuantity} boxSize='2em' className={styles.buttonCart} title="Ver carrito"/>
         <span className={`${styles.notificationsCart} position-absolute translate-middle badge rounded-pill bg-danger`}>
           {quantity}
         </span>
@@ -64,7 +84,7 @@ export const Cart = () => {
               </div>
 
               {/* Productos en el carrito */}
-              <div className={cart.length === 0 ? styles.hide : styles.cartContainer}>
+              <div className={cart.length === 0 ? styles.hide : ''}>
                 <ul className={styles.cartContainer}>
                 {
                   cart.length > 0 ? 
@@ -81,15 +101,20 @@ export const Cart = () => {
                       />
                     )
                   }) 
-                  : <span className={styles.loader}></span>
+                  : <Loading />
                 }
                 </ul>
+                <div>
+                  -----------------------------------------------
+                </div>
                 <div>
                   <p><b>Total: ${totalPrice}</b></p>
                 </div>
 
                 <div>
-                  <Button className={cart.length === 0 ? styles.hide : ''} onClick={onClose}>Comprar ahora</Button>
+                  <Link to={'/checkout'}>
+                    <Button className={cart.length === 0 ? styles.hide : ''} onClick={onClose}>Comprar ahora</Button>
+                  </Link>
                   <Button className={styles.buttonKeepBuying} onClick={onClose}>Seguir comprando</Button>
                 </div>
               </div>

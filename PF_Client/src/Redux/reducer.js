@@ -6,7 +6,10 @@ import {GET_PRODUCTS,
         ORDER_BY_ALPHABET,
         GET_PRODUCT_BY_ID,
         FILTER_BY_PRICE,
-        GET_USERS
+        SET_PRODUCT_CHANGE,
+        GET_USERS,
+        GET_SERVICE_BY_ID,
+        GET_USER_BY_EMAIL,
         } from "./actions";
 
 
@@ -19,8 +22,9 @@ const initialState = {
     details: [],
     productQuestions: [],  
     promotions: [],  
-    cart: [], 
+    cart: [],
     users: [],
+    userInfo: {}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -49,6 +53,9 @@ const rootReducer = (state = initialState, action) => {
         case GET_PRODUCT_BY_ID:
             return {...state,
                 details: action.payload };  
+        case SET_PRODUCT_CHANGE:
+            return {...state,
+                details: action.payload }; 
         case GET_PROMOTIONS:
             return {...state, 
                 promotions: action.payload};
@@ -67,8 +74,7 @@ const rootReducer = (state = initialState, action) => {
             }
             return {...state,
                 products: productsFiltered
-            }
-        
+            }        
         case ORDER_BY_ALPHABET: {
             if(action.payload === 'a-z') {
                 return {
@@ -82,7 +88,19 @@ const rootReducer = (state = initialState, action) => {
                     }
             }
         }
+        case GET_USERS: {
+            return {...state, 
+                users: action.payload}; 
+            }
+            case GET_SERVICE_BY_ID:{
+                return {...state,
+                    details: action.payload };  
+            }
 
+        case GET_USER_BY_EMAIL:{
+            return { ...state, userInfo: action.payload}
+
+        }
 
         default:
             return {...state};

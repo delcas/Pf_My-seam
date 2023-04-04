@@ -23,7 +23,7 @@ export const Carousel = () => {
           {/* Imagen 1 */}
           <Link to= {'/promotions'}>
             <div className= "carousel-item active">
-              <img src={promo1} className={styles.imgCarousel} alt="promo1" />
+              <img src={promo1} className={styles.imgCarousel} alt="promo1" title="Haz clic para ver más detalles"/>
               <div className="carousel-caption d-md-block">
                 <h5 className={styles.promocion1}>ENVÍOS EN <p className={styles.descuento1}>24 HORAS</p></h5>
                 <p className={styles.terminosCondiciones}>Aplican términos y condiciones.</p>
@@ -34,7 +34,7 @@ export const Carousel = () => {
           {/* Imagen 2 */}
           <Link to= {'/promotions'}>
             <div className="carousel-item">
-              <img src={promo2} className={styles.imgCarousel} alt="promo2" />
+              <img src={promo2} className={styles.imgCarousel} alt="promo2" title="Haz clic para ver más detalles"/>
               <div className="carousel-caption d-md-block">
                 <p className={styles.terminosCondiciones}>Aplican términos y condiciones.</p>
               </div>
@@ -44,7 +44,7 @@ export const Carousel = () => {
           {/* Imagen 3 */}
           <Link to= {'/promotions'}>
             <div className="carousel-item">
-              <img src={promo3} className={styles.imgCarousel} alt="promo3" />
+              <img src={promo3} className={styles.imgCarousel} alt="promo3" title="Haz clic para ver más detalles"/>
               <div className="carousel-caption d-md-block">
               </div>
             </div>

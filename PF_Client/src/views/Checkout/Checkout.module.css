@@ -1,0 +1,19 @@
+.LogIn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.LogIn p, a {
+  font-size: 25px;
+}
+
+.LogIn a {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}

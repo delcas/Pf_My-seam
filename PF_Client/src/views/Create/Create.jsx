@@ -27,147 +27,135 @@ const CDNURL = "https://tpmrrlpsabqmegwwsqlk.supabase.co/storage/v1/object/publi
 
 export const Create = () => {
   
-  const [images, setImages] = useState([]);
+const [image, setImage] = useState({});
 
+	const [send, setSend] = useState({});
 
+	const URL_SERVER = "http://localhost:3001";
 
-  const url = 'http://localhost:3001';
-  
-  const [showAlert, setShowAlert] = useState(false)
-  
-  const [camposVacios, setCamposVacios] = useState(false);
-  
-  const [error, setError] = useState({});
-   
-  const [form, setForm] = useState({
-    name: "",
-    description: "",
-    price: "",
-    image: [],
-    stock: "",
-    
-   });
+	const [showAlert, setShowAlert] = useState(false);
 
-  const changeHandler = (event) => {
-    const property = event.target.name;
-    const value = event.target.value;
+	const [camposVacios, setCamposVacios] = useState(false);
 
-    setForm({ ...form, [property]: value })
-    setError(validate ({...form, [property]:value}))
-  }
+	const [error, setError] = useState({});
 
+	const [form, setForm] = useState({
+		name: "",
+		description: "",
+		price: "",
+		image: [],
+		stock: "",
+	});
 
-  const handleChangeImage = async (e) => {
-     //  e.target.files.forEach((e) => setImages({...images, image}))
-     // const url = await uploadFile()
-     //  console.log(url)
-     // setForm({ ...form, image: [...form.image,url] })
-    
-     // setImages(e.target.files[0])    // Pushear todo a mi state .
-    // console.log(e.target.files)
-    // console.log(images)
-    // uploadFile()
+	const changeHandler = (event) => {
+		const property = event.target.name;
+		const value = event.target.value;
 
-      const uploadedImageUrl = await uploadFile(setImages(e.target.files[0]))
-      setForm({ ...form, image: [...form.image, uploadedImageUrl] })
-    
-    
-  };
-  
-  /////////////////////////
-  async function uploadFile() {
-    const imageFile = images;
-    const filename = `${uuidv4()}-${imageFile.name}`;
+		setForm({ ...form, [property]: value });
+		setError(validate({ ...form, [property]: value }));
+	};
 
-    const { data, error } = await supabase.storage
-      .from("myseam")
-      .upload(filename, imageFile, {
-        cacheControl: "3600",
-        upsert: false
-      })
-   
-    if (error) {
-      console.log(error);
-      alert("Error al cargar la imagen")
-    }
-  
-      getImages()
-    // setImages(e.target.files[0]) 
-     return CDNURL + data.path
-    
-  }
+	const handleChangeImage = async (e) => {
+		
+		setImage(e.target.files[0]);
+	};
 
-  async function getImages() {
-    const { data, error } = await supabase
-    .storage
-    .from("myseam")
-    .list("")
-    // data : [image1,image2,image,etc]
-    // image1: "naruto.jpg"
-    if (data !== null) {
-      setImages(data)
-    } else {
-       console.log(error);
-      alert("Error al traer las imagenes")
-    }
-  }
-   
-  useEffect(() => {
-    getImages()
-  },[])
+	/////////////////////////
+	async function uploadFile() {
+		const imageFile = image;
+		const filename = `${uuidv4()}-${imageFile.name}`;
+
+		const { data, error } = await supabase.storage
+			.from("myseam")
+			.upload(filename, imageFile, {
+				cacheControl: "3600",
+				upsert: false,
+			});
+
+		if (error) {
+			console.log(error);
+			alert("Error al cargar la imagen");
+		}
+
+		getImages();
+		// setImages(e.target.files[0])
+		return CDNURL + data.path;
+	}
+
+	async function getImages() {
+		const { data, error } = await supabase.storage.from("myseam").list("");
+		// data : [image1,image2,image,etc]
+		// image1: "naruto.jpg"
+		if (data !== null) {
+			setImage(data);
+		} else {
+			console.log(error);
+			alert("Error al traer las imagenes");
+		}
+	}
+
+	useEffect(() => {
+		//algo
+		console.log("random");
+	}, [image]);
+
+	useEffect(() => {
+		//getImages();
+		if (Object.keys(send).length > 0) {
+			// revisa si send esta vacio
+			axios
+				.post(`${URL_SERVER}/product`, send)
+				.then((r) => console.log(r.data))
+				.catch((err) => console.log(err));
+		} else {
+			return;
+		}
+	}, [send]);
+
+	////////////////////////
+	// 1 - crear un estado nuevo.
+	// 2 - copiar en ese estado lo que subo a form  y dsp hacer el post.
+	//  3 - en el boton de img que seleccione varias.
+
+	/////////////////////////
+	//descomentar cuando se solucione el bug
+	async function handleSubmit(e) {
+		e.preventDefault();
+
+		if (
+			error.name !== undefined ||
+			error.description !== undefined ||
+			error.price !== undefined ||
+			error.stock !== undefined
+		) {
+			return setCamposVacios(true);
+		} else if (
+			form.name === "" ||
+			form.description === "" ||
+			form.price === "" ||
+			form.stock?.length === 0
+		) {
+			return setCamposVacios(true);
+		} else {
+			const url = await uploadFile();
+			console.log(url);
+			//unica instancia en la que cambia send
+			setSend({ ...form, image: [...form.image, url] });
+			setForm({
+				name: "",
+				description: "",
+				price: "",
+				image: [],
+				stock: "",
+			});
+			setShowAlert(true);
+			setCamposVacios(false);
+		}
+	}
+ 
+
 
  
-  ////////////////////////
- // 1 - crear un estado nuevo.
- // 2 - copiar en ese estado lo que subo a form  y dsp hacer el post.
-//  3 - en el boton de img que seleccione varias.
-  console.log(form)
- ///////////////////////// 
- async function handleSubmit(e) {
-   e.preventDefault();
-    //const url = await uploadFile()
-  console.log(url)
-  // setForm({ ...form, image: [...form.image,url] }) // se actualiza el estado de "form" con la nueva URL de la imagen subida
-  setForm({
-    name: '',
-    description: '',
-    price: '',
-    image: [],
-    stock: '',
-  })
-  
-  
-    // if (    error.name !== undefined 
-    //             || error.description !== undefined 
-    //             || error.price !== undefined    
-    //             || error.stock !== undefined 
-    //     )  {
-    //         return setCamposVacios(true);
-    //     } else if (form.name === "" 
-    //         || form.description === "" 
-    //         || form.price === ""     
-    //         || form.stock?.length === 0
-    //          ) {
-                
-    //         return setCamposVacios(true);
-    //     } else {  
-    //   // uploadFile()
-    //   //  console.log(form)
-    //   axios.post(`${url}/product`, form)
-    //   .then(r => console.log(r.data))
-    //         setForm({
-    //             name: '',
-    //             description: '',
-    //             price: '',
-    //             image: [],
-    //             stock: '',
-    //         })
-      
-    //   setShowAlert(true)
-    //   setCamposVacios(false)
-    // }
-  }
-  
   return (
     <>
       <NavBar/>
@@ -205,21 +193,6 @@ export const Create = () => {
                
           </FormControl>
           
-
-            {/* <FormControl>
-              <FormLabel>Imagen</FormLabel>
-              <Input  type="text" placeholder='Suba imagenes de su producto...' size='md' htmlSize={25} height="20px" width="100%" 
-              value={form.image}
-              onChange={handleChangeImage}
-              name="image"
-              />
-              
-            {error ? <FormHelperText color='#f00'>{error.image}</FormHelperText> : null}
-      
-           </FormControl> */}
-            
-      
-
             
             <FormControl>
               <FormLabel>Seleccionar imagen</FormLabel>
@@ -230,10 +203,7 @@ export const Create = () => {
           
             /> 
                 
-              </FormControl>
-            
-
-            
+             </FormControl>
           
 
             

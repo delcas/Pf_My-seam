@@ -1,4 +1,5 @@
 /* General*/
+
 body {
   margin: 0;
   font-family: 'Mulish', cursive, sans-serif;
@@ -21,8 +22,9 @@ body {
 
 .textMedium {
   font-size: 20px;
-  color: rgb(27, 27, 72);
+  color: black;
   text-align: center;
+  font-weight: bolder;
 }
 
 .textSmall {
@@ -34,12 +36,11 @@ body {
 
 .imgCenter {
   display: block;
-  margin: auto;
-  margin-top: 2%;
   margin-bottom: 2%;
-  background-color: #6e83bb;
-  width: 95%;
+  background-color: #f18100;
+  width: 100%;
   height: 220px;
+  border-radius: 15px;
 }
 
 .Link {
@@ -50,7 +51,7 @@ body {
 
 .buttonCart {
   cursor: pointer;
-  margin: 5px 0 2px 5px;
+  margin: 3px 0 3px 5px;
 }
 
 .buttonCart:hover {
@@ -67,42 +68,24 @@ body {
   color: red;
 }
 
-/* Button Load */
-
-.buttonLoad {
-  background-color: rgb(10, 53, 118);
-  margin: auto;
-  color: white;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 20px;
-  transition: all 1s ease-out;
-  justify-content: center;
-  align-items: center;
-}
-
-.buttonLoad:hover {
-  color: rgb(10, 53, 118);
-  background-color: white;
-  padding: 9px;
-}
-
 /* Card */
 
 .cardDarkTheme {
   display: block;
-  border: 2px solid black;
+  border: 4px solid rgb(198, 11, 11);
   margin: 20px 30px 10px 0;
   transition: all 0.8s ease;
-  background-color: rgba(255, 255, 255, 0.396);
+  background-color: rgba(255, 255, 255, 0.468);
+  border-radius: 15px;
 }
 
 .cardLightTheme {
   display: block;
-  border: 2px solid black;
+  border: 4px solid rgb(225, 85, 4);
   margin: 20px 30px 10px 0;
   transition: all 0.8s ease;
-  background-color: rgb(207, 207, 207);
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
 }
 
 .cardDarkTheme:hover .textBig {
@@ -113,7 +96,7 @@ body {
   display: block;
 }
 
-/* Alerta producto agregado */
+/* Alerta producto agregado al carrito */
 
 .notifySlideIn {
     animation-duration: 4s;
