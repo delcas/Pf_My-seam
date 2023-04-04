@@ -44,13 +44,13 @@ export const CardService =({name, description,price,image,id})=>{
           Servicio agregado al carrito de compras 😀
         </Alert>
       </div>
-              <li className={currentTheme === "dark" ? styles.cardDarkTheme : styles.cardLightTheme}>   
+            <li className={currentTheme === "dark" ? styles.cardDarkTheme : styles.cardLightTheme}>   
             <div key={id}>
             <Icon as={BsFillCartPlusFill} w={8} h={8} className={styles.buttonCart} onClick={handleCart} title="Agregar al carrito"/>
           <Icon as={BsFillHeartFill} w={8} h={8} className={styles.buttonFavourites} title="Agregar a favoritos"/>
             <Link  to= {`/ServiceDetail/${id}`}>
             <img className={styles.imgCenter} src={image} alt={name} width='200px' height='200px' />
-            <h1 className={styles.textBig}>{name}</h1>
+            <h1 className={styles.textMedium}>{name}</h1>
             <h2 className={styles.textMedium}> ${price}</h2>
             <h3 className={styles.textSmall}> {description}</h3>
             </Link>
