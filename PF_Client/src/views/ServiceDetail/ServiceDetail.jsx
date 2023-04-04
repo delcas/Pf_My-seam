@@ -4,11 +4,33 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavBar } from '../../components/NavBar/NavBar'
 import { getServiceById } from '../../redux/actions';
 
-
+//Chakra
+import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
+import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
 
 export const ServiceDetail =()=>{
     const dispatch = useDispatch()
     const details = useSelector(state=>state.details)
+    const cart = useSelector(state => state.cart)
+
+      // Muestra alerta/notificación del producto añadido al carrito de compras
+      const [notify, setNotify] = useState(false);
+
+    
+    const showNotify = () => {
+        setNotify(!notify);
+      };
+    
+    const handleCart =  () => {
+        // Validar si ya existe el producto en el carrito de compras
+        if (cart.find(el => el === details)) {   
+            details.quantity +=  1 
+        } else {
+            details.quantity = 1 
+            cart.push(details)
+          }
+          showNotify()
+      }
 
  useEffect(()=>{    
     const urlID = (window.location.href)
@@ -20,6 +42,7 @@ export const ServiceDetail =()=>{
     return(
         <div>
             <NavBar/>
+       
             {
                 details.length !== 0 ?
                 <div>
@@ -39,6 +62,10 @@ export const ServiceDetail =()=>{
                 </div>
                 :"No se encontro el ID"
             }
+            <div>
+            <button  w={8} h={8} className={styles.buttonCart} onClick={handleCart} title="Agregar al carrito"> Agregar al carrito </button>
+            </div>
         </div>
+       
     )
 }
