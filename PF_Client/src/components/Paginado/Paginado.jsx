@@ -40,7 +40,7 @@ export const Paginado = ({totalProducts,productsPerPage, setCurrentPage,currentP
           }
 
           {/* Botón Next */}
-          <li className= {totalProducts < 8 || currentPage  === 4 ? "page-item disabled" : "page-item"}>
+          <li className= {totalProducts < 8 || currentPage  === pageNumber.length ? "page-item disabled" : "page-item"}>
             <button className="page-link" onClick={() => setCurrentPage(currentPage + 1)} >Next</button>
           </li>
 

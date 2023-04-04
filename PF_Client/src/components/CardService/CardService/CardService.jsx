@@ -46,10 +46,12 @@ export const CardService =({name, description,price,image,id})=>{
       </div>
             <li className={currentTheme === "dark" ? styles.cardDarkTheme : styles.cardLightTheme}>   
             <div key={id}>
-            <Icon as={BsFillCartPlusFill} w={8} h={8} className={styles.buttonCart} onClick={handleCart} title="Agregar al carrito"/>
-          <Icon as={BsFillHeartFill} w={8} h={8} className={styles.buttonFavourites} title="Agregar a favoritos"/>
             <Link  to= {`/ServiceDetail/${id}`}>
             <img className={styles.imgCenter} src={image} alt={name} width='200px' height='200px' />
+            </Link>
+            <Icon as={BsFillCartPlusFill} w={8} h={8} className={styles.buttonCart} onClick={handleCart} title="Agregar al carrito"/>
+          <Icon as={BsFillHeartFill} w={8} h={8} className={styles.buttonFavourites} title="Agregar a favoritos"/>
+            <Link>
             <h1 className={styles.textMedium}>{name}</h1>
             <h2 className={styles.textMedium}> ${price}</h2>
             <h3 className={styles.textSmall}> {description}</h3>

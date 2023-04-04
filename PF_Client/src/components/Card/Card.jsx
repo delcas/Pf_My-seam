@@ -1,7 +1,7 @@
 import React, {useEffect,useState} from 'react';
 import styles from './Card.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../../redux/actions';
+import { getProducts,getUsers } from '../../redux/actions';
 import { CardProducts } from './CardProducts/CardProducts';
 import { Paginado } from '../Paginado/Paginado';
 import { Filters } from '../../components/Filters/Filters'
@@ -29,7 +29,8 @@ export const Card = () => {
 
   // Ejecuto en automático la action para obtener la info de la DB y actualizar las card
   useEffect(() => {
-  dispatch(getProducts());
+    dispatch(getProducts());
+    dispatch(getUsers());
   }, [])
 
   return (

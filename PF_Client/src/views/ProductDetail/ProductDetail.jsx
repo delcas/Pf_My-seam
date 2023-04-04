@@ -10,8 +10,15 @@ import {
 } from "../../Redux/actions";
 import { NavBar } from "../../components/NavBar/NavBar";
 import Detail from "../../components/Detail/Detail";
+
+//Chakra
+import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
+import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
+
+
 export const ProductDetail = () => {
   const details = useSelector((state) => state.details);
+  const cart = useSelector(state => state.cart)
   const dispatch = useDispatch();
   const [question, setQuestion] = useState("");
   const questions = details.questions;
@@ -59,6 +66,23 @@ export const ProductDetail = () => {
     setEdit({ ...edit, s: "none" });
   }
 
+  const showNotify = () => {
+    setNotify(!notify);
+  };
+
+   // Agregar producto al carrito de compras
+   const handleCart =  () => {
+    
+    // Validar si ya existe el producto en el carrito de compras
+    if (cart.find(el => el === details)) {   
+      details.quantity +=  1 
+    } else {
+      details.quantity = 1 
+        cart.push(details)
+      }
+
+  }
+
   return (
     <div>
       <NavBar />
@@ -77,6 +101,10 @@ export const ProductDetail = () => {
           EditionPDetail={EditionPDetail}
           edit={edit}
           />
+                  <div>
+            <button as={BsFillCartPlusFill} w={8} h={8} className={style.buttonCart} onClick={handleCart} title="Agregar al carrito"> Agregar al carrito</button>
+
+                  </div>
           <table className={style.detailTable}>
             <tr>
               <th colSpan="2">Preguntas:</th>

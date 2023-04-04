@@ -1,4 +1,5 @@
 /* General*/
+
 body {
     margin: 0;
     font-family: 'Mulish', cursive, sans-serif;
@@ -146,7 +147,4 @@ body {
       100% {
           top: -100%;
       }
-  }
-  
-  
-  
+  }  

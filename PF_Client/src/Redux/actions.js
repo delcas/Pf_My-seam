@@ -11,6 +11,7 @@ export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
 export const SET_PRODUCT_CHANGE = "SET_PRODUCT_CHANGE";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const GET_SERVICE_BY_ID = "GET_SERVICE_BY_ID"
+export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
 
 
 
@@ -122,4 +123,15 @@ export function deleteProduct(id) {
     .then(dispatch(getProducts()))
     console.log(`Se ejecutó la funcion de borrado del producto ${id}`);
   };
+}
+
+export function getUserByEmail(info){
+  return async function(dispatch){
+    const emailData = await axios.get(
+      `/users?email=${info}`
+    );
+    const infoUser = emailData.data;
+    console.log(infoUser);
+    dispatch({ type: GET_USER_BY_EMAIL, payload: infoUser });
+  }
 }
