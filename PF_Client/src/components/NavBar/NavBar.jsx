@@ -53,22 +53,22 @@ export const NavBar = () => {
 
               {/* Categorías */}
               <li className="nav-item dropdown">
-                <Link className="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                <Link className="nav-link dropdown-toggle active" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                   Categorías
                 </Link>
                 <ul className="dropdown-menu">
                   <li>
-                    <Link className="dropdown-item" href="/service">
+                    <Link to="/service" className="dropdown-item">
                       Servicios
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" href="/home">
+                    <Link to="/home" className="dropdown-item">
                       Productos
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" href="/promotions">
+                    <Link to="/promotions" className="dropdown-item">
                       Ofertas
                     </Link>
                   </li>
@@ -76,7 +76,7 @@ export const NavBar = () => {
                     <hr className="dropdown-divider"></hr>
                   </li>
                   <li>
-                    <Link className="dropdown-item" href="/categories">
+                    <Link to="/categories" className="dropdown-item" >
                       Todo
                     </Link>
                   </li>
