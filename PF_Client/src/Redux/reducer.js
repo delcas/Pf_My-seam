@@ -59,7 +59,7 @@ const rootReducer = (state = initialState, action) => {
         case GET_PROMOTIONS:
             return {...state, 
                 promotions: action.payload};
-                case FILTER_BY_PRICE:
+        case FILTER_BY_PRICE:
             console.log('reducer: action.payload: ', action.payload )
             let productsShown = state.allProducts
             let productsFiltered = []

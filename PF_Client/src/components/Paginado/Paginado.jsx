@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Paginado.module.css';
 
 
-export const Paginado = ({totalProducts,productsPerPage, setCurrentPage,currentPage }) => {
+export const Paginado = ({ totalProducts, productsPerPage, setCurrentPage, currentPage }) => {
 
   // Agregar el número de páginas de acuerdo a los productos que hay en la DB
   const pageNumber = []
@@ -16,8 +16,8 @@ export const Paginado = ({totalProducts,productsPerPage, setCurrentPage,currentP
         <ul className="pagination flex-wrap mt-4">
 
           {/* Botón Previous */}
-          <li className= {currentPage  === 1 ? "page-item disabled" : "page-item"}>
-            <button className="page-link" onClick={() => setCurrentPage(currentPage - 1)} >Previous</button>
+          <li>
+            <button disabled={currentPage  === 1} className={styles.anteriorSiguiente} onClick={() => setCurrentPage(currentPage - 1)} >Anterior</button>
           </li> 
 
           {/* Numeración del paginado */}
@@ -27,10 +27,10 @@ export const Paginado = ({totalProducts,productsPerPage, setCurrentPage,currentP
               return (
                 <li 
                   key={index} 
-                  className= {currentPage  === page ? "page-item active" : "page-item"}> 
+                  className= {currentPage  === page ? `active ${styles.pageActive}` : `${styles.page} page-item`}> 
                   <button 
                     onClick={() => setCurrentPage(page)} 
-                    className = "page-link"
+                    className = {currentPage  === page ? `${styles.pageActive}` : `page-link ${styles.page}`}
                     aria-current="page"
                   >{page}
                   </button>
@@ -40,8 +40,8 @@ export const Paginado = ({totalProducts,productsPerPage, setCurrentPage,currentP
           }
 
           {/* Botón Next */}
-          <li className= {totalProducts < 8 || currentPage  === pageNumber.length ? "page-item disabled" : "page-item"}>
-            <button className="page-link" onClick={() => setCurrentPage(currentPage + 1)} >Next</button>
+          <li>
+            <button disabled={currentPage  === (pageNumber.length)} className={styles.anteriorSiguiente} onClick={() => setCurrentPage(currentPage + 1)} >Siguiente</button>
           </li>
 
         </ul>
