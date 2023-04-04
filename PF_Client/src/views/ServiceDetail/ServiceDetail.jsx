@@ -48,7 +48,7 @@ export const ServiceDetail =()=>{
                 <div>
                     <h1> Detalle del servicio</h1>
                     <table className={styles.detailTable}>
-                        <tr>
+                     <tr>
                             <td>
                             <img className={styles.FlagImg} src={details.image} alt={`imagen del servicio ${details.name}`}></img>
                             </td>
@@ -57,7 +57,8 @@ export const ServiceDetail =()=>{
                                 <tr>Descripcion: {details.description}</tr>
                                 <tr>Precio: {details.price} </tr>
                             </td>
-                        </tr>
+                     </tr>
+                        
                     </table>
                 </div>
                 :"No se encontro el ID"

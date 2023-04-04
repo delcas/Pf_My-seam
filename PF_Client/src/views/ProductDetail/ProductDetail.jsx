@@ -80,9 +80,7 @@ export const ProductDetail = () => {
       details.quantity = 1 
         cart.push(details)
       }
-    // window.localStorage.setItem('mycart', JSON.stringify(cart))
 
-    showNotify();
   }
 
   return (
