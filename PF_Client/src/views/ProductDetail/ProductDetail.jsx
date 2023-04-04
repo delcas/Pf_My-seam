@@ -11,10 +11,17 @@ import {
 import { NavBar } from "../../components/NavBar/NavBar";
 import Detail from "../../components/Detail/Detail";
 import Questions from "../../components/Questions/Questions";
+
+//Chakra
+import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
+import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
+
+
 export const ProductDetail = () => {
 
   const details = useSelector((state) => state.details);
   const userInfo = useSelector((state) => state.userInfo);
+  const cart = useSelector(state => state.cart);
   const dispatch = useDispatch();
   const [currentImg, setCurrentImg] = useState(0);
   //Variable provisoria que a futuro deberá llegar desde el estado global
@@ -54,6 +61,23 @@ export const ProductDetail = () => {
     setEdit({ ...edit, s: "none" });
   }
 
+  const showNotify = () => {
+    setNotify(!notify);
+  };
+
+   // Agregar producto al carrito de compras
+   const handleCart =  () => {
+    
+    // Validar si ya existe el producto en el carrito de compras
+    if (cart.find(el => el === details)) {   
+      details.quantity +=  1 
+    } else {
+      details.quantity = 1 
+        cart.push(details)
+      }
+
+  }
+
   return (
     <div>
       <NavBar />
@@ -72,6 +96,10 @@ export const ProductDetail = () => {
           EditionPDetail={EditionPDetail}
           edit={edit}
           />
+                  <div>
+            <button as={BsFillCartPlusFill} w={8} h={8} className={style.buttonCart} onClick={handleCart} title="Agregar al carrito"> Agregar al carrito</button>
+
+                  </div>
           <Questions
           userId={userId}
           details={details}
