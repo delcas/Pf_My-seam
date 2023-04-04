@@ -1,5 +1,3 @@
-import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:3001/';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Landing } from './views/Landing/Landing';
 import { Home } from './views/Home/Home';
@@ -12,6 +10,11 @@ import Profile from './components/Auth0/Profile/Profile';
 import { Checkout } from './views/Checkout/Checkout'
 import { ServiceDetail } from './views/ServiceDetail/ServiceDetail';
 import { Service } from './views/Service/Service';
+import axios from 'axios';
+
+const backend =import.meta.env.VITE_BACKEND_URL;
+axios.defaults.baseURL = backend
+//axios.defaults.baseURL = 'http://localhost:3001/';
 
 function App() {
   const location = useLocation();
