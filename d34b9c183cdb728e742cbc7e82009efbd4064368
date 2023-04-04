@@ -1,0 +1,251 @@
+[33mcommit 3baf8547768313dffdf9811d84cf7439c0163a0e[m[33m ([m[1;36mHEAD -> [m[1;32mEditar-profile[m[33m, [m[1;31morigin/dev[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mdev[m[33m)[m
+Merge: fde9013 d34b9c1
+Author: tomas <70412644+jatdalf@users.noreply.github.com>
+Date:   Mon Apr 3 09:00:33 2023 -0300
+
+    Merge pull request #95 from delcas/Editar-profile
+    
+    Perfil renderiza con la info del user directo en la BD
+
+[33mcommit d34b9c183cdb728e742cbc7e82009efbd4064368[m[33m ([m[1;31morigin/Editar-profile[m[33m)[m
+Author: Tribask <triana9012@gmail.com>
+Date:   Mon Apr 3 06:52:56 2023 -0500
+
+    Perfil renderiza con la info del user directo en la BD
+
+[33mcommit fde90136822df59f9677544f5bf23d3392b1e487[m
+Merge: 90efc2e 07f1a00
+Author: tomas <70412644+jatdalf@users.noreply.github.com>
+Date:   Mon Apr 3 00:54:42 2023 -0300
+
+    Merge pull request #93 from delcas/servicedetail
+    
+    CardService and Service detail
+
+[33mcommit 07f1a0046cd2addf7c1502072dece7e79ec346f5[m
+Author: Kim <kim@MacBook-Pro-de-Kim.local>
+Date:   Mon Apr 3 00:33:36 2023 -0300
+
+    CardService and service detail
+
+[33mcommit 90efc2e82a8b7e6b8cfe891380fb7720b6e13074[m
+Merge: db2fc20 5f4bc89
+Author: AlbaTyto <89665855+AlbaTyto@users.noreply.github.com>
+Date:   Sun Apr 2 22:18:52 2023 -0300
+
+    Merge pull request #92 from delcas/Profile
+    
+    Creación de usuarios a la base de Datos
+
+[33mcommit 5f4bc89b027746f38fed525f99eebb23e3feed10[m[33m ([m[1;31morigin/Profile[m[33m, [m[1;32mProfile[m[33m)[m
+Author: Tribask <triana9012@gmail.com>
+Date:   Sun Apr 2 19:55:30 2023 -0500
+
+    Creación de usuarios a la base de Datos
+
+[33mcommit db2fc201afc50d03913805487f781704e771ee49[m
+Merge: cf2e970 7a121bf
+Author: tomas <70412644+jatdalf@users.noreply.github.com>
+Date:   Sun Apr 2 12:10:27 2023 -0300
+
+    Merge pull request #89 from delcas/detail_module
+    
+    Detail module
+
+[33mcommit cf2e97092af7776bc340dd7053ef7ac2595fdcc3[m
+Merge: 67028b2 973f41a
+Author: tomas <70412644+jatdalf@users.noreply.github.com>
+Date:   Sun Apr 2 12:09:48 2023 -0300
+
+    Merge pull request #88 from delcas/delete_product
+    
+    Delete product
+
+[33mcommit 67028b28995528130b46a115fe798987c8656b42[m
+Merge: 4d58f3e 94e06af
+Author: tomas <70412644+jatdalf@users.noreply.github.com>
+Date:   Sun Apr 2 12:09:20 2023 -0300
+
+    Merge pull request #87 from delcas/preload
+    
+    Changes on ProductDetail. Edit product files
+
+[33mcommit 7a121bfb013510a19aca4496e771b745a7dd0005[m[33m ([m[1;31morigin/detail_module[m[33m)[m
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 22:33:33 2023 -0300
+
+    feat(DetailText): modularize detail text
+
+[33mcommit 05df01fb3e7764e3ce2dd0a16d77b67462ee06e7[m
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 22:13:26 2023 -0300
+
+    try(Detail styles): trying to set styles on details
+
+[33mcommit 92f8d63814fe7ded52d286129ae889fd2b6ea5f8[m
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 20:43:41 2023 -0300
+
+    feat(Detail DetImages): morular image into Detail
+
+[33mcommit 7bdb0b2ed08fdba601043557bd3b08fc0301b0ec[m
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 19:46:37 2023 -0300
+
+    feat(ProductDetail and Detail): modularize comp. and add modal to delete function
+
+[33mcommit 973f41a8d4a7f0b68ed604f009d86b6c7f4ed559[m[33m ([m[1;31morigin/delete_product[m[33m)[m
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 17:30:25 2023 -0300
+
+    feat(actions.js): getprods again after delete one
+
+[33mcommit 94e06afcab6afc6eb7a61b28ec7403de9a8c4226[m[33m ([m[1;31morigin/preload[m[33m)[m
+Author: AlbaTyto <89665855+AlbaTyto@users.noreply.github.com>
+Date:   Sat Apr 1 16:40:09 2023 -0300
+
+    import missing fixed
+
+[33mcommit dd1a1aa288952c8066483f078c3341ffd1470c4e[m
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 16:23:46 2023 -0300
+
+    feat(actions.js): add delete Product action
+
+[33mcommit 8d2630fa7653cb30fbdef9734208e88616575744[m
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 15:26:10 2023 -0300
+
+    feat(Landing) details of conection whith actions
+
+[33mcommit d24c65c9f0c5be2db647f2b81d6f6419b8ed8045[m
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 15:21:51 2023 -0300
+
+    feat(Landing, Actions, Reducer) add get user call at landing button
+
+[33mcommit adaf1b6053bdbf54e7fd8318adea4b86b985e27e[m
+Merge: 3cf2113 4d58f3e
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 15:09:31 2023 -0300
+
+    Merge branch 'dev' of https://github.com/delcas/Pf_My-seam into preload
+
+[33mcommit 4d58f3e75086ca9a440308ccb07266fe9d0376b0[m
+Merge: 088b301 71d3fe8
+Author: AlbaTyto <89665855+AlbaTyto@users.noreply.github.com>
+Date:   Sat Apr 1 15:09:18 2023 -0300
+
+    Merge pull request #86 from delcas/antonio
+    
+    Antonio
+
+[33mcommit 3cf21135873a9e060400ccc2c1b5873e8649d38e[m
+Merge: 78b659d 088b301
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 15:02:35 2023 -0300
+
+    Merge branch 'dev' of https://github.com/delcas/Pf_My-seam into preload
+
+[33mcommit 78b659dde3d634ab02813a5827c7a83216049de2[m
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 15:01:49 2023 -0300
+
+    fix(ProdDetail): userId
+
+[33mcommit 691c4b0cae5bafeffb566adc7f4dccc93fc68edb[m
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 14:58:47 2023 -0300
+
+    feat(ProdDetail and reducer): set Product edit Details
+
+[33mcommit 71d3fe8f8aa33ff78da75698648e8aa7a10c82f8[m[33m ([m[1;31morigin/antonio[m[33m)[m
+Merge: c115448 088b301
+Author: Asilvazavala <asilvazavala@gmail.com>
+Date:   Sat Apr 1 11:57:50 2023 -0600
+
+    logica de carrito y cards modificadas
+
+[33mcommit c115448a7921d92529bf63ba87242984c1180645[m
+Author: Asilvazavala <asilvazavala@gmail.com>
+Date:   Sat Apr 1 11:49:10 2023 -0600
+
+    logica de carrito y cards modificadas
+
+[33mcommit 088b301838d4e77057c8b78e31ae5c4e54724ff3[m
+Merge: 89bda38 0876e3d
+Author: Gabriel Del Castillo <110512250+delcas@users.noreply.github.com>
+Date:   Sat Apr 1 12:01:01 2023 -0500
+
+    Merge pull request #85 from delcas/userProfile
+    
+    User profile
+
+[33mcommit 0876e3db2550637ead0b1a93b3d73c7d1270d6e7[m
+Merge: 0a5ab66 89bda38
+Author: delcas <delcas1111@gmail.com>
+Date:   Sat Apr 1 11:50:38 2023 -0500
+
+    Merge branch 'dev' of https://github.com/delcas/Pf_My-seam into userProfile
+
+[33mcommit 0a5ab66afe0f2fd5d2bbcfaeb5f22b03e134313b[m
+Author: delcas <delcas1111@gmail.com>
+Date:   Sat Apr 1 11:47:00 2023 -0500
+
+    profile
+
+[33mcommit a7f14aaf483c145b41219c3dee44a12f656f53fa[m
+Merge: a231feb 7814e46
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 13:19:55 2023 -0300
+
+    merge changes ProdDetail
+
+[33mcommit 89bda38372abda353ed9a22d57d6fc51e9847d9f[m
+Merge: 7814e46 946557e
+Author: tomas <70412644+jatdalf@users.noreply.github.com>
+Date:   Sat Apr 1 11:55:06 2023 -0300
+
+    Merge pull request #84 from delcas/services-&-mercadopago
+    
+    Services & mercadopago
+
+[33mcommit 946557e65a9ec4dfc19fba1ba05677299f2bc96b[m
+Author: Ignacio Waigandt <ignaawaig@gmail.com>
+Date:   Sat Apr 1 11:46:46 2023 -0300
+
+    mejoras a los servicios y errores
+
+[33mcommit 7814e46dea67eaf0ba56a6ef24fd66262f129541[m
+Merge: 39d6b5b 0d58ba8
+Author: AlbaTyto <89665855+AlbaTyto@users.noreply.github.com>
+Date:   Sat Apr 1 11:40:35 2023 -0300
+
+    Merge pull request #83 from delcas/LandingRefactor
+    
+    Landing & Detail refactor
+
+[33mcommit a231feb95b566d60914e7ac3a737dde3dc300220[m
+Author: Alba Tyto <gperettig@gmail.com>
+Date:   Sat Apr 1 11:23:53 2023 -0300
+
+    try(PF_Client/src): reducer, actions, ProdDet. trying to set g_state details
+
+[33mcommit d160a31d5f78e488d86dd9de3211965b649e2f9e[m
+Author: Ignacio Waigandt <ignaawaig@gmail.com>
+Date:   Sat Apr 1 11:10:02 2023 -0300
+
+    arreglo de error al crear service
+
+[33mcommit 9f38aeb9693f325cdb3e65181ef4f389907cd6af[m
+Merge: 73d839c 39d6b5b
+Author: Ignacio Waigandt <ignaawaig@gmail.com>
+Date:   Sat Apr 1 10:37:40 2023 -0300
+
+    Merge branch 'dev' of https://github.com/delcas/Pf_My-seam into services-fix
+
+[33mcommit 73d839c865d0640d26d553841641c6b906058693[m
+Author: Ignacio Waigandt <ignaawaig@gmail.com>
+Date:   Sat Apr 1 10:35:51 2023 -0300
+
+    update serv

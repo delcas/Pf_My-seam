@@ -58,10 +58,9 @@ module.exports = {
   },
   getQuestionsHandler: async (req, res) => {
     const offertype = req.path.split("/")[1];
-    const { offerId, sellerId, customerId } = req.body;
-    const { questId } = req.query;
+    const { offerId, questId, sellerId, customerId } = req.query;
     try {
-      console.log("Handling getter");
+      console.log("Handling getter questions: ", offerId);
       if (questId) {
         if (isNaN(questId)) throw new Error("Question Id must be a number");
         const quest = await getQuestion({ offertype, questId });

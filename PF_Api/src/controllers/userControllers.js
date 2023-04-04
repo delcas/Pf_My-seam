@@ -4,7 +4,7 @@ const users = require('../utils/users.json');
 
 module.exports = {
   userCreator: async (name, password, birthdate, username, email, image) => {
-    return await User.create({
+    return await User.findOrCreate({
       name,
       password,
       birthdate,
@@ -54,6 +54,18 @@ module.exports = {
     });
     return await User.findAll();
   },
+
+  getUserByEmail: async (email) =>{
+    console.log("ENTRÉ a esta funcion");
+    let userDb = await User.findOne({
+      where: { email: email },
+    
+    } )
+    return userDb.dataValues;
+
+
+  },
+
   enviarMail: async (email, name) => {
     const config = {
       host: "smtp.gmail.com",
@@ -82,3 +94,5 @@ module.exports = {
     console.log("Message sent: "+ info.messageId);
   },
 };
+
+

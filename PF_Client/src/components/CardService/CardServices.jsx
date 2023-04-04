@@ -1,49 +1,45 @@
 import React, {useEffect,useState} from 'react';
-import styles from './Card.module.css';
+import styles from './CardServices.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts, getUsers } from '../../Redux/actions';
-import { CardProducts } from './CardProducts/CardProducts';
+import { getServices } from '../../redux/actions';
+import { CardService } from './CardService/CardService';
 import { Paginado } from '../Paginado/Paginado';
-import { Filters } from '../../components/Filters/Filters'
 import { Loading } from '../Loading/Loading';
 
 
-export const Card = () => {
+export const CardServices = () => {
 
   // Estado para actualizar la página actual
   const [currentPage, setCurrentPage] = useState(1);
 
   // Estado de los productos que se muestran por página
-  const [productsPerPage, setProductsPerPage] = useState(8);
+  const [servicesPerPage, setServicesPerPage] = useState(8);
 
   // Para ejecutar las funciones de las actions
   const dispatch = useDispatch();
   
   // Me traigo los estados del reducer 
-  let products = useSelector((state) => state.products);
+  let services = useSelector((state) => state.services);
 
   // Delimitar el indíce de los productos a paginar
-  const lastProductIndex = currentPage * productsPerPage;
-  const firstProductIndex = lastProductIndex - productsPerPage;
-  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
+  const lastServiceindex = currentPage * servicesPerPage;
+  const firstServiceIndex = lastServiceindex - servicesPerPage;
+  const currentServices = services.slice(firstServiceIndex, lastServiceindex);
 
   // Ejecuto en automático la action para obtener la info de la DB y actualizar las card
   useEffect(() => {
-    dispatch(getProducts());
-    dispatch(getUsers());
+  dispatch(getServices());
   }, [])
 
   return (
     <div>  
-      <Filters setCurrentPage={setCurrentPage} />
-      <div><h4 className={currentProducts.length > 0 ? styles.titleSections : styles.hideCards}>Productos destacados</h4>
         
         <ul className={styles.cardContainer}>
         {
-          currentProducts.length > 0 ? 
-          currentProducts.map((el) => {
+          currentServices.length > 0 ? 
+          currentServices.map((el) => {
             return ( 
-              <CardProducts 
+              <CardService 
                 id = {el.id} 
                 key = {el.id}
                 image = {el.image}
@@ -56,10 +52,10 @@ export const Card = () => {
           : <Loading />
         }
         </ul>  
-      </div>
+      
       <Paginado 
-       totalProducts={products.length}
-       productsPerPage={productsPerPage}
+       totalProducts={services.length}
+       productsPerPage={servicesPerPage}
        setCurrentPage={setCurrentPage} 
        currentPage={currentPage} 
       />
