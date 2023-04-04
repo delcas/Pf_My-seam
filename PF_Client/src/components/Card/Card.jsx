@@ -1,7 +1,7 @@
 import React, {useEffect,useState} from 'react';
 import styles from './Card.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../../redux/actions';
+import { getProducts } from '../../Redux/actions';
 import { CardProducts } from './CardProducts/CardProducts';
 import { Paginado } from '../Paginado/Paginado';
 import { Filters } from '../../components/Filters/Filters'

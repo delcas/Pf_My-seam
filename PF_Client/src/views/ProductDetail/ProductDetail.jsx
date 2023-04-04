@@ -74,7 +74,7 @@ export const ProductDetail = () => {
           />
           <Questions
           userId={userId}
-
+          details={details}
           />
         </div>
       ) : (

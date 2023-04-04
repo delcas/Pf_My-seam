@@ -71,9 +71,11 @@ export const getProductById = (ID) => {
 };
 
 export const getProductQuestions = (offerId) => {
+let id = {[offerId]: offerId}
   return async function (dispatch) {
-    const productQuestionData = await axios.get(`/questprod/product`, offerId);
+    const productQuestionData = await axios.get(`/questprod/product`, id);
     const ProductQuestions = productQuestionData.data;
+    console.log('getProdQ ', ProductQuestions);
     dispatch({ type: GET_PRODUCT_QUESTION, payload: ProductQuestions });
   };
 };
