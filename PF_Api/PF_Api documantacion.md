@@ -38,12 +38,9 @@
 ```
     POST (/questprod/product/:offerId) -id of the Product by param-
 ------------------{ question, customerId } = req.body
-    GET (/questprod/product/) -by Customer-
-------------------{ customerId } = req.body
-    GET (/questprod/product/) -by Product-
-------------------{ offerId } = req.body
-    GET (/questprod/product/) -by Seller-(no actualizado)
-------------------{ sellerId } = req.body
+    GET (/questprod/product/?customerId=...) -by Customer-
+    GET (/questprod/product/?offerId=...) -by Product-
+    GET (/questprod/product/?sellerId=...) -by Seller-
     GET (/questprod/product/?questId=...) -By id-
     PUT (/questprod/product/:id)
 ------------------{ answer } = req.body
@@ -54,12 +51,9 @@
 ```
     POST (/questserv/service/:offerId) -id of the Service by param-
 ------------------{ question, customerId } = req.body
-    GET (/questserv/service/) -by Customer-
-------------------{ customerId } = req.body
-    GET (/questserv/service/) -by Product-
-------------------{ offerId } = req.body
-    GET (/questserv/service/) -by Seller-(no actualizado)
-------------------{ sellerId } = req.body
+    GET (/questprod/service/?customerId=...) -by Customer-
+    GET (/questprod/service/?offerId=...) -by Product-
+    GET (/questprod/service/?sellerId=...) -by Seller-
     GET (/questserv/service/?questId=...) -By id-
     PUT (/questserv/service/:id)
 ------------------{ answer } = req.body

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { json, useNavigate  } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './SearchBar.module.css';
-import { searchProductByName, getProductById } from '../../../redux/actions';
+import { searchProductByName, getProductById } from '../../../Redux/actions';
 import { Results } from '../Results/Results'
 //Chakra
 import { IconButton, Input } from '@chakra-ui/react'

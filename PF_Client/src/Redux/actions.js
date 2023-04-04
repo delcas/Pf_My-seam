@@ -70,10 +70,13 @@ export const getProductById = (ID) => {
   };
 };
 
-export const getProductQuestions = () => {
+export const getProductQuestions = (pId) => {
+console.log('getProdQ pre axios', pId);
   return async function (dispatch) {
-    const productQuestionData = await axios.get(`/questprod/product`);
+    const productQuestionData = await axios.get(`/questprod/product/?offerId=${pId}`);
+    console.log('post axos inmediato ', productQuestionData);
     const ProductQuestions = productQuestionData.data;
+    console.log('getProdQ post axios: ', ProductQuestions);
     dispatch({ type: GET_PRODUCT_QUESTION, payload: ProductQuestions });
   };
 };
@@ -107,6 +110,7 @@ export function filterByPrice(payload) {
 
 export function setProductChange(id, change) {
   return async function (dispatch) {
+    console.log('on set pre axios: ', change);
     const res = await axios.put(`/product/${id}`, change);
     const detail = res.data;
     console.log('generando cambio al Producto: ', detail);
