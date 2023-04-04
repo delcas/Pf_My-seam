@@ -89,43 +89,43 @@ export const NavBar = () => {
                   isAuthenticated ? "nav-item dropdown" : styles.hideMiPerfil
                 }
               >
-                <a
+                <Link
                   className="nav-link dropdown-toggle active"
-                  href="#"
+                  to="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   Mi perfil
-                </a>
+                </Link>
                 <ul className="dropdown-menu">
                   <li>
-                    <a className="dropdown-item" href="/profile">
+                    <Link className="dropdown-item" to="/profile">
                       Mi Perfil
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="#">
                       Mis ventas
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="#">
                       Mis compras
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider"></hr>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="#">
                       Configuración
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
               <li className="nav-item">
-                <a style={{ textDecoration: "none" }}>
+                <Link style={{ textDecoration: "none" }}>
                   {isAuthenticated ? (
                     <NavLink to={"/profile"} style={{ textDecoration: "none" }}>
                       <Avatar
@@ -140,7 +140,7 @@ export const NavBar = () => {
                   ) : (
                     ""
                   )}
-                </a>
+                </Link>
               </li>
             </ul>
 
