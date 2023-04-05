@@ -3,7 +3,7 @@ import styles from './Filters.module.css'
 import { useDisclosure } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { filterByPrice,orderByAlphabet,getProducts  } from '../../Redux/actions';
+import { filterByPrice,orderByAlphabet,getProducts  } from '../../redux/actions';
 import { Button, Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton,
         } from '@chakra-ui/react'
 

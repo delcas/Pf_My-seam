@@ -6,7 +6,7 @@ import { BotonIrInicio } from '../../components/BotonIrInicio/BotonIrInicio'
 import { Carousel } from '../../components/Carousel/Carousel'
 import { Sections } from '../../components/Sections/Sections'
 import { useDispatch } from 'react-redux'
-import { getUserByEmail } from '../../Redux/actions'
+import { getUserByEmail } from '../../redux/actions'
 import { useAuth0 } from "@auth0/auth0-react";
 
 
