@@ -7,7 +7,7 @@ import {
   getProductById,
   getProductQuestions,
   setProductChange,
-} from "../../Redux/actions";
+} from "../../redux/actions";
 import { NavBar } from "../../components/NavBar/NavBar";
 import Detail from "../../components/Detail/Detail";
 import Questions from "../../components/Questions/Questions";

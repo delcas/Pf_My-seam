@@ -8,7 +8,7 @@ import { Spinner } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserByEmail } from "../../../Redux/actions";
+import { getUserByEmail } from "../../../redux/actions";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
