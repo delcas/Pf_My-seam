@@ -37,9 +37,9 @@ body {
 .imgCenter {
   display: block;
   margin-bottom: 2%;
-  background-color: #f18100;
   width: 100%;
   height: 220px;
+  padding: 2px;
   border-radius: 15px;
 }
 
@@ -47,7 +47,7 @@ body {
   text-decoration: none;
 }
 
-/* Cart */
+/* Buttons */
 
 .buttonCart {
   cursor: pointer;
@@ -70,42 +70,94 @@ body {
 
 /* Card */
 
+.cardDarkTheme .textMedium {
+  color: white;
+}
+
 .cardDarkTheme {
   display: block;
-  border: 4px solid rgb(198, 11, 11);
+  border-radius: 10px;
   margin: 20px 30px 10px 0;
-  transition: all 1.8s ease;
-  background-color: rgba(61, 61, 121, 0.673);
+  background-color: rgba(0, 0, 0, 0.18);
+  min-height: 370px;
 }
 
 .cardLightTheme {
   display: block;
-  border: 4px solid rgb(225, 85, 4);
+  border-radius: 10px;
   margin: 20px 30px 10px 0;
-  transition: all 1.8s ease;
-  background-color: rgb(255, 255, 255);
-  border-radius: 15px;
+  background-color: rgb(251, 125, 0);
+  min-height: 370px;
 }
 
-/* .cardDarkTheme:hover .textBig {
-  display: block;
-  transition: all 1.8s ease;
-
+.cardDarkTheme:hover {
+  -webkit-animation: shadowPopTrDark 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+	animation: shadowPopTrDark 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 }
 
-.cardLightTheme:hover .textBig {
-  display: block;
-  transition: all 1.8s ease;
-} */
-
-.cardLightTheme:hover .textBig {
-  display: block;
+.cardLightTheme:hover {
+  -webkit-animation: shadowPopTr 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+	animation: shadowPopTr 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 }
 
-.cardDarkTheme:hover .textBig {
-  display: block;
+@-webkit-keyframes shadowPopTr {
+  0% {
+    -webkit-box-shadow: 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76);
+            box-shadow: 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76);
+    -webkit-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
+  }
+  100% {
+    -webkit-box-shadow: 1px -1px rgb(255, 165, 76), 2px -2px rgb(255, 165, 76), 3px -3px rgb(255, 165, 76), 4px -4px rgb(255, 165, 76), 5px -5px rgb(255, 165, 76), 6px -6px rgb(255, 165, 76), 7px -7px rgb(255, 165, 76), 8px -8px rgb(255, 165, 76);
+            box-shadow: 1px -1px rgb(255, 165, 76), 2px -2px rgb(255, 165, 76), 3px -3px rgb(255, 165, 76), 4px -4px rgb(255, 165, 76), 5px -5px rgb(255, 165, 76), 6px -6px rgb(255, 165, 76), 7px -7px rgb(255, 165, 76), 8px -8px rgb(255, 165, 76);
+    -webkit-transform: translateX(-8px) translateY(8px);
+            transform: translateX(-8px) translateY(8px);
+  }
+}
+@keyframes shadowPopTr {
+  0% {
+    -webkit-box-shadow: 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76);
+            box-shadow: 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76), 0 0 rgb(255, 165, 76);
+    -webkit-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
+  }
+  100% {
+    -webkit-box-shadow: 1px -1px rgb(255, 165, 76), 2px -2px rgb(255, 165, 76), 3px -3px rgb(255, 165, 76), 4px -4px rgb(255, 165, 76), 5px -5px rgb(255, 165, 76), 6px -6px rgb(255, 165, 76), 7px -7px rgb(255, 165, 76), 8px -8px rgb(255, 165, 76);
+            box-shadow: 1px -1px rgb(255, 165, 76), 2px -2px rgb(255, 165, 76), 3px -3px rgb(255, 165, 76), 4px -4px rgb(255, 165, 76), 5px -5px rgb(255, 165, 76), 6px -6px rgb(255, 165, 76), 7px -7px rgb(255, 165, 76), 8px -8px rgb(255, 165, 76);
+    -webkit-transform: translateX(-8px) translateY(8px);
+            transform: translateX(-8px) translateY(8px);
+  }
 }
 
+
+@-webkit-keyframes shadowPopTrDark {
+  0% {
+    -webkit-box-shadow: 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602);
+            box-shadow: 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602);
+    -webkit-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
+  }
+  100% {
+    -webkit-box-shadow: 1px -1px rgba(0, 0, 0, 0.602), 2px -2px rgba(0, 0, 0, 0.602), 3px -3px rgba(0, 0, 0, 0.602), 4px -4px rgba(0, 0, 0, 0.602), 5px -5px rgba(0, 0, 0, 0.602), 6px -6px rgba(0, 0, 0, 0.602), 7px -7px rgba(0, 0, 0, 0.602), 8px -8px rgba(0, 0, 0, 0.602);
+            box-shadow: 1px -1px rgba(0, 0, 0, 0.602), 2px -2px rgba(0, 0, 0, 0.602), 3px -3px rgba(0, 0, 0, 0.602), 4px -4px rgba(0, 0, 0, 0.602), 5px -5px rgba(0, 0, 0, 0.602), 6px -6px rgba(0, 0, 0, 0.602), 7px -7px rgba(0, 0, 0, 0.602), 8px -8px rgba(0, 0, 0, 0.602);
+    -webkit-transform: translateX(-8px) translateY(8px);
+            transform: translateX(-8px) translateY(8px);
+  }
+}
+@keyframes shadowPopTrDark {
+  0% {
+    -webkit-box-shadow: 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602);
+            box-shadow: 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602), 0 0 rgba(0, 0, 0, 0.602);
+    -webkit-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
+  }
+  100% {
+    -webkit-box-shadow: 1px -1px rgba(0, 0, 0, 0.602), 2px -2px rgba(0, 0, 0, 0.602), 3px -3px rgba(0, 0, 0, 0.602), 4px -4px rgba(0, 0, 0, 0.602), 5px -5px rgba(0, 0, 0, 0.602), 6px -6px rgba(0, 0, 0, 0.602), 7px -7px rgba(0, 0, 0, 0.602), 8px -8px rgba(0, 0, 0, 0.602);
+            box-shadow: 1px -1px rgba(0, 0, 0, 0.602), 2px -2px rgba(0, 0, 0, 0.602), 3px -3px rgba(0, 0, 0, 0.602), 4px -4px rgba(0, 0, 0, 0.602), 5px -5px rgba(0, 0, 0, 0.602), 6px -6px rgba(0, 0, 0, 0.602), 7px -7px rgba(0, 0, 0, 0.602), 8px -8px rgba(0, 0, 0, 0.602);
+    -webkit-transform: translateX(-8px) translateY(8px);
+            transform: translateX(-8px) translateY(8px);
+  }
+}
 
 /* Alerta producto agregado al carrito */
 
