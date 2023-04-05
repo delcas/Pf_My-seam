@@ -3,7 +3,7 @@ import styles from './Categories.module.css'
 import { NavBar } from '../NavBar/NavBar'
 import { CardProducts } from '../../components/Card/CardProducts/CardProducts'
 import { useDispatch, useSelector } from 'react-redux';
-import { filterByPrice, orderByAlphabet, getProducts  } from '../../Redux/actions';
+import { filterByPrice, orderByAlphabet, getProducts  } from '../../redux/actions';
 // Chakra
 import { Button } from '@chakra-ui/react'
 
