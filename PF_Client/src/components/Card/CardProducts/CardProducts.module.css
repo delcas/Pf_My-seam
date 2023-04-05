@@ -65,7 +65,7 @@ body {
 }
 
 .buttonFavourites:hover {
-  color: red;
+  color: rgb(167, 13, 13); 
 }
 
 /* Card */
@@ -73,14 +73,15 @@ body {
   display: block;  
   margin: 20px 30px 10px 0;
   transition: all 1.8s ease;
-  background-color: rgba(61, 61, 121, 0.673);
+  background-color: rgb(255, 102, 0);
+  border-radius: 15px;
 }
 
 .cardLightTheme {
   display: block;
   margin: 20px 30px 10px 0;
   transition: all 1.8s ease;
-  background-color: rgb(255, 255, 255);
+  background-color: #f18100;
   border-radius: 15px;
 }
 
