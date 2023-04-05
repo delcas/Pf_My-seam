@@ -48,7 +48,7 @@ export const Cart = () => {
     setTotalQuantity(totalQuantity)
     onOpen()
   }
-
+  
   return (
     <div>
       {/* Ícono NavBar */}

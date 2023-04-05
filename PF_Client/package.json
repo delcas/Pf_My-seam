@@ -14,6 +14,7 @@
     "@chakra-ui/react": "^2.5.3",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@mercadopago/sdk-react": "^0.0.3",
     "@reduxjs/toolkit": "^1.9.3",
     "@supabase/supabase-js": "^2.14.0",
     "auth0": "^3.3.0",
