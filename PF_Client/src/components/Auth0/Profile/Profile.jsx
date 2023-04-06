@@ -30,8 +30,6 @@ const Profile = () => {
 
   console.log(userInfo);
 
-
-
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
@@ -44,7 +42,6 @@ const Profile = () => {
       .put(`/users/${userInfo.id}`, form)
       .then((res) => alert(res))
       .catch((err) => alert(err));
-    
 
     setForm({
       username: userInfo.username,
@@ -60,10 +57,7 @@ const Profile = () => {
       dispatch(getUserByEmail(user.email));
       navigate('/home');
     }, 1500);
-  }
-
-
-
+  };
 
   if (isLoading) {
     return <Spinner color="red.500" size="xl" />;

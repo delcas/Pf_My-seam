@@ -21,11 +21,10 @@ import {
   ModalContent,
   ModalFooter,
 } from "@chakra-ui/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Questions(userId, details) {
   const productQuestions = useSelector((state) => state.productQuestions);
-  const [error, setError] = useState({});
   const [sndquest, setSndQuest] = useState({ customerId: userId });
     const changeHandler = (event) => {
       const property = event.target.name;

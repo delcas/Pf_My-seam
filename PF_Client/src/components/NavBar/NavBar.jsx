@@ -13,14 +13,14 @@ import LogoutButton from '../Auth0/Logout/LogoutButton';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link, NavLink } from 'react-router-dom';
 
-export const NavBar = () => {
+export const NavBar = ({ isAuthenticated, user }) => {
   // Cambiar el tema entre oscuro/claro
   const { toggleColorMode, colorMode } = useColorMode();
   const currentTheme = useColorMode().colorMode;
 
   // Info de Auth0
-  const { isAuthenticated, user } = useAuth0();
-
+  // const { isAuthenticated, user } = useAuth0();
+ 
   return (
    <div>
   {/* NavBar */}

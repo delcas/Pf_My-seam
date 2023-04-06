@@ -26,7 +26,7 @@ import { useSelector } from "react-redux";
 const CDNURL =
   "https://tpmrrlpsabqmegwwsqlk.supabase.co/storage/v1/object/public/myseam/";
 
-export const Create = () => {
+export const Create = ({ isAuthenticated, user }) => {
   const userInfo = useSelector((state) => state.userInfo);
   const url = "http://localhost:3001";
 
@@ -42,7 +42,7 @@ export const Create = () => {
     price: "",
     image: [],
     stock: "",
-    userid: userInfo.id,
+    userid: user.id,
   });
 
   const [image, setImage] = useState({});

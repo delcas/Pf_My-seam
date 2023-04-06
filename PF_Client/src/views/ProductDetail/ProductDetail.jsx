@@ -17,7 +17,7 @@ import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
 import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
 
 
-export const ProductDetail = () => {
+export const ProductDetail = ({ isAuthenticated, user }) => {
 
   const details = useSelector((state) => state.details);
   const userInfo = useSelector((state) => state.userInfo);
@@ -25,7 +25,7 @@ export const ProductDetail = () => {
   const dispatch = useDispatch();
   const [currentImg, setCurrentImg] = useState(0);
   //Variable provisoria que a futuro deberá llegar desde el estado global
-  const userId = userInfo.id;
+  const userId = user.id;
   const [edit, setEdit] = useState({
     e: false,
     s: "none",
