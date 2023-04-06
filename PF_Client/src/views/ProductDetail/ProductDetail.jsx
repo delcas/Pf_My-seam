@@ -39,7 +39,7 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
     // eslint-disable-next-line
     dispatch(getProductById(prodID[prodID.length - 1]));
     dispatch(getProductQuestions(prodID[prodID.length - 1]));
-    dispatch(getUserByEmail(user.email));
+    dispatch(getUserByEmail(user?.email));
     // dispatch(getProductById(id));
   }, [dispatch]);
 

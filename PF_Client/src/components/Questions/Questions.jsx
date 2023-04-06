@@ -23,63 +23,82 @@ import {
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 
-export default function Questions(userId, details) {
+export default function Questions({userId, details}) {
   const productQuestions = useSelector((state) => state.productQuestions);
-  const [sndquest, setSndQuest] = useState({ customerId: userId });
-    const changeHandler = (event) => {
-      const property = event.target.name;
-      const value = event.target.value;
-      setSndQuest({ ...sndquest, [property]: value });
-    };
+  const [sndquest, setSndQuest] = useState({});
+  const changeHandler = (event) => {
+    const property = event.target.name;
+    const value = event.target.value;
+    setSndQuest({ ...sndquest, [property]: value });
+  };
+  let ver;
+  userId === details.userid ? (ver = true) : (ver = false);
 
-    const { isOpen, onOpen, onClose } = useDisclosure()
-  
-    const initialRef = useRef(null)
-    const finalRef = useRef(null)
-    const sendQuestHandler = async (ev)=>{
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const initialRef = useRef(null);
+  const finalRef = useRef(null);
+  const sendQuestHandler = async (ev) => {
+    if (ver) {
+      await axios.put(`/questprod/product/${pId}`, quest);
+    } else {
+      setSndQuest({ ...sndquest, customerId: userId });
       await axios.post(`/questprod/product/${pId}`, quest);
     }
-  
+  };
+
   return (
     <div className={questyle.detailTable}>
       <div>
         <label colSpan="2">Preguntas:</label>
-    <span>
-      <Button onClick={onOpen}>Haz una pregunta</Button>
-            <Modal
-        initialFocusRef={initialRef}
-        finalFocusRef={finalRef}
-        isOpen={isOpen}
-        onClose={onClose}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            <FormControl>
-              <FormLabel>Tu Pregunta</FormLabel>
-              <Textarea 
-              ref={initialRef} 
-              placeholder='question' 
-              onChange={changeHandler}
-              />
-            </FormControl>
-          </ModalBody>
-          <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={sendQuestHandler}>
-              Enviar
-            </Button>
-            <Button onClick={onClose}>Cancelar</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </span>
-
+        <span>
+          {ver ? (
+            ""
+          ) : (
+            <>
+              <Button onClick={onOpen}>Haz una pregunta</Button>
+              <Modal
+                initialFocusRef={initialRef}
+                finalFocusRef={finalRef}
+                isOpen={isOpen}
+                onClose={onClose}
+              >
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalCloseButton />
+                  <ModalBody pb={6}>
+                    <FormControl>
+                      <FormLabel>Tu Pregunta</FormLabel>
+                      <Textarea
+                        ref={initialRef}
+                        placeholder="Pregunta"
+                        name="question"
+                        value={sndquest.question}
+                        onChange={changeHandler}
+                      />
+                    </FormControl>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button
+                      colorScheme="blue"
+                      mr={3}
+                      onClick={sendQuestHandler}
+                    >
+                      Enviar
+                    </Button>
+                    <Button onClick={onClose}>Cancelar</Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
+            </>
+          )}
+        </span>
       </div>
       <div>
         {productQuestions.length > 0 ? (
           <Accordion>
-            {productQuestions.map((q) => <AccordionItem>
+            {productQuestions.map((q) => (
+              <AccordionItem>
                 <h2>
                   <AccordionButton>
                     <Box as="span" flex="1" textAlign="left">
@@ -90,7 +109,7 @@ export default function Questions(userId, details) {
                 </h2>
                 <AccordionPanel pb={4}>{q.answer}</AccordionPanel>
               </AccordionItem>
-            )}
+            ))}
           </Accordion>
         ) : (
           ""
