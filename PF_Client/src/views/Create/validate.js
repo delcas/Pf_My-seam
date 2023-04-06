@@ -11,6 +11,8 @@ export const validate = (form) => {
     if (form.description.length > 40 ) { error.description = "Ingrese menos de 40 caracteres" }
     if (!form.price || form.price === " ") { error.price = "El precio es requerido" } 
     if (form.price >2000 || form.price < 1)  { error.price = "El precio maximo es de $2000 y el minimo de $1"}
-    if (!form.stock || form.stock === '-') { error.stock = "Ingrese el numero de stock"}
+    if (!form.stock || form.stock === '-') { error.stock = "Ingrese el numero de stock" }
+    if (!form.gender || form.gender === " ") { error.gender = "Seleccione un genero para el articulo" }
+    if (!form.category || form.category === " ") { error.category = "Seleccione una categoria para el articulo"}
      return error;
 }
