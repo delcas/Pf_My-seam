@@ -42,7 +42,7 @@ export const Create = ({ isAuthenticated, user }) => {
     price: "",
     image: [],
     stock: "",
-    userid: user.id,
+    userid: userInfo.id,
   });
 
   const [image, setImage] = useState({});

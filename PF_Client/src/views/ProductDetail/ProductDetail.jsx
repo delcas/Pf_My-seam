@@ -6,6 +6,7 @@ import {
   deleteProduct,
   getProductById,
   getProductQuestions,
+  getUserByEmail,
   setProductChange,
 } from "../../redux/actions";
 import { NavBar } from "../../components/NavBar/NavBar";
@@ -25,7 +26,7 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
   const dispatch = useDispatch();
   const [currentImg, setCurrentImg] = useState(0);
   //Variable provisoria que a futuro deberá llegar desde el estado global
-  const userId = user.id;
+  const userId = userInfo.id;
   const [edit, setEdit] = useState({
     e: false,
     s: "none",
@@ -38,6 +39,7 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
     // eslint-disable-next-line
     dispatch(getProductById(prodID[prodID.length - 1]));
     dispatch(getProductQuestions(prodID[prodID.length - 1]));
+    dispatch(getUserByEmail(user.email));
     // dispatch(getProductById(id));
   }, [dispatch]);
 
