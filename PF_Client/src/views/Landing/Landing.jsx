@@ -21,8 +21,8 @@ export const Landing = () => {
       image: user.picture
     }
    axios.post("/users", post);
-   dispatch(getUserByEmail(user.email));
    console.log(post);
+   dispatch(getUserByEmail(user.email));
   }
 
   

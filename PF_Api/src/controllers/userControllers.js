@@ -4,7 +4,7 @@ const users = require('../utils/users.json');
 
 module.exports = {
   userCreator: async (name, password, birthdate, username, email, image) => {
-    return await User.findOrCreate({
+    return await User.create({
       name,
       password,
       birthdate,
