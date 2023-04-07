@@ -37,7 +37,8 @@ export default function ModalBtn({ userId, ver, id, name }) {
   };
 
   const sendHandler = async (onClose) => {
-    if (name === "answer") {
+    if (userId) {
+      if (name === "answer") {
       console.log("envío respuesta: ", sndquest);
       await axios
       .put(`/questprod/product/${id}`, sndquest)
@@ -47,7 +48,8 @@ export default function ModalBtn({ userId, ver, id, name }) {
       await axios
       .post(`/questprod/product/${id}`, sndquest)
       .then(dispatch(getProductQuestions(id)));
-    }
+    }     
+    } else {alert('Debe registrarse para realizar una pregunta');}
   };
   return (
     <>
