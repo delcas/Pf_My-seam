@@ -16,6 +16,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, isAuthenticated, isLoading } = useAuth0();
+  console.log(user["https://example.com/roles"]);
   const userInfo = useSelector((state)=>state.userInfo);
   const [form, setForm]= useState({
       username: userInfo.username,
