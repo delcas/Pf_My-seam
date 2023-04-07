@@ -1,33 +1,55 @@
-import React, { useCallback, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useState} from "react";
+import Payment from "./Payment/Payment";
+import { Checkout } from "./Checkout";
+import InternalProvider from "../../hooks/ContextProvider";
+import { Loading } from '../../components/Loading/Loading'
 // MercadoPago
-import { fetchCToken } from '../../hooks/fetchMethod'
-const FORM_ID = 'payment-form'
+import { initMercadoPago } from "@mercadopago/sdk-react";
+initMercadoPago('TEST-5a50f864-462e-4e42-89bf-304bce74b5fd');
 
-export const MercadoPago = ({ items }) => {
-  const { id } = useParams()
+export const MercadoPago = () => {
+  const [preferenceId, setPreferenceId] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [orderData, setOrderData] = useState({ quantity: "1", price: "10", amount: 10, description: "Some book" });
+  
+  const handleClick = () => {
+    setIsLoading(true);
+    fetch("http://localhost:3001/payment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderData),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((preference) => {
+        setPreferenceId(preference.id);
+      })
+      .catch((error) => {
+        console.error(error);
+      }).finally(() => {
+        setIsLoading(false);
+      })
+  };
 
-  const obtenerPreference = useCallback(
-   async() => {
-     const res = await fetchCToken(`checkout/${id}`, { items }, 'POST')
+  const renderSpinner = () => {
+    if (isLoading) {
+      return (
+        <Loading />
+      )
+    }
+  }
 
-     if (res.global) {
-       const script = document.createElement('script')
-       script.type = 'text/javascript'
-       script.src = 'https://www.mercadopago.com.co/integrations/v1/web-payment-checkout.js'
-       script.setAttribute('data-preference-id', res.global)
-       const form = document.getElementById(FORM_ID)
-       form.appendChild(script)
-     }
-   }, [id, items],
-  )
+  return (
+    <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData }}>
+      <main>
+        {renderSpinner()}
+        <Checkout onClick={handleClick} description/>
+        <Payment />
+      </main>
+    </InternalProvider>
+  );
+};
 
-  useEffect(() => {
-   obtenerPreference()
-  }, [obtenerPreference])
-
-
- return (
-     <form id={FORM_ID} method='GET' />
- )
-}

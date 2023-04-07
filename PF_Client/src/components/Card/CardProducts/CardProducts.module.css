@@ -48,12 +48,8 @@ body {
   text-decoration: none;
 }
 
-<<<<<<< HEAD
 /* Buttons */
 
-=======
-/* Cart */
->>>>>>> bdc9a12f7fc912493265feaa9bfef21ca03e3352
 .buttonCart {
   cursor: pointer;
   margin: 3px 0 3px 5px;
@@ -74,7 +70,6 @@ body {
 }
 
 /* Card */
-<<<<<<< HEAD
 
 .cardDarkTheme .textMedium {
   color: white;
@@ -86,29 +81,14 @@ body {
   margin: 20px 30px 10px 0;
   background-color: rgba(0, 0, 0, 0.18);
   min-height: 370px;
-=======
-.cardDarkTheme {
-  display: block;  
-  margin: 20px 30px 10px 0;
-  transition: all 1.8s ease;
-  background-color: rgb(255, 102, 0);
-  border-radius: 15px;
->>>>>>> bdc9a12f7fc912493265feaa9bfef21ca03e3352
 }
 
 .cardLightTheme {
   display: block;
-<<<<<<< HEAD
   border-radius: 10px;
   margin: 20px 30px 10px 0;
   background-color: rgb(251, 125, 0);
   min-height: 370px;
-=======
-  margin: 20px 30px 10px 0;
-  transition: all 1.8s ease;
-  background-color: #f18100;
-  border-radius: 15px;
->>>>>>> bdc9a12f7fc912493265feaa9bfef21ca03e3352
 }
 
 .cardDarkTheme:hover {
