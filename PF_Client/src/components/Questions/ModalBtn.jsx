@@ -11,7 +11,7 @@ import {
   ModalContent,
   ModalFooter,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
@@ -22,26 +22,32 @@ export default function ModalBtn({ userId, ver, id, name }) {
   const finalRef = useRef(null);
   const [sndquest, setSndQuest] = useState({});
 
+  useEffect(()=>{
+    name === "question" &&
+    setSndQuest({
+      ...sndquest,
+      customerId: userId,
+    });}, [])
+  
+
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
-    name === 'question' && (setSndQuest({
-       ...sndquest, 
-       customerId: userId, 
-       [property]: value  
-      }))();
     setSndQuest({ ...sndquest, [property]: value });
   };
-  
+
   const sendHandler = async (onClose) => {
     if (name === "answer") {
-      await axios.put(`/questprod/product/${id}`, sndquest);
+      console.log("envío respuesta: ", sndquest);
+      await axios
+      .put(`/questprod/product/${id}`, sndquest)
+      .then(alert('Se ha enviado su respuesta'));
     } else {
-      console.log('envío pregunta: ', sndquest);
-      await axios.post(`/questprod/product/${id}`, sndquest)
-      .then(dispatch(getProductQuestions(id)))
-    };
-    
+      console.log("envío pregunta: ", sndquest);
+      await axios
+      .post(`/questprod/product/${id}`, sndquest)
+      .then(dispatch(getProductQuestions(id)));
+    }
   };
   return (
     <>
@@ -53,7 +59,9 @@ export default function ModalBtn({ userId, ver, id, name }) {
         onClose={onClose}
       >
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent
+        onSubmit={onClose}
+        >
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
@@ -68,7 +76,15 @@ export default function ModalBtn({ userId, ver, id, name }) {
             </FormControl>
           </ModalBody>
           <ModalFooter>
-            <Button type="submit" colorScheme="blue" mr={3} onClick={sendHandler(onClose)}>
+            <Button
+              type="submit"
+              colorScheme="blue"
+              mr={3}
+              onClick={()=>{
+                sendHandler()
+                onClose()
+              }}
+            >
               Enviar
             </Button>
             <Button onClick={onClose}>Cancelar</Button>
