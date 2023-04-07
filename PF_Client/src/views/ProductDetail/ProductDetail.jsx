@@ -25,8 +25,12 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
   const cart = useSelector(state => state.cart);
   const dispatch = useDispatch();
   const [currentImg, setCurrentImg] = useState(0);
-  //Variable provisoria que a futuro deberá llegar desde el estado global
   const userId = userInfo.id;
+  let ver;
+  console.log(userId);
+  console.log(details.userid );
+  userId === details.userid ? (ver = true) : (ver = false);
+  
   const [edit, setEdit] = useState({
     e: false,
     s: "none",
@@ -68,8 +72,7 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
   };
 
    // Agregar producto al carrito de compras
-   const handleCart =  () => {
-    
+   const handleCart =  () => {    
     // Validar si ya existe el producto en el carrito de compras
     if (cart.find(el => el === details)) {   
       details.quantity +=  1 
@@ -77,8 +80,7 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
       details.quantity = 1 
         cart.push(details)
       }
-
-  }
+  };
 
   return (
     <div>
@@ -97,6 +99,7 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
           SendCange={SendCange}
           EditionPDetail={EditionPDetail}
           edit={edit}
+          ver={ver}
           />
                   <div>
             <button as={BsFillCartPlusFill} w={8} h={8} className={style.buttonCart} onClick={handleCart} title="Agregar al carrito"> Agregar al carrito</button>
@@ -105,6 +108,7 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
           <Questions
           userId={userId}
           details={details}
+          ver={ver}
           />
         </div>
       ) : (

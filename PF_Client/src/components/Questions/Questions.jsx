@@ -1,6 +1,5 @@
 import questyle from "./Questions.module.css";
-import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   Accordion,
@@ -8,90 +7,21 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  Button,
-  Textarea,
-  ModalOverlay,
-  ModalHeader,
-  ModalCloseButton,
-  FormControl,
-  FormLabel,
-  ModalBody,
-  useDisclosure,
-  Modal,
-  ModalContent,
-  ModalFooter,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import ModalBtn from "./ModalBtn.jsx";
 
-export default function Questions({userId, details}) {
+export default function Questions({ userId, details, ver }) {
+  const pId = details.id;
   const productQuestions = useSelector((state) => state.productQuestions);
-  const [sndquest, setSndQuest] = useState({});
-  const changeHandler = (event) => {
-    const property = event.target.name;
-    const value = event.target.value;
-    setSndQuest({ ...sndquest, [property]: value });
-  };
-  let ver;
-  userId === details.userid ? (ver = true) : (ver = false);
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const initialRef = useRef(null);
-  const finalRef = useRef(null);
-  const sendQuestHandler = async (ev) => {
-    if (ver) {
-      await axios.put(`/questprod/product/${pId}`, quest);
-    } else {
-      setSndQuest({ ...sndquest, customerId: userId });
-      await axios.post(`/questprod/product/${pId}`, quest);
-    }
-  };
-
+ console.log(ver);
+  
+  //       
   return (
     <div className={questyle.detailTable}>
       <div>
         <label colSpan="2">Preguntas:</label>
         <span>
-          {ver ? (
-            ""
-          ) : (
-            <>
-              <Button onClick={onOpen}>Haz una pregunta</Button>
-              <Modal
-                initialFocusRef={initialRef}
-                finalFocusRef={finalRef}
-                isOpen={isOpen}
-                onClose={onClose}
-              >
-                <ModalOverlay />
-                <ModalContent>
-                  <ModalCloseButton />
-                  <ModalBody pb={6}>
-                    <FormControl>
-                      <FormLabel>Tu Pregunta</FormLabel>
-                      <Textarea
-                        ref={initialRef}
-                        placeholder="Pregunta"
-                        name="question"
-                        value={sndquest.question}
-                        onChange={changeHandler}
-                      />
-                    </FormControl>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button
-                      colorScheme="blue"
-                      mr={3}
-                      onClick={sendQuestHandler}
-                    >
-                      Enviar
-                    </Button>
-                    <Button onClick={onClose}>Cancelar</Button>
-                  </ModalFooter>
-                </ModalContent>
-              </Modal>
-            </>
-          )}
+        {ver ? '' : <ModalBtn userId={userId} ver={ver} id={pId} name='question'/>}
         </span>
       </div>
       <div>
@@ -104,6 +34,7 @@ export default function Questions({userId, details}) {
                     <Box as="span" flex="1" textAlign="left">
                       {q.question}
                     </Box>
+                    {ver ? <ModalBtn userId={userId} ver={ver} id={q.id} name='answer'/> : ''}
                     <AccordionIcon />
                   </AccordionButton>
                 </h2>
