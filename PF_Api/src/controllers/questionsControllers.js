@@ -16,11 +16,11 @@ module.exports = {
   },
   setAnswer: async ({ offertype, questId, answer }) => {
     offertype === "service" && (OfferQ = Questserv);
-    offertype === "product" && (OfferQ = Questprod);
-    console.log("Answering quest controller");
+    offertype === "product" && (OfferQ = Questprod);    
     const quest = await OfferQ.findByPk(questId);
-    await quest.update({ answer });
-    return await quest.save();
+    console.log("Answering quest controller", quest?.data);
+    await quest?.update({ answer });
+    return await quest?.save();
   },
   getQuestion: async ({ offertype, questId }) => {
     offertype === "service" && (OfferQ = Questserv);

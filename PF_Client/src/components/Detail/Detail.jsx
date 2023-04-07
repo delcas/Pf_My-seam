@@ -23,11 +23,12 @@ export default function Detail({
   SendCange,
   EditionPDetail,
   edit,
+  ver
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <div>
-      {userId === details.userid ? (
+      {ver ? (
         <div>
           <button onClick={handleEdition}>Habilitar Edición 🖊</button>
           <Button onClick={onOpen}>Eliminar</Button>

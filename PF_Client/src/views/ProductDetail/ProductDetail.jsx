@@ -6,6 +6,7 @@ import {
   deleteProduct,
   getProductById,
   getProductQuestions,
+  getUserByEmail,
   setProductChange,
 } from "../../redux/actions";
 import { NavBar } from "../../components/NavBar/NavBar";
@@ -17,15 +18,19 @@ import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
 import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
 
 
-export const ProductDetail = () => {
+export const ProductDetail = ({ isAuthenticated, user }) => {
 
   const details = useSelector((state) => state.details);
   const userInfo = useSelector((state) => state.userInfo);
   const cart = useSelector(state => state.cart);
   const dispatch = useDispatch();
   const [currentImg, setCurrentImg] = useState(0);
-  //Variable provisoria que a futuro deberá llegar desde el estado global
   const userId = userInfo.id;
+  let ver;
+  console.log(userId);
+  console.log(details.userid );
+  userId === details.userid ? (ver = true) : (ver = false);
+  
   const [edit, setEdit] = useState({
     e: false,
     s: "none",
@@ -38,6 +43,7 @@ export const ProductDetail = () => {
     // eslint-disable-next-line
     dispatch(getProductById(prodID[prodID.length - 1]));
     dispatch(getProductQuestions(prodID[prodID.length - 1]));
+    dispatch(getUserByEmail(user?.email));
     // dispatch(getProductById(id));
   }, [dispatch]);
 
@@ -66,8 +72,7 @@ export const ProductDetail = () => {
   };
 
    // Agregar producto al carrito de compras
-   const handleCart =  () => {
-    
+   const handleCart =  () => {    
     // Validar si ya existe el producto en el carrito de compras
     if (cart.find(el => el === details)) {   
       details.quantity +=  1 
@@ -75,8 +80,7 @@ export const ProductDetail = () => {
       details.quantity = 1 
         cart.push(details)
       }
-
-  }
+  };
 
   return (
     <div>
@@ -95,6 +99,7 @@ export const ProductDetail = () => {
           SendCange={SendCange}
           EditionPDetail={EditionPDetail}
           edit={edit}
+          ver={ver}
           />
                   <div>
             <button as={BsFillCartPlusFill} w={8} h={8} className={style.buttonCart} onClick={handleCart} title="Agregar al carrito"> Agregar al carrito</button>
@@ -103,6 +108,7 @@ export const ProductDetail = () => {
           <Questions
           userId={userId}
           details={details}
+          ver={ver}
           />
         </div>
       ) : (
