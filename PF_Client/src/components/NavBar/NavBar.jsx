@@ -25,7 +25,7 @@ export const NavBar = ({ isAuthenticated, user }) => {
   useEffect(() => {
     dispatch(getUserByEmail(user?.email));
     // dispatch(getProductById(id));
-  }, [user]);
+  }, [dispatch]);
   return (
    <div>
   {/* NavBar */}
