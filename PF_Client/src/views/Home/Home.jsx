@@ -19,6 +19,7 @@ export const Home = () => {
       <>
       <h1>BIENVENIDO ADMINISTRADOR</h1>
       <Link to="/profile">PROFILE</Link>
+      {/* <NavBar isAuthenticated={isAuthenticated} user={user} /> */}
       </>);
   
   

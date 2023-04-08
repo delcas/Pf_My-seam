@@ -10,6 +10,8 @@ import {GET_PRODUCTS,
         GET_USERS,
         GET_SERVICE_BY_ID,
         GET_USER_BY_EMAIL,
+        FILTER_BY_CATEGORY,
+        FILTER_BY_GENDER,
         } from "./actions";
 
 
@@ -28,7 +30,7 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
-    // let aux = [];   
+   // let aux = [];   
 
     switch (action.type){
         case GET_PRODUCTS:
@@ -75,19 +77,50 @@ const rootReducer = (state = initialState, action) => {
             return {...state,
                 products: productsFiltered
             }        
-        case ORDER_BY_ALPHABET: {
-            if(action.payload === 'a-z') {
-                return {
-                    ...state,
-                    products: state.products.slice().sort(nameAlphabet)
-                }
-                } else {
-                    return {
-                        ...state,
-                        products: state.products.slice().sort(nameAlphabet).reverse()
-                    }
+       case ORDER_BY_ALPHABET: {
+         if (action.payload === 'a-z') {
+           return {
+              ...state,
+               products: state.products.slice().sort(nameAlphabet)
+          };
+          } else {
+               return {
+                ...state,
+                products: state.products.slice().sort(nameAlphabet).reverse()
+             };
+           }
+        }
+           
+        case FILTER_BY_CATEGORY: {
+            const category = action.payload;
+            let productCategory = state.allProducts;
+            let filterCategory = [];
+            if (category === "All") {
+                filterCategory = productCategory
+            } else {
+                filterCategory = productCategory.filter((p) => p.category === category)
+            }
+            return {
+                ...state,
+                products: filterCategory
             }
         }
+        
+       case FILTER_BY_GENDER: {
+            const gender = action.payload;
+            let productGender = state.allProducts;
+            let filterByGender = [];
+            if (gender === "All") {
+                filterByGender = productGender
+            } else {
+                filterByGender = productGender.filter((p) => p.gender === gender)
+            }
+            return {
+                ...state,
+                products: filterByGender
+            }
+        }
+        ////
         case GET_USERS: {
             return {...state, 
                 users: action.payload}; 
