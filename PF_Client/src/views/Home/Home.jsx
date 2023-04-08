@@ -17,8 +17,10 @@ export const Home = () => {
     
       return (
       <>
+       <NavBar isAuthenticated={isAuthenticated} user={user} />
       <h1>BIENVENIDO ADMINISTRADOR</h1>
       <Link to="/profile">PROFILE</Link>
+      {/* <NavBar isAuthenticated={isAuthenticated} user={user} /> */}
       </>);
   
   

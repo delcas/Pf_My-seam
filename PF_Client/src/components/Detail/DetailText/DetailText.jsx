@@ -23,7 +23,7 @@ export default function DetailText({
         ) : (
           details.name
         )}
-      </td>
+        </td>
       <td>
         {edit.e ? (
           <button name="name" onClick={EditionPDetail}>
@@ -61,7 +61,64 @@ export default function DetailText({
           ""
         )}
       </td>
+      </tr>
+      
+       <tr>
+      <td>
+        Ropa de:
+        {edit.s === "gender" ? (
+          <span>
+            <input
+              type="text"
+              name="gender"
+              onChange={InputHandler}
+            />
+            <button onClick={SendCange}>OK</button>
+          </span>
+        ) : (
+          details.gender
+        )}
+      </td>
+      <td>
+        {edit.e ? (
+          <button name="gender" onClick={EditionPDetail}>
+            {" "}
+            🖊{" "}
+          </button>
+        ) : (
+          ""
+        )}
+      </td>
     </tr>
+
+       <tr>
+      <td>
+        Categoria:
+        {edit.s === "category" ? (
+          <span>
+            <input
+              type="text"
+              name="category"
+              onChange={InputHandler}
+            />
+            <button onClick={SendCange}>OK</button>
+          </span>
+        ) : (
+          details.category
+        )}
+      </td>
+      <td>
+        {edit.e ? (
+          <button name="category" onClick={EditionPDetail}>
+            {" "}
+            🖊{" "}
+          </button>
+        ) : (
+          ""
+        )}
+      </td>
+    </tr>
+
     <tr>
       <td>
         Precio:
