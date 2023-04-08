@@ -12,6 +12,8 @@ export const SET_PRODUCT_CHANGE = "SET_PRODUCT_CHANGE";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const GET_SERVICE_BY_ID = "GET_SERVICE_BY_ID"
 export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
+export const FILTER_BY_CATEGORY = " FILTER_BY_CATEGORY";
+export const FILTER_BY_GENDER = "FILTER_BY_GENDER";
 
 
 
@@ -91,14 +93,28 @@ export const getPromotions = () => {
 };
 
 export const orderByAlphabet = (type) => {
-  return { type: ORDER_BY_ALPHABET, payload: type };
+  return { type: ORDER_BY_ALPHABET, payload: type};
 };
 
+
 export const nameAlphabet = (a, b) => {
-  if (a.name < b.name) return -1;
-  if (b.name < a.name) return 1;
+  var aName = a.name.toLowerCase();
+  var bName = b.name.toLowerCase();
+  if (aName < bName) return -1;
+  if (bName < aName) return 1;
   return 0;
+}
+
+
+
+export const filterByCategory = (category) => {
+  return { type: FILTER_BY_CATEGORY, payload: category };
 };
+
+export const filterByGender = (payload) => {
+  return { type: FILTER_BY_GENDER, payload,}
+};
+
 
 export function filterByPrice(payload) {
   // console.log('action por price')
