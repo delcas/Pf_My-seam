@@ -32,6 +32,29 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      gender: {
+        type: DataTypes.ENUM("Mujer", "Hombre", "Niño", "Niña", "All"),
+        allowNull: false,
+        defaultValue: "All"
+      },
+      category: {
+        type: DataTypes.ENUM(
+          "Blusas",
+          "Vestidos",
+          "Faldas",
+          "Buzos",
+          "Camperas",
+          "Pantalones",
+          "Remeras",
+          "Bermudas",
+          "Sweaters",
+          "Camisas",
+          "Musculosas",
+          "All"
+        ),
+        allowNull: false,
+        defaultValue: "All"
+      },
     },
     {
       timestamps: true,

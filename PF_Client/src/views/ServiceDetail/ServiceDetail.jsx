@@ -8,7 +8,7 @@ import { getServiceById } from '../../redux/actions';
 import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
 import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
 
-export const ServiceDetail =()=>{
+export const ServiceDetail =({ isAuthenticated, user })=>{
     const dispatch = useDispatch()
     const details = useSelector(state=>state.details)
     const cart = useSelector(state => state.cart)

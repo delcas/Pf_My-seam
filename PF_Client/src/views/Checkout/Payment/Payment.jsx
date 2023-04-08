@@ -25,12 +25,9 @@ const Payment = () => {
     <div>
       <div className="container_payment">
         <div className="block-heading">
-          <h2>Checkout Payment</h2>
-          <p>This is an example of a Mercado Pago integration</p>
         </div>
         <div className="form-payment">
           <div className="products">
-            <h2 className="title">Summary</h2>
             <div className="item">
               <span className="price" id="summary-price">${orderData.price}</span>
               <p className="item-name">

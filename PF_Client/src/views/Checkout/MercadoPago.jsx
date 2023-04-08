@@ -14,7 +14,7 @@ export const MercadoPago = () => {
   
   const handleClick = () => {
     setIsLoading(true);
-    fetch("http://localhost:3001/payment", {
+    fetch("http://localhost:3001/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,8 +46,8 @@ export const MercadoPago = () => {
     <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData }}>
       <main>
         {renderSpinner()}
-        <Checkout onClick={handleClick} description/>
-        <Payment />
+        <Checkout onClick={handleClick} />
+        {/* <Payment /> */}
       </main>
     </InternalProvider>
   );

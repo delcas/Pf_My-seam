@@ -13,25 +13,29 @@ import { ServiceDetail } from './views/ServiceDetail/ServiceDetail';
 import { Service } from './views/Service/Service';
 import { Checkout } from './views/Checkout/Checkout';
 import { MercadoPago } from './views/Checkout/MercadoPago'
+import { useAuth0 } from "@auth0/auth0-react";
 
 const backend =import.meta.env.VITE_BACKEND_URL;
 axios.defaults.baseURL = backend
 //axios.defaults.baseURL = 'http://localhost:3001/';
 
+
 function App() {
   const location = useLocation();
+  const { isAuthenticated, user } = useAuth0();
+  console.log('line 25 app.jsx, user: ', user);
   return (
     <Routes>
       <Route exact path = '/' element = {<Landing />}/>
-      <Route path = '/home' element = {<Home />}/>
+      <Route path = '/home' element = {<Home isAuthenticated={isAuthenticated} user={user} />}/>
       <Route path = '/login' element = {<Login />}/>
-      <Route path = '/create' element = {<Create />}/>
+      <Route path = '/create' element = {<Create isAuthenticated={isAuthenticated} user={user}/>}/>
       <Route path = '/promotions' element = {<Promotions />}/>
       <Route path = '/categories' element = {<Categories />}/>
-      <Route path = '/ProductDetail/:id' element = {<ProductDetail />}/>
-      <Route path = '/profile' element = {<Profile />}/> 
       <Route path = '/checkout' element = {<MercadoPago />}/>
-      <Route path = '/ServiceDetail/:id' element={<ServiceDetail />}/>
+      <Route path = '/ProductDetail/:id' element = {<ProductDetail isAuthenticated={isAuthenticated} user={user}/>}/>
+      <Route path = '/profile' element = {<Profile isAuthenticated={isAuthenticated} user={user}/>}/> 
+      <Route path = '/ServiceDetail/:id' element={<ServiceDetail isAuthenticated={isAuthenticated} user={user} />}/>
       <Route path = '/service' element={<Service />}/>
       <Route path = '*' element = {<Error404 />}/> 
     </Routes >

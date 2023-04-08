@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styles from './Checkout.module.css'
 import { NavBar } from '../../components/NavBar/NavBar';
 import { Link } from 'react-router-dom'
@@ -14,8 +14,8 @@ export const Checkout = ({ onClick }) => {
   // Auth0
   const { isAuthenticated, loginWithRedirect } = useAuth0();
 
-  const [isVisible, setIsVisible] = React.useState(true);
-  const { preferenceId, isLoading: disabled, orderData, setOrderData } = React.useContext(Context);
+  const [isVisible, setIsVisible] = useState(true);
+  const { preferenceId, isLoading: disabled, orderData, setOrderData } = useContext(Context);
 
   useEffect(() => {
     if (preferenceId) setIsVisible(false);

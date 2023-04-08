@@ -21,8 +21,11 @@ export const Landing = () => {
       image: user.picture
     }
    axios.post("/users", post);
-   dispatch(getUserByEmail(user.email));
    console.log(post);
+   if(user["https://example.com/roles"].includes("admin")){
+    alert("Welcome Admin!");
+   }
+   dispatch(getUserByEmail(user.email));
   }
 
   

@@ -17,5 +17,5 @@ router.use("/service",serviceRouter);
 router.use("/cart", cartRouter)
 router.use("/questserv", questServRouter);
 router.use("/questprod", questProdRouter);
-router.use("/payment", paymentRouter);
+router.use("/checkout", paymentRouter);
 module.exports = router;
