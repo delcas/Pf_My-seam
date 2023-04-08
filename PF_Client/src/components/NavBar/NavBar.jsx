@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './NavBar.module.css';
 import Logo from '../../assets/images/logo_MySeam_full.png';
 import { SearchBar } from './SearchBar/SearchBar';
@@ -12,15 +12,20 @@ import LoginButton from '../Auth0/Logiin/LoginButton';
 import LogoutButton from '../Auth0/Logout/LogoutButton';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link, NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getUserByEmail } from '../../redux/actions';
 
 export const NavBar = () => {
   // Cambiar el tema entre oscuro/claro
   const { toggleColorMode, colorMode } = useColorMode();
   const currentTheme = useColorMode().colorMode;
-
+  const dispatch = useDispatch();
   // Info de Auth0
   const { isAuthenticated, user } = useAuth0();
-
+  useEffect(() => {
+    dispatch(getUserByEmail(user?.email));
+    // dispatch(getProductById(id));
+  }, [user]);
   return (
    <div>
   {/* NavBar */}

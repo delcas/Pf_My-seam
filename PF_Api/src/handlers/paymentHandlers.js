@@ -7,7 +7,7 @@ const postPaymentHandler = (req,res) => {
   })
 
   const { items } = req.body;
-  
+  console.log(items);
   // Crea un objeto de preferencia
   let preference = { items: [] };
   items.forEach(item => {
@@ -26,7 +26,7 @@ const postPaymentHandler = (req,res) => {
       console.log(error);
     });
 
-    const PagarProducto = async (req, res) => {
+    /* const PagarProducto = async (req, res) => {
       const { id } = req.params
       const datos = req.body.items
       const producto = await Producto.findById(id)
@@ -54,7 +54,7 @@ const postPaymentHandler = (req,res) => {
 
         }
       }
-    }
+    } */
 
 }
 

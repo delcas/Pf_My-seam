@@ -166,7 +166,7 @@
             <p><b>Total: $100</b></p>
           </div>
           <div className={styles.conatinerButtton}>
-            <Button className={styles.buttonContinue} size='lg' onClick={'onClose'}>Continuar</Button>
+            <Button className={styles.buttonContinue} size='lg' >Continuar</Button>
           </div>
       </div>
     )

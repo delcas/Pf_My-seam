@@ -1,5 +1,5 @@
 import questyle from "./Questions.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   Accordion,
@@ -8,36 +8,39 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from "@chakra-ui/react";
+import ModalBtn from "./ModalBtn.jsx";
 
-export default function Questions() {
+export default function Questions({ userId, details, ver }) {
+  const pId = details.id;
   const productQuestions = useSelector((state) => state.productQuestions);
-
-  // const acordionHandler = (productQuestions) => {
-  //   if (productQuestions){
-  //   return
-  //   });}
-  // }
-
+ console.log(ver);
+  
+  //       
   return (
     <div className={questyle.detailTable}>
       <div>
         <label colSpan="2">Preguntas:</label>
+        <span>
+        {ver ? '' : <ModalBtn userId={userId} ver={ver} id={pId} name='question'/>}
+        </span>
       </div>
       <div>
         {productQuestions.length > 0 ? (
           <Accordion>
-            {productQuestions.map((q) => <AccordionItem>
+            {productQuestions.map((q) => (
+              <AccordionItem>
                 <h2>
                   <AccordionButton>
                     <Box as="span" flex="1" textAlign="left">
                       {q.question}
                     </Box>
+                    {ver ? <ModalBtn userId={userId} ver={ver} id={q.id} name='answer'/> : ''}
                     <AccordionIcon />
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>{q.answer}</AccordionPanel>
               </AccordionItem>
-            )}
+            ))}
           </Accordion>
         ) : (
           ""
