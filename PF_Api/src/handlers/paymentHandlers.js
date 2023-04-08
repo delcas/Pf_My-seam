@@ -6,18 +6,13 @@ const postPaymentHandler = (req,res) => {
     access_token: process.env.ACCESS_TOKEN,
   })
 
-  const { name, price, quantity } = req.body;
+  const { items } = req.body;
   
   // Crea un objeto de preferencia
-  let preference = {
-    items: [
-      {
-        title: name,
-        unit_price: price,
-        quantity: quantity,
-      },
-    ],
-  };
+  let preference = { items: [] };
+  items.forEach(item => {
+    preference.items.push(item)
+  });
 
   mercadopago.preferences.create(preference)
     .then(function (response) {
