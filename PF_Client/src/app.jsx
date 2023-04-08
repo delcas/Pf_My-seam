@@ -12,7 +12,6 @@ import { Error404 } from './components/Error404/Error404';
 import { ServiceDetail } from './views/ServiceDetail/ServiceDetail';
 import { Service } from './views/Service/Service';
 import { Checkout } from './views/Checkout/Checkout';
-import { MercadoPago } from './views/Checkout/MercadoPago'
 import { useAuth0 } from "@auth0/auth0-react";
 
 const backend =import.meta.env.VITE_BACKEND_URL;
@@ -23,7 +22,7 @@ axios.defaults.baseURL = backend
 function App() {
   const location = useLocation();
   const { isAuthenticated, user } = useAuth0();
-  console.log('line 25 app.jsx, user: ', user);
+  
   return (
     <Routes>
       <Route exact path = '/' element = {<Landing />}/>
@@ -32,7 +31,7 @@ function App() {
       <Route path = '/create' element = {<Create isAuthenticated={isAuthenticated} user={user}/>}/>
       <Route path = '/promotions' element = {<Promotions />}/>
       <Route path = '/categories' element = {<Categories />}/>
-      <Route path = '/checkout' element = {<MercadoPago />}/>
+      <Route path = '/checkout' element = {<Checkout />}/>
       <Route path = '/ProductDetail/:id' element = {<ProductDetail isAuthenticated={isAuthenticated} user={user}/>}/>
       <Route path = '/profile' element = {<Profile isAuthenticated={isAuthenticated} user={user}/>}/> 
       <Route path = '/ServiceDetail/:id' element={<ServiceDetail isAuthenticated={isAuthenticated} user={user} />}/>

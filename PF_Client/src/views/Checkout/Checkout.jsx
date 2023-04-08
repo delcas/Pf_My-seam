@@ -1,37 +1,36 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import styles from './Checkout.module.css'
 import { NavBar } from '../../components/NavBar/NavBar';
 import { Link } from 'react-router-dom'
 import { FormCheckout } from './FormCheckout/FormCheckout';
-import { Context } from '../../hooks/ContextProvider'
 // Auth0
 import { useAuth0 } from '@auth0/auth0-react';
 // MercadoPago
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-initMercadoPago('TEST-adb5c9d4-6417-4432-8c36-d350d1439274');
+const VITE_PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
+initMercadoPago(VITE_PUBLIC_KEY);
 
-export const Checkout = ({ onClick }) => {
-  // Auth0
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
+export const Checkout = () => {
 
-  const [isVisible, setIsVisible] = useState(true);
-  const { preferenceId, isLoading: disabled, orderData, setOrderData } = useContext(Context);
+  const id  = 7; // id de producto
+  const [preferenceId, setPreferenceId] = useState(null);
 
   useEffect(() => {
-    if (preferenceId) setIsVisible(false);
-  }, [preferenceId])
-
-  const updatePrice = (event) => {
-    const quantity = event.target.value;
-    const amount = parseInt(orderData.price) * parseInt(quantity);
-    setOrderData({ ...orderData, quantity, amount });
-  }
+    // luego de montarse el componente, le pedimos al backend el preferenceId
+    axios.post('/payment', { preferenceId: id }).then((order) => {
+      setPreferenceId(order.preferenceId);
+    });
+  }, [id]);
+  
+  // Auth0
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   // Estado para guardar los errores del form
   const [err, setErr]= useState({});
   
   // Estado de los campos del registro de domicilio
-  const[input, setInput] = useState({
+  const [input, setInput] = useState({
     codigo_postal: '',
     estado: '',
     ciudad: '',
@@ -57,15 +56,7 @@ export const Checkout = ({ onClick }) => {
       {/* Usuario Registrado */}
       <div className={!isAuthenticated ? styles.hide : ''}>
         <FormCheckout err={err} setErr={setErr} input={input} setInput={setInput} />
-        {/* <Wallet initialization={{ preferenceId: '<PREFERENCE_ID>', redirectMode: 'self' }} />  */}
-        <button
-          className="btn btn-primary btn-lg btn-block"
-          onClick={onClick}
-          id="checkout-btn"
-          disabled={disabled}
-        >
-          Checkout
-        </button>
+        <Wallet initialization={{ preferenceId: preferenceId }} /> 
       </div>
       
     </div>
