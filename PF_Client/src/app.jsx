@@ -11,6 +11,7 @@ import { Checkout } from './views/Checkout/Checkout'
 import { Error404 } from './components/Error404/Error404';
 import { ServiceDetail } from './views/ServiceDetail/ServiceDetail';
 import { Service } from './views/Service/Service';
+import { UserList } from './components/UserList/UserList'
 import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -36,6 +37,7 @@ function App() {
       <Route path = '/checkout' element = {<Checkout />}/>
       <Route path = '/ServiceDetail/:id' element={<ServiceDetail isAuthenticated={isAuthenticated} user={user} />}/>
       <Route path = '/service' element={<Service />}/>
+      <Route path = '/users' element={<UserList />}/>
       <Route path = '*' element = {<Error404 />}/> 
     </Routes >
   );
