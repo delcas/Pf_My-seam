@@ -86,7 +86,7 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
     <div>
       <NavBar />
       {details.length !== 0 ? (
-        <div>
+        <div >
           <h1> Detalle del producto </h1>
           <Detail 
           userId={userId}
