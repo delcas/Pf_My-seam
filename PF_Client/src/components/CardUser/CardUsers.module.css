@@ -1,0 +1,37 @@
+.titleSections {
+    margin: 0px 0 10px 30px;
+    font-weight: bolder;
+  }
+  
+  /* Card */
+  
+  .cardContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, min(min(100%, 25%)));
+    transition: all 0.8s ease;
+  }
+  
+  .hideCards {
+    display: none;
+  }
+  
+  /* Responsive */
+  
+  @media only screen and (max-width: 900px) {
+    .cardContainer {
+      grid-template-columns: repeat(auto-fill, min(min(100%, 33%)));
+    }  
+  }
+  
+  @media only screen and (max-width: 700px) {
+    .cardContainer {
+      grid-template-columns: repeat(auto-fill, min(min(100%, 50%)));
+    }  
+  }
+  
+  @media only screen and (max-width: 400px) {
+    .cardContainer {
+      grid-template-columns: repeat(auto-fill, min(min(100%, 100%)));
+    }  
+  }
+  
