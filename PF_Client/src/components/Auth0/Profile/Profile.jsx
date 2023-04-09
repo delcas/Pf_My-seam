@@ -67,7 +67,7 @@ const Profile = () => {
   return (
     isAuthenticated && (
       <div>
-        <NavBar />
+        <NavBar isAuthenticated={isAuthenticated} user={user}/>
         <Box>
           <Box
             borderWidth="3px"
