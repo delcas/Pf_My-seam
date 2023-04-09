@@ -1,0 +1,163 @@
+
+ [
+      {
+        "id": 1,
+        "nombre": "Camiseta blanca",
+        "descripcion": "Camiseta básica de algodón en color blanco",
+        "imagenes": ["https://ejemplo.com/camiseta-blanca.jpg"],
+        "cantidad": 10,
+        "precio": 15.99
+      },
+      {
+        "id": 2,
+        "nombre": "Camiseta negra",
+        "descripcion": "Camiseta básica de algodón en color negro",
+        "imagenes": ["https://ejemplo.com/camiseta-negra.jpg"],
+        "cantidad": 5,
+        "precio": 15.99
+      },
+      {
+        "id": 3,
+        "nombre": "Polo rojo",
+        "descripcion": "Polo clásico en color rojo",
+        "imagenes": ["https://ejemplo.com/polo-rojo-1.jpg", "https://ejemplo.com/polo-rojo-2.jpg"],
+        "cantidad": 7,
+        "precio": 25.99
+      },
+      {
+        "id": 4,
+        "nombre": "Polo azul",
+        "descripcion": "Polo clásico en color azul",
+        "imagenes": ["https://ejemplo.com/polo-azul-1.jpg", "https://ejemplo.com/polo-azul-2.jpg"],
+        "cantidad": 2,
+        "precio": 25.99
+      },
+      {
+        "id": 5,
+        "nombre": "Jeans ajustados",
+        "descripcion": "Jeans ajustados de tiro alto en color azul oscuro",
+        "imagenes": ["https://ejemplo.com/jeans-ajustados.jpg"],
+        "cantidad": 3,
+        "precio": 39.99
+      },
+      {
+        "id": 6,
+        "nombre": "Shorts deportivos",
+        "descripcion": "Shorts deportivos en color negro con detalles en blanco",
+        "imagenes": ["https://ejemplo.com/shorts-negros.jpg"],
+        "cantidad": 12,
+        "precio": 19.99
+      },
+      {
+        "id": 7,
+        "nombre": "Chaqueta de cuero",
+        "descripcion": "Chaqueta de cuero negra con cierre de cremallera",
+        "imagenes": ["https://ejemplo.com/chaqueta-cuero.jpg"],
+        "cantidad": 1,
+        "precio": 149.99
+      },
+      {
+        "id": 8,
+        "nombre": "Sudadera con capucha",
+        "descripcion": "Sudadera con capucha en color gris oscuro",
+        "imagenes": ["https://ejemplo.com/sudadera-gris.jpg"],
+        "cantidad": 8,
+        "precio": 29.99
+      },
+      {
+        "id": 9,
+        "nombre": "Jersey de lana",
+        "descripcion": "Jersey de lana en color beige",
+        "imagenes": ["https://ejemplo.com/jersey-beige.jpg"],
+        "cantidad": 4,
+        "precio": 49.99
+      },
+      {
+        "id": 10,
+        "nombre": "Abrigo de invierno",
+        "descripcion": "Abrigo de invierno acolchado en color negro",
+        "imagenes": ["https://ejemplo.com/abrigo-negro.jpg"],
+        "cantidad": 2,
+        "precio": 99.99
+        },
+        {
+        "id": 11,
+        "nombre": "Botas de cuero",
+        "descripcion": "Botas de cuero en color marrón oscuro",
+        "imagenes": ["https://ejemplo.com/botas-marrones.jpg"],
+        "cantidad": 6,
+        "precio": 79.99
+        },
+        {
+        "id": 12,
+        "nombre": "Zapatillas deportivas",
+        "descripcion": "Zapatillas deportivas en color blanco con detalles en rojo",
+        "imagenes": ["https://ejemplo.com/zapatillas-blancas.jpg"],
+        "cantidad": 15,
+        "precio": 49.99
+        },
+        {
+        "id": 13,
+        "nombre": "Vestido negro",
+        "descripcion": "Vestido de noche negro con escote en V",
+        "imagenes": ["https://ejemplo.com/vestido-negro.jpg"],
+        "cantidad": 3,
+        "precio": 79.99
+        },
+        {
+        "id": 14,
+        "nombre": "Vestido rojo",
+        "descripcion": "Vestido de noche rojo con escote en V",
+        "imagenes": ["https://ejemplo.com/vestido-rojo.jpg"],
+        "cantidad": 2,
+        "precio": 89.99
+        },
+        {
+        "id": 15,
+        "nombre": "Falda de cuero",
+        "descripcion": "Falda de cuero en color negro",
+        "imagenes": ["https://ejemplo.com/falda-cuero.jpg"],
+        "cantidad": 4,
+        "precio": 59.99
+        },
+        {
+        "id": 16,
+        "nombre": "Blusa de seda",
+        "descripcion": "Blusa de seda en color rosa pálido",
+        "imagenes": ["https://ejemplo.com/blusa-rosa.jpg"],
+        "cantidad": 7,
+        "precio": 34.99
+        },
+        {
+        "id": 17,
+        "nombre": "Pantalón de vestir",
+        "descripcion": "Pantalón de vestir en color gris",
+        "imagenes": ["https://ejemplo.com/pantalon-gris.jpg"],
+        "cantidad": 6,
+        "precio": 49.99
+        },
+        {
+        "id": 18,
+        "nombre": "Chaleco",
+        "descripcion": "Chaleco en color azul marino",
+        "imagenes": ["https://ejemplo.com/chaleco-azul.jpg"],
+        "cantidad": 8,
+        "precio": 29.99
+        },
+        {
+        "id": 19,
+        "nombre": "Camisa de lino",
+        "descripcion": "Camisa de lino en color blanco",
+        "imagenes": ["https://ejemplo.com/camisa-blanca.jpg"],
+        "cantidad": 9,
+        "precio": 39.99
+        },
+        {
+        "id": 20,
+        "nombre": "Bufanda",
+        "descripcion": "Bufanda de lana en color gris",
+        "imagenes": ["https://ejemplo.com/bufanda-gris.jpg"],
+        "cantidad": 12,
+        "precio": 19.99
+      }
+    ]
