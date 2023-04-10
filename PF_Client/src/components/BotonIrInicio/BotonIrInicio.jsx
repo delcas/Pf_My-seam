@@ -25,7 +25,7 @@ export const BotonIrInicio = () => {
 
   return (
     <div>
-       <Link to='#home'>
+       <Link to='/home'>
        <img 
        src={botonArriba} 
        id='botonArriba' 
