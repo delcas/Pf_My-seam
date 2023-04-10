@@ -25,7 +25,7 @@ return <tr className={imstyle.row}><td>
                 className={imstyle.FlagImg}
                 src={details.image[currentImg]}
                 alt={`imagen del producto ${details.name}`}
-              />
+                />
             </td>
             {/* <td>{edit.s === "image" ?
           (
