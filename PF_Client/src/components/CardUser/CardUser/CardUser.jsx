@@ -23,12 +23,9 @@ export const CardUser = ({
   const handleBlock = () => {
     if (isBlock) {
       setIsBlock(false);
-      //props.deleteCharacter(props.id);
     } else {
       setIsBlock(true);
-      //props.addCharacter(props);
-      //console.log(props.myFavorites);
-      // console.log(props);
+      
     }
   };
 
