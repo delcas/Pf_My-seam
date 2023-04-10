@@ -26,9 +26,11 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
   const dispatch = useDispatch();
   const [currentImg, setCurrentImg] = useState(0);
   const userId = userInfo.id;
+  
   let ver;
   console.log(userId);
   console.log(details.userid );
+  console.log(details);
   userId === details.userid ? (ver = true) : (ver = false);
   
   const [edit, setEdit] = useState({
@@ -89,7 +91,7 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
         <div >
           <h1> Detalle del producto </h1>
           <Detail 
-          userId={userId}
+          userId={userId}          
           handleEdition={handleEdition}
           handleDelete={handleDelete}
           details={details}
