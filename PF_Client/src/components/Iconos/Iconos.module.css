@@ -1,0 +1,65 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.icono1,
+.icono2 {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    text-align: center;
+    /* Agregado para centrar las etiquetas */
+}
+
+.producto {
+    color: #FF8F00;
+    font-size: 3rem;
+    width: 240px;
+    height: 120px;
+}
+
+.servicio {
+    color: #FF8F00;
+    font-size: 3rem;
+    width: 240px;
+    height: 120px;
+}
+
+.spanes {
+    margin-top: 0.5rem;
+    /* Ajustar el espacio entre icono y etiqueta */
+}
+
+.icono1:hover .producto {
+    background-color: #FF8F00;
+    color: white;
+}
+
+.icono1:hover .spanes {
+    color: #FF8F00;
+}
+
+.icono2:hover .servicio {
+    background-color: #FF8F00;
+    color: white;
+}
+
+.icono2:hover .spanes {
+    color: #FF8F00;
+}
+
