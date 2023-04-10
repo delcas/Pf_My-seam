@@ -20,6 +20,7 @@ export const CardUsers =()=>{
   const dispatch = useDispatch();
   
   // Me traigo los estados del reducer 
+  
   let users = useSelector((state) => state.users);
 
   // Delimitar el indíce de los productos a paginar
@@ -29,7 +30,8 @@ export const CardUsers =()=>{
   useEffect(() => {
     dispatch(getUsers());
 
-    }, [])
+    }, [dispatch])
+
 
     return(
         <div>
