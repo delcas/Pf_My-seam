@@ -16,8 +16,6 @@ const postPaymentHandler = (req,res) => {
 
   mercadopago.preferences.create(preference)
     .then(function (response) {
-      // En esta instancia deberás asignar el valor dentro de response.body.id por el ID de preferencia solicitado en el siguiente paso
-      console.log(response)
       res.json({
         global: response.body.id,
       })
@@ -26,36 +24,16 @@ const postPaymentHandler = (req,res) => {
       console.log(error);
     });
 
-    /* const PagarProducto = async (req, res) => {
-      const { id } = req.params
-      const datos = req.body.items
-      const producto = await Producto.findById(id)
-      let preference = {
-        transaction_amount: parseInt(producto[0].price * 1.15),
-          net_amount: parseInt((producto[0].price) * 0.968 - 800),
-          taxes: [{
-            value: parseInt(producto[0].price * 1.15) - parseInt(producto[0].price),
-            type: "IVA"
-          }],
-        binary_mode: true,
-        payer: {
-          name: datos.nombre,
-          surname: datos.apellidos,
-          email: datos.email,
-          phone: {
-            number: parseInt(datos.telefono),
-            area_code: "57",
-          },
-          address: {
-            zip_code: datos.postal,
-            street_name: datos.barrio,
-            street_number: parseInt(datos.street_number)
-          },
-
-        }
-      }
-    } */
-
 }
 
-module.exports = postPaymentHandler;
+const getAuthCode = (req,res) => {
+  const { code, status } = req.query;
+  try {
+    sendInformationMP(code)
+    res.status(200).json(code);
+  } catch (error) {
+    res.status(400)
+  }
+}
+
+module.exports = {postPaymentHandler, getAuthCode};
