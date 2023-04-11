@@ -1,28 +1,16 @@
-import { useState } from 'react'
-// key = "name"
-// initialValue = objeto/string a guardar
+import { useState, useEffect } from 'react'
 
+// key = Es el valor a guardar en localStorage
+// initialValue = Por si no hay nada que guardar
 export const UseLocalStorage = (key, initialValue) => {
+  const [value, setValue] = useState(() => {
+    const storedValue = window.localStorage.getItem(key);
+    return storedValue !== null ? JSON.parse(storedValue) : initialValue
+  });
 
-  // Guardar initialValue en Local storage formato "String"
-  const [storedValue, setStoredValue] = useState(() => {
-    try {
-      const item = window.localStorage.getItem(key)
-      return item ? JSON.parse(item) : initialValue
-    } catch (error) {
-      return initialValue
-      }
-  })
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(value))
+  }, [key, value])
 
-  // Mostrar Local storage formato "Json/Objeto"
-  const setValue = initialValue => {
-    try {
-      setStoredValue(initialValue)
-      window.localStorage.setItem(key, JSON.stringify(initialValue))
-    } catch (error) {
-        console.log(error);
-      }
-  }
-
-  return [storedValue, setValue]
+  return [value, setValue];
 }

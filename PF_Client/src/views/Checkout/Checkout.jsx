@@ -1,28 +1,26 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import React, { useState, useEffect, useContext } from 'react'
 import styles from './Checkout.module.css'
 import { NavBar } from '../../components/NavBar/NavBar';
 import { Link } from 'react-router-dom'
 import { FormCheckout } from './FormCheckout/FormCheckout';
+import { Context } from "../../hooks/ContextProvider";
 // Auth0
 import { useAuth0 } from '@auth0/auth0-react';
 // MercadoPago
-import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
+import { initMercadoPago } from "@mercadopago/sdk-react";
 const VITE_PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
 initMercadoPago(VITE_PUBLIC_KEY);
 
-export const Checkout = () => {
+export const Checkout = ({ onClick, cart  }) => {
 
-  const id  = 7; // id de producto
-  const [preferenceId, setPreferenceId] = useState(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const { preferenceId, isLoading: disabled, orderData, setOrderData } = useContext(Context);
 
   useEffect(() => {
-    // luego de montarse el componente, le pedimos al backend el preferenceId
-    axios.post('/payment', { preferenceId: id }).then((order) => {
-      setPreferenceId(order.preferenceId);
-    });
-  }, [id]);
-  
+    if (preferenceId) setIsVisible(false);
+  }, [preferenceId])
+
+
   // Auth0
   const { isAuthenticated, loginWithRedirect } = useAuth0();
 
@@ -40,7 +38,7 @@ export const Checkout = () => {
     entre_calles: '',
     telefono: '',
     referencia_direccion: '',
-    recordar: false,
+    recordar_direccion: false,
   })
 
   return (
@@ -55,8 +53,15 @@ export const Checkout = () => {
       
       {/* Usuario Registrado */}
       <div className={!isAuthenticated ? styles.hide : ''}>
-        <FormCheckout err={err} setErr={setErr} input={input} setInput={setInput} />
-        <Wallet initialization={{ preferenceId: preferenceId }} /> 
+        <FormCheckout err={err} setErr={setErr} input={input} setInput={setInput} cart={cart} />
+        <button
+          className="btn btn-primary btn-lg btn-block"
+          onClick={onClick}
+          id="checkout-btn"
+          disabled={disabled || cart.length < 1}
+        >
+          Pagar
+        </button>
       </div>
       
     </div>

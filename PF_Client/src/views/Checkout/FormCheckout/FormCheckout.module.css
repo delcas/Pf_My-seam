@@ -34,6 +34,10 @@
   font-weight: bolder;
 }
 
+.containerResume b {
+  color: rgb(85, 150, 92);
+}
+
 /* Botones */
 
 .buttonContinue {

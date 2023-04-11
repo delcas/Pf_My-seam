@@ -13,6 +13,7 @@ import { ServiceDetail } from './views/ServiceDetail/ServiceDetail';
 import { Service } from './views/Service/Service';
 import { Checkout } from './views/Checkout/Checkout';
 import { useAuth0 } from "@auth0/auth0-react";
+import { MercadoPago } from './views/Checkout/MercadoPago'
 
 const backend =import.meta.env.VITE_BACKEND_URL;
 axios.defaults.baseURL = backend
@@ -31,7 +32,7 @@ function App() {
       <Route path = '/create' element = {<Create isAuthenticated={isAuthenticated} user={user}/>}/>
       <Route path = '/promotions' element = {<Promotions />}/>
       <Route path = '/categories' element = {<Categories />}/>
-      <Route path = '/checkout' element = {<Checkout />}/>
+      <Route path = '/checkout' element = {<MercadoPago />}/>
       <Route path = '/ProductDetail/:id' element = {<ProductDetail isAuthenticated={isAuthenticated} user={user}/>}/>
       <Route path = '/profile' element = {<Profile isAuthenticated={isAuthenticated} user={user}/>}/> 
       <Route path = '/ServiceDetail/:id' element={<ServiceDetail isAuthenticated={isAuthenticated} user={user} />}/>
