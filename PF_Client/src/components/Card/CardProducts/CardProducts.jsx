@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './CardProducts.module.css';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { UseLocalStorage } from '../../../hooks/UseLocalStorage';
 //Chakra
 import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
 import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
@@ -10,11 +11,15 @@ export const CardProducts = ({ id, image, name, price, description }) => {
   // Cambiar , id, image, name, price, d tema entre oscuro/claro 
   const { toggleColorMode, colorMode } = useColorMode();  
   const currentTheme = useColorMode().colorMode
-
+  if (name.length > 15){
+    name = name.slice(0,14) + "..."    
+  }
+   
   // Me traigo el estado del reducer 
-  const cart = useSelector(state => state.cart)
   const allProducts = useSelector(state => state.allProducts)
-  
+  const cart = useSelector(state => state.cart)
+  const [cartLocalStorage, setCartLocalStorage] = UseLocalStorage('cart', []);
+
   // Muestra alerta/notificación del producto añadido al carrito de compras
   const [notify, setNotify] = useState(false);
 
@@ -31,9 +36,8 @@ export const CardProducts = ({ id, image, name, price, description }) => {
     } else {
         newProduct.quantity = 1 
         cart.push(newProduct)
+        setCartLocalStorage(newProduct)
       }
-    // window.localStorage.setItem('mycart', JSON.stringify(cart))
-
     showNotify();
   }
  
@@ -56,7 +60,7 @@ export const CardProducts = ({ id, image, name, price, description }) => {
           <Icon as={BsFillCartPlusFill} w={8} h={8} className={styles.buttonCart} onClick={handleCart} title="Agregar al carrito"/>
           <Icon as={BsFillHeartFill} w={8} h={8} className={styles.buttonFavourites} title="Agregar a favoritos"/>
           <Link className={styles.Link} to= {`/ProductDetail/${id}`}>
-            <h1 className={styles.textBig} title="Haz clic para ver más detalles">{name}</h1>
+            <h1 className={styles.textMedium} title="Haz clic para ver más detalles">{name}</h1>
             <h2 className={styles.textMedium} title="Haz clic para ver más detalles"> ${price}</h2>
             <h3 className={styles.textSmall}> {description}</h3>
           </Link>

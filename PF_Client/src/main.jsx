@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
 const DOMAIN = import.meta.env.VITE_DOMAIN;
 const CLIENTID = import.meta.env.VITE_CLIENTID;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 // Configuración Chakra
 import { ChakraProvider } from "@chakra-ui/react";
@@ -22,6 +23,7 @@ root.render(
       <Auth0Provider
         domain={DOMAIN}
         clientId={CLIENTID}
+        backendUrl={BACKEND_URL}
         authorizationParams={{
           redirect_uri: window.location.origin,
         }}

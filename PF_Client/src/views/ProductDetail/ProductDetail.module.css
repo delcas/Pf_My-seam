@@ -2,14 +2,22 @@
     color: aqua;
 }
 
-.detailTable-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-
 .bg{
     background-repeat: no-repeat;
     background-size: 80%;
     background-position: center;
     height: 35em;
 }
+.buttonCart {
+    background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  }

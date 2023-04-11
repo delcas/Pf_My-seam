@@ -5,4 +5,39 @@
 .containerPaginate {
   margin-bottom: 100px;
 }
+
+.page {
+  color: orange;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.page:hover {
+  background-color: orange;
+  color: white;
+}
+
+.pageActive {
+  background-color: orange;
+  width: 30px;
+  height: 38px;
+  color: white;
+  margin: auto;
+  border-radius: 5px;
+}
+
+.anteriorSiguiente {
+  background-color: white;
+  color: orange;
+  height: 38px;
+  max-width: 90px;
+  padding: 5px;
+  border: 1px solid rgb(218, 218, 218);
+  border-radius: 5px;
+}
+
+.anteriorSiguiente:hover {
+  color: white;
+  background-color: orange;
+}
   

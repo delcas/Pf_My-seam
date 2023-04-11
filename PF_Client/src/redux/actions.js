@@ -10,14 +10,16 @@ export const ORDER_BY_ALPHABET = "ORDER_BY_ALPHABET";
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
 export const SET_PRODUCT_CHANGE = "SET_PRODUCT_CHANGE";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
-
-
+export const GET_SERVICE_BY_ID = "GET_SERVICE_BY_ID";
+export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
+export const FILTER_BY_CATEGORY = " FILTER_BY_CATEGORY";
+export const FILTER_BY_GENDER = "FILTER_BY_GENDER";
 
 export const getUsers = () => {
   return async function (dispatch) {
     const usersData = await axios.get(`/users`);
     const users = usersData.data;
-    console.log('get users result: ', users.length);
+    console.log("get users result: ", users.length);
     dispatch({ type: GET_USERS, payload: users });
   };
 };
@@ -51,6 +53,14 @@ export const searchProductByName = (search) => {
   };
 };
 
+export const getServiceById = (id) => {
+  return async function (dispatch) {
+    const json = await axios.get(`/service/${id}`);
+    const details = json.data;
+    dispatch({ type: GET_SERVICE_BY_ID, payload: details });
+  };
+};
+
 export const getProductById = (ID) => {
   return async function (dispatch) {
     const res = await axios.get(`/product/${ID}`);
@@ -59,9 +69,12 @@ export const getProductById = (ID) => {
   };
 };
 
-export const getProductQuestions = () => {
+export const getProductQuestions = (pId) => {
+  console.log("getProdQ pre axios", pId);
   return async function (dispatch) {
-    const productQuestionData = await axios.get(`/questprod/product`);
+    const productQuestionData = await axios.get(
+      `/questprod/product/?offerId=${pId}`
+    );
     const ProductQuestions = productQuestionData.data;
     dispatch({ type: GET_PRODUCT_QUESTION, payload: ProductQuestions });
   };
@@ -77,14 +90,28 @@ export const getPromotions = () => {
 };
 
 export const orderByAlphabet = (type) => {
-  return { type: ORDER_BY_ALPHABET, payload: type };
+  return { type: ORDER_BY_ALPHABET, payload: type};
 };
 
+
 export const nameAlphabet = (a, b) => {
-  if (a.name < b.name) return -1;
-  if (b.name < a.name) return 1;
+  var aName = a.name.toLowerCase();
+  var bName = b.name.toLowerCase();
+  if (aName < bName) return -1;
+  if (bName < aName) return 1;
   return 0;
+}
+
+
+
+export const filterByCategory = (category) => {
+  return { type: FILTER_BY_CATEGORY, payload: category };
 };
+
+export const filterByGender = (payload) => {
+  return { type: FILTER_BY_GENDER, payload,}
+};
+
 
 export function filterByPrice(payload) {
   // console.log('action por price')
@@ -98,7 +125,7 @@ export function setProductChange(id, change) {
   return async function (dispatch) {
     const res = await axios.put(`/product/${id}`, change);
     const detail = res.data;
-    console.log('generando cambio al Producto: ', detail);
+    console.log("generando cambio al Producto: ", detail);
     dispatch({
       type: SET_PRODUCT_CHANGE,
       payload: detail,
@@ -108,8 +135,16 @@ export function setProductChange(id, change) {
 
 export function deleteProduct(id) {
   return async function (dispatch) {
-    await axios.delete(`/product/?id=${id}`)
-    .then(dispatch(getProducts()))
+    await axios.delete(`/product/?id=${id}`).then(dispatch(getProducts()));
     console.log(`Se ejecutó la funcion de borrado del producto ${id}`);
+  };
+}
+
+export function getUserByEmail(info) {
+  return async function (dispatch) {
+    const emailData = await axios.get(`/users?email=${info}`);
+    const infoUser = emailData.data;
+    console.log(infoUser);
+    dispatch({ type: GET_USER_BY_EMAIL, payload: infoUser });
   };
 }

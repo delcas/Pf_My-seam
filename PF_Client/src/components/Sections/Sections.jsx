@@ -13,7 +13,7 @@ export const Sections = () => {
   return (
     <div className={products.length > 0 ? '' : styles.hideSections}>
       <div><h4 className={styles.titleSections}>Secciones populares</h4>
-        <div className={styles.containerSections}>
+        <div className={styles.containerSections} title="Haz clic para ver más detalles">
 
           {/* Imagen 1 */}
           <div className={styles.containerImg}>

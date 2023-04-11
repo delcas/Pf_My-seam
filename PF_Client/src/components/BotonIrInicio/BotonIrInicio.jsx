@@ -1,6 +1,9 @@
 import React from 'react';
 import styles from './BotonIrInicio.module.css';
 import botonArriba from '../../images/circle-up-solid.svg'
+import { Link } from "react-router-dom";
+
+
 export const BotonIrInicio = () => {
 
   // Posicionarse en el inicio de la página con un botón
@@ -22,16 +25,16 @@ export const BotonIrInicio = () => {
 
   return (
     <div>
-      <a href='#home'>
-        <img 
-          src={botonArriba} 
-          id='botonArriba' 
-          className={styles.hideBotonArriba}  
-          width='28px' 
-          height='28px' 
-          alt='BotonArriba'
-        />        
-      </a>
+       <Link to='/home'>
+       <img 
+       src={botonArriba} 
+       id='botonArriba' 
+       className={styles.hideBotonArriba}  
+       width='28px' 
+       height='28px' 
+       alt='BotonArriba'
+      />        
+  </Link>
     </div>
   )
 }
