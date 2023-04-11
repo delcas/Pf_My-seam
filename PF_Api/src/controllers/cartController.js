@@ -1,15 +1,18 @@
-const { Cart, Product, User } = require("../db.js");
-const Cart_Product = require("../models/Cart_Product.js");
+const { Cart, Product} = require("../db.js");
 
 module.exports={
-    postCartProduct:async({ customer_id, productid, quantity })=>{
+    postCartProduct: async({ customer_id, productid, quantity })=>{
+        console.log('Llega al controller');
         const new_cart = await Cart.create({
+            state: "En Compra",
             customer_id,
         });
-        const add_prod = await Cart_Product.create({
-            customer_id, productid, quantity }) 
-        console.log('Controller postCart: ', new_cart.toJSON());
-        return new_cart;
+        const add_prod = await new_cart.addProduct(productid, {
+            through: {
+              quantity: quantity
+            }
+          });
+        return add_prod;
     },
     getCartProducts:
     async()=>{
@@ -22,7 +25,7 @@ module.exports={
                 state: "En Compra",
             }            
         })
-        console.log('Controller postCart: ', new_cart.toJSON());
+        console.log('Controller postCart: ', new_cart);
         return new_cart;
     },    
 
