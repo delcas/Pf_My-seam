@@ -1,4 +1,5 @@
 const {
+  getActiveCart,
   getCartProducts,
   postCartProduct,
   deleteCartProduct,
@@ -6,7 +7,7 @@ const {
 } = require("../controllers/cartController");
 
 let cartItem = [];
-
+module.exports = {
 // (const getCartProducts = async (req, res) => {
 //   try {
 //     cartItem = JSON.parse(localStorage.getItem("cartItem")) || [];
@@ -16,22 +17,22 @@ let cartItem = [];
 //   }
 // };)
 
-const createCartProduct = async (req, res) => {
-    const { cartid, productid, quantity } = req.body;
+createCartProduct: async (req, res) => {
+    const { customer_id, productid, quantity } = req.body;
   try {
-  const new_cart = await postCartProduct({ cartid, productid, quantity })
+    const active = await getActiveCart(customer_id);
+    if(!active.id) {
+      const new_cart = await postCartProduct({ customer_id, productid, quantity })
+    }
+  
+  res.status(201).json(new_cart);
   } catch (error) {
-    res.status()
+    res.status(400).send(error.message);
   }
-};
+},
 
 // const deleteCartProduct = async (req, res) => {};
 
 // const deleteCartAllProducts = async (req, res) => {};
 
-module.exports = {
-  getCartProducts,
-  postCartProduct,
-  deleteCartAllProducts,
-  deleteCartProduct,
 };

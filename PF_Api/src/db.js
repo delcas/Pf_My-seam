@@ -58,8 +58,8 @@ User.hasMany(Questserv, { foreignKey: 'user_id' });
 Questserv.belongsTo(User, { foreignKey: 'user_id' });
 
 User.hasOne(Cart, { foreignKey: 'customer_id' });
-Cart.belongsToMany(Product, { through: 'Cart_Product' });
-Product.belongsToMany(Cart, { through: 'Cart_Product' });
+Cart.belongsToMany(Product, { through: 'cart_product' });
+Product.belongsToMany(Cart, { through: 'cart_product' });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
