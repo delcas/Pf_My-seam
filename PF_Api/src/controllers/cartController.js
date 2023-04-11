@@ -19,19 +19,23 @@ module.exports={
 
     }, 
     getActiveCart: async(customer_id)=>{
-        const new_cart = await Cart.findAll({
+        const new_cart = await Cart.findOne({
             where: {
                 customer_id,
                 state: "En Compra",
             }            
         })
-        console.log('Controller postCart: ', new_cart);
+        console.log('Controller getCart: ', new_cart.toJSON());
         return new_cart;
     },    
 
-    // AddProductToCart: async({ customer_id, productid, quantity })=>{
-    //     const add_prod = await Cart_Product.upsert({ customer_id, productid, quantity }) 
-    // },
+    AddProductToCart: async({ active, productid, quantity })=>{
+        return await active.addProduct(productid, {
+            through: {
+              quantity: quantity
+            }
+          }) 
+    },
     
     deleteCartProduct: async()=>{
         

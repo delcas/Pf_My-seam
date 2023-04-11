@@ -1,5 +1,6 @@
 const {
   getActiveCart,
+  AddProductToCart,
   getCartProducts,
   postCartProduct,
   deleteCartProduct,
@@ -22,11 +23,15 @@ createCartProduct: async (req, res) => {
     console.log('CartPost handler: ', customer_id, productid, quantity );
   try {
     const active = await getActiveCart(customer_id);
-    console.log('CartPost active: ', active)
-    if(!active.id) {
+    const ver = active.toJSON();
+    console.log(ver.id);
+    if(!ver.id) {
       const new_cart = await postCartProduct({ customer_id, productid, quantity })
       res.status(201).json(new_cart);
-    }  
+    } else {
+      const in_cart = await AddProductToCart({ active, productid, quantity });
+      res.status(201).json(in_cart);
+    }
   
   } catch (error) {
     console.log(error.message);
