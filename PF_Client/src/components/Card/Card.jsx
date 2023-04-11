@@ -31,7 +31,7 @@ export const Card = () => {
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getUsers());
-  }, [])
+  }, [dispatch])
 
   return (
     <div>  
