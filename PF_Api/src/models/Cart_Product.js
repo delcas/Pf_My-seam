@@ -10,22 +10,6 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      // cartid: {
-      //   type: DataTypes.INTEGER,
-      //   references: {
-      //     model: Cart,
-      //     key: "id",
-      //   },
-      //   allowNull: false,
-      // },
-      // productid: {
-      //   type: DataTypes.INTEGER,
-      //   references: {
-      //     model: Product,
-      //     key: "id",
-      //   },
-      //   allowNull: false,
-      // },
       quantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
