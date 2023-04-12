@@ -40,6 +40,10 @@ export const MercadoPago = () => {
       headers: {
         "Content-Type": "application/json",
       },
+      "grant_type": "refresh_token",
+      "client_id": "$APP_ID",
+      "client_secret": "$SECRET_KEY",
+      "refresh_token": "$REFRESH_TOKEN",
       body: JSON.stringify(orderData),
     })
       .then((response) => {

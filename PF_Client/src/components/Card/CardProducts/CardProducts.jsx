@@ -11,7 +11,10 @@ export const CardProducts = ({ id, image, name, price, description }) => {
   // Cambiar , id, image, name, price, d tema entre oscuro/claro 
   const { toggleColorMode, colorMode } = useColorMode();  
   const currentTheme = useColorMode().colorMode
-
+  if (name.length > 15){
+    name = name.slice(0,14) + "..."    
+  }
+   
   // Me traigo el estado del reducer 
   const allProducts = useSelector(state => state.allProducts)
   const cart = useSelector(state => state.cart)

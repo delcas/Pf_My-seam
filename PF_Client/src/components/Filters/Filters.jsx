@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { filterByPrice,orderByAlphabet,getProducts,filterByCategory,filterByGender  } from '../../redux/actions';
 import { Button, Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton,
-        } from '@chakra-ui/react'
+} from '@chakra-ui/react'
+
 
 export const Filters = ({ setCurrentPage }) => {
 
@@ -131,7 +132,7 @@ const handleFilterClick = (e) => {
           </DrawerFooter>
       </DrawerContent>
       </Drawer>
-
+          
     </div>
   )
 }
