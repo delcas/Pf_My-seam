@@ -39,25 +39,27 @@ const AddProductToCart = async ({ active, prods }) => {
 const getCustomersCartProducts = async (customer_id) => {
   const carts = await Cart.findAll({
     where: {
-        customer_id,
+      customer_id,
     },
     include: {
-            model: Product
-        }
-    });
+      model: Product,
+    },
+  });
   return carts;
 };
 const putCartProduct = async (edit_data) => {
-    const { cartid, state, productid, quantity, conclusion } = edit_data;
-    const edit_cart = await Cart.findByPk(cartid);
-    if (state) {        
-    await edit_cart?.update(state)
-};
-if (productid) {
-    await AddProductToCart(edit_cart, {productid, quantity});
-}
+  const { cartid, state, productid, quantity, conclusion } = edit_data;
+  const edit_cart = await Cart.findByPk(cartid);
+  if (state) {
+    await edit_cart?.update({ state });
+  }
+  if (productid) {
+    await AddProductToCart(edit_cart, { productid, quantity });
+  }
+//   if (conclusion) {
 
-
+//   }
+  return edit_cart;
 };
 const deleteCartProduct = async () => {};
 const deleteCartAllProducts = async () => {};

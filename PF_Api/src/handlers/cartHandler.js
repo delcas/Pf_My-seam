@@ -43,9 +43,9 @@ module.exports = {
     }
   },
   modifyCartProduct: async (req, res) => {
-    const { edit_data } = req.body;
+    const edit_data = req.body;
     try {
-      const modify = await putCartProduct({ edit_data });
+      const modify = await putCartProduct( edit_data );
       res.status(200).json(modify);
     } catch (error) {
       res.status(400).send(error.massage);
