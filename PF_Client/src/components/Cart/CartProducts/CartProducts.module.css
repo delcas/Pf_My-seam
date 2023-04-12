@@ -50,6 +50,7 @@
   font-size: 1rem;
   height: 1.7rem;
   width: 1.7rem;
+  margin-bottom: 2px;
 }
 
 .quantity input {
@@ -60,6 +61,8 @@
   outline-offset: -2px;
   text-align: center;
   width: 2rem;
+  height: 1.7rem;
+  margin-bottom: 2px;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -70,6 +73,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 .buttonLess {
   margin-left: 15px;
+}
+
+.buttonAdd {
+  margin-left: 0px;
 }
 
 .buttonDeleteItem {

@@ -5,7 +5,7 @@
 
 .containerForm {
   max-width: 55%;
-  margin: 20px 0 100px 20px;
+  margin: 20px 0 40px 20px;
   padding: 20px;
   background-color: rgba(82, 101, 172, 0.133);
   border-radius: 30px;
@@ -14,7 +14,7 @@
 
 .containerResume {
   min-width: 35%;
-  margin: 20px 20px 100px 5%;
+  margin: 20px 20px 40px 5%;
   padding: 20px;
   background-color: rgba(82, 101, 172, 0.133);
   border-radius: 30px;
@@ -32,6 +32,10 @@
   margin-bottom: 20px;
   font-size: 2rem;
   font-weight: bolder;
+}
+
+.containerResume b {
+  color: rgb(85, 150, 92);
 }
 
 /* Botones */

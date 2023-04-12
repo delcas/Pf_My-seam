@@ -66,7 +66,7 @@ export const CartProducts = ({ cart, totalPrice, setTotalPrice, totalQuantity, s
               <div className={styles.quantity}>
                 <button title='Restar 1 unidad' className={styles.buttonLess} onClick={reduceQuantity}>-</button>
                 <input type='number' value={itemsPerProduct} onChange={(e) => handleChangeQuantity(e)}></input>
-                <button title='Sumar 1 unidad' onClick={addQuantity}>+</button>
+                <button title='Sumar 1 unidad' className={styles.buttonAdd} onClick={addQuantity}>+</button>
               </div>
             </div>
 

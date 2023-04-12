@@ -1,32 +1,34 @@
-import React, { useCallback, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useState, useEffect, useContext } from 'react'
 import styles from './Checkout.module.css'
 import { NavBar } from '../../components/NavBar/NavBar';
 import { Link } from 'react-router-dom'
+import { FormCheckout } from './FormCheckout/FormCheckout';
+import { Context } from "../../hooks/ContextProvider";
 // Auth0
 import { useAuth0 } from '@auth0/auth0-react';
 // MercadoPago
-import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-import { fetchSToken } from '../../hooks/fetchMethod';
-import { MercadoPago } from './MercadoPago';
-import { FormCheckout } from './FormCheckout/FormCheckout';
-initMercadoPago('TEST-5a50f864-462e-4e42-89bf-304bce74b5fd');
+import { initMercadoPago } from "@mercadopago/sdk-react";
+const VITE_PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
+initMercadoPago(VITE_PUBLIC_KEY);
 
-export const Checkout = () => {
-  // Info de Auth0
+export const Checkout = ({ onClick, cart  }) => {
+
+  const [isVisible, setIsVisible] = useState(true);
+  const { preferenceId, isLoading: disabled, orderData, setOrderData } = useContext(Context);
+
+  useEffect(() => {
+    if (preferenceId) setIsVisible(false);
+  }, [preferenceId])
+
+
+  // Auth0
   const { isAuthenticated, loginWithRedirect } = useAuth0();
-
-  const { id } = useParams()
 
   // Estado para guardar los errores del form
   const [err, setErr]= useState({});
   
-
-  const [state, setState] = useState()
-  const [cargar, setCarga] = useState(true)
-  const [pagar, setPagar] = useState(false)
-
-  const[input, setInput] = useState({
+  // Estado de los campos del registro de domicilio
+  const [input, setInput] = useState({
     codigo_postal: '',
     estado: '',
     ciudad: '',
@@ -36,21 +38,8 @@ export const Checkout = () => {
     entre_calles: '',
     telefono: '',
     referencia_direccion: '',
-    recordar: false,
+    recordar_direccion: false,
   })
-
-  const cargarProductos = useCallback(
-    async() => {
-      const infoProducto = await fetchSToken(`producto/${id}`)
-      if (infoProducto.ok) {
-        setState(infoProducto)
-        setCarga(false)
-        return true
-      } else {
-        return false
-      }
-    }, [setState, id]
-  )
 
   return (
     <div>
@@ -64,9 +53,15 @@ export const Checkout = () => {
       
       {/* Usuario Registrado */}
       <div className={!isAuthenticated ? styles.hide : ''}>
-        <FormCheckout err={err} setErr={setErr} input={input} setInput={setInput} />
-        {/* {pagar ? null : <MercadoPago items={input} />}
-        <Wallet initialization={{ preferenceId: '<PREFERENCE_ID>' }} /> */}
+        <FormCheckout err={err} setErr={setErr} input={input} setInput={setInput} cart={cart} />
+        <button
+          className="btn btn-primary btn-lg btn-block"
+          onClick={onClick}
+          id="checkout-btn"
+          disabled={disabled || cart.length < 1}
+        >
+          Pagar
+        </button>
       </div>
       
     </div>
