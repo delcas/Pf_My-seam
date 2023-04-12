@@ -49,8 +49,14 @@ const getCustomersCartProducts = async (customer_id) => {
 };
 const putCartProduct = async (edit_data) => {
     const { cartid, state, productid, quantity, conclusion } = edit_data;
-    const edit_cart = await Cart.findByPk(edit_cart.id);
-    await edit_cart?.update({  });
+    const edit_cart = await Cart.findByPk(cartid);
+    if (state) {        
+    await edit_cart?.update(state)
+};
+if (productid) {
+    await AddProductToCart(edit_cart, {productid, quantity});
+}
+
 
 };
 const deleteCartProduct = async () => {};
