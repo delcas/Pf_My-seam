@@ -1,0 +1,147 @@
+/* General*/
+
+body {
+    margin: 0;
+    font-family: 'Mulish', cursive, sans-serif;
+    /* font-family: 'Mulish', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Rubik Dirt', cursive;
+    font-family: 'Share Tech Mono', monospace;  -webkit-font-smoothing: antialiased; */
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  .textBig {
+    font-size: 25px;
+    color: black;
+    text-align: center;
+    display: none;
+  }
+  
+  .textMedium {
+    font-size: 20px;
+    color:white;
+    text-shadow: 2px 2px black;
+    font-weight: 300;
+    text-align: center;
+  }
+  
+  .textSmall {
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    display: none;
+  }
+  
+  .imgCenter {
+    display: block;
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: grey;
+    width: 100%;
+    height: 220px;
+    border-radius: 15px;
+  }
+  
+  .Link {
+    text-decoration: none;
+  }
+  
+
+  /* Button Load */
+  
+  .buttonLoad {
+    background-color: rgb(10, 53, 118);
+    margin: auto;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+    transition: all 1s ease-out;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .buttonLoad:hover {
+    color: rgb(10, 53, 118);
+    background-color: white;
+    padding: 9px;
+  }
+  
+  /* Card */
+  
+  .cardDarkTheme {
+    display: block;
+        margin: 20px 30px 10px 0;
+    transition: all 0.8s ease;
+    background-color: rgb(255, 102, 0);
+    border-radius: 15px;
+  }
+  
+  .cardLightTheme {
+    display: block;   
+    margin: 20px 30px 10px 0;
+    transition: all 0.8s ease;
+    background-color: #f18100;
+    border-radius: 15px;
+  }
+  
+  .cardDarkTheme:hover .textBig {
+    display: block;
+  }
+  
+  .cardLightTheme:hover .textBig {
+    display: block;
+  }
+  
+  /* Alerta producto agregado */
+  
+  .notifySlideIn {
+      animation-duration: 4s;
+      animation-delay: -1s;
+      animation-name: slidein;
+      animation-direction: alternate;
+      animation-fill-mode: forwards;
+  }
+  
+  @keyframes slidein {
+      0% {
+          top: -100%;
+      }
+  
+      40% {
+          top: 90px;
+      }
+  
+      60% {
+          top: 90px;
+      }
+  
+      100% {
+          top: -100%;
+      }
+  }  
+
+  /* List */
+  .list {
+  background: white;
+  border-radius: 2px;
+  list-style: none;
+  height: 5px;
+  padding: 10px 20px;
+}
+.list_item {
+  display: flex;
+  margin: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  
+}
+.list_wrapper{
+  max-width: 400px;
+  margin: 50px auto;
+}

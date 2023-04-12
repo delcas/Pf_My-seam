@@ -29,8 +29,10 @@
 
 .FlagImg{ 
     padding: 2px;
-    box-shadow: 5px 5px 5px 0px rgba(216, 206, 206, 0.3); 
-    overflow-clip-margin: unset;     
+    box-shadow: 5px 5px 5px 0px rgba(255, 81, 0, 0.986); 
+    overflow-clip-margin: unset;  
+    width:100em;
+    height:15em;    
 }
 
 .box{

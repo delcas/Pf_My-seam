@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserByEmail } from "../../redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
+import { SectionsAdmin } from "../../components/SectionsAdmin/SectionsAdmin";
 
 export const Home = () => {
   const { isAuthenticated, user } = useAuth0();
@@ -17,8 +18,10 @@ export const Home = () => {
     
       return (
       <>
+       <NavBar isAuthenticated={isAuthenticated} user={user} />
       <h1>BIENVENIDO ADMINISTRADOR</h1>
       <Link to="/profile">PROFILE</Link>
+      <SectionsAdmin />
       {/* <NavBar isAuthenticated={isAuthenticated} user={user} /> */}
       </>);
   
