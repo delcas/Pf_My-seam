@@ -1,24 +1,22 @@
 const { DataTypes } = require("sequelize");
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+// const{ Cart, Product }= require("../db.js");
 module.exports = (sequelize) => {
-  // defino el modelo
   sequelize.define(
-    "questprod",
+    "cart_product",
     {
       id: {
         type: DataTypes.INTEGER,
-        allowNull:false,
+        allowNull: false,
         primaryKey: true,
         autoIncrement: true,
       },
-      question: {
-        type: DataTypes.TEXT,
+      quantity: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
-      answer: {
-        type: DataTypes.TEXT,
-        allowNull: true,
+      conclusion: {
+        type: DataTypes.STRING,
+        defaultValue: "Pendiente"
       },
     },
     {
