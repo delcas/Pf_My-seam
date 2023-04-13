@@ -1,0 +1,7 @@
+.stars{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(122, 121, 121, 0.4);
+    margin: 5px;    
+}
