@@ -6,9 +6,8 @@ const postCartProduct = async ({ customer_id, prods }) => {
   const new_cart = await Cart.create({
     state: "En Compra",
     customer_id,
-  });
-  await AddProductToCart(new_cart, prods);
-  return new_cart;
+  });  
+  return await AddProductToCart(new_cart, prods);
 };
 const getActiveCart = async (customer_id) => {
   const new_cart = await Cart.findOne({
@@ -21,10 +20,11 @@ const getActiveCart = async (customer_id) => {
   return new_cart;
 };
 const AddProductToCart = async ({ active, prods }) => {
-  const add_prods = prods?.map(async (p) => {
+  // const add_prods = await 
+  prods?.forEach(async (p) => {
     const prod = await Product.findByPk(p.productid);
-    console.log("Add prod controller stock: ", prod.stock);
-    if (p.quantity > prod.stock)
+    console.log("Add prod controller stock1: ", prod.stock);
+    if (prod && p.quantity > prod.stock)
       return `La cantidad solicitada de ${prod.name} supera el stock disponible, solo quedan ${prod.stock} unidades`;
     await active.addProduct(p.productid, {
       through: {
@@ -33,8 +33,15 @@ const AddProductToCart = async ({ active, prods }) => {
     });
     return await prod.toJSON();
   });
-  console.log("controller add products");
-  return await add_prods;
+  const act = active.toJSON();
+  return await Cart.findAll({
+    where: {
+      id: act.id,
+    },
+    include: {
+      model: Product,
+    },
+  });
 };
 const getCustomersCartProducts = async (customer_id) => {
   const carts = await Cart.findAll({
