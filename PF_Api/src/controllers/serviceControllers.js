@@ -4,17 +4,21 @@ const servicesJSON = require("../utils/services.json");
 
 module.exports = {
   serviceCreator: async (data) => {
-    const { name, description, price, userid } = data;
+    const { name, description, price, number, email, country, city, userid } = data;
     // imagen dummy
     const image = [
       "https://www.objetivobienestar.com/uploads/s1/18/19/76/6/la-importancia-y-los-beneficios-de-la-costura.jpeg",
     ];
     // imagen dummy
-    if (price <= 0) throw new Error("El precio debe ser mayor a 0");
+    if (!name) throw new Error("El nombre es requerido");
     return await Service.create({
       name,
       description,
       price,
+      number,
+      email,
+      country,
+      city,
       image,
       userid,
     });
@@ -35,6 +39,10 @@ module.exports = {
               name: serv.name,
               description: serv.description,
               price: serv.price,
+              number: serv.number,
+              email: serv.email,
+              country: serv.country,
+              city: serv.city,
               image: serv.image,
               userid: serv.userid,
             },
@@ -44,9 +52,8 @@ module.exports = {
     }
     const services = await Service.findAll({
       where: {
-        name: {
-          [Op.iLike]: "%" + name + "%",
-        },
+        name: name,
+         
       },
       include: User,
     });
@@ -62,9 +69,9 @@ module.exports = {
     return `id ${id} successfully deleted`;
   },
   updateService: async (id, data) => {
-    const { name, description, price } = data;
+    const { name, description, price, number, email, country, city, } = data;
     const service = await Service.update(
-      { name, description, price },
+      { name, description, price,  number, email, country, city, },
       {
         where: {
           id: id,
