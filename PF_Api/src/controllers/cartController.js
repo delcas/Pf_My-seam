@@ -7,7 +7,7 @@ const postCartProduct = async ({ customer_id, prods }) => {
     state: "En Compra",
     customer_id,
   });  
-  return await AddProductToCart(new_cart, prods);
+  return await AddProductToCart({ active: new_cart, prods});
 };
 const getActiveCart = async (customer_id) => {
   const new_cart = await Cart.findOne({
@@ -20,6 +20,7 @@ const getActiveCart = async (customer_id) => {
   return new_cart;
 };
 const AddProductToCart = async ({ active, prods }) => {
+  console.log('active: ', active);
   // const add_prods = await 
   prods?.forEach(async (p) => {
     const prod = await Product.findByPk(p.productid);
@@ -33,10 +34,10 @@ const AddProductToCart = async ({ active, prods }) => {
     });
     return await prod.toJSON();
   });
-  const act = active.toJSON();
+  // const act = active.toJSON();
   return await Cart.findAll({
     where: {
-      id: act.id,
+      id: active.id,
     },
     include: {
       model: Product,

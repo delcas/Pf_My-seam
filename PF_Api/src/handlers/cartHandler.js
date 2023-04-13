@@ -16,8 +16,9 @@ module.exports = {
     //customer_id, [{productid: N, quantity: N}, {productid: N, quantity: N}]
     try {
       const active = await getActiveCart(customer_id);
-      let ver;
+      let ver;      
       active ? (ver = active.toJSON()) : (ver = { id: null });
+      console.log('active.cart: ', ver);
       if (!ver.id) {
         const new_cart = await postCartProduct({ customer_id, prods });
         console.log("Handler create new_cart");
