@@ -16,9 +16,14 @@ export const Cart = () => {
   const btnRef = useRef()
   
   // Estado del Local Storage del Carrito de compras
-  const [cartLocalStorage, setCartLocalStorage] = UseLocalStorage('cart', []);
   let cart = useSelector(state => state.cart)
-  const allProducts = useSelector(state => state.allProducts)
+  const [cartLocalStorage, setCartLocalStorage] = UseLocalStorage(cart, []);
+  
+/*   useEffect(() => {
+    if (cart.length > 0) {
+      setCartLocalStorage(cart)
+    }    
+  }, [cart])   */
 
   // Estado del precio total del carrito de compras
   const [totalPrice, setTotalPrice] = useState(0);
@@ -26,15 +31,6 @@ export const Cart = () => {
   // Estado de la cantidad de productos en el carrito de compras
   const [totalQuantity, setTotalQuantity] = useState(0);  
   const disabled = cart.find(el => el.quantity < 1)
-  
-  // Guardar carrito de compras en Local Storage
-/*   useEffect(() => {
-    if (cartLocalStorage.length > 0) {
-      const findProducts = allProducts.filter(el => el.id == cartLocalStorage.id)      
-      cart.push(findProducts)
-      window.localStorage.clear()
-    }
-  }, [])     */ 
 
   const calculatePriceQuantity = () => {
     let totalPrice = 0
@@ -97,7 +93,7 @@ export const Cart = () => {
                       />
                     )
                   }) 
-                  : <Loading />
+                  : ''
                 }
                 </ul>
                 <div>

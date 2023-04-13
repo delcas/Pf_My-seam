@@ -25,16 +25,16 @@ export const BotonIrInicio = () => {
 
   return (
     <div>
-       <Link to='/home'>
-       <img 
-       src={botonArriba} 
-       id='botonArriba' 
-       className={styles.hideBotonArriba}  
-       width='28px' 
-       height='28px' 
-       alt='BotonArriba'
-      />        
-  </Link>
+      <Link hrefLang="#home">
+        <img 
+          src={botonArriba} 
+          id='botonArriba' 
+          className={styles.hideBotonArriba}  
+          width='28px' 
+          height='28px' 
+          alt='BotonArriba'
+        />        
+      </Link>
     </div>
   )
 }

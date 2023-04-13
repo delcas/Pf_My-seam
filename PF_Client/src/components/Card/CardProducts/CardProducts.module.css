@@ -48,7 +48,8 @@ body {
   text-decoration: none;
 }
 
-/* Cart */
+/* Buttons */
+
 .buttonCart {
   cursor: pointer;
   margin: 3px 0 3px 5px;
@@ -69,12 +70,17 @@ body {
 }
 
 /* Card */
+
+.cardDarkTheme .textMedium {
+  color: white;
+}
+
 .cardDarkTheme {
-  display: block;  
+  display: block;
+  border-radius: 10px;
   margin: 20px 30px 10px 0;
-  transition: all 1.8s ease;
-  background-color: rgb(255, 102, 0);
-  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.18);
+  min-height: 370px;
 }
 
 .cardLightTheme {

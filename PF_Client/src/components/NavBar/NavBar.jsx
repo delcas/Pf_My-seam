@@ -15,13 +15,13 @@ import { Link, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getUserByEmail } from '../../redux/actions';
 
-export const NavBar = ({ isAuthenticated, user }) => {
+export const NavBar = () => {
   // Cambiar el tema entre oscuro/claro
   const { toggleColorMode, colorMode } = useColorMode();
   const currentTheme = useColorMode().colorMode;
   const dispatch = useDispatch();
   // Info de Auth0
-  // const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   useEffect(() => {
     dispatch(getUserByEmail(user?.email));
     // dispatch(getProductById(id));
