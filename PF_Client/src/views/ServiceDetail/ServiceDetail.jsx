@@ -56,6 +56,10 @@ export const ServiceDetail =({ isAuthenticated, user })=>{
                                 <tr>Servicio: {details.name}</tr>
                                 <tr>Descripcion: {details.description}</tr>
                                 <tr>Precio: {details.price} </tr>
+                                <tr>Numero: {details.number}</tr>
+                                <tr>Email: {details.email}</tr>
+                                <tr>Pais: {details.country} </tr>
+                                <tr>Ciudad: {details.city} </tr>
                             </td>
                      </tr>
                         

@@ -28,8 +28,10 @@ export const Iconos = () => {
        </div>
 
       <div className={styles.icono2}>
-          <IoMdCut className={styles.servicio} title="Click aquí para publicar un servicio"/>
-          <span className={styles.spanes} title="Click aquí para publicar un servicio">Servicios</span>
+          <Link to="/createService">
+            <IoMdCut className={styles.servicio} title="Click aquí para publicar un servicio"/>
+            <span className={styles.spanes} title="Click aquí para publicar un servicio">Servicios</span>
+          </Link>
       </div>
      </div>
     </div>

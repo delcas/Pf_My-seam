@@ -1,7 +1,8 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Landing } from './views/Landing/Landing';
 import { Home } from './views/Home/Home';
- import { Create } from './views/Create/Create';
+import { Create } from './views/Create/Create';
+import { CreateService }  from "./views/CreateService/CreateService";
 import { Iconos } from "./components/Iconos/Iconos"
 import { Promotions } from './components/Carousel/Promotions/Promotions';
 import { Login } from './views/Login/Login';
@@ -32,7 +33,8 @@ function App() {
       <Route path = '/login' element = {<Login />}/>
       <Route path='/create' element={<Iconos isAuthenticated={isAuthenticated} user={user} />} />
       
-      <Route path = '/createProduct' element = {<Create isAuthenticated={isAuthenticated} user={user}/>}/>
+      <Route path='/createProduct' element={<Create isAuthenticated={isAuthenticated} user={user} />} />
+      <Route path = '/createService' element = {<CreateService isAuthenticated={isAuthenticated} user={user}/>}/>
 
       <Route path = '/promotions' element = {<Promotions />}/>
       <Route path = '/categories' element = {<Categories />}/>
