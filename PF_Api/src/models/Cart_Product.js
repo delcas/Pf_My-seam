@@ -15,8 +15,9 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       conclusion: {
-        type: DataTypes.STRING,
-        defaultValue: "Pendiente"
+        type: DataTypes.ENUM("Pendiente", "Entregado", "Perdido", "Rechazado", "En Litigio"),
+        defaultValue: "Pendiente",
+        allowNull: false,
       },
     },
     {
