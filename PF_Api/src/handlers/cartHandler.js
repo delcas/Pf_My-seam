@@ -6,6 +6,7 @@ const {
   putCartProduct,
   deleteCartProduct,
   deleteCartAllProducts,
+  getCartByPk,
 } = require("../controllers/cartController");
 
 let cartItem = [];
@@ -18,7 +19,6 @@ module.exports = {
       const active = await getActiveCart(customer_id);
       let ver;
       active ? (ver = active.toJSON()) : (ver = { id: null });
-      console.log(ver.id);
       if (!ver.id) {
         const new_cart = await postCartProduct({ customer_id, prods });
         console.log("Handler create new_cart");
@@ -34,10 +34,16 @@ module.exports = {
     }
   },
   getCartProducts: async (req, res) => {
-    const { customer_id } = req.body;
+    const { customer_id, cartid } = req.body;
     try {
-      const customer_carts = await getCustomersCartProducts(customer_id);
-      res.status(200).json(customer_carts);
+      let cart_response;
+      if (customer_id) {
+        cart_response = await getCustomersCartProducts(customer_id);        
+      }
+      if (cartid) {
+        cart_response = await getCartByPk(cartid);
+      };
+      res.status(200).json(cart_response);
     } catch (error) {
       res.status(400).send(error.message);
     }
@@ -45,7 +51,7 @@ module.exports = {
   modifyCartProduct: async (req, res) => {
     const edit_data = req.body;
     try {
-      const modify = await putCartProduct( edit_data );
+      const modify = await putCartProduct(edit_data);
       res.status(200).json(modify);
     } catch (error) {
       res.status(400).send(error.massage);
