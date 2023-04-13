@@ -146,7 +146,7 @@ export const CreateService = () => {
           <FormControl>
             <FormLabel>Precio</FormLabel>
             <Select
-              placeholder="Seleccione un servicio..."
+              placeholder="Seleccione un precio..."
               size="md"
               height="20px"
               width="100%"
@@ -168,7 +168,7 @@ export const CreateService = () => {
             <FormLabel>Descripcion</FormLabel>
             <Input
               type="text"
-              placeholder="Describa su producto..."
+              placeholder="Describa su servicio o experiencia..."
               size="md"
               htmlSize={25}
               height="20px"
