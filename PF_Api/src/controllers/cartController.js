@@ -1,4 +1,3 @@
-const { Alert } = require("@chakra-ui/react");
 const { Cart, Product, Cart_Product } = require("../db.js");
 
 const postCartProduct = async ({ customer_id, prods }) => {
@@ -22,21 +21,22 @@ const getActiveCart = async (customer_id) => {
 };
 const AddProductToCart = async ({ active, prods }) => {
   // const add_prods = await
-  prods?.forEach(async (p) => {
+  /*const array =*/ prods?.forEach(async (p) => {
     const prod = await Product.findByPk(p.productid);
     console.log("Add prod controller stock1: ", prod.stock);
     if (prod && p.quantity > prod.stock) {
-      Alert(`La cantidad solicitada de ${prod.name} supera el stock disponible, solo quedan ${prod.stock} unidades`);
+// ¿Como verificar e informar sin que rompa con error?
+      return [ prod.id, false ];
     } else {
       await active.addProduct(p.productid, {
-      through: {
-        quantity: p.quantity,
-      },
-    });
-    return await prod.toJSON();
-  };    
+        through: {
+          quantity: p.quantity,
+        },
+      });
+      return [ prod.id, true ];
+    }
   });
-  // const act = active.toJSON();
+  // if(!array.every((a) => a.includes(true))) throw new Error( `La cantidad solicitada supera el stock disponible`)
   return await Cart.findAll({
     where: {
       id: active.id,
@@ -50,6 +50,17 @@ const getCustomersCartProducts = async (customer_id) => {
   const carts = await Cart.findAll({
     where: {
       customer_id,
+    },
+    include: {
+      model: Product,
+    },
+  });
+  return carts;
+};
+const getCartByPk = async (cartid) => {
+  const carts = await Cart.findOne({
+    where: {
+      id: cartid,
     },
     include: {
       model: Product,
@@ -81,4 +92,5 @@ module.exports = {
   deleteCartProduct,
   deleteCartAllProducts,
   putCartProduct,
+  getCartByPk
 };
