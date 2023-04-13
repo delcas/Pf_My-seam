@@ -1,3 +1,4 @@
+const { Alert } = require("@chakra-ui/react");
 const { Cart, Product, Cart_Product } = require("../db.js");
 
 const postCartProduct = async ({ customer_id, prods }) => {
@@ -6,8 +7,8 @@ const postCartProduct = async ({ customer_id, prods }) => {
   const new_cart = await Cart.create({
     state: "En Compra",
     customer_id,
-  });  
-  return await AddProductToCart({ active: new_cart, prods});
+  });
+  return await AddProductToCart({ active: new_cart, prods });
 };
 const getActiveCart = async (customer_id) => {
   const new_cart = await Cart.findOne({
@@ -20,19 +21,20 @@ const getActiveCart = async (customer_id) => {
   return new_cart;
 };
 const AddProductToCart = async ({ active, prods }) => {
-  console.log('active: ', active);
-  // const add_prods = await 
+  // const add_prods = await
   prods?.forEach(async (p) => {
     const prod = await Product.findByPk(p.productid);
     console.log("Add prod controller stock1: ", prod.stock);
-    if (prod && p.quantity > prod.stock)
-      return `La cantidad solicitada de ${prod.name} supera el stock disponible, solo quedan ${prod.stock} unidades`;
-    await active.addProduct(p.productid, {
+    if (prod && p.quantity > prod.stock) {
+      Alert(`La cantidad solicitada de ${prod.name} supera el stock disponible, solo quedan ${prod.stock} unidades`);
+    } else {
+      await active.addProduct(p.productid, {
       through: {
         quantity: p.quantity,
       },
     });
     return await prod.toJSON();
+  };    
   });
   // const act = active.toJSON();
   return await Cart.findAll({
@@ -64,9 +66,9 @@ const putCartProduct = async (edit_data) => {
   if (productid) {
     await AddProductToCart(edit_cart, { productid, quantity });
   }
-//   if (conclusion) {
+  //   if (conclusion) {
 
-//   }
+  //   }
   return edit_cart;
 };
 const deleteCartProduct = async () => {};
