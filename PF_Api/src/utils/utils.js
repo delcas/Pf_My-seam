@@ -1,31 +1,40 @@
 const axios = require("axios");
 const { Op } = require("sequelize");
 const { Product } = require("../db");
+const products = require("../utils/products.json");
 
 // funcion asincrona traer la data de la API con las propiedades deseadas
 async function getApiProducts() {
   try {
     let product = [];
-    const response = await axios
-      .get("https://dummyjson.com/products")
-      .then((response) => {
-        product = response.data.products.map((p) => {
-          const UsId = (m) => { return Math.ceil(Math.random()*m) };
-          const id = UsId(5);
-          return getJson(p, id);
-        });
-      });
+    // const response = await axios
+    //   .get("https://dummyjson.com/products")
+    //   .then((response) => {
+    //     product = response.data.products.map((p) => {
+    //       const UsId = (m) => { return Math.ceil(Math.random()*m) };
+    //       const id = UsId(5);
+    //       return getJson(p, id);
+    //     });
+    //   });
+    product = products.map((p) => {
+      const UsId = (m) => {
+        return Math.ceil(Math.random() * m);
+      };
+      const id = UsId(5);
+      return getJson(p, id);
+    });
     return product;
   } catch (error) {
     console.log(error.message);
     return "Data API error, no encontrado";
   }
 }
+
 //----------------------------------------------------------------------
 // funcion para llenar la tabla Products con los productos obtenidos de la API
 async function fillTableProducts() {
-  const products = await getApiProducts();
-  await products.forEach((e) => {
+  const productsFill = await getApiProducts();
+  await productsFill.forEach((e) => {
     Product.findOrCreate({
       where: {
         name: e.name,
@@ -33,7 +42,7 @@ async function fillTableProducts() {
         price: e.price,
         image: e.image,
         stock: e.stock,
-        userid: e.userid
+        userid: e.userid,
       },
     });
   });
@@ -67,12 +76,12 @@ async function getDBproducts() {
 //formato de objeto .JSON para enviar a la tabla Products
 const getJson = (product, id) => {
   return {
-    name: product.title,
-    description: product.description,
-    price: product.price,
-    image: product.images,
-    stock: product.stock,
-    userid: id
+    name: product.nombre,
+    description: product.descripcion,
+    price: product.precio,
+    image: product.imagenes,
+    stock: product.cantidad,
+    userid: id,
   };
 };
 
