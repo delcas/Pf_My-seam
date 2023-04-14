@@ -5,6 +5,7 @@ import { getServices } from '../../redux/actions';
 import { CardService } from './CardService/CardService';
 import { Paginado } from '../Paginado/Paginado';
 import { Loading } from '../Loading/Loading';
+import { Filters } from '../../components/Filters/FiltersServices'
 
 
 export const CardServices = () => {
@@ -33,7 +34,7 @@ export const CardServices = () => {
 
   return (
     <div>  
-        
+         <Filters setCurrentPage={setCurrentPage} />
         <ul className={styles.cardContainer}>
         {
           currentServices.length > 0 ? 

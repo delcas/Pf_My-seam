@@ -1,29 +1,54 @@
+import React, { useEffect, useState } from "react";
 import txtstyle from "./DetailText.module.css";
+import { useSelector, useDispatch } from "react-redux";
+
+//Chakra
+import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
+import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
 
 export default function DetailText({
     details,
     InputHandler,
     SendCange,
     EditionPDetail,
-    edit }){
+    edit,
+    setTotalPrice,
+    totalQuantity,
+    setTotalQuantity,
+    el
+  }){
+    const cart = useSelector(state => state.cart);
+    const [itemsPerProduct, setItemsPerProduct] = useState(cart.quantity)
+      const prodDetails = useSelector((state) => state.details);
+
+      const handleCart =  () => {    
+        // Validar si ya existe el producto en el carrito de compras
+        if (cart.find(el => el === prodDetails)) {   
+          prodDetails.quantity +=  1 
+        } else {
+          prodDetails.quantity = 1 
+            cart.push(prodDetails)
+          }
+      };
  
     return <td className={txtstyle.tdLeft}>
     <tr>
-      <td>
-        Producto:
-        {edit.s === "name" ? (
-          <span>
-            <input
-              type="text"
-              name="name"
-              onChange={InputHandler}
-            />
-            <button onClick={SendCange}>OK</button>
-          </span>
-        ) : (
-          details.name
-        )}
+      <h1>
+        <td>
+          {edit.s === "name" ? (
+            <span>
+              <input
+                type="text"
+                name="name"
+                onChange={InputHandler}
+              />
+              <button onClick={SendCange}>OK</button>
+            </span>
+          ) : (
+            details.name
+          )}
         </td>
+      </h1>
       <td>
         {edit.e ? (
           <button name="name" onClick={EditionPDetail}>
@@ -36,8 +61,8 @@ export default function DetailText({
       </td>
     </tr>
     <tr>
+      <h4>
       <td>
-        Descripcion:
         {edit.s === "description" ? (
           <span>
             <input
@@ -59,10 +84,10 @@ export default function DetailText({
           </button>
         ) : (
           ""
-        )}
+          )}
       </td>
+          </h4>
       </tr>
-      
        <tr>
       <td>
         Ropa de:
@@ -121,7 +146,7 @@ export default function DetailText({
 
     <tr>
       <td>
-        Precio:
+       $
         {edit.s === "price" ? (
           <span>
             <input
@@ -175,5 +200,9 @@ export default function DetailText({
     </tr>
     <tr>Vendedor: {details.userid}</tr>
     <tr>Disponible: NYI</tr>
+          <div>
+            <button as={BsFillCartPlusFill} w={8} h={8} className={txtstyle.buttonCart} onClick={handleCart} title="Agregar al carrito"> Agregar al carrito</button>
+            <button as={BsFillHeartFill} w={8} h={8} className={txtstyle.buttonFavourites} title="Agregar a favoritos">Agregar a favoritos</button>
+          </div>
   </td>
 }

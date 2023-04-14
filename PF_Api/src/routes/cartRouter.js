@@ -8,9 +8,9 @@ const {
 } = require("../handlers/cartHandler.js");
 const cartRouter = Router();
 
-cartRouter.get("/", getCartProducts);
-
 cartRouter.post("/", createCartProduct);
+
+cartRouter.get("/", getCartProducts);
 
 cartRouter.put("/", modifyCartProduct);
 

@@ -5,13 +5,14 @@ import { useSelector } from 'react-redux';
 //Chakra
 import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
 import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
+import StarRank from "../../StarRank/StarRank.jsx"
 
 export const CardProducts = ({ id, image, name, price, description }) => {
   // Cambiar , id, image, name, price, d tema entre oscuro/claro 
   const { toggleColorMode, colorMode } = useColorMode();  
   const currentTheme = useColorMode().colorMode
-  if (name.length > 15){
-    name = name.slice(0,14) + "..."    
+  if (name.length > 20){
+    name = name.slice(0,19) + "..."    
   }
    
   // Me traigo el estado del reducer 
@@ -55,6 +56,7 @@ export const CardProducts = ({ id, image, name, price, description }) => {
           <Link className={styles.Link} to= {`/ProductDetail/${id}`}>
             {/* Elementos de la card */}
             <img className={styles.imgCenter} src={image[0]} alt={name} width='200px' height='210px' title="Haz clic para ver más detalles" />
+            <StarRank/>
           </Link>
           <Icon as={BsFillCartPlusFill} w={8} h={8} className={styles.buttonCart} onClick={handleCart} title="Agregar al carrito"/>
           <Icon as={BsFillHeartFill} w={8} h={8} className={styles.buttonFavourites} title="Agregar a favoritos"/>

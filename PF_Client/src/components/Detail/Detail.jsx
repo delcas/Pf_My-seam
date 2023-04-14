@@ -23,6 +23,7 @@ export default function Detail({
   SendCange,
   EditionPDetail,
   edit,
+  image,
   ver
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -58,9 +59,7 @@ export default function Detail({
       <table className={st.detailTable}>
         <tr>
           <DetImage
-            details={details}
-            setCurrentImg={setCurrentImg}
-            currentImg={currentImg}
+            image={image}
           />
           <DetailText
             details={details}

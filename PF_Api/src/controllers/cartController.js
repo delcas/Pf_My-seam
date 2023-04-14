@@ -7,8 +7,7 @@ const postCartProduct = async ({ customer_id, prods }) => {
     state: "En Compra",
     customer_id,
   });
-  await AddProductToCart(new_cart, prods);
-  return new_cart;
+  return await AddProductToCart({ active: new_cart, prods });
 };
 const getActiveCart = async (customer_id) => {
   const new_cart = await Cart.findOne({
@@ -21,20 +20,33 @@ const getActiveCart = async (customer_id) => {
   return new_cart;
 };
 const AddProductToCart = async ({ active, prods }) => {
-  const add_prods = prods?.map(async (p) => {
+  // const add_prods = await
+  /*const array =*/ prods?.forEach(async (p) => {
     const prod = await Product.findByPk(p.productid);
-    console.log("Add prod controller stock: ", prod.stock);
-    if (p.quantity > prod.stock)
-      return `La cantidad solicitada de ${prod.name} supera el stock disponible, solo quedan ${prod.stock} unidades`;
-    await active.addProduct(p.productid, {
-      through: {
-        quantity: p.quantity,
-      },
-    });
-    return await prod.toJSON();
+    console.log("Add prod controller stock1: ", prod.stock);
+    if (prod && p.quantity > prod.stock) {
+      // ¿Como verificar e informar sin que rompa con error?
+      return [prod.id, false];
+    } else if (p.quantity === 0) {
+      return await deleteCartProduct(active, prod);
+    } else {
+      await active.addProduct(p.productid, {
+        through: {
+          quantity: p.quantity,
+        },
+      });
+      return [prod.id, true];
+    }
   });
-  console.log("controller add products");
-  return await add_prods;
+  // if(!array.every((a) => a.includes(true))) throw new Error( `La cantidad solicitada supera el stock disponible`)
+  return await Cart.findAll({
+    where: {
+      id: active.id,
+    },
+    include: {
+      model: Product,
+    },
+  });
 };
 const getCustomersCartProducts = async (customer_id) => {
   const carts = await Cart.findAll({
@@ -47,21 +59,43 @@ const getCustomersCartProducts = async (customer_id) => {
   });
   return carts;
 };
+const getCartByPk = async (cartid) => {
+  const carts = await Cart.findOne({
+    where: {
+      id: cartid,
+    },
+    include: {
+      model: Product,
+    },
+  });
+  return carts;
+};
 const putCartProduct = async (edit_data) => {
-  const { cartid, state, productid, quantity, conclusion } = edit_data;
+  const { cartid, state, prods, conclusion } = edit_data;
   const edit_cart = await Cart.findByPk(cartid);
+  //prods: [{ productid, quantity }]
   if (state) {
     await edit_cart?.update({ state });
   }
-  if (productid) {
-    await AddProductToCart(edit_cart, { productid, quantity });
+  if (prods.length > 0) {
+    await AddProductToCart({ active: edit_cart, prods });
   }
-//   if (conclusion) {
+  //   if (conclusion) {
 
-//   }
-  return edit_cart;
+  //   }
+  return await getCartByPk(cartid);
 };
-const deleteCartProduct = async () => {};
+const getCarts = async () => {
+  return await Cart.findAll({
+    include: {
+      model: Product,
+    },
+  });
+};
+const deleteCartProduct = async (cart, product) => {
+  console.log('delete: ', product);
+  await cart.removeProduct(product);
+};
 const deleteCartAllProducts = async () => {};
 module.exports = {
   getActiveCart,
@@ -71,4 +105,6 @@ module.exports = {
   deleteCartProduct,
   deleteCartAllProducts,
   putCartProduct,
+  getCartByPk,
+  getCarts,
 };
