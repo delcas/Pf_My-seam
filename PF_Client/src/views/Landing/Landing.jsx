@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import styles from './Landing.module.css'
-import BackgroundVideo from "../../assets/images/MySeamVideo.mp4"
+import BackgroundVideo from "../../assets/images/NewMySeam.mp4"
 import { getUserByEmail, getUsers } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';

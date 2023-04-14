@@ -12,8 +12,8 @@ export const CardService =({name, description,price,image,id})=>{
      // Me traigo el estado del reducer 
     const services = useSelector(state=>state.services)
     const cart = useSelector(state=>state.cart)
-    if (name.length > 15){
-      name = name.slice(0,14) + "..."    
+    if (name.length > 20){
+      name = name.slice(0,19) + "..."    
     }
 
     const { toggleColorMode, colorMode } = useColorMode();  
