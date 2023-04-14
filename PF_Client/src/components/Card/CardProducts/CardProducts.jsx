@@ -12,8 +12,8 @@ export const CardProducts = ({ id, image, name, price, description }) => {
   // Cambiar , id, image, name, price, d tema entre oscuro/claro 
   const { toggleColorMode, colorMode } = useColorMode();  
   const currentTheme = useColorMode().colorMode
-  if (name.length > 15){
-    name = name.slice(0,14) + "..."    
+  if (name.length > 20){
+    name = name.slice(0,19) + "..."    
   }
    
   // Me traigo el estado del reducer 
