@@ -7,6 +7,7 @@ const {
   deleteCartProduct,
   deleteCartAllProducts,
   getCartByPk,
+  getCarts,
 } = require("../controllers/cartController");
 
 let cartItem = [];
@@ -34,7 +35,7 @@ module.exports = {
     }
   },
   getCartProducts: async (req, res) => {
-    const { customer_id, cartid } = req.body;
+    const { customer_id, cartid, is_admin } = req.body;
     try {
       let cart_response;
       if (customer_id) {
@@ -42,6 +43,9 @@ module.exports = {
       }
       if (cartid) {
         cart_response = await getCartByPk(cartid);
+      };
+      if (is_admin) {
+        cart_response = await getCarts();
       };
       res.status(200).json(cart_response);
     } catch (error) {
