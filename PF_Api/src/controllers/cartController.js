@@ -25,15 +25,17 @@ const AddProductToCart = async ({ active, prods }) => {
     const prod = await Product.findByPk(p.productid);
     console.log("Add prod controller stock1: ", prod.stock);
     if (prod && p.quantity > prod.stock) {
-// ¿Como verificar e informar sin que rompa con error?
-      return [ prod.id, false ];
+      // ¿Como verificar e informar sin que rompa con error?
+      return [prod.id, false];
+    } else if (p.quantity === 0) {
+      return await deleteCartProduct(active, prod);
     } else {
       await active.addProduct(p.productid, {
         through: {
           quantity: p.quantity,
         },
       });
-      return [ prod.id, true ];
+      return [prod.id, true];
     }
   });
   // if(!array.every((a) => a.includes(true))) throw new Error( `La cantidad solicitada supera el stock disponible`)
@@ -69,20 +71,31 @@ const getCartByPk = async (cartid) => {
   return carts;
 };
 const putCartProduct = async (edit_data) => {
-  const { cartid, state, productid, quantity, conclusion } = edit_data;
+  const { cartid, state, prods, conclusion } = edit_data;
   const edit_cart = await Cart.findByPk(cartid);
+  //prods: [{ productid, quantity }]
   if (state) {
     await edit_cart?.update({ state });
   }
-  if (productid) {
-    await AddProductToCart(edit_cart, { productid, quantity });
+  if (prods.length > 0) {
+    await AddProductToCart({ active: edit_cart, prods });
   }
   //   if (conclusion) {
 
   //   }
-  return edit_cart;
+  return await getCartByPk(cartid);
 };
-const deleteCartProduct = async () => {};
+const getCarts = async () => {
+  return await Cart.findAll({
+    include: {
+      model: Product,
+    },
+  });
+};
+const deleteCartProduct = async (cart, product) => {
+  console.log('delete: ', product);
+  await cart.removeProduct(product);
+};
 const deleteCartAllProducts = async () => {};
 module.exports = {
   getActiveCart,
@@ -92,5 +105,6 @@ module.exports = {
   deleteCartProduct,
   deleteCartAllProducts,
   putCartProduct,
-  getCartByPk
+  getCartByPk,
+  getCarts,
 };
