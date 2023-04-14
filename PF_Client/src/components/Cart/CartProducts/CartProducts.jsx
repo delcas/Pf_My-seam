@@ -36,6 +36,7 @@ export const CartProducts = ({ cart, totalPrice, setTotalPrice, totalQuantity, s
     } 
     setTotalPrice(totalPrice)
     setTotalQuantity(totalQuantity)
+    localStorage.removeItem("cart", JSON.stringify(cart.indexProduct))
   }
 
   const handleChangeQuantity = (e) => {
