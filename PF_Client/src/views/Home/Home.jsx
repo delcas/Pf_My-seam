@@ -14,7 +14,7 @@ import { SectionsAdmin } from "../../components/SectionsAdmin/SectionsAdmin";
 export const Home = () => {
   const { isAuthenticated, user } = useAuth0();
 
-  if (isAuthenticated && (user["https://example.com/roles"].includes("admin"))){
+  if (isAuthenticated && user["https://example.com/roles"] && user["https://example.com/roles"].includes("admin")){
     
       return (
       <>
