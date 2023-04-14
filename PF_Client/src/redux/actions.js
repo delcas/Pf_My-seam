@@ -45,9 +45,7 @@ export const getServices = () => {
 export const searchProductByName = (search) => {
   return async (dispatch) => {
     try {
-      let json = await axios.get(
-        `http://localhost:3001/product?name=${search}`
-      );
+      let json = await axios.get(`/product?name=${search}`);
       dispatch({ type: SEARCH_PRODUCT_BY_NAME, payload: json.data });
     } catch (error) {
       alert(`El producto "${search}" no existe, intenta con otro`);
