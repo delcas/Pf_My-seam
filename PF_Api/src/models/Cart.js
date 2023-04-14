@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
             autoIncrement: true,
           },
           state: {
-            type: DataTypes.STRING(30),
+            type: DataTypes.ENUM("En Compra", "Pagado", "Conclusion parcial", "Conclusion total", "Revision pendiente"),
             defaultValue: "En Compra",
           }
     },

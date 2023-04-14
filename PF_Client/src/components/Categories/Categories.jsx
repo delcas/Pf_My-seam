@@ -52,12 +52,12 @@ export const Categories = () => {
       </div>
 
       <div className={styles.containerCategories}>
-        <Button value='All' onClick={(e) => handleAll(e)} className={styles.buttonCategorie} colorScheme='blue'>All</Button>
-        <Button value='a-z' onClick={(e) => handleOrderAlphabet(e)} className={styles.buttonCategorie} colorScheme='blue'>A-Z</Button>
-        <Button value='z-a' onClick={(e) => handleOrderAlphabet(e)} className={styles.buttonCategorie} colorScheme='blue'>Z-A</Button>
-        <Button value='Hasta $ 100' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='blue'>Hasta $100</Button>
-        <Button value='$ 100 a $ 500' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='blue'>Entre $100-$500</Button>
-        <Button value='Mas de $ 500' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='blue'>Más de $500</Button>
+        <Button value='All' onClick={(e) => handleAll(e)} className={styles.buttonCategorie} colorScheme='orange'>All</Button>
+        <Button value='a-z' onClick={(e) => handleOrderAlphabet(e)} className={styles.buttonCategorie} colorScheme='orange'>A-Z</Button>
+        <Button value='z-a' onClick={(e) => handleOrderAlphabet(e)} className={styles.buttonCategorie} colorScheme='orange'>Z-A</Button>
+        <Button value='Hasta $ 100' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='orange'>Hasta $100</Button>
+        <Button value='$ 100 a $ 500' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='orange'>Entre $100-$500</Button>
+        <Button value='Mas de $ 500' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='orange'>Más de $500</Button>
       </div>
 
       {/* Cards */}
