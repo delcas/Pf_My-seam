@@ -22,7 +22,7 @@ export const Landing = () => {
     }
    axios.post("/users", post);
    console.log(post);
-   if(user["https://example.com/roles"].includes("admin")){
+   if(user["https://example.com/roles"] && user["https://example.com/roles"].includes("admin")){
     alert("Welcome Admin!");
    }
    dispatch(getUserByEmail(user.email));
