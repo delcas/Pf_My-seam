@@ -13,9 +13,6 @@ import { NavBar } from "../../components/NavBar/NavBar";
 import Detail from "../../components/Detail/Detail";
 import Questions from "../../components/Questions/Questions";
 
-//Chakra
-import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
-import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
 
 
 export const ProductDetail = ({ isAuthenticated, user }) => {
@@ -69,20 +66,7 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
     setEdit({ ...edit, s: "none" });
   }
 
-  const showNotify = () => {
-    setNotify(!notify);
-  };
 
-   // Agregar producto al carrito de compras
-   const handleCart =  () => {    
-    // Validar si ya existe el producto en el carrito de compras
-    if (cart.find(el => el === details)) {   
-      details.quantity +=  1 
-    } else {
-      details.quantity = 1 
-        cart.push(details)
-      }
-  };
 
   return (
     <div>
@@ -101,12 +85,9 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
           SendCange={SendCange}
           EditionPDetail={EditionPDetail}
           edit={edit}
+          image={details.image}
           ver={ver}
           />
-                  <div>
-            <button as={BsFillCartPlusFill} w={8} h={8} className={style.buttonCart} onClick={handleCart} title="Agregar al carrito"> Agregar al carrito</button>
-
-                  </div>
           <Questions
           userId={userId}
           details={details}
