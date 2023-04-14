@@ -1,73 +1,36 @@
+import React,{useEffect, useState} from "react";
 import imstyle from "./DetImages.module.css";
 
-export default function DetImage({ details, setCurrentImg, currentImg }){
 
-return <tr className={imstyle.row}><td>
-            <button
-              name="leftBtn"
-              className={
-                currentImg === 0
-                  ? imstyle.ArrowButtonDisabled
-                  : imstyle.ArrowButton
-              }
-              onClick={() =>
-                currentImg === 0
-                  ? setCurrentImg(0)
-                  : setCurrentImg(currentImg - 1)
-              }
-            >
-              {"◀"}
-            </button>
-          </td>
-          <tr>
-            <td className={imstyle.box} rowSpan="6">
-              <img
-                className={imstyle.FlagImg}
-                src={details.image[currentImg]}
-                alt={`imagen del producto ${details.name}`}
-                />
-            </td>
-            {/* <td>{edit.s === "image" ?
-          (
-            <span>
-              <input
-                type="text"
-                name="image"
-                onChange={InputHandler}
-              />
-              <button onClick={SendCange}>OK</button>
-            </span>
-          ) : ''}
-          </td>
-          <td>
-                {edit.e ? (
-                  <button name="image" onClick={EditionPDetail}>
-                    {" "}
-                    🖊{" "}
-                  </button>
-                ) : (
-                  ""
-                )}
-              </td> */}
-          </tr>
+export default function DetImage({ image }){
 
-          <td>
-            <button
-              name="rightBtn"
-              className={
-                currentImg === details.image.length - 1
-                  ? imstyle.ArrowButtonDisabled
-                  : imstyle.ArrowButton
-              }
-              onClick={() =>
-                currentImg === details.image.length - 1
-                  ? setCurrentImg(currentImg)
-                  : setCurrentImg(currentImg + 1)
-              }
-            >
-              {"▶"}
-            </button>
-          </td>
-</tr>
+  const [mainImage, setMainImage] = useState(image[0])
+  useEffect(()=>{
+    return()=>{
+      setMainImage(image[0])
+    }
+  },[])
 
+ return (
+<div className={imstyle.wrapper}>
+  <div className={imstyle.main_screen}>
+    <img src={mainImage} alt={mainImage} className={imstyle.main_image}></img>
+  </div>
+  <div className={imstyle.grid_four_column}>
+    {image.map((e,i)=>{
+      return(
+        <figure className={imstyle.grid_item}>
+          <img src={e} 
+          alt={e.filename}
+          key={i}
+          onClick={()=>setMainImage(e)}
+          ></img>
+        </figure>
+      )
+    })}
+  </div>
+</div>
+
+
+ )
           }
