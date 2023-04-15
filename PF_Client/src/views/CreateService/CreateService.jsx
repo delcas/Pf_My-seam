@@ -23,15 +23,9 @@ import axios from "axios";
 
 export const CreateService = () => {
 
-   const url = "http://localhost:3001";
-
    const [showAlert, setShowAlert] = useState(false);
-
    const [camposVacios, setCamposVacios] = useState(false);
-
-
    const [error, setError] = useState({});
-   
    const [form, setForm] = useState({
     name: "",
     price: "",
@@ -85,7 +79,7 @@ export const CreateService = () => {
     //  } 
     else {  
            
-      axios.post(`${url}/service`, form)
+      axios.post(`/service`, form)
       .then(r => console.log(r.data))
             setForm({
                 name: "",

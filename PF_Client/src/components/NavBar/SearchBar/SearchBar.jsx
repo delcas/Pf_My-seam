@@ -28,6 +28,9 @@ export const SearchBar = () => {
   // Me traigo los estados del reducer 
   const allProducts = useSelector((state) => state.allProducts);
   const products = useSelector((state) => state.products);
+  //capturo el endpoint
+  let direccionActual = window.location.href;
+  let endpoint = direccionActual.slice(-4)
 
   // Actualizar el estado de la búsqueda 
   const handleChange = (e) => {
@@ -37,9 +40,8 @@ export const SearchBar = () => {
 
   // Hacer la búsqueda de productos por nombre con el botón search
   const handleSubmit = (e) => {
-    e.preventDefault();
-    window.location.href === 'http://localhost:3000/home' ? ''
-    : navigate('/home')
+    e.preventDefault();    
+    endpoint === 'home' ? '' : navigate('/home')
     dispatch(searchProductByName(search));
     setSearch('');
     // setCurrentPage(1);
@@ -52,8 +54,7 @@ export const SearchBar = () => {
 
   // Hacer la búsqueda de productos por nombre con la lista de resultados
   const handleItemSelected = (item) => {  
-    window.location.href === 'http://localhost:3000/home' ? ''
-    : navigate('/home')
+    endpoint === 'home' ? '' : navigate('/home')
     setSearch(item)
     dispatch(searchProductByName(item))
     setSearch('');
