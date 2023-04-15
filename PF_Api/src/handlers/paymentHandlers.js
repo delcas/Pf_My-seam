@@ -1,5 +1,5 @@
 const mercadopago = require("mercadopago");
-const Producto = require("../models/Product")
+const { sendInformationMP } = require("../controllers/paymentControllers");
 
 const postPaymentHandler = (req,res) => {
   mercadopago.configure({

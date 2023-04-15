@@ -67,6 +67,15 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(500),
         allowNull: true,
       },
+
+      MPAuthCode: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+
+      MPUserId: {
+        type: DataTypes.INTEGER
+      }
     },
     {
       timestamps: true,
