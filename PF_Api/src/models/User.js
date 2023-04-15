@@ -68,18 +68,29 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
 
-      MPAuthCode: {
+      MPAccessToken: {
         type: DataTypes.STRING,
         allowNull: true,
       },
 
       MPUserId: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+
+      MPRefreshToken: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+
+      MPExpiresIn: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
       }
     },
     {
       timestamps: true,
-      paranoid: true
+      paranoid: true  
     }
   );
 };
