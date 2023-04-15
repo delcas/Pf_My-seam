@@ -3,6 +3,7 @@ import styles from "./ServiceDetail.module.css"
 import { useSelector, useDispatch } from "react-redux";
 import { NavBar } from '../../components/NavBar/NavBar'
 import { getServiceById } from '../../redux/actions';
+import Review from '../../components/Review/Review';
 
 //Chakra
 import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
@@ -49,16 +50,20 @@ export const ServiceDetail =({ isAuthenticated, user })=>{
                     <h1> Detalle del servicio</h1>
                     <table className={styles.detailTable}>
                      <tr>
-                            <td>
-                            <img className={styles.FlagImg} src={details.image} alt={`imagen del servicio ${details.name}`}></img>
-                            </td>
-                            <td className={styles.tdLeft}>
-                                <tr>Servicio: {details.name}</tr>
-                                <tr>Descripcion: {details.description}</tr>
-                                <tr>Precio: {details.price} </tr>
-                            </td>
-                     </tr>
-                        
+                        <td>
+                        <img className={styles.FlagImg} src={details.image} alt={`imagen del servicio ${details.name}`}></img>
+                        </td>
+                        <td className={styles.tdLeft}>
+                            <tr>Servicio: {details.name}</tr>
+                            <tr>Descripcion: {details.description}</tr>
+                            <tr>Precio: {details.price} </tr>
+                            <tr>Numero: {details.number}</tr>
+                            <tr>Email: {details.email}</tr>
+                            <tr>Pais: {details.country} </tr>
+                            <tr>Ciudad: {details.city} </tr>
+                            <tr><Review/></tr>
+                        </td>
+                     </tr>                        
                     </table>
                 </div>
                 :"No se encontro el ID"

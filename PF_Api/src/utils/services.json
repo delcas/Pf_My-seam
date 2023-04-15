@@ -1,29 +1,45 @@
 [
     {
-    "name":"Costura",
-    "description":"Costura fina",
-    "price":150.23,
+    "name": "Arreglo de ropa", 
+	"price": "A convenir", 
+	"description": "4 años de experiencia", 
+	"number": "3513458523",
+	"email": "pedrito21@gmail.com",
+	"country": "Argentina",
+	"city": "La rioja",
     "image": ["https://gdurl.com/ljVA"],
-    "userid": 3
+    "userid": 1
 },
 {
-    "name":"Refaccion",
-    "description":"Arreglo todo",
-    "price":103,
+    "name": "Confección de ropa", 
+	"price": "Negociable", 
+	"description": "2 años de experiencia en el rubro", 
+	"number": "3516237896",
+	"email": "oscar203@gmail.com",
+	"country": "Chile",
+	"city": "Santiago de Chile",
     "image": ["https://gdurl.com/gV5Cy"],
+    "userid": 2
+},
+{
+    "name": "Bordado", 
+	"price": "A convenir", 
+	"description": "Mi especialidad es bordado y confeccion de vestidos", 
+	"number": "3514234512",
+	"email": "juancito23@gmail.com",
+	"country": "Brazil",
+	"city": "Rio de Janeiro",
+    "image": ["https://gdurl.com/dQsS"],
     "userid": 3
 },
 {
-    "name":"Agregados",
-    "description":"Diseño de agregados",
-    "price":1023,
-    "image": ["https://gdurl.com/dQsS"],
-    "userid": 4
-},
-{
-    "name":"Costura reparacion",
-    "description":"Arreglo de pantalones y camisas de la dama y el caballero",
-    "price":1523,
+   "name": "Decoración de ropa", 
+	"price": "Negociable", 
+	"description": "Mi especialidad es decoracion de prendas para fiestas elegantes", 
+	"number": "3514234512",
+	"email": "otaku2023@gmail.com",
+	"country": "Colombia",
+	"city": "Medellin",
     "image": ["https://gdurl.com/RdMH"],
     "userid": 4
 }

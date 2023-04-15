@@ -29,14 +29,9 @@ const CDNURL =
 
 export const Create = ({ isAuthenticated, user }) => {
   const userInfo = useSelector((state) => state.userInfo);
-  const url = "http://localhost:3001";
-
   const [showAlert, setShowAlert] = useState(false);
-
   const [camposVacios, setCamposVacios] = useState(false);
-
   const [error, setError] = useState({});
-
   const [form, setForm] = useState({
     name: "",
     description: "",
@@ -49,11 +44,7 @@ export const Create = ({ isAuthenticated, user }) => {
   });
 
   const [image, setImage] = useState({});
-
   const [send, setSend] = useState({});
-
-  const URL_SERVER = "http://localhost:3001";
-
   const changeHandler = (event) => {
     const property = event.target.name;
     const value = event.target.value;
@@ -109,7 +100,7 @@ export const Create = ({ isAuthenticated, user }) => {
     if (Object.keys(send).length > 0) {
       // revisa si send esta vacio
       axios
-        .post(`${URL_SERVER}/product`, send)
+        .post(`/product`, send)
         .then((r) => console.log(r.data))
         .catch((err) => console.log(err));
     } else {

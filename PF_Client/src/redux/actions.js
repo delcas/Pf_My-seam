@@ -14,6 +14,8 @@ export const GET_SERVICE_BY_ID = "GET_SERVICE_BY_ID";
 export const GET_USER_BY_EMAIL = "GET_USER_BY_EMAIL";
 export const FILTER_BY_CATEGORY = " FILTER_BY_CATEGORY";
 export const FILTER_BY_GENDER = "FILTER_BY_GENDER";
+export const FILTER_BY_TYPE_SERVICE = "FILTER_BY_TYPE_SERVICE";
+export const FILTER_BY_COUNTRY = "FILTER_BY_COUNTRY";
 
 export const getUsers = () => {
   return async function (dispatch) {
@@ -43,9 +45,7 @@ export const getServices = () => {
 export const searchProductByName = (search) => {
   return async (dispatch) => {
     try {
-      let json = await axios.get(
-        `http://localhost:3001/product?name=${search}`
-      );
+      let json = await axios.get(`/product?name=${search}`);
       dispatch({ type: SEARCH_PRODUCT_BY_NAME, payload: json.data });
     } catch (error) {
       alert(`El producto "${search}" no existe, intenta con otro`);
@@ -120,6 +120,16 @@ export function filterByPrice(payload) {
     payload,
   };
 }
+
+export const filterByTypeService = (type) => {
+  return { type: FILTER_BY_TYPE_SERVICE, payload: type };
+};
+
+export const filterByCountry = (country) => ({
+  type: FILTER_BY_COUNTRY,
+  payload: country,
+});
+
 
 export function setProductChange(id, change) {
   return async function (dispatch) {

@@ -5,7 +5,7 @@
   // Chakra
   import { Button } from '@chakra-ui/react'
 
-  export const FormCheckout = ({ input, setInput, err, setErr }) => {
+  export const FormCheckout = ({ input, setInput, err, setErr, cart }) => {
     // Para ejecutar las funciones de las actions
     const dispatch = useDispatch()
       
@@ -14,9 +14,13 @@
       setInput({...input, [e.target.name] : e.target.value})
       setErr(Validation({...input, [e.target.name]: e.target.value}))
     }
+
+    const handleChangeRecordarDomicilio = (e) => {
+      setInput({...input, [e.target.name] : !input.recordar_direccion})
+    }
   
     // Deshabilitar botón "Create Pokemon" si hay algún error
-    const disabled = Object.keys(err).length  
+    const disabled = Object.keys(err).length || !input.cp
   
     return (
       <div className={styles.containerMain}>
@@ -24,38 +28,8 @@
           <form className="row g-3 d-flex">
             <h2 className={styles.titleCreate}>Agrega un domicilio</h2>
   
-            {/* Input colonia */}
-            <div className="col-md-4">
-              <label className="form-label">Colonia:</label>
-              <input 
-                className={err.colonia || !input.colonia ? "form-control is-invalid" : "form-control is-valid"}  
-                value={input.colonia} 
-                name='colonia'
-                onChange={(e) => handleChange(e)}
-              />
-              {/* Validación input colonia */}
-              <div className={err.colonia || !input.colonia ? "invalid-feedback" : "valid-feedback"}>
-                {err.colonia || !input.colonia ? <span> {err.colonia}</span> : '¡Muy bien!'}
-              </div>
-            </div>
-  
-            {/* Input ciudad */}
-            <div className="col-md-8">
-              <label className="form-label">Ciudad:</label>
-              <input 
-                className={err.ciudad || !input.ciudad ? "form-control is-invalid" : "form-control is-valid"} 
-                value={input.ciudad} 
-                name='ciudad'
-                onChange={(e) => handleChange(e)}
-              />
-              {/* Validación input ciudad */}
-              <div className={err.ciudad || !input.ciudad ? "invalid-feedback" : "valid-feedback"}>
-                {err.ciudad || !input.ciudad ? <span> {err.ciudad}</span> : '¡Muy bien!'}
-              </div>
-            </div>
-
-             {/* Input codigo_postal */}
-             <div className="col-md-2">
+            {/* Input codigo_postal */}
+            <div className="col-md-2">
               <label className="form-label">CP:</label>
               <input 
                 type="number" 
@@ -70,8 +44,38 @@
               </div>
             </div>
   
+            {/* Input ciudad */}
+            <div className="col-md-10">
+              <label className="form-label">Ciudad:</label>
+              <input 
+                className={err.ciudad || !input.ciudad ? "form-control is-invalid" : "form-control is-valid"} 
+                value={input.ciudad} 
+                name='ciudad'
+                onChange={(e) => handleChange(e)}
+              />
+              {/* Validación input ciudad */}
+              <div className={err.ciudad || !input.ciudad ? "invalid-feedback" : "valid-feedback"}>
+                {err.ciudad || !input.ciudad ? <span> {err.ciudad}</span> : '¡Muy bien!'}
+              </div>
+            </div>
+
+             {/* Input colonia */}
+            <div className="col-md-4">
+              <label className="form-label">Colonia:</label>
+              <input 
+                className={err.colonia || !input.colonia ? "form-control is-invalid" : "form-control is-valid"}  
+                value={input.colonia} 
+                name='colonia'
+                onChange={(e) => handleChange(e)}
+              />
+              {/* Validación input colonia */}
+              <div className={err.colonia || !input.colonia ? "invalid-feedback" : "valid-feedback"}>
+                {err.colonia || !input.colonia ? <span> {err.colonia}</span> : '¡Muy bien!'}
+              </div>
+            </div>
+  
             {/* Input calle */}
-            <div className="col-md-8">
+            <div className="col-md-6">
               <label className="form-label">Calle:</label>
               <input 
                 className={err.calle || !input.calle ? "form-control is-invalid" : "form-control is-valid"}  
@@ -149,24 +153,31 @@
             </div>
 
             {/* Recordar domicilio */}
-            <div className="col-md-4">
-              <label className="form-label">Recordar domicilio</label>
-              <input 
-                className="form-control"
-                value={input.recordar} 
-                name='recordar'
-                onChange={(e) => handleChange(e)}
-              />
+            <div className="col-12">
+              <div className="form-check">
+                <input 
+                  className="form-check-input" 
+                  type="checkbox" 
+                  name='recordar_direccion'
+                  onChange={(e) => handleChangeRecordarDomicilio(e)}
+                   />
+                <label className="form-check-label">
+                  ¿Recordar domicilio?
+                </label>
+              </div>
             </div>
           </form>
         </div>
           <div className={styles.containerResume}>
             <h2 className={styles.titleCreate}>Resumen de compra</h2>
             -----------------------------------------------------
-            <p><b>Total: $100</b></p>
+            {cart.map(el => <h4 key={el.id}>{el.quantity} {el.name} <b>${el.price}</b></h4>)}
+            -----------------------------------------------------
+            <h3>Total: <b>${cart.reduce((accumulator, currentValue) => 
+              accumulator + (currentValue.price * currentValue.quantity), 0)}</b></h3>
           </div>
           <div className={styles.conatinerButtton}>
-            <Button className={styles.buttonContinue} size='lg' >Continuar</Button>
+            <Button className={styles.buttonContinue} title='Completa todos los campos' isDisabled={disabled} size='lg' >Continuar</Button>
           </div>
       </div>
     )

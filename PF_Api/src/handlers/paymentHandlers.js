@@ -9,7 +9,15 @@ const postPaymentHandler = (req,res) => {
   const { items } = req.body;
   console.log(items);
   // Crea un objeto de preferencia
-  let preference = { items: [] };
+  let preference = { 
+    "back_urls": {
+      "success": "http://localhost:3000/home",
+      "failure": "http://localhost:3000/checkout/failure",
+      "pending": "http://localhost:3000/checkout/pending"
+    },
+    "auto_return": "approved",
+    items: [] 
+  };
   items.forEach(item => {
     preference.items.push(item)
   });

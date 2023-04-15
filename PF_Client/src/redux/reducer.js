@@ -12,6 +12,8 @@ import {GET_PRODUCTS,
         GET_USER_BY_EMAIL,
         FILTER_BY_CATEGORY,
         FILTER_BY_GENDER,
+        FILTER_BY_TYPE_SERVICE,
+        FILTER_BY_COUNTRY,
         } from "./actions";
 
 
@@ -20,7 +22,8 @@ import {GET_PRODUCTS,
 const initialState = {
     products: [],
     allProducts: [],
-    services: [],  
+    services: [],
+    allServices: [],
     details: [],
     productQuestions: [],  
     promotions: [],  
@@ -41,11 +44,13 @@ const rootReducer = (state = initialState, action) => {
         case GET_USERS:
             return {
                 ...state,
-               users: action.payload
+                users: action.payload
             }
         case GET_SERVICES:
             return {...state, 
-                services: action.payload};  
+                services: action.payload,
+                allServices: action.payload
+            };  
         case SEARCH_PRODUCT_BY_NAME:
             return {...state, 
                 products: action.payload};
@@ -120,7 +125,35 @@ const rootReducer = (state = initialState, action) => {
                 products: filterByGender
             }
         }
-        ////
+      case FILTER_BY_TYPE_SERVICE: {
+            const type = action.payload;
+            let productType = state.allServices;
+            let filterByType = [];
+            if (type === "Todos") {
+                filterByType = productType;
+            } else {
+                filterByType = productType.filter((p) => p.name === type);
+            }
+            return {
+              ...state,
+              services: filterByType,
+            };
+        }
+        case FILTER_BY_COUNTRY: {
+            const countrys = action.payload;
+            let serviceCountry = state.allServices;
+            let filterbyCountry = [];
+            if (countrys === "All") {
+                filterbyCountry = serviceCountry
+            } else {
+                filterbyCountry = serviceCountry.filter((p) => p.country === countrys)
+            }
+            return {
+                ...state,
+                services: filterbyCountry
+            }
+        }
+            
         case GET_USERS: {
             return {...state, 
                 users: action.payload}; 

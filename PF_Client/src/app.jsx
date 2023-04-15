@@ -1,8 +1,9 @@
-import axios from 'axios';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Landing } from './views/Landing/Landing';
 import { Home } from './views/Home/Home';
 import { Create } from './views/Create/Create';
+import { CreateService }  from "./views/CreateService/CreateService";
+import { Iconos } from "./components/Iconos/Iconos"
 import { Promotions } from './components/Carousel/Promotions/Promotions';
 import { Login } from './views/Login/Login';
 import { ProductDetail } from './views/ProductDetail/ProductDetail'
@@ -12,8 +13,13 @@ import { Error404 } from './components/Error404/Error404';
 import { ServiceDetail } from './views/ServiceDetail/ServiceDetail';
 import { Service } from './views/Service/Service';
 import { UserList } from './components/UserList/UserList'
+<<<<<<< HEAD
 import { Checkout } from './views/Checkout/Checkout';
+=======
+import axios from 'axios';
+>>>>>>> fd27f7d66927b678838b59c8f1246c7c37dda0d0
 import { useAuth0 } from "@auth0/auth0-react";
+import { MercadoPago } from './views/Checkout/MercadoPago'
 
 const backend =import.meta.env.VITE_BACKEND_URL;
 axios.defaults.baseURL = backend
@@ -29,10 +35,14 @@ function App() {
       <Route exact path = '/' element = {<Landing />}/>
       <Route path = '/home' element = {<Home isAuthenticated={isAuthenticated} user={user} />}/>
       <Route path = '/login' element = {<Login />}/>
-      <Route path = '/create' element = {<Create isAuthenticated={isAuthenticated} user={user}/>}/>
+      <Route path='/create' element={<Iconos isAuthenticated={isAuthenticated} user={user} />} />
+      
+      <Route path='/createProduct' element={<Create isAuthenticated={isAuthenticated} user={user} />} />
+      <Route path = '/createService' element = {<CreateService isAuthenticated={isAuthenticated} user={user}/>}/>
+
       <Route path = '/promotions' element = {<Promotions />}/>
       <Route path = '/categories' element = {<Categories />}/>
-      <Route path = '/checkout' element = {<Checkout />}/>
+      <Route path = '/checkout' element = {<MercadoPago />}/>
       <Route path = '/ProductDetail/:id' element = {<ProductDetail isAuthenticated={isAuthenticated} user={user}/>}/>
       <Route path = '/profile' element = {<Profile isAuthenticated={isAuthenticated} user={user}/>}/> 
       <Route path = '/ServiceDetail/:id' element={<ServiceDetail isAuthenticated={isAuthenticated} user={user} />}/>
@@ -44,3 +54,5 @@ function App() {
 }
 
 export default App;
+
+// {<Create isAuthenticated={isAuthenticated} user={user}/>}/>

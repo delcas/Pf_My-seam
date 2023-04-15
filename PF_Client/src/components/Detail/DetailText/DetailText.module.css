@@ -1,3 +1,71 @@
 .tdLeft{
     text-align: left;
-}
+    padding: 20px;
+    background-color: rgba(255, 81, 0, 0.986); 
+    font-size: 30px;
+}.buttonCart {
+    background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  }
+  .buttonCart:hover{
+    color: black;
+  }
+  .buttonFavourites {
+    background-color: rgb(255, 255, 255);
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  }
+  
+  .buttonFavourites:hover {
+    color: rgb(255, 0, 0)
+  }
+
+.quantity button {
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    height: 1.7rem;
+    width: 1.7rem;
+  }
+  
+  .quantity input {
+    font-size: 1.14rem;
+    outline: 2px solid #000;
+    background-color: white;
+    color: black;
+    outline-offset: -2px;
+    text-align: center;
+    width: 2rem;
+  }
+  
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+  
+  .buttonLess {
+    margin-left: 15px;
+  }
+  
+  .buttonDeleteItem {
+    margin-bottom: 15px;
+  }

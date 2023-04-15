@@ -1,15 +1,18 @@
 const { Router } = require("express");
 const {
   getCartProducts,
-  postCartProduct,
+  createCartProduct,
   deleteCartProduct,
+  modifyCartProduct,
   deleteCartAllProducts,
-} = require("../handlers/cartHandler");
+} = require("../handlers/cartHandler.js");
 const cartRouter = Router();
 
-// cartRouter.get("/", getCartProducts);
+cartRouter.post("/", createCartProduct);
 
-// cartRouter.post("/", postCartProduct);
+cartRouter.get("/", getCartProducts);
+
+cartRouter.put("/", modifyCartProduct);
 
 // cartRouter.delete("/", deleteCartProduct);
 

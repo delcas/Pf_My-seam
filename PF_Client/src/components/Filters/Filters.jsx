@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { filterByPrice,orderByAlphabet,getProducts,filterByCategory,filterByGender  } from '../../redux/actions';
 import { Button, Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton,
-        } from '@chakra-ui/react'
+} from '@chakra-ui/react'
+
 
 export const Filters = ({ setCurrentPage }) => {
 
@@ -50,7 +51,7 @@ const handleFilterClick = (e) => {
 
   return (
     <div className={products.length > 0 ? `${styles.containerFilters} filtrado` : styles.hideFilters}>
-      <Button className={styles.buttonFilters} ref={btnRef} colorScheme='teal' onClick={onOpen} mt='20px' ml='35px'>
+      <Button className={styles.buttonFilters} ref={btnRef} colorScheme='orange' onClick={onOpen} mt='20px' ml='35px'>
         Filtrar productos
       </Button>
       <Drawer
@@ -131,7 +132,7 @@ const handleFilterClick = (e) => {
           </DrawerFooter>
       </DrawerContent>
       </Drawer>
-
+          
     </div>
   )
 }

@@ -1,0 +1,30 @@
+.review{
+    border: 2px solid;
+    border-radius: 7px;
+    display:flex;  
+    size: 5x;
+    justify-content: left;
+    align-items: center;
+    margin: 5px;    
+}
+.star{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(122, 121, 121, 0.4);
+    margin: 5px;  
+    cursor: pointer;  
+}
+.negrita{
+    font-weight: 300;
+    
+}
+.chiquita{
+    font-size: small;
+    
+}
+.centrado{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
