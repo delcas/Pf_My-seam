@@ -35,11 +35,13 @@ module.exports = {
     }
   },
   getCartProducts: async (req, res) => {
-    const { customer_id, cartid, is_admin } = req.body;
+    const { customer_id, cartid, is_admin } = req.query;
+    console.log('body: ', customer_id);
     try {
       let cart_response;
       if (customer_id) {
-        cart_response = await getCustomersCartProducts(customer_id);        
+        cart_response = await getCustomersCartProducts(customer_id);   
+        console.log('response: ', cart_response);
       }
       if (cartid) {
         cart_response = await getCartByPk(cartid);
