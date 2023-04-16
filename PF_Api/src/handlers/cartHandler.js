@@ -60,6 +60,7 @@ module.exports = {
       const modify = await putCartProduct(edit_data);
       res.status(200).json(modify);
     } catch (error) {
+      console.log(error);
       res.status(400).send(error.massage);
     }
   },
