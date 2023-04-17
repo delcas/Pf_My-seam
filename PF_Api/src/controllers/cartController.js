@@ -93,7 +93,7 @@ const putCartProduct = async (edit_data) => {
     if (state === "Pagado") {
       existents?.forEach(async (p) => {
         const result = p.stock - p.cart_product.quantity;
-        if(result < 0) throw new Error(`Revisar disponibilidad de ${p.name}`)
+        if(result < 0) return(`Revisar disponibilidad de ${p.name}`);
         await Product.update(
           { stock: result},
           {
