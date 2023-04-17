@@ -75,7 +75,7 @@ module.exports = {
     console.log(update, id);
     try {
       await editUser(update, id);
-      res.send("Successfully edited");
+      return res.status(201).send("Successfully edited");
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
