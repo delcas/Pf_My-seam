@@ -1,39 +1,24 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import styles from "./Cart.module.css";
-import { useSelector } from "react-redux";
-import EmptyCart from "../../images//empty-cart.png";
-import { CartProducts } from "./CartProducts/CartProducts";
-import { Loading } from "../Loading/Loading";
-import { UseLocalStorage } from "../../hooks/UseLocalStorage";
+import React, { useRef, useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import styles from './Cart.module.css'
+import { useSelector } from 'react-redux';
+import EmptyCart from '../../images//empty-cart.png'
+import { CartProducts } from './CartProducts/CartProducts';
 // Chakra
 import { BsFillCartFill } from "react-icons/bs";
-import {
-  Icon,
-  useDisclosure,
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-} from "@chakra-ui/react";
-import axios from "axios";
+import { Icon, useDisclosure, Button, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent } from '@chakra-ui/react'
+// Estado del Local Storage del Carrito de compras
+// const cartLocalStorage = JSON.parse(localStorage.getItem("cart") || [])
 
 export const Cart = () => {
   // Menú desplegable Chakra
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef();
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = useRef()
+  
+  // Estado del Carrito de compras
+  let stateCart = useSelector(state => state.cart)
+  const [cart, setCart] = useState(stateCart)
 
-  // Estado del Local Storage del Carrito de compras
-  let cart = useSelector((state) => state.cart);
-  const [cartLocalStorage, setCartLocalStorage] = UseLocalStorage(cart, []);
-
-  /*   useEffect(() => {
-    if (cart.length > 0) {
-      setCartLocalStorage(cart)
-    }    
-  }, [cart])   */
 
   // Estado del precio total del carrito de compras
   const [totalPrice, setTotalPrice] = useState(0);
@@ -42,18 +27,22 @@ export const Cart = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const disabled = cart.find((el) => el.quantity < 1);
 
+  // Calcular el total del precio y cantidad de productos del carrito
   const calculatePriceQuantity = () => {
-    let totalPrice = 0;
-    let totalQuantity = 0;
+    setTotalPrice(cart.reduce((accumulator, currentValue) => 
+      accumulator + Math.round(currentValue.price * currentValue.quantity), 0))
 
-    for (let i = 0; i < cart.length; i++) {
-      totalPrice += cart[i].price * cart[i].quantity;
-      totalQuantity += cart[i].quantity;
-    };
-    setTotalPrice(totalPrice);
-    setTotalQuantity(totalQuantity);
-    onOpen();
-  };
+    setTotalQuantity(cart.reduce((accumulator, currentValue) => 
+      accumulator + currentValue.quantity, 0))
+
+    onOpen()
+  }
+
+  useEffect(() => {      
+    setTotalQuantity(stateCart.reduce((accumulator, currentValue) => 
+      accumulator + currentValue.quantity, 0))
+  }, [stateCart])
+
 
   return (
     <div>

@@ -5,6 +5,7 @@ import { CardProducts } from '../../Card/CardProducts/CardProducts';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPromotions } from '../../../redux/actions';
 import { Loading } from '../../Loading/Loading'
+import { Footer } from '../../Footer/Footer'
 
 export const Promotions = () => {
   // Me traigo los estados del reducer 
@@ -43,6 +44,7 @@ export const Promotions = () => {
         : <Loading />
        }
       </ul>  
+      <Footer />
     </div>
   )
 }
