@@ -6,10 +6,14 @@ import { Link } from 'react-router-dom';
 export const Footer = () => {
   // Me traigo los estados del reducer 
   const allProducts = useSelector((state) => state.products);
+  const userId = useSelector((state) => state.userInfo.id);
 
   return (
     <div className={allProducts.length > 0 ? '' : styles.hideFooter}>
   <footer className="d-flex flex-column align-items-center justify-content-center">
+    {userId && 
+    <a href={`https://auth.mercadopago.com/authorization?client_id=2799826172514532&response_type=code&platform_id=mp&state=${userId}&redirect_uri=https://myseam-production.up.railway.app/payment/authcode/`}>Clic aqui para vincular tu cuenta con MercadoPago</a>
+    }
     <div className={styles.containerFooterIcons}>
       {/* Linkedin */}
       <Link to="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
