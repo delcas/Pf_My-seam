@@ -10,6 +10,7 @@ export const Footer = () => {
   return (
     <div className={allProducts.length > 0 ? '' : styles.hideFooter}>
   <footer className="d-flex flex-column align-items-center justify-content-center">
+    
     <div className={styles.containerFooterIcons}>
       {/* Linkedin */}
       <Link to="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
