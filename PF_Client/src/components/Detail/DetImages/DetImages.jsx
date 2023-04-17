@@ -19,11 +19,12 @@ export default function DetImage({ image }){
   <div className={imstyle.grid_four_column}>
     {image.map((e,i)=>{
       return(
-        <figure className={imstyle.grid_item}>
+        <figure className={imstyle.grid_item}
+          onMouseEnter={() => setMainImage(e)}
+        >
           <img src={e} 
           alt={e.filename}
           key={i}
-          onClick={()=>setMainImage(e)}
           ></img>
         </figure>
       )

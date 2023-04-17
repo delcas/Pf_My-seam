@@ -29,17 +29,19 @@ export const Cart = () => {
 
   // Calcular el total del precio y cantidad de productos del carrito
   const calculatePriceQuantity = () => {
-    let totalPrice = 0;
-    let totalQuantity = 0;
+    setTotalPrice(cart.reduce((accumulator, currentValue) => 
+      accumulator + Math.round(currentValue.price * currentValue.quantity), 0))
 
-    for (let i = 0; i < cart.length; i++) {
-      totalPrice += cart[i].price * cart[i].quantity
-      totalQuantity += cart[i].quantity
-    } 
-    setTotalPrice(totalPrice)
-    setTotalQuantity(totalQuantity)
+    setTotalQuantity(cart.reduce((accumulator, currentValue) => 
+      accumulator + currentValue.quantity, 0))
+
     onOpen()
   }
+
+  useEffect(() => {      
+    setTotalQuantity(stateCart.reduce((accumulator, currentValue) => 
+      accumulator + currentValue.quantity, 0))
+  }, [stateCart])
 
 
   return (

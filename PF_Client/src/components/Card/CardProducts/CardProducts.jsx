@@ -32,12 +32,12 @@ export const CardProducts = ({ id, image, name, price, description }) => {
     // Validar si ya existe el producto en el carrito de compras
     if (cart.find(el => el === newProduct)) {   
       newProduct.quantity +=  1 
-      localStorage.setItem("cart", JSON.stringify(cart))
     } else {
         newProduct.quantity = 1 
         cart.push(newProduct)   
-        localStorage.setItem("cart", JSON.stringify(cart))     
       }
+      
+    localStorage.setItem("cart", JSON.stringify(cart))       
     showNotify();
   }
  
