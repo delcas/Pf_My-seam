@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CardUser.module.css";
 import { useDispatch } from "react-redux";
+import { useColorMode, Icon } from "@chakra-ui/react";
+ import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
+import { FaLock } from "react-icons/fa";
 
-import { useColorMode, Icon, Alert, AlertIcon } from "@chakra-ui/react";
-import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
 
 export const CardUser = ({
   id,
@@ -14,26 +16,43 @@ export const CardUser = ({
   username,
   email,
   image,
+  isActive,
 }) => {
-  const [isBlock, setIsBlock] = React.useState(false);
+  const [isBlock, setIsBlock] = useState(isActive);
   const dispatch = useDispatch();
   const { toggleColorMode, colorMode } = useColorMode();
   const currentTheme = useColorMode().colorMode;
 
-  const handleBlock = () => {
-    if (isBlock) {
-      setIsBlock(false);
-    } else {
-      setIsBlock(true);
-      
+  const urlBack = "http://localhost:3001/users"
+
+  const handleBlock = async () => {
+    try {
+      const newBlockStatus = !isBlock;
+      const response = await fetch(`${urlBack}/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ isActive: newBlockStatus }),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to update user status");
+      }
+      setIsBlock(newBlockStatus);
+    } catch (error) {
+      console.error(error);
     }
   };
 
+  console.log(isBlock);
+  // console.log(isBlock)
   return (
     <div>
       <li
         className={
-          currentTheme === "dark" ? styles.cardDarkTheme : styles.cardLightTheme
+          currentTheme === "dark"
+            ? `${styles.cardDarkTheme} ${isBlock ? styles.cardBlocked : ""}`
+            : `${styles.cardLightTheme} ${!isBlock ? styles.cardBlocked : ""}`
         }
       >
         <div key={id}>
