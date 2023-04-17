@@ -8,6 +8,7 @@ import {GET_PRODUCTS,
         FILTER_BY_PRICE,
         SET_PRODUCT_CHANGE,
         GET_USERS,
+        GET_USER,
         GET_SERVICE_BY_ID,
         GET_USER_BY_EMAIL,
         FILTER_BY_CATEGORY,
@@ -29,7 +30,8 @@ const initialState = {
     promotions: [],  
     cart: [],
     users: [],
-    userInfo: {}
+    userInfo: {},
+    user: {}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -41,6 +43,11 @@ const rootReducer = (state = initialState, action) => {
                 products: action.payload,
                 allProducts: action.payload
             }; 
+        case GET_USER:
+            return {
+                ...state,
+                user: action.payload
+            }
         case GET_USERS:
             return {
                 ...state,

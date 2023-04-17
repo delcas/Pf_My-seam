@@ -63,3 +63,23 @@
     color: #FF8F00;
 }
 
+.hide {
+    display: none;
+}
+
+.LogIn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
+  
+  .LogIn p, a {
+    font-size: 25px;
+  }
+  
+  .LogIn a {
+    cursor: pointer;
+  }
