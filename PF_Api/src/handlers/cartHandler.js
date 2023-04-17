@@ -64,6 +64,13 @@ module.exports = {
       res.status(400).send(error.massage);
     }
   },
-  //  deleteCartProduct: async (req, res) => {},
+   deleteCart: async (req, res) => {
+    const { cartid } = req.body;
+    try {
+      res.status(200).json()
+    } catch (error) {
+      res.status(400).send(error.message)
+    }
+   },
   //  deleteCartAllProducts: async (req, res) => {};
 };
