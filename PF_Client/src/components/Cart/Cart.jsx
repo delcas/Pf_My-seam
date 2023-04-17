@@ -49,30 +49,7 @@ export const Cart = () => {
     for (let i = 0; i < cart.length; i++) {
       totalPrice += cart[i].price * cart[i].quantity;
       totalQuantity += cart[i].quantity;
-    }
-    (async () => {
-      await axios.post(`/cart`, {
-        customer_id: 6,
-        prods: [
-          {
-            productid: 1,
-            quantity: 2,
-          },
-          {
-            productid: 4,
-            quantity: 1555,
-          },
-          {
-            productid: 2,
-            quantity: 11,
-          },
-          {
-            productid: 3,
-            quantity: 6,
-          },
-        ],
-      });
-    })();
+    };
     setTotalPrice(totalPrice);
     setTotalQuantity(totalQuantity);
     onOpen();
