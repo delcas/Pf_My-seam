@@ -67,7 +67,8 @@ module.exports = {
    deleteCart: async (req, res) => {
     const { cartid } = req.body;
     try {
-      res.status(200).json()
+      const del = await deleteCart(cartid);
+      res.status(200).json(del)
     } catch (error) {
       res.status(400).send(error.message)
     }

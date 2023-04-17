@@ -124,9 +124,7 @@ const putCartProduct = async (edit_data) => {
                 `Pedido de ${existents[j].name} exede stock, solo hay ${existents[j].stock} unidades`
               )
             : await current?.update({ quantity: prods[i].quantity });
-          // prods[i].quantity === 0 &&
-          //   (await deleteCartProduct(edit_cart, existents[j]));
-        } else {
+          } else {
           add_prods.push(prods[i]);
           // console.log('putCart verif1: ', add_prods);
         }
@@ -153,14 +151,20 @@ const deleteCartProduct = async (cart, product) => {
   console.log("delete: ", product);
   await cart.removeProduct(product.id);
 };
-const deleteCartAllProducts = async () => {};
+const deleteCart = async (cartid) => {
+await Cart.destroy({
+  where: {
+    id: cartid
+  },
+});
+};
 module.exports = {
   getActiveCart,
   AddProductToCart,
   getCustomersCartProducts,
   postCartProduct,
   deleteCartProduct,
-  deleteCartAllProducts,
+  deleteCart,
   putCartProduct,
   getCartByPk,
   getCarts,
