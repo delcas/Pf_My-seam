@@ -1,4 +1,5 @@
 import axios from "axios";
+export const GET_USER = "GET_USER";
 export const GET_USERS = "GET_USERS";
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_SERVICES = "GET_SERVICES";
@@ -23,6 +24,15 @@ export const getUsers = () => {
     const users = usersData.data;
     console.log("get users result: ", users.length);
     dispatch({ type: GET_USERS, payload: users });
+  };
+};
+
+export const getUser = (id) => {
+  return async function (dispatch) {
+    const userData = await axios.get(`/users/${id}`);
+    const user = userData.data;
+    console.log("get users result: ", user.length);
+    dispatch({ type: GET_USER, payload: user });
   };
 };
 
