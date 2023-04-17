@@ -35,24 +35,13 @@ module.exports = {
   },
 
   getUsers: async () => {
-    users.forEach( async (user) => {
-      await User.findOrCreate({
-        where: {
-          name: user.name,
-          birthdate: user.birthdate,
-          address: user.address,
-          access_level: user.access_level,
-          username: user.username,
-          password: user.password,
-          email: user.email,
-          country: user.country,
-          city: user.city,
-          isActive: user.isActive,
-          image: user.image
-        },
-      });
+    // users.forEach( async (user) => {
+    //   await User.findOrCreate();
+    // });
+    return await User.findAll({
+      order: [
+        ['id', 'ASC'],]
     });
-    return await User.findAll();
   },
 
   getUserByEmail: async (email) =>{
