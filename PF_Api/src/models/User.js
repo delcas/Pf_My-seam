@@ -61,6 +61,7 @@ module.exports = (sequelize) => {
       isActive:{
         type: DataTypes.BOOLEAN,
         allowNull: true,
+        defaultValue:true
       },
 
       image: {
