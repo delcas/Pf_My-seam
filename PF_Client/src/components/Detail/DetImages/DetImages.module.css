@@ -18,6 +18,7 @@
   .main_image {
     width: 400px;
     height: 400px;
+    background-color: white;
   }
   
   .grid_item {
