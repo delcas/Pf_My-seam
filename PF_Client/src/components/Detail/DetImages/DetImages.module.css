@@ -17,7 +17,8 @@
   }
   .main_image {
     width: 400px;
-    height: auto;
+    height: 400px;
+    background-color: white;
   }
   
   .grid_item {
@@ -31,8 +32,8 @@
   
   .grid_item img {
     display: block;
-    width: 100%;
-    height: auto;
+    width: 10rem;
+    height: 100px;
     object-fit: cover;
     cursor: pointer;
   }
