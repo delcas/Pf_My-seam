@@ -46,8 +46,7 @@ module.exports = {
           client_id: CLIENT_ID,
           grant_type: "authorization_code",
           code: code,
-          redirect_uri: REDIRECT_URI,
-          live_mode: false
+          redirect_uri: REDIRECT_URI
         },
         {
           headers: {
