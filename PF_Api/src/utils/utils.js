@@ -17,11 +17,11 @@ async function getApiProducts() {
     //     });
     //   });
     product = products.map((p) => {
-      const UsId = (m) => {
-        return Math.ceil(Math.random() * m);
-      };
-      const id = UsId(5);
-      return getJson(p, id);
+      // const UsId = (m) => {
+      //   return Math.ceil(Math.random() * m);
+      // };
+      // const id = UsId(5);
+      return getJson(p);
     });
     return product;
   } catch (error) {
@@ -74,14 +74,14 @@ async function getDBproducts() {
 }
 //----------------------------------------------------------------------
 //formato de objeto .JSON para enviar a la tabla Products
-const getJson = (product, id) => {
+const getJson = (product) => {
   return {
     name: product.nombre,
     description: product.descripcion,
     price: product.precio,
     image: product.imagenes,
     stock: product.cantidad,
-    userid: id,
+    userid: product.userid,
   };
 };
 

@@ -1,13 +1,14 @@
 const {
-  getActiveCart,
-  AddProductToCart,
-  getCustomersCartProducts,
   postCartProduct,
+  AddProductToCart,
+  getActiveCart,
+  getCustomersCartProducts,
   putCartProduct,
   deleteCartProduct,
-  deleteCartAllProducts,
   getCartByPk,
   getCarts,
+  deleteCart,
+  getProductsCart,
 } = require("../controllers/cartController");
 
 let cartItem = [];
@@ -35,20 +36,22 @@ module.exports = {
     }
   },
   getCartProducts: async (req, res) => {
-    const { customer_id, cartid, is_admin } = req.query;
-    console.log('body: ', customer_id);
-    try {
+    const { customer_id, cartid, is_admin, productid } = req.query;
+     try {
       let cart_response;
       if (customer_id) {
-        cart_response = await getCustomersCartProducts(customer_id);   
-        console.log('response: ', cart_response);
-      }
+        cart_response = await getCustomersCartProducts(customer_id);
+      };
       if (cartid) {
         cart_response = await getCartByPk(cartid);
       };
       if (is_admin) {
         cart_response = await getCarts();
       };
+      if (productid) {
+        cart_response = await getProductsCart(productid);
+      };
+      console.log("response: ", cart_response);
       res.status(200).json(cart_response);
     } catch (error) {
       res.status(400).send(error.message);
@@ -64,14 +67,14 @@ module.exports = {
       res.status(400).send(error.massage);
     }
   },
-   deleteCart: async (req, res) => {
-    const { cartid } = req.body;
+  deleteCart: async (req, res) => {
+    const { cartid } = req.params;
     try {
       const del = await deleteCart(cartid);
-      res.status(200).json(del)
+      res.status(200).json(del);
     } catch (error) {
-      res.status(400).send(error.message)
+      res.status(400).send(error.message);
     }
-   },
+  },
   //  deleteCartAllProducts: async (req, res) => {};
 };
