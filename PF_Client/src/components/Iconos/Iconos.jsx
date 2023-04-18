@@ -15,7 +15,7 @@ export const Iconos = () => {
 
   const user = useSelector(state => state.userInfo) 
   const linkMercadoPago = `https://auth.mercadopago.com/authorization?client_id=2799826172514532&response_type=code&platform_id=mp&state=${user.id}&redirect_uri=https://myseam-production.up.railway.app/payment/authcode/`    
-  
+
 
   return (
       <div>

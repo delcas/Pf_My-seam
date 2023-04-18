@@ -22,6 +22,10 @@
 }
 
 /* Containers */
+.mainContainer {
+  margin-bottom: 150px;
+}
+
 .containerSections {
   width: 100%;
   height: 400px;
@@ -30,7 +34,6 @@
 
 .containerImgTech {
   position: relative;
-
 }
 
 .containerImg {
@@ -104,6 +107,30 @@
 
 @media only screen and (max-width: 600px) {
   .techImage {
+    width: 250px;
+    height: 250px;
+  }
+  .homeImage {
+    width: 250px;
+    height: 250px;
+  }
+  .seamImage {
+    width: 245px;
+    height: 250px;
+    padding: 0 0 0 30px;
+  }
+  .seamImage2 {
+    width: 250px;
+    height: 250px;
+    padding: 0 0 0 15px;
+  }
+  .titleImage {
+    font-size: 1.6rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .techImage {
     width: 200px;
     height: 200px;
   }
@@ -122,51 +149,27 @@
     padding: 0 0 0 15px;
   }
   .titleImage {
-    font-size: 1.6rem;
-  }
-}
-
-@media only screen and (max-width: 420px) {
-  .techImage {
-    width: 150px;
-    height: 200px;
-  }
-  .homeImage {
-    width: 150px;
-    height: 200px;
-  }
-  .seamImage {
-    width: 145px;
-    height: 200px;
-    padding: 0 0 0 30px;
-  }
-  .seamImage2 {
-    width: 150px;
-    height: 200px;
-    padding: 0 0 0 15px;
-  }
-  .titleImage {
     font-size: 1.1rem;
   }
 }
 
-@media only screen and (max-width: 310px) {
+@media only screen and (max-width: 400px) {
   .techImage {
-    width: 120px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
   }
   .homeImage {
-    width: 120px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
   }
   .seamImage {
-    width: 115px;
-    height: 200px;
+    width: 165px;
+    height: 170px;
     padding: 0 0 0 30px;
   }
   .seamImage2 {
-    width: 120px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
     padding: 0 0 0 15px;
   }
   .titleImage {

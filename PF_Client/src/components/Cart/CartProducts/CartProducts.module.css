@@ -80,7 +80,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .buttonDeleteItem {
-  margin-bottom: 15px;
+  margin-bottom: 14px;
+  margin-right: 15px;
 }
 
 /* CartElements */
@@ -98,14 +99,17 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .textBig {
+  display: flex;
   font-size: 18px;
+  margin-left: 15px;
+  margin-top: 10px;
   width: 200px;
-  padding-left: 15px;
 }
 
 .textMedium {
-  font-size: 19px;
+  font-size: 17px;
   margin-right: 5px;
+  margin-top: 10px;
 }
 
 
