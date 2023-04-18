@@ -165,6 +165,7 @@ export function getUserByEmail(info) {
     const emailData = await axios.get(`/users?email=${info}`);
     const infoUser = emailData.data;
     // console.log(infoUser);
+    localStorage.setItem('myState', JSON.stringify(infoUser));
     dispatch({ type: GET_USER_BY_EMAIL, payload: infoUser });
   };
 }
