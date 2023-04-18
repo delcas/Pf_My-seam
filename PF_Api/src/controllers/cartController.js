@@ -20,9 +20,6 @@ const getActiveCart = async (customer_id) => {
   return new_cart;
 };
 const AddProductToCart = async ({ active, prods }) => {
-  // const add_prods = await  Array.fromAsync(
-  /*const array =*/
-  // console.log('putCart verif1: ', active, ' - ', prods);
   return await Promise.all(
     prods?.map(async (p) => {
       const prod = await Product.findByPk(p.productid);
