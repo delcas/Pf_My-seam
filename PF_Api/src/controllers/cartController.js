@@ -67,7 +67,7 @@ const getCustomersCartProducts = async (customer_id) => {
   return carts;
 };
 const putCartProduct = async (edit_data) => {
-  const { cartid, state, prods} = edit_data;
+  const { cartid, state, prods } = edit_data;
   const edit_cart = await getCartByPk(cartid);
   const edit_cartJSON = edit_cart.toJSON();
   const existents =
@@ -101,14 +101,19 @@ const putCartProduct = async (edit_data) => {
               productid: existents[j].id,
             },
           });
+          if (prods[i].conclusion) {
+            return current?.update({ conclusion: prods[i].conclusion });
+          }
           prods[i].quantity > existents[j].stock
             ? alert(
                 `Pedido de ${existents[j].name} exede stock, solo hay ${existents[j].stock} unidades`
               )
             : await current?.update({ quantity: prods[i].quantity });
         } else {
-          add_prods.push(prods[i]);
-          // console.log('putCart verif1: ', add_prods);
+          if(!prods[i].conclusion) {
+            add_prods.push(prods[i]) 
+          } else {
+          return `No se encontró el producto ${prods[i].productid} en el carrito ${edit_cartJSON.id}`};          
         }
       }
       await AddProductToCart({ active: edit_cart, prods: add_prods });
@@ -119,8 +124,11 @@ const putCartProduct = async (edit_data) => {
   return await getCartByPk(cartid);
 };
 const deleteCartProduct = async (cart, product) => {
-  await cart.removeProduct(product.id)
-  .then(console.log(`Producto ${product.id} retirado del carrito ${cart.id}`));
+  await cart
+    .removeProduct(product.id)
+    .then(
+      console.log(`Producto ${product.id} retirado del carrito ${cart.id}`)
+    );
 };
 const getCartByPk = async (cartid) => {
   const carts = await Cart.findOne({
@@ -143,13 +151,12 @@ const getCarts = async () => {
 };
 const deleteCart = async (cartid) => {
   const cart = await getCartByPk(cartid);
-  cart.products.forEach( async (p)=>await deleteCartProduct(cart, p));
+  cart.products.forEach(async (p) => await deleteCartProduct(cart, p));
   await Cart.destroy({
     where: {
       id: cartid,
     },
-  })
-  .then(console.log(`Carrito ${cartid} eliminado`));
+  }).then(console.log(`Carrito ${cartid} eliminado`));
   return `Carrito ${cartid} eliminado`;
 };
 const getProductsCart = async (productid) => {
@@ -162,7 +169,7 @@ const getProductsCart = async (productid) => {
       },
       through: {
         attributes: ["quantity"],
-      }
+      },
     },
   });
 };
