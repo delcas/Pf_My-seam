@@ -32,9 +32,7 @@ export const Home = () => {
         <NavBar isAuthenticated={isAuthenticated} user={user} />
         <Carousel />
         <Sections />
-        <div id="card">
-          <Card />
-        </div>
+        <Card />
         <BotonIrInicio />
         <Footer />
       </div>
