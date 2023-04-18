@@ -8,12 +8,14 @@ import {GET_PRODUCTS,
         FILTER_BY_PRICE,
         SET_PRODUCT_CHANGE,
         GET_USERS,
+        GET_USER,
         GET_SERVICE_BY_ID,
         GET_USER_BY_EMAIL,
         FILTER_BY_CATEGORY,
         FILTER_BY_GENDER,
         FILTER_BY_TYPE_SERVICE,
         FILTER_BY_COUNTRY,
+        GET_CART,
         } from "./actions";
 
 
@@ -29,7 +31,9 @@ const initialState = {
     promotions: [],  
     cart: [],
     users: [],
-    userInfo: {}
+    userInfo: {},
+    user: {},
+    favourites: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -41,6 +45,11 @@ const rootReducer = (state = initialState, action) => {
                 products: action.payload,
                 allProducts: action.payload
             }; 
+        case GET_USER:
+            return {
+                ...state,
+                user: action.payload
+            }
         case GET_USERS:
             return {
                 ...state,
@@ -67,7 +76,6 @@ const rootReducer = (state = initialState, action) => {
             return {...state, 
                 promotions: action.payload};
         case FILTER_BY_PRICE:
-            console.log('reducer: action.payload: ', action.payload )
             let productsShown = state.allProducts
             let productsFiltered = []
             if(action.payload === 'none'){
@@ -165,8 +173,12 @@ const rootReducer = (state = initialState, action) => {
 
         case GET_USER_BY_EMAIL:{
             return { ...state, userInfo: action.payload}
-
         }
+        case GET_CART:
+            return {
+                ...state,
+                cart: action.payload
+            }
 
         default:
             return {...state};

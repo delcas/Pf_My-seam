@@ -2,6 +2,11 @@ body {
   font-size: 18px;
 }
 
+.mainContainer {
+  width: 100%;
+  margin: 0 auto;
+}
+
 .imgLogo {
   width: auto;
   height: 50px;
@@ -17,6 +22,11 @@ body {
 
 .buttonTheme {
   margin-right: 20px;
+  margin-top: 15px;
+}
+
+.userName {
+  font-size: 15px;
 }
 
 /* Responsive */
@@ -24,4 +34,8 @@ body {
   .buttonTheme {
     float: right;
   }
+  .userName {
+    font-size: 20px;
+  }
 }
+

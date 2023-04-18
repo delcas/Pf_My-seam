@@ -1,4 +1,4 @@
-const { Cart, Product, Cart_Product } = require("../db.js");
+const { Cart, Product, Cart_product } = require("../db.js");
 
 const postCartProduct = async ({ customer_id, prods }) => {
   //customer_id, [{productid: N, quantity: N}, {productid: N, quantity: N}]
@@ -9,6 +9,42 @@ const postCartProduct = async ({ customer_id, prods }) => {
   });
   return await AddProductToCart({ active: new_cart, prods });
 };
+const AddProductToCart = async ({ active, prods }) => {
+  return await Promise.all(
+    prods?.map(async (p) => {
+      const prod = await Product.findByPk(p.productid);
+      console.log("Add prod controller stock1: ", prod.stock);
+      if (prod && p.quantity > prod.stock) {
+        // ¿Como verificar e informar sin que rompa con error?
+        return [prod.id, false];
+      } else if (p.quantity === 0) {
+        await deleteCartProduct(active, prod);
+        return [prod.id, true];
+      } else {
+        const cartProduct = await Cart_product.findOne({
+          where: { cartid: active.id, productid: p.productid },
+          paranoid: false,
+        });
+        console.log("putCart verif else: ", cartProduct);
+        cartProduct
+          ? await Cart_product.update(
+              { deletedAt: null, quantity: p.quantity },
+              {
+                where: { cartid: active.id, productid: p.productid },
+                paranoid: false,
+              }
+            )
+          : await active.addProduct(p.productid, {
+              through: {
+                quantity: p.quantity,
+              },
+            });
+        await active.save();
+        return [prod.id, true];
+      }
+    })
+  );
+};
 const getActiveCart = async (customer_id) => {
   const new_cart = await Cart.findOne({
     where: {
@@ -18,35 +54,6 @@ const getActiveCart = async (customer_id) => {
   });
   if (new_cart) console.log("Controller getCart: ", new_cart.toJSON());
   return new_cart;
-};
-const AddProductToCart = async ({ active, prods }) => {
-  // const add_prods = await
-  /*const array =*/ prods?.forEach(async (p) => {
-    const prod = await Product.findByPk(p.productid);
-    console.log("Add prod controller stock1: ", prod.stock);
-    if (prod && p.quantity > prod.stock) {
-      // ¿Como verificar e informar sin que rompa con error?
-      return [prod.id, false];
-    } else if (p.quantity === 0) {
-      return await deleteCartProduct(active, prod);
-    } else {
-      await active.addProduct(p.productid, {
-        through: {
-          quantity: p.quantity,
-        },
-      });
-      return [prod.id, true];
-    }
-  });
-  // if(!array.every((a) => a.includes(true))) throw new Error( `La cantidad solicitada supera el stock disponible`)
-  return await Cart.findAll({
-    where: {
-      id: active.id,
-    },
-    include: {
-      model: Product,
-    },
-  });
 };
 const getCustomersCartProducts = async (customer_id) => {
   const carts = await Cart.findAll({
@@ -59,6 +66,71 @@ const getCustomersCartProducts = async (customer_id) => {
   });
   return carts;
 };
+const putCartProduct = async (edit_data) => {
+  const { cartid, state, prods } = edit_data;
+  const edit_cart = await getCartByPk(cartid);
+  const edit_cartJSON = edit_cart.toJSON();
+  const existents =
+    edit_cartJSON.products.length > 0 ? edit_cartJSON.products : null;
+  if (state) {
+    await edit_cart?.update({ state });
+    if (state === "Pagado") {
+      existents?.forEach(async (p) => {
+        const result = p.stock - p.cart_product.quantity;
+        if (result < 0) return `Revisar disponibilidad de ${p.name}`;
+        await Product.update(
+          { stock: result },
+          {
+            where: {
+              id: p.id,
+            },
+          }
+        );
+      });
+    }
+  }
+  if (edit_cart && prods?.length > 0) {
+    let add_prods = [];
+    if (existents) {
+      for (let i = 0; i < prods.length; i++) {
+        const j = existents.findIndex((p) => p.id === prods[i].productid);
+        if (j > -1) {
+          const current = await Cart_product.findOne({
+            where: {
+              cartid: edit_cartJSON.id,
+              productid: existents[j].id,
+            },
+          });
+          if (prods[i].conclusion) {
+            await current?.update({ conclusion: prods[i].conclusion });
+          } else {
+          prods[i].quantity > existents[j].stock
+            ? alert(
+                `Pedido de ${existents[j].name} exede stock, solo hay ${existents[j].stock} unidades`
+              )
+            : await current?.update({ quantity: prods[i].quantity });
+          }
+        } else {
+          if(!prods[i].conclusion) {
+            add_prods.push(prods[i]) 
+          } else {
+          return `No se encontró el producto ${prods[i].productid} en el carrito ${edit_cartJSON.id}`};          
+        }
+      }
+      await AddProductToCart({ active: edit_cart, prods: add_prods });
+    } else {
+      await AddProductToCart({ active: edit_cart, prods });
+    }
+  }
+  return await getCartByPk(cartid);
+};
+const deleteCartProduct = async (cart, product) => {
+  await cart
+    .removeProduct(product.id)
+    .then(
+      console.log(`Producto ${product.id} retirado del carrito ${cart.id}`)
+    );
+};
 const getCartByPk = async (cartid) => {
   const carts = await Cart.findOne({
     where: {
@@ -70,21 +142,7 @@ const getCartByPk = async (cartid) => {
   });
   return carts;
 };
-const putCartProduct = async (edit_data) => {
-  const { cartid, state, prods, conclusion } = edit_data;
-  const edit_cart = await Cart.findByPk(cartid);
-  //prods: [{ productid, quantity }]
-  if (state) {
-    await edit_cart?.update({ state });
-  }
-  if (prods.length > 0) {
-    await AddProductToCart({ active: edit_cart, prods });
-  }
-  //   if (conclusion) {
 
-  //   }
-  return await getCartByPk(cartid);
-};
 const getCarts = async () => {
   return await Cart.findAll({
     include: {
@@ -92,19 +150,39 @@ const getCarts = async () => {
     },
   });
 };
-const deleteCartProduct = async (cart, product) => {
-  console.log('delete: ', product);
-  await cart.removeProduct(product);
+const deleteCart = async (cartid) => {
+  const cart = await getCartByPk(cartid);
+  cart.products.forEach(async (p) => await deleteCartProduct(cart, p));
+  await Cart.destroy({
+    where: {
+      id: cartid,
+    },
+  }).then(console.log(`Carrito ${cartid} eliminado`));
+  return `Carrito ${cartid} eliminado`;
 };
-const deleteCartAllProducts = async () => {};
+const getProductsCart = async (productid) => {
+  return await Cart.findAll({
+    include: {
+      model: Product,
+      attributes: ["id", "stock"],
+      where: {
+        id: productid,
+      },
+      through: {
+        attributes: ["quantity"],
+      },
+    },
+  });
+};
 module.exports = {
-  getActiveCart,
-  AddProductToCart,
-  getCustomersCartProducts,
   postCartProduct,
-  deleteCartProduct,
-  deleteCartAllProducts,
+  AddProductToCart,
+  getActiveCart,
+  getCustomersCartProducts,
   putCartProduct,
+  deleteCartProduct,
   getCartByPk,
   getCarts,
+  deleteCart,
+  getProductsCart,
 };

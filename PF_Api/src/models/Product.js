@@ -31,6 +31,9 @@ module.exports = (sequelize) => {
       stock: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        validate: {
+          min: 0,
+        },
       },
       gender: {
         type: DataTypes.ENUM("Mujer", "Hombre", "Niño", "Niña", "All"),

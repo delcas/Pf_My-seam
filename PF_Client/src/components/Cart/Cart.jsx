@@ -1,39 +1,26 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import styles from "./Cart.module.css";
-import { useSelector } from "react-redux";
-import EmptyCart from "../../images//empty-cart.png";
-import { CartProducts } from "./CartProducts/CartProducts";
-import { Loading } from "../Loading/Loading";
-import { UseLocalStorage } from "../../hooks/UseLocalStorage";
+import React, { useRef, useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import styles from './Cart.module.css'
+import { useSelector, useDispatch } from 'react-redux';
+import EmptyCart from '../../images//empty-cart.png'
+import { CartProducts } from './CartProducts/CartProducts';
+import { getCart } from '../../redux/actions'
 // Chakra
 import { BsFillCartFill } from "react-icons/bs";
-import {
-  Icon,
-  useDisclosure,
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-} from "@chakra-ui/react";
-import axios from "axios";
+import { Icon, useDisclosure, Button, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent } from '@chakra-ui/react'
+// Estado del Local Storage del Carrito de compras
+// const cartLocalStorage = JSON.parse(localStorage.getItem("cart") || [])
 
 export const Cart = () => {
   // Menú desplegable Chakra
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef();
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = useRef()
+  
+  // Estado del Carrito de compras
+  let stateCart = useSelector(state => state.cart)
+  const [cart, setCart] = useState(stateCart)
 
-  // Estado del Local Storage del Carrito de compras
-  let cart = useSelector((state) => state.cart);
-  const [cartLocalStorage, setCartLocalStorage] = UseLocalStorage(cart, []);
-
-  /*   useEffect(() => {
-    if (cart.length > 0) {
-      setCartLocalStorage(cart)
-    }    
-  }, [cart])   */
+  const dispatch = useDispatch()
 
   // Estado del precio total del carrito de compras
   const [totalPrice, setTotalPrice] = useState(0);
@@ -42,41 +29,30 @@ export const Cart = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   const disabled = cart.find((el) => el.quantity < 1);
 
+  // Calcular el total del precio y cantidad de productos del carrito
   const calculatePriceQuantity = () => {
-    let totalPrice = 0;
-    let totalQuantity = 0;
+    setTotalPrice(cart.reduce((accumulator, currentValue) => 
+      accumulator + Math.round(currentValue.price * currentValue.quantity), 0))
 
-    for (let i = 0; i < cart.length; i++) {
-      totalPrice += cart[i].price * cart[i].quantity;
-      totalQuantity += cart[i].quantity;
-    }
-    (async () => {
-      await axios.post(`/cart`, {
-        customer_id: 6,
-        prods: [
-          {
-            productid: 1,
-            quantity: 2,
-          },
-          {
-            productid: 4,
-            quantity: 1555,
-          },
-          {
-            productid: 2,
-            quantity: 11,
-          },
-          {
-            productid: 3,
-            quantity: 6,
-          },
-        ],
-      });
-    })();
-    setTotalPrice(totalPrice);
-    setTotalQuantity(totalQuantity);
-    onOpen();
-  };
+    setTotalQuantity(cart.reduce((accumulator, currentValue) => 
+      accumulator + currentValue.quantity, 0))
+
+    onOpen()
+  }
+
+  useEffect(() => {      
+    setTotalQuantity(stateCart.reduce((accumulator, currentValue) => 
+      accumulator + currentValue.quantity, 0))
+  }, [stateCart])
+
+  const user = useSelector(state => state.userInfo) 
+
+  // useEffect(() => {
+  //   dispatch(getCart(user.id))
+  // }, [])
+
+  
+
 
   return (
     <div>
@@ -112,7 +88,7 @@ export const Cart = () => {
           <DrawerHeader>
             <p className={styles.titleCart}>
               Tu carrito de compras ({totalQuantity})
-              <Button className={styles.buttonClose} onClick={onClose}>
+              <Button colorScheme='orange' className={styles.buttonClose} onClick={onClose}>
                 X
               </Button>
             </p>
@@ -163,7 +139,7 @@ export const Cart = () => {
                 </div>
                 <div>
                   <p>
-                    <b>Total: ${totalPrice}</b>
+                    <b>Total: ${Math.round(totalPrice)}</b>
                   </p>
                 </div>
 
