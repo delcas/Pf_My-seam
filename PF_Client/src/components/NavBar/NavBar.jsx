@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './NavBar.module.css';
 import Logo from '../../assets/images/logo_MySeam_full.png';
 import { SearchBar } from './SearchBar/SearchBar';
@@ -11,7 +11,7 @@ import { Avatar } from "@chakra-ui/react";
 import LoginButton from '../Auth0/Logiin/LoginButton';
 import LogoutButton from '../Auth0/Logout/LogoutButton';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getUserByEmail } from '../../redux/actions';
 
@@ -20,24 +20,45 @@ export const NavBar = () => {
   const { toggleColorMode, colorMode } = useColorMode();
   const currentTheme = useColorMode().colorMode;
   const dispatch = useDispatch();
+
   // Info de Auth0
   const { isAuthenticated, user } = useAuth0();
+
   useEffect(() => {
     dispatch(getUserByEmail(user?.email));
     // dispatch(getProductById(id));
   }, [dispatch]);
+
+  // Estado para mostar elementos de acuerdo al max-width de la pantalla
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    function handleResize() {
+      setIsSmallScreen(window.innerWidth < 1200);
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-   <div>
-  {/* NavBar */}
-  <nav
-    className="navbar navbar-expand-lg bg-body-tertiary"
-    data-bs-theme={currentTheme === "dark" ? "dark" : "light"}
-  >
+    <div className={styles.mainContainer}>
+    {/* NavBar */}
+    <nav
+      className="navbar navbar-expand-xl bg-body-tertiary"
+      data-bs-theme={currentTheme === "dark" ? "dark" : "light"}
+    >
     <div className="container-fluid">
       {/* Logo */}
       <NavLink to={"/home"}>
         <img className={styles.imgLogo} src={Logo} alt="Logo My Seam" />
       </NavLink>
+
+       {isSmallScreen && <Cart />}
+       {isSmallScreen && <SearchBar />}
+
       <button
         className="navbar-toggler"
         type="button"
@@ -50,7 +71,8 @@ export const NavBar = () => {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-        {/* Links */}
+
+        {/* Vender */}
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item" title="Publicar producto">
             <NavLink className="nav-link active" to="/create">Vender</NavLink>
@@ -75,14 +97,6 @@ export const NavBar = () => {
               <li>
                 <NavLink className="dropdown-item" to="/promotions">
                   Ofertas
-                </NavLink>
-              </li>
-              <li>
-                <hr className="dropdown-divider"></hr>
-              </li>
-              <li>
-                <NavLink className="dropdown-item" to="/categories">
-                  Todo
                 </NavLink>
               </li>
             </ul>
@@ -120,6 +134,11 @@ export const NavBar = () => {
                 </NavLink>
               </li>
               <li>
+                <NavLink className="dropdown-item" to="/favourites">
+                  Mis favoritos
+                </NavLink>
+              </li>
+              <li>
                 <hr className="dropdown-divider"></hr>
               </li>
               <li>
@@ -140,7 +159,7 @@ export const NavBar = () => {
                     marginLeft="10px"
                     marginRight="10px"
                   />
-                  <u> {user.name}</u>
+                  <u className={styles.userName}> {user.name}</u>
                 </>
               ) : (
                 ""
@@ -151,7 +170,7 @@ export const NavBar = () => {
               </li>
             </ul>
 
-            <SearchBar />
+            {!isSmallScreen && <SearchBar />}
 
             <IconButton
               title= "Cambiar tema"
@@ -161,7 +180,7 @@ export const NavBar = () => {
               icon={colorMode === "dark" ? <FaSun /> : <FaMoon />}
             />
 
-            <Cart />
+            {!isSmallScreen && <Cart />}
 
             {isAuthenticated ? (
               <>
@@ -174,6 +193,7 @@ export const NavBar = () => {
           </div>
         </div>
       </nav>
+
     </div>
   );
 };

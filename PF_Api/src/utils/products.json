@@ -7,7 +7,8 @@
       "https://casadelasbatas.com/41563-large_default/camisa-basic-blanca-de-hombre-manga-larga-delon-roger.jpg"
     ],
     "cantidad": 10,
-    "precio": 15.99
+    "precio": 15.99,
+    "userid": 1
   },
   {
     "nombre": "Camiseta negra",
@@ -18,7 +19,8 @@
       "https://www.masuniformes.com/cdnassets/camisa-camarero-negra_ad_l.jpg"
     ],
     "cantidad": 5,
-    "precio": 15.99
+    "precio": 15.99,
+    "userid": 2
   },
   {
     "nombre": "Polo rojo",
@@ -28,7 +30,8 @@
       "https://www.thekooples.com/dw/image/v2/BGQL_PRD/on/demandware.static/-/Sites-skp-master-catalog/default/dw8c3f22d2/images/hi-res/HTKC2103SSBISRED19_G.jpg?sw=2025&sh=2501"
     ],
     "cantidad": 7,
-    "precio": 25.99
+    "precio": 25.99,
+    "userid": 3
   },
   {
     "nombre": "Polo azul",
@@ -39,7 +42,8 @@
       "https://www.lolitamoda.com/uploads/photo/image/57261/M091212_4.JPG"
     ],
     "cantidad": 2,
-    "precio": 25.99
+    "precio": 25.99,
+    "userid": 5
   },
   {
     "nombre": "Jeans ajustados",
@@ -50,7 +54,8 @@
       "https://m.media-amazon.com/images/I/718oUMs51rL._AC_UY500_.jpg"
     ],
     "cantidad": 3,
-    "precio": 39.99
+    "precio": 39.99,
+    "userid": 3
   },
   {
     "nombre": "Shorts deportivos",
@@ -67,7 +72,8 @@
       "https://m.media-amazon.com/images/I/41noHDDqbjL._AC_.jpg"
     ],
     "cantidad": 12,
-    "precio": 19.99
+    "precio": 19.99,
+    "userid": 3
   },
   {
     "nombre": "Chaqueta de cuero",
@@ -80,7 +86,8 @@
       "https://www.e-gothiczone.com/25486-thickbox_default/cazadora-de-cuero-clasica-cruzada.jpg"
     ],
     "cantidad": 1,
-    "precio": 149.99
+    "precio": 149.99,
+    "userid": 5
   },
   {
     "nombre": "Sudadera con capucha",
@@ -90,7 +97,8 @@
       "https://wordans-a1a5.kxcdn.com/files/model_specifications/2015/10/7/162030/162030_back_big.jpg?1669900571"
     ],
     "cantidad": 8,
-    "precio": 29.99
+    "precio": 29.99,
+    "userid": 2
   },
   {
     "nombre": "Jersey de lana",
@@ -102,7 +110,8 @@
       "https://dhb3yazwboecu.cloudfront.net/1500/jersey-apc-lana-rojo-beige-hombre-3adl.jpg"
     ],
     "cantidad": 4,
-    "precio": 49.99
+    "precio": 49.99,
+    "userid": 1
   },
   {
     "nombre": "Abrigo de invierno",
@@ -114,7 +123,8 @@
       "https://m.media-amazon.com/images/I/61zAzCVas5L._AC_UX569_.jpg"
     ],
     "cantidad": 2,
-    "precio": 99.99
+    "precio": 99.99,
+    "userid": 2
   },
   {
     "nombre": "Botas de cuero",
@@ -126,7 +136,8 @@
       "https://img01.ztat.net/article/spp-media-p1/f25156198e7d4cd78ed8f16895a11c60/0aff9e7152884a63bc32686f98cb43e3.jpg?imwidth=1800"
     ],
     "cantidad": 6,
-    "precio": 79.99
+    "precio": 79.99,
+    "userid": 2
   },
   {
     "nombre": "Zapatillas deportivas",
@@ -138,7 +149,8 @@
       "https://www.lidl.es/media/product/0/0/3/9/8/4/6/zapatillas-deportivas-para-hombre-zoom--4.jpg"
     ],
     "cantidad": 15,
-    "precio": 49.99
+    "precio": 49.99,
+    "userid": 3
   },
   {
     "nombre": "Vestido negro",
@@ -150,7 +162,8 @@
       "https://puravidaclothes.com/17052-product_zoom/vestido-loubel-negro.jpg"
     ],
     "cantidad": 3,
-    "precio": 79.99
+    "precio": 79.99,
+    "userid": 4
   },
   {
     "nombre": "Vestido rojo",
@@ -164,7 +177,8 @@
       "https://invitadisima.com/18465-thickbox_default/vestido-largo-rojo-escote-corazon-invitada-perfecta.jpg"
     ],
     "cantidad": 10,
-    "precio": 89.99
+    "precio": 89.99,
+    "userid": 4
   },
   {
     "nombre": "Falda de cuero",
@@ -176,7 +190,8 @@
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71KTjjIZfwL._AC_UL1500_.jpg"
     ],
     "cantidad": 4,
-    "precio": 59.99
+    "precio": 59.99,
+    "userid": 3
   },
   {
     "nombre": "Blusa de seda",
@@ -189,7 +204,8 @@
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61qSVNLyoBL._AC_.jpg"
     ],
     "cantidad": 7,
-    "precio": 34.99
+    "precio": 34.99,
+    "userid": 4
   },
   {
     "nombre": "Pantalón gris",
@@ -200,7 +216,8 @@
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81+vRDkCe2L._AC_UL1500_.jpg"
     ],
     "cantidad": 6,
-    "precio": 49.99
+    "precio": 49.99,
+    "userid": 3
   },
   {
     "nombre": "Chaleco",
@@ -214,7 +231,8 @@
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71LrWgWolTL._AC_UL1500_.jpg"
     ],
     "cantidad": 8,
-    "precio": 29.99
+    "precio": 29.99,
+    "userid": 4
   },
   {
     "nombre": "Camisa de lino",
@@ -228,7 +246,8 @@
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61BFBDFZYaL._AC_UL1149_.jpg"
     ],
     "cantidad": 9,
-    "precio": 39.99
+    "precio": 39.99,
+    "userid": 3
   },
   {
     "nombre": "Bufanda",
@@ -242,6 +261,7 @@
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71sxN0GPb5L._AC_UL1500_.jpg"
     ],
     "cantidad": 12,
-    "precio": 19.99
+    "precio": 19.99,
+    "userid": 1
   }
 ]

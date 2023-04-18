@@ -17,6 +17,7 @@ export const FILTER_BY_CATEGORY = " FILTER_BY_CATEGORY";
 export const FILTER_BY_GENDER = "FILTER_BY_GENDER";
 export const FILTER_BY_TYPE_SERVICE = "FILTER_BY_TYPE_SERVICE";
 export const FILTER_BY_COUNTRY = "FILTER_BY_COUNTRY";
+export const GET_CART = "GET_CART";
 
 export const getUsers = () => {
   return async function (dispatch) {
@@ -167,5 +168,13 @@ export function getUserByEmail(info) {
     // console.log(infoUser);
     localStorage.setItem('myState', JSON.stringify(infoUser));
     dispatch({ type: GET_USER_BY_EMAIL, payload: infoUser });
+  };
+}
+
+export function getCart(id) {
+  return async function (dispatch) {
+    const cart = await axios.get(`/cart?customer_id=${id}`);
+    const infoCart = cart.data;
+    dispatch({ type: GET_CART, payload: infoCart });
   };
 }

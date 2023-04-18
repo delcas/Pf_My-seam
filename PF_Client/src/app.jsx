@@ -12,6 +12,7 @@ import Profile from './components/Auth0/Profile/Profile';
 import { Error404 } from './components/Error404/Error404';
 import { ServiceDetail } from './views/ServiceDetail/ServiceDetail';
 import { Service } from './views/Service/Service';
+import { Favourites } from './views/Favourites/Favourites';
 import { UserList } from './components/UserList/UserList'
 import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
@@ -44,6 +45,7 @@ function App() {
       <Route path = '/ServiceDetail/:id' element={<ServiceDetail isAuthenticated={isAuthenticated} user={user} />}/>
       <Route path = '/service' element={<Service />}/>
       <Route path = '/users' element={<UserList />}/>
+      <Route path = '/favourites' element={<Favourites />}/>
       <Route path = '*' element = {<Error404 />}/> 
     </Routes >
   );

@@ -1,0 +1,24 @@
+/* Card */
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, min(min(100%, 25%)));
+  transition: all 0.8s ease;
+}
+
+.cardContainer p {
+  position: absolute;
+  margin-top: 30px;
+  left: 40%;  
+  font-size: 30px;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  margin: 20px 0 0 30px;
+}
+
+.hide {
+  display: none;
+}

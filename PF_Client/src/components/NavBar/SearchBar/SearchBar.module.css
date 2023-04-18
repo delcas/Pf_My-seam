@@ -13,11 +13,40 @@
   z-index: 1;
 }
 
+.inputSearch {
+  margin-top: 15px;
+}
+
+.buttonSearch {
+  margin-top: 15px;
+  margin-left: 5px;
+}
+
 /* Responsive SearchBar */
 
-@media only screen and (max-width: 830px) {
+@media only screen and (max-width: 1200px) {
   .inputSearch {
-    width: 400px;
+    margin-top: 25px;
+  }
+  .buttonSearch {
+    margin-top: 25px;
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  .inputSearch {
+    width: 100px;
+    margin-right: 0px;
+  }
+  .buttonSearch {
+    margin-left: 5px;
+  }
+}
+
+
+@media only screen and (max-width: 430px) {
+  .inputSearch {
+    max-width: 220px;
   }
 }
 

@@ -1,0 +1,10 @@
+.cardContainer {
+  display: flex;
+  gap: 2.2rem;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: 1rem 0.6rem;
+  position: relative;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+}
