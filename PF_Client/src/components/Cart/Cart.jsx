@@ -1,9 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Cart.module.css'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import EmptyCart from '../../images//empty-cart.png'
 import { CartProducts } from './CartProducts/CartProducts';
+import { getCart } from '../../redux/actions'
 // Chakra
 import { BsFillCartFill } from "react-icons/bs";
 import { Icon, useDisclosure, Button, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent } from '@chakra-ui/react'
@@ -19,6 +20,7 @@ export const Cart = () => {
   let stateCart = useSelector(state => state.cart)
   const [cart, setCart] = useState(stateCart)
 
+  const dispatch = useDispatch()
 
   // Estado del precio total del carrito de compras
   const [totalPrice, setTotalPrice] = useState(0);
@@ -42,6 +44,14 @@ export const Cart = () => {
     setTotalQuantity(stateCart.reduce((accumulator, currentValue) => 
       accumulator + currentValue.quantity, 0))
   }, [stateCart])
+
+  const user = useSelector(state => state.userInfo) 
+
+  // useEffect(() => {
+  //   dispatch(getCart(user.id))
+  // }, [])
+
+  
 
 
   return (
@@ -78,7 +88,7 @@ export const Cart = () => {
           <DrawerHeader>
             <p className={styles.titleCart}>
               Tu carrito de compras ({totalQuantity})
-              <Button className={styles.buttonClose} onClick={onClose}>
+              <Button colorScheme='orange' className={styles.buttonClose} onClick={onClose}>
                 X
               </Button>
             </p>
@@ -129,7 +139,7 @@ export const Cart = () => {
                 </div>
                 <div>
                   <p>
-                    <b>Total: ${totalPrice}</b>
+                    <b>Total: ${Math.round(totalPrice)}</b>
                   </p>
                 </div>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './BotonIrInicio.module.css';
 import botonArriba from '../../images/circle-up-solid.svg'
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 export const BotonIrInicio = () => {
@@ -25,7 +25,7 @@ export const BotonIrInicio = () => {
 
   return (
     <div>
-      <Link hrefLang="#home">
+      <a href="#home">
         <img 
           src={botonArriba} 
           id='botonArriba' 
@@ -34,7 +34,7 @@ export const BotonIrInicio = () => {
           height='28px' 
           alt='BotonArriba'
         />        
-      </Link>
+      </a>
     </div>
   )
 }
