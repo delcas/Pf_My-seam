@@ -126,8 +126,8 @@ const putCartProduct = async (edit_data) => {
 
 //   }
 const deleteCartProduct = async (cart, product) => {
-  console.log("delete: ", product);
-  await cart.removeProduct(product.id);
+  await cart.removeProduct(product.id)
+  .then(console.log(`Producto ${product.id} retirado del carrito ${cart.id}`));
 };
 const getCartByPk = async (cartid) => {
   const carts = await Cart.findOne({
@@ -149,11 +149,15 @@ const getCarts = async () => {
   });
 };
 const deleteCart = async (cartid) => {
+  const cart = await getCartByPk(cartid);
+  cart.products.forEach( async (p)=>await deleteCartProduct(cart, p));
   await Cart.destroy({
     where: {
       id: cartid,
     },
-  });
+  })
+  .then(console.log(`Carrito ${cartid} eliminado`));
+  return `Carrito ${cartid} eliminado`;
 };
 const getProductsCart = async (productid) => {
   return await Cart.findAll({

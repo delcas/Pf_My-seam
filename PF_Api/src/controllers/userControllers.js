@@ -37,7 +37,7 @@ module.exports = {
   getUsers: async () => {
     const finduser = await User.findOne({
       where: {
-      name: users[0].name,
+      name: users[4].name,
     },
   })
   !finduser && await User.bulkCreate(users)
