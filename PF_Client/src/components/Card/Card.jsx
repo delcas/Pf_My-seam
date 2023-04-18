@@ -71,7 +71,10 @@ export const Card = () => {
         <ul className={styles.cardContainer}>
           {tendencias.length > 0 ? (
             tendencias.map((product) => {
-                return (
+
+                   const user = activeUsers.find((user) => user.id === product.userid);
+
+                if(user) (
                   <CardProducts
                     id={product.id}
                     key={product.id}
@@ -91,7 +94,10 @@ export const Card = () => {
         <ul className={styles.cardContainer}>
           {offerProducts.length > 0 ? (
             offerProducts.map((product) => {
-                return (
+
+                 const user = activeUsers.find((user) => user.id === product.userid);
+
+                if(user) (
                   <CardProducts
                     id={product.id}
                     key={product.id}
