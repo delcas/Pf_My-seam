@@ -39,12 +39,15 @@ const AddProductToCart = async ({ active, prods }) => {
           paranoid: false,
         });
         console.log("putCart verif else: ", cartProduct);
-        cartProduct ? 
-        await Cart_product.update({ deletedAt: null, quantity: p.quantity, }, {
-          where: { cartid: active.id, productid: p.productid },
-          paranoid: false
-        }) :
-        await active.addProduct(p.productid, {
+        cartProduct
+          ? await Cart_product.update(
+              { deletedAt: null, quantity: p.quantity },
+              {
+                where: { cartid: active.id, productid: p.productid },
+                paranoid: false,
+              }
+            )
+          : await active.addProduct(p.productid, {
               through: {
                 quantity: p.quantity,
               },
@@ -81,13 +84,28 @@ const putCartProduct = async (edit_data) => {
   const { cartid, state, prods, conclusion } = edit_data;
   const edit_cart = await getCartByPk(cartid);
   const edit_cartJSON = edit_cart.toJSON();
+  const existents =
+    edit_cartJSON.products.length > 0 ? edit_cartJSON.products : null;
+  console.log('existents: ', existents);
   // console.log('putCart verif: ', edit_cartJSON);
   if (state) {
     await edit_cart?.update({ state });
+    if (state === "Pagado") {
+      existents?.forEach(async (p) => {
+        const result = p.stock - p.cart_product.quantity;
+        if(result < 0) return(`Revisar disponibilidad de ${p.name}`);
+        await Product.update(
+          { stock: result},
+          {
+            where: {
+              id: p.id,
+            },
+          }
+        );
+      });
+    }
   }
-  if (edit_cart && prods.length > 0) {
-    const existents =
-      edit_cartJSON.products.length > 0 ? edit_cartJSON.products : null;
+  if (edit_cart && prods?.length > 0) {
     // console.log('putCart verif: ', existents);
     let add_prods = [];
     if (existents) {
@@ -106,9 +124,7 @@ const putCartProduct = async (edit_data) => {
                 `Pedido de ${existents[j].name} exede stock, solo hay ${existents[j].stock} unidades`
               )
             : await current?.update({ quantity: prods[i].quantity });
-          // prods[i].quantity === 0 &&
-          //   (await deleteCartProduct(edit_cart, existents[j]));
-        } else {
+          } else {
           add_prods.push(prods[i]);
           // console.log('putCart verif1: ', add_prods);
         }
@@ -135,14 +151,20 @@ const deleteCartProduct = async (cart, product) => {
   console.log("delete: ", product);
   await cart.removeProduct(product.id);
 };
-const deleteCartAllProducts = async () => {};
+const deleteCart = async (cartid) => {
+await Cart.destroy({
+  where: {
+    id: cartid
+  },
+});
+};
 module.exports = {
   getActiveCart,
   AddProductToCart,
   getCustomersCartProducts,
   postCartProduct,
   deleteCartProduct,
-  deleteCartAllProducts,
+  deleteCart,
   putCartProduct,
   getCartByPk,
   getCarts,
