@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import txtstyle from "./DetailText.module.css";
 import { useSelector, useDispatch } from "react-redux";
-
+import Review from '../../../components/Review/Review';
 //Chakra
 import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
 import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
@@ -53,7 +53,7 @@ export default function DetailText({
         {edit.e ? (
           <button name="name" onClick={EditionPDetail}>
             {" "}
-            🖊{" "}
+            ✍{" "}
           </button>
         ) : (
           ""
@@ -80,7 +80,7 @@ export default function DetailText({
         {edit.e ? (
           <button name="description" onClick={EditionPDetail}>
             {" "}
-            🖊{" "}
+            ✍{" "}
           </button>
         ) : (
           ""
@@ -108,7 +108,7 @@ export default function DetailText({
         {edit.e ? (
           <button name="gender" onClick={EditionPDetail}>
             {" "}
-            🖊{" "}
+            ✍{" "}
           </button>
         ) : (
           ""
@@ -136,7 +136,7 @@ export default function DetailText({
         {edit.e ? (
           <button name="category" onClick={EditionPDetail}>
             {" "}
-            🖊{" "}
+            ✍{" "}
           </button>
         ) : (
           ""
@@ -164,7 +164,7 @@ export default function DetailText({
         {edit.e ? (
           <button name="price" onClick={EditionPDetail}>
             {" "}
-            🖊{" "}
+            ✍{" "}
           </button>
         ) : (
           ""
@@ -191,7 +191,7 @@ export default function DetailText({
         {edit.e ? (
           <button name="stock" onClick={EditionPDetail}>
             {" "}
-            🖊{" "}
+            ✍{" "}
           </button>
         ) : (
           ""
@@ -199,10 +199,11 @@ export default function DetailText({
       </td>
     </tr>
     <tr>Vendedor: {details.userid}</tr>
-    <tr>Disponible: NYI</tr>
-          <div>
-            <button as={BsFillCartPlusFill} w={8} h={8} className={txtstyle.buttonCart} onClick={handleCart} title="Agregar al carrito"> Agregar al carrito</button>
-            <button as={BsFillHeartFill} w={8} h={8} className={txtstyle.buttonFavourites} title="Agregar a favoritos">Agregar a favoritos</button>
-          </div>
+    {/* <tr>Disponible: NYI</tr> */}
+      <div>
+        <button as={BsFillCartPlusFill} w={8} h={8} className={txtstyle.buttonCart} onClick={handleCart} title="Agregar al carrito"> Agregar al carrito</button>
+        <button as={BsFillHeartFill} w={8} h={8} className={txtstyle.buttonFavourites} title="Agregar a favoritos">Agregar a favoritos</button>
+      </div>
+      <Review/>
   </td>
 }
