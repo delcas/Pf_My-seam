@@ -8,6 +8,7 @@
     margin: 5px;    
 }
 .star{
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,10 +22,19 @@
 }
 .chiquita{
     font-size: small;
-    
+    align-items: center;    
 }
 .centrado{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+.st{
+    display: flex;
+    color: #6E6E6E;
+}
+.rating{
+    font-size: small;
+    align-items:center;
+    padding-top: 0%;    
 }
