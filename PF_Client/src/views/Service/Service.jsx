@@ -12,7 +12,7 @@ export const Service = () => {
     <div id='service'>
       <NavBar />
       <Carousel />
-      <Sections/>
+      {/* <Sections/> */}
       <div id='card'>
       <CardServices/>
       </div>

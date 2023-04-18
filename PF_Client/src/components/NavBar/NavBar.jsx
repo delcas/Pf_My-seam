@@ -30,7 +30,7 @@ export const NavBar = () => {
    <div>
   {/* NavBar */}
   <nav
-    className="navbar navbar-expand-lg bg-body-tertiary"
+    className="navbar navbar-expand-lg bg-body-tertiary fixed-top"
     data-bs-theme={currentTheme === "dark" ? "dark" : "light"}
   >
     <div className="container-fluid">
