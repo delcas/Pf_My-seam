@@ -81,7 +81,7 @@ const getJson = (product) => {
     price: product.precio,
     image: product.imagenes,
     stock: product.cantidad,
-    userid: product.id,
+    userid: product.userid,
   };
 };
 
