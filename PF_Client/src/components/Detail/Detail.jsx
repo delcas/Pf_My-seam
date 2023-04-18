@@ -31,7 +31,7 @@ export default function Detail({
     <div>
       {ver ? (
         <div>
-          <button onClick={handleEdition}>Habilitar Edición 🖊</button>
+          <button onClick={handleEdition}>Habilitar Edición ✍</button>
           <Button onClick={onOpen}>Eliminar</Button>
           <Modal isOpen={isOpen}>
             <ModalContent>
