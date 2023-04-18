@@ -9,16 +9,6 @@ const postCartProduct = async ({ customer_id, prods }) => {
   });
   return await AddProductToCart({ active: new_cart, prods });
 };
-const getActiveCart = async (customer_id) => {
-  const new_cart = await Cart.findOne({
-    where: {
-      customer_id,
-      state: "En Compra",
-    },
-  });
-  if (new_cart) console.log("Controller getCart: ", new_cart.toJSON());
-  return new_cart;
-};
 const AddProductToCart = async ({ active, prods }) => {
   return await Promise.all(
     prods?.map(async (p) => {
@@ -55,21 +45,20 @@ const AddProductToCart = async ({ active, prods }) => {
     })
   );
 };
+const getActiveCart = async (customer_id) => {
+  const new_cart = await Cart.findOne({
+    where: {
+      customer_id,
+      state: "En Compra",
+    },
+  });
+  if (new_cart) console.log("Controller getCart: ", new_cart.toJSON());
+  return new_cart;
+};
 const getCustomersCartProducts = async (customer_id) => {
   const carts = await Cart.findAll({
     where: {
       customer_id,
-    },
-    include: {
-      model: Product,
-    },
-  });
-  return carts;
-};
-const getCartByPk = async (cartid) => {
-  const carts = await Cart.findOne({
-    where: {
-      id: cartid,
     },
     include: {
       model: Product,
@@ -83,16 +72,16 @@ const putCartProduct = async (edit_data) => {
   const edit_cartJSON = edit_cart.toJSON();
   const existents =
     edit_cartJSON.products.length > 0 ? edit_cartJSON.products : null;
-  console.log('existents: ', existents);
+  console.log("existents: ", existents);
   // console.log('putCart verif: ', edit_cartJSON);
   if (state) {
     await edit_cart?.update({ state });
     if (state === "Pagado") {
       existents?.forEach(async (p) => {
         const result = p.stock - p.cart_product.quantity;
-        if(result < 0) return(`Revisar disponibilidad de ${p.name}`);
+        if (result < 0) return `Revisar disponibilidad de ${p.name}`;
         await Product.update(
-          { stock: result},
+          { stock: result },
           {
             where: {
               id: p.id,
@@ -121,7 +110,7 @@ const putCartProduct = async (edit_data) => {
                 `Pedido de ${existents[j].name} exede stock, solo hay ${existents[j].stock} unidades`
               )
             : await current?.update({ quantity: prods[i].quantity });
-          } else {
+        } else {
           add_prods.push(prods[i]);
           // console.log('putCart verif1: ', add_prods);
         }
@@ -136,6 +125,21 @@ const putCartProduct = async (edit_data) => {
 //   if (conclusion) {
 
 //   }
+const deleteCartProduct = async (cart, product) => {
+  console.log("delete: ", product);
+  await cart.removeProduct(product.id);
+};
+const getCartByPk = async (cartid) => {
+  const carts = await Cart.findOne({
+    where: {
+      id: cartid,
+    },
+    include: {
+      model: Product,
+    },
+  });
+  return carts;
+};
 
 const getCarts = async () => {
   return await Cart.findAll({
@@ -144,25 +148,36 @@ const getCarts = async () => {
     },
   });
 };
-const deleteCartProduct = async (cart, product) => {
-  console.log("delete: ", product);
-  await cart.removeProduct(product.id);
-};
 const deleteCart = async (cartid) => {
-await Cart.destroy({
-  where: {
-    id: cartid
-  },
-});
+  await Cart.destroy({
+    where: {
+      id: cartid,
+    },
+  });
+};
+const getProductsCart = async (productid) => {
+  return await Cart.findAll({
+    include: {
+      model: Product,
+      attributes: ["id", "stock"],
+      where: {
+        id: productid,
+      },
+      through: {
+        attributes: ["quantity"],
+      }
+    },
+  });
 };
 module.exports = {
-  getActiveCart,
-  AddProductToCart,
-  getCustomersCartProducts,
   postCartProduct,
-  deleteCartProduct,
-  deleteCart,
+  AddProductToCart,
+  getActiveCart,
+  getCustomersCartProducts,
   putCartProduct,
+  deleteCartProduct,
   getCartByPk,
   getCarts,
+  deleteCart,
+  getProductsCart,
 };
