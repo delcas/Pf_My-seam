@@ -44,6 +44,8 @@ module.exports = {
     });
   },
 
+
+
   getUserByEmail: async (email) =>{
     console.log("ENTRÉ a esta funcion");
     let userDb = await User.findOne({
@@ -51,7 +53,6 @@ module.exports = {
     
     } )
     return userDb.dataValues;
-
 
   },
 
