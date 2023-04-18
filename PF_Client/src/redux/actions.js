@@ -1,4 +1,5 @@
 import axios from "axios";
+export const GET_USER = "GET_USER";
 export const GET_USERS = "GET_USERS";
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_SERVICES = "GET_SERVICES";
@@ -21,8 +22,17 @@ export const getUsers = () => {
   return async function (dispatch) {
     const usersData = await axios.get(`/users`);
     const users = usersData.data;
-    console.log("get users result: ", users.length);
+    // console.log("get users result: ", users.length);
     dispatch({ type: GET_USERS, payload: users });
+  };
+};
+
+export const getUser = (id) => {
+  return async function (dispatch) {
+    const userData = await axios.get(`/users/${id}`);
+    const user = userData.data;
+    // console.log("get users result: ", user.length);
+    dispatch({ type: GET_USER, payload: user });
   };
 };
 
@@ -135,7 +145,7 @@ export function setProductChange(id, change) {
   return async function (dispatch) {
     const res = await axios.put(`/product/${id}`, change);
     const detail = res.data;
-    console.log("generando cambio al Producto: ", detail);
+    // console.log("generando cambio al Producto: ", detail);
     dispatch({
       type: SET_PRODUCT_CHANGE,
       payload: detail,
@@ -146,7 +156,7 @@ export function setProductChange(id, change) {
 export function deleteProduct(id) {
   return async function (dispatch) {
     await axios.delete(`/product/?id=${id}`).then(dispatch(getProducts()));
-    console.log(`Se ejecutó la funcion de borrado del producto ${id}`);
+    // console.log(`Se ejecutó la funcion de borrado del producto ${id}`);
   };
 }
 
@@ -154,7 +164,8 @@ export function getUserByEmail(info) {
   return async function (dispatch) {
     const emailData = await axios.get(`/users?email=${info}`);
     const infoUser = emailData.data;
-    console.log(infoUser);
+    // console.log(infoUser);
+    localStorage.setItem('myState', JSON.stringify(infoUser));
     dispatch({ type: GET_USER_BY_EMAIL, payload: infoUser });
   };
 }

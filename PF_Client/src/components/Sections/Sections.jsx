@@ -16,7 +16,7 @@ export const Sections = () => {
         <div className={styles.containerSections} title="Haz clic para ver más detalles">
 
           {/* Imagen 1 */}
-          <div className={styles.containerImg}>
+          <div className={styles.containerImgTech}>
             <img className={styles.techImage} src={imgTech} alt='imgCostura'/>
             <p className={styles.titleImage}>Tecnología</p>
           </div>

@@ -1,15 +1,13 @@
-import React, {useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Card.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts, getUsers } from '../../redux/actions';
 import { CardProducts } from './CardProducts/CardProducts';
 import { Paginado } from '../Paginado/Paginado';
-import { Filters } from '../../components/Filters/Filters'
+import { Filters } from '../../components/Filters/Filters';
 import { Loading } from '../Loading/Loading';
 
-
 export const Card = () => {
-
   // Estado para actualizar la página actual
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -18,11 +16,15 @@ export const Card = () => {
 
   // Para ejecutar las funciones de las actions
   const dispatch = useDispatch();
-  
-  // Me traigo los estados del reducer 
-  let products = useSelector((state) => state.products);
 
-  // Delimitar el indíce de los productos a paginar
+  // Me traigo los estados del reducer
+  const products = useSelector((state) => state.products);
+  const users = useSelector((state) => state.users);
+
+  // Filtrar los usuarios activos
+  const activeUsers = users.filter((user) => user.isActive);
+
+  // Delimitar el índice de los productos a paginar
   const lastProductIndex = currentPage * productsPerPage;
   const firstProductIndex = lastProductIndex - productsPerPage;
   const currentProducts = products.slice(firstProductIndex, lastProductIndex);
@@ -31,39 +33,47 @@ export const Card = () => {
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getUsers());
-  }, [dispatch])
+  }, [dispatch]);
 
   return (
-    <div>  
+    <div>
       <Filters setCurrentPage={setCurrentPage} />
-      <div><h4 className={currentProducts.length > 0 ? styles.titleSections : styles.hideCards}>Productos destacados</h4>
-        
+      <div>
+        <h4 className={currentProducts.length > 0 ? styles.titleSections : styles.hideCards}>Productos destacados</h4>
         <ul className={styles.cardContainer}>
-        {
-          currentProducts.length > 0 ? 
-          currentProducts.map((el) => {
-            return ( 
-              <CardProducts 
-                id = {el.id} 
-                key = {el.id}
-                image = {el.image}
-                name = {el.name} 
-                price = {el.price}
-                description = {el.description}
-              />
-            )
-          }) 
-          : <Loading />
-        }
-        </ul>  
-      </div>
-      <Paginado 
-       totalProducts={products.length}
-       productsPerPage={productsPerPage}
-       setCurrentPage={setCurrentPage} 
-       currentPage={currentPage} 
-      />
+          {currentProducts.length > 0 ? (
+            currentProducts.map((product) => {
+              // Buscar el usuario asociado al producto
+              const user = activeUsers.find((user) => user.id === product.userid);
 
+              // Si el usuario está activo, mostrar el producto
+              if (user) {
+                return (
+                  <CardProducts
+                    id={product.id}
+                    key={product.id}
+                    image={product.image}
+                    name={product.name}
+                    price={product.price}
+                    description={product.description}
+                  />
+                );
+              }
+
+              // Si el usuario está inactivo, ignorar el producto
+              return null;
+            })
+          ) : (
+            <Loading />
+          )}
+        </ul>
+      </div>
+      <Paginado
+        totalProducts={products.length}
+        productsPerPage={productsPerPage}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
     </div>
-  )
-}
+  );
+};

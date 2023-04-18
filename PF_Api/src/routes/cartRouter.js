@@ -2,9 +2,8 @@ const { Router } = require("express");
 const {
   getCartProducts,
   createCartProduct,
-  deleteCartProduct,
+  deleteCart,
   modifyCartProduct,
-  deleteCartAllProducts,
 } = require("../handlers/cartHandler.js");
 const cartRouter = Router();
 
@@ -14,6 +13,6 @@ cartRouter.get("/", getCartProducts);
 
 cartRouter.put("/", modifyCartProduct);
 
-// cartRouter.delete("/", deleteCartProduct);
+cartRouter.delete("/", deleteCart);
 
 module.exports = cartRouter;

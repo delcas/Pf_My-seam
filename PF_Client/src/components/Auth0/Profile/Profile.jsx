@@ -16,17 +16,17 @@ const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, isAuthenticated, isLoading } = useAuth0();
-  console.log(user["https://example.com/roles"]);
+  const myState = JSON.parse(localStorage.getItem('myState'));
   const userInfo = useSelector((state)=>state.userInfo);
   const [form, setForm]= useState({
-      username: userInfo.username,
-      name: userInfo.name,
-      email: userInfo.email,
-      birthdate: userInfo.birthdate,
-      country: userInfo.country,
-      city: userInfo.city,
-      address: userInfo.address,
-      image: userInfo.image
+      username: myState.username,
+      name: myState.name,
+      email: myState.email,
+      birthdate: myState.birthdate,
+      country: myState.country,
+      city: myState.city,
+      address: myState.address,
+      image: myState.image
   })
 
   console.log(userInfo);
@@ -54,10 +54,9 @@ const Profile = () => {
       address: userInfo.address,
       image: userInfo.image
     });
-    setTimeout(() => {
+    
       dispatch(getUserByEmail(user.email));
-      navigate('/home');
-    }, 1500);
+      window.location.reload();
   };
 
   if (isLoading) {

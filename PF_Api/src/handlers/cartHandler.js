@@ -35,11 +35,13 @@ module.exports = {
     }
   },
   getCartProducts: async (req, res) => {
-    const { customer_id, cartid, is_admin } = req.body;
+    const { customer_id, cartid, is_admin } = req.query;
+    console.log('body: ', customer_id);
     try {
       let cart_response;
       if (customer_id) {
-        cart_response = await getCustomersCartProducts(customer_id);        
+        cart_response = await getCustomersCartProducts(customer_id);   
+        console.log('response: ', cart_response);
       }
       if (cartid) {
         cart_response = await getCartByPk(cartid);
@@ -58,9 +60,18 @@ module.exports = {
       const modify = await putCartProduct(edit_data);
       res.status(200).json(modify);
     } catch (error) {
+      console.log(error);
       res.status(400).send(error.massage);
     }
   },
-  //  deleteCartProduct: async (req, res) => {},
+   deleteCart: async (req, res) => {
+    const { cartid } = req.body;
+    try {
+      const del = await deleteCart(cartid);
+      res.status(200).json(del)
+    } catch (error) {
+      res.status(400).send(error.message)
+    }
+   },
   //  deleteCartAllProducts: async (req, res) => {};
 };
