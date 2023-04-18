@@ -102,13 +102,14 @@ const putCartProduct = async (edit_data) => {
             },
           });
           if (prods[i].conclusion) {
-            return current?.update({ conclusion: prods[i].conclusion });
-          }
+            await current?.update({ conclusion: prods[i].conclusion });
+          } else {
           prods[i].quantity > existents[j].stock
             ? alert(
                 `Pedido de ${existents[j].name} exede stock, solo hay ${existents[j].stock} unidades`
               )
             : await current?.update({ quantity: prods[i].quantity });
+          }
         } else {
           if(!prods[i].conclusion) {
             add_prods.push(prods[i]) 
