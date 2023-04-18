@@ -67,13 +67,11 @@ const getCustomersCartProducts = async (customer_id) => {
   return carts;
 };
 const putCartProduct = async (edit_data) => {
-  const { cartid, state, prods, conclusion } = edit_data;
+  const { cartid, state, prods} = edit_data;
   const edit_cart = await getCartByPk(cartid);
   const edit_cartJSON = edit_cart.toJSON();
   const existents =
     edit_cartJSON.products.length > 0 ? edit_cartJSON.products : null;
-  console.log("existents: ", existents);
-  // console.log('putCart verif: ', edit_cartJSON);
   if (state) {
     await edit_cart?.update({ state });
     if (state === "Pagado") {
@@ -92,12 +90,10 @@ const putCartProduct = async (edit_data) => {
     }
   }
   if (edit_cart && prods?.length > 0) {
-    // console.log('putCart verif: ', existents);
     let add_prods = [];
     if (existents) {
       for (let i = 0; i < prods.length; i++) {
         const j = existents.findIndex((p) => p.id === prods[i].productid);
-        // console.log('putCart verif: ', prods[i], ' - ', j);
         if (j > -1) {
           const current = await Cart_product.findOne({
             where: {
@@ -122,9 +118,6 @@ const putCartProduct = async (edit_data) => {
   }
   return await getCartByPk(cartid);
 };
-//   if (conclusion) {
-
-//   }
 const deleteCartProduct = async (cart, product) => {
   await cart.removeProduct(product.id)
   .then(console.log(`Producto ${product.id} retirado del carrito ${cart.id}`));
