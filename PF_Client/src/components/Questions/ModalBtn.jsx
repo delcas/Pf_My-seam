@@ -45,10 +45,10 @@ export default function ModalBtn({ sell, userId, ver, id, name }) {
       await axios
       .put(`/${route}/${sell}/${id}`, sndquest)
       .then(alert('Se ha enviado su respuesta'));
-    } else {
-      console.log("envío pregunta: ", sndquest);
+    } else {      
       await axios
       .post(`/${route}/${sell}/${id}`, sndquest)
+      .then(console.log("envío pregunta: ", sndquest))
       .then(sell === 'service' ? 
       dispatch(getServiceQuestions(id)) : 
       dispatch(getProductQuestions(id)));
