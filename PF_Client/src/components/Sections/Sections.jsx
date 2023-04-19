@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './Sections.module.css'
-import imgTech from '../../images/Technology.jpg'
-import imgHome from '../../images/home.jpg'
-import imgCostura from '../../images/costura.jpg'
-import imgCostura2 from '../../images/costura2.jpg'
+import imgVestidos from '../../assets/images/Vestido.jpg'
+import imgPantalones from '../../assets/images/Pantalones.jpg'
+import imgFaldas from '../../assets/images/Falda.jpg'
+import imgServicios from '../../images/costura2.jpg'
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
@@ -18,8 +18,8 @@ export const Sections = () => {
 
           {/* Imagen 1 */}
           <NavLink to={"/home"}>
-            <div className={styles.containerImgTech}>
-              <img className={styles.techImage} src={imgTech} alt='imgCostura'/>
+            <div className={styles.containerImgVestidos}>
+              <img className={styles.vestidosImg} src={imgVestidos} alt='imgVestidos'/>
               <p className={styles.titleImage}>Vestidos</p>
             </div>
           </NavLink>
@@ -27,7 +27,7 @@ export const Sections = () => {
           {/* Imagen 2 */}
           <NavLink to={"/home"}>
             <div className={styles.containerImg}>
-              <img className={styles.homeImage} src={imgHome} alt='imgCostura'/>
+              <img className={styles.pantalonesImg} src={imgPantalones} alt='imgPantalones'/>
               <p className={styles.titleImage}>Pantalones</p>
             </div>
           </NavLink>
@@ -36,7 +36,7 @@ export const Sections = () => {
           <div className={styles.containerImg3Y4}>
             <NavLink to={"/promotions"}>
               <div className={styles.containerImg}>
-                <img className={styles.seamImage} src={imgCostura} alt='imgCostura'/>
+                <img className={styles.faldasImg} src={imgFaldas} alt='imgFaldas'/>
                 <p className={styles.titleImage}>Faldas</p>
               </div>
             </NavLink>
@@ -44,7 +44,7 @@ export const Sections = () => {
             {/* Imagen 4 */}
             <NavLink to={"/service"}>
               <div className={styles.containerImg}>
-                <img className={styles.seamImage2} src={imgCostura2} alt='imgCostura'/>
+                <img className={styles.serviciosImg} src={imgServicios} alt='imgServicios'/>
                 <p className={styles.titleImage}>Servicios</p>
               </div>
             </NavLink>

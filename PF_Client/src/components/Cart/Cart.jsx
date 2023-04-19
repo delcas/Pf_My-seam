@@ -16,18 +16,20 @@ export const Cart = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
   
-  // Estado del Carrito de compras
+  // Estados del reducer
   let stateCart = useSelector(state => state.cart)
+  let userInfo = useSelector(state => state.userInfo)  
+
+  // Estado del Carrito de compras
   const [cart, setCart] = useState(stateCart)
-
-  const dispatch = useDispatch()
-
   // Estado del precio total del carrito de compras
   const [totalPrice, setTotalPrice] = useState(0);
-
   // Estado de la cantidad de productos en el carrito de compras
   const [totalQuantity, setTotalQuantity] = useState(0);
+
+  const dispatch = useDispatch()
   const disabled = cart.find((el) => el.quantity < 1);
+
 
   // Calcular el total del precio y cantidad de productos del carrito
   const calculatePriceQuantity = () => {
@@ -44,14 +46,6 @@ export const Cart = () => {
     setTotalQuantity(stateCart.reduce((accumulator, currentValue) => 
       accumulator + currentValue.quantity, 0))
   }, [stateCart])
-
-  const user = useSelector(state => state.userInfo) 
-
-  // useEffect(() => {
-  //   dispatch(getCart(user.id))
-  // }, [])
-
-  
 
 
   return (
@@ -146,6 +140,7 @@ export const Cart = () => {
                 <div>
                   <Link to={"/checkout"}>
                     <Button
+                      colorScheme = 'green'
                       isDisabled={disabled}
                       className={cart.length === 0 ? styles.hide : ""}
                       onClick={onClose}
@@ -153,7 +148,7 @@ export const Cart = () => {
                       Comprar ahora
                     </Button>
                   </Link>
-                  <Button className={styles.buttonKeepBuying} onClick={onClose}>
+                  <Button  colorScheme = 'yellow' className={styles.buttonKeepBuying} onClick={onClose}>
                     Seguir comprando
                   </Button>
                 </div>

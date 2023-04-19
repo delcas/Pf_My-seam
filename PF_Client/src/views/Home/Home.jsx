@@ -28,7 +28,7 @@ export const Home = () => {
   
   } else {
     return (
-      <div id="home">
+      <div>
         <NavBar isAuthenticated={isAuthenticated} user={user} />
         <Carousel />
         <Sections />
