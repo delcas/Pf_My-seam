@@ -91,3 +91,11 @@
     DELETE (/cart/:id)
 ```
 
+const cartProduct = allProducts.find(el => el.id == id)
+    // Validar si ya existe el producto en el carrito de compras
+    if (cart.find(el => el === cartProduct)) {
+      cartProduct.quantity +=  1 
+    } else {
+        cartProduct.quantity = 1 
+        cart.push(cartProduct)
+      }

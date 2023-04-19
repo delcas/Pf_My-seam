@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavBar } from '../../components/NavBar/NavBar'
 import { getServiceById } from '../../redux/actions';
 import Review from '../../components/Review/Review';
+import Questions from '../../components/Questions/Questions';
 
 //Chakra
 import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
@@ -12,7 +13,13 @@ import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
 export const ServiceDetail =({ isAuthenticated, user })=>{
     const dispatch = useDispatch()
     const details = useSelector(state=>state.details)
-    const cart = useSelector(state => state.cart)
+    const cart = useSelector(state => state.cart);
+    const userInfo = useSelector((state) => state.userInfo);
+    const userId = userInfo.id;
+
+    let ver;
+  console.log('Usuario actual: ',userId, '. Oferente del servicio: ', details.userid);
+  userId === details.userid ? (ver = true) : (ver = false);
 
       // Muestra alerta/notificación del producto añadido al carrito de compras
       const [notify, setNotify] = useState(false);
@@ -38,6 +45,7 @@ export const ServiceDetail =({ isAuthenticated, user })=>{
     let prodID =urlID.split('/')
     // eslint-disable-next-line
     dispatch(getServiceById(prodID[prodID.length -1]));
+    dispatch(getUserByEmail(user?.email));
   },[dispatch])  
 
     return(
@@ -69,6 +77,12 @@ export const ServiceDetail =({ isAuthenticated, user })=>{
                 :"No se encontro el ID"
             }
             <div>
+            <Questions
+            sell='service'
+          userId={userId}
+          details={details}
+          ver={ver}
+          />
             <button  w={8} h={8} className={styles.buttonCart} onClick={handleCart} title="Agregar al carrito"> Agregar al carrito </button>
             </div>
         </div>

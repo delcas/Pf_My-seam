@@ -87,6 +87,7 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
           ver={ver}
           />
           <Questions
+          sell='product'
           userId={userId}
           details={details}
           ver={ver}

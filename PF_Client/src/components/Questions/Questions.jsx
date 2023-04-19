@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import ModalBtn from "./ModalBtn.jsx";
 
-export default function Questions({ userId, details, ver }) {
+export default function Questions({ sell, userId, details, ver }) {
   const pId = details.id;
   const productQuestions = useSelector((state) => state.productQuestions);
  console.log(ver);
@@ -21,7 +21,7 @@ export default function Questions({ userId, details, ver }) {
       <div>
         <label colSpan="2">Preguntas:</label>
         <span>
-        {ver ? '' : <ModalBtn userId={userId} ver={ver} id={pId} name='question'/>}
+        {ver ? '' : <ModalBtn sell={sell} userId={userId} ver={ver} id={pId} name='question'/>}
         </span>
       </div>
       <div>

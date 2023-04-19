@@ -15,7 +15,7 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
-export default function ModalBtn({ userId, ver, id, name }) {
+export default function ModalBtn({ sell, userId, ver, id, name }) {
   const dispatch = useDispatch();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = useRef(null);
@@ -40,8 +40,9 @@ export default function ModalBtn({ userId, ver, id, name }) {
     if (userId) {
       if (name === "answer") {
       console.log("envío respuesta: ", sndquest);
+      const route = sell === 'service' ? 'questserv' : 'questprod';
       await axios
-      .put(`/questprod/product/${id}`, sndquest)
+      .put(`/${route}/${sell}/${id}`, sndquest)
       .then(alert('Se ha enviado su respuesta'));
     } else {
       console.log("envío pregunta: ", sndquest);
