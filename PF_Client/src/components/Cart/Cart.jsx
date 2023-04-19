@@ -4,7 +4,7 @@ import styles from './Cart.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import EmptyCart from '../../images//empty-cart.png'
 import { CartProducts } from './CartProducts/CartProducts';
-import { getCart } from '../../redux/actions'
+import { getCart, update_cart_set } from '../../redux/actions'
 // Chakra
 import { BsFillCartFill } from "react-icons/bs";
 import { Icon, useDisclosure, Button, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent } from '@chakra-ui/react'
@@ -18,14 +18,17 @@ export const Cart = () => {
   
   // Estados del reducer
   let stateCart = useSelector(state => state.cart)
-  let userInfo = useSelector(state => state.userInfo)  
+  let userInfo = useSelector(state => state.userInfo) 
+  let qty=useSelector(state => state.cartLength) 
+  console.log(qty);
 
   // Estado del Carrito de compras
   const [cart, setCart] = useState(stateCart)
   // Estado del precio total del carrito de compras
   const [totalPrice, setTotalPrice] = useState(0);
   // Estado de la cantidad de productos en el carrito de compras
-  const [totalQuantity, setTotalQuantity] = useState(0);
+  const [totalQuantity, setTotalQuantity] = useState(qty);
+  console.log(totalQuantity);
 
   const dispatch = useDispatch()
   const disabled = cart.find((el) => el.quantity < 1);
@@ -39,13 +42,14 @@ export const Cart = () => {
     setTotalQuantity(cart.reduce((accumulator, currentValue) => 
       accumulator + currentValue.quantity, 0))
 
+      dispatch(update_cart_set(totalQuantity))
+
     onOpen()
   }
 
   useEffect(() => {      
-    setTotalQuantity(stateCart.reduce((accumulator, currentValue) => 
-      accumulator + currentValue.quantity, 0))
-  }, [stateCart])
+    setTotalQuantity(qty)
+  }, [qty])
 
 
   return (
