@@ -2,6 +2,7 @@ const {putReview, getOneReview, getReview, postReview, deleteReview} = require("
 
 const postReviewHandler = async (req,res) => {
   const data = req.body;
+  console.log('Review handler: ', data);
   try {
     const service = await postReview(data);
     return res.status(201).json(service);

@@ -1,7 +1,8 @@
-const Review = require("../models/Review")
+const { Review } = require("../db.js");
 
-const postReview = async ({text, kind, kindID, score})=>{
-    const newReview = await Review.create(text, kind, kindID, score);
+const postReview = async ({text, kind, kind_id, customer_id, score})=>{
+    console.log('Ctrller: ', {text, kind, kind_id, customer_id, score} );
+    const newReview = await Review.create({text, kind, kind_id, customer_id, score});
     return newReview;
 }
 const getReview =  ()=> Review.findAll()

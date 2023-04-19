@@ -1,4 +1,5 @@
 const { DataTypes } = require("sequelize");
+const { Product, Service } = require("../db.js");
 
 module.exports = (sequelize) => {
   sequelize.define(
@@ -18,9 +19,27 @@ module.exports = (sequelize) => {
             type: DataTypes.ENUM("Service", "Product"),
             allowNull: false,
         },
-        kindID:{//Aqui va el id del servicio/producto rateado
-            type: DataTypes.INTEGER,
-            allowNull:false,
+        kind_id: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          references: {
+            model: {
+              Service: Service,
+              Product: Product,
+            },
+            key: "id",
+          },
+          validate: {
+            isKindIdValid(value) {
+              const Model = sequelize.models[this.kind];
+              return Model.findByPk(value)
+              .then((instance) => {
+                if (!instance) {
+                  throw new Error(`Invalid ${this.kind}_id: ${value}`);
+                }
+              });
+            },
+          },
         },
         score: {
             type: DataTypes.INTEGER,
