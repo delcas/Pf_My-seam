@@ -38,14 +38,15 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { Product, Service, User, Questprod, Questserv, Cart, Cart_product } = sequelize.models;
+const { Product, Service, User, Questprod, Questserv, Cart, Cart_product, Review } = sequelize.models;
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
+
 User.hasMany(Product, { foreignKey: "userid" });
 Product.belongsTo(User, { foreignKey: "userid" });
 User.hasMany(Service, { foreignKey: "userid" });
 Service.belongsTo(User, { foreignKey: "userid" });
+Product.hasMany(Review,{foreignKey: 'user_id'});
 
 Product.hasMany(Questprod, { foreignKey: 'offer_id' });
 Questprod.belongsTo(Product, { foreignKey: 'offer_id' });
@@ -56,6 +57,7 @@ Service.hasMany(Questserv, { foreignKey: 'offer_id' });
 Questserv.belongsTo(Service, { foreignKey: 'offer_id' });
 User.hasMany(Questserv, { foreignKey: 'user_id' });
 Questserv.belongsTo(User, { foreignKey: 'user_id' });
+Service.hasMany(Review, {foreignKey:'offer_id'});
 
 User.hasOne(Cart, { foreignKey: 'customer_id' });
 Cart.belongsToMany(Product, { through: 'cart_product', foreignKey: 'cartid' });
