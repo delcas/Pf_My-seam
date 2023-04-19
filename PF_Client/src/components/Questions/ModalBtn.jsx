@@ -40,15 +40,19 @@ export default function ModalBtn({ sell, userId, ver, id, name }) {
 
   const sendHandler = async (onClose) => {
     if (userId) {
-      if (name === "answer") {
-      console.log("envío respuesta: ", sndquest);      
+      if (name === "answer") {   
       await axios
       .put(`/${route}/${sell}/${id}`, sndquest)
-      .then(alert('Se ha enviado su respuesta'));
+      .then(console.log("envío respuesta: ", sndquest))
+      .then(setSndQuest({}))
+      .then(sell === 'service' ? 
+      dispatch(getServiceQuestions(id)) : 
+      dispatch(getProductQuestions(id)));
     } else {      
       await axios
       .post(`/${route}/${sell}/${id}`, sndquest)
       .then(console.log("envío pregunta: ", sndquest))
+      .then(setSndQuest({}))
       .then(sell === 'service' ? 
       dispatch(getServiceQuestions(id)) : 
       dispatch(getProductQuestions(id)));
