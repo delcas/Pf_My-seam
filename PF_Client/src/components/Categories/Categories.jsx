@@ -100,8 +100,8 @@ export const Categories = () => {
           <Button value='Mas de $100' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='orange'>Más de $100</Button> 
           
           <div>
-            <Input variant='unstyled' className={styles.inputPrice1} size='xs' placeholder='Min' value={currentPriceMin} onChange={(e) => handleChangePriceMin(e)}></Input>
-            <Input variant='unstyled' className={styles.inputPrice2} size='xs' placeholder='Max' value={currentPriceMax} onChange={(e) => handleChangePriceMax(e)}></Input>
+            <Input variant='unstyled' className={styles.inputPrice1} size='xs' placeholder='Mínimo' value={currentPriceMin} onChange={(e) => handleChangePriceMin(e)}></Input>
+            <Input variant='unstyled' className={styles.inputPrice2} size='xs' placeholder='Máximo' value={currentPriceMax} onChange={(e) => handleChangePriceMax(e)}></Input>
             <ArrowForwardIcon className={styles.buttonPrice} onClick={(e) => handleFilterByRange(e)}/>
           </div>
 
