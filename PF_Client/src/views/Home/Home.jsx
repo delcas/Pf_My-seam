@@ -30,7 +30,7 @@ export const Home = () => {
     return (
       <div>
         <NavBar isAuthenticated={isAuthenticated} user={user} />
-        {/* <Carousel /> */}
+        <Carousel />
         <Sections />
         <Card />
         <BotonIrInicio />
