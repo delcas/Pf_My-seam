@@ -22,7 +22,10 @@ export const Categories = () => {
 
   // Me traigo los estados del reducer 
   let products = useSelector((state) => state.products);
+ const users = useSelector((state) => state.users);
 
+  // Filtrar los usuarios activos
+  const activeUsers = users.filter((user) => user.isActive);
   // Delimitar el índice de los productos a paginar
   const lastProductIndex = currentPage * productsPerPage;
   const firstProductIndex = lastProductIndex - productsPerPage;
@@ -98,9 +101,12 @@ export const Categories = () => {
         {/* Cards */}
         <ul className={styles.cardContainer}>
         {
-          currentProducts.length > 0 ? 
-          currentProducts.map((el) => {
-            return ( 
+     currentProducts.length > 0 ? 
+      currentProducts.map((el) => {
+        
+         const user = activeUsers.find((user) => user.id === el.userid);
+         if (user) { 
+            return (
               <CardProducts 
                 id = {el.id} 
                 key = {el.id}
@@ -110,10 +116,13 @@ export const Categories = () => {
                 description = {el.description}
               />
             )
-          }) 
-          : <span className={styles.loader}></span>
-        }
-        </ul>  
+         } else {
+            return null;
+         }
+      }) 
+      : <span className={styles.loader}></span>
+}
+</ul>
       </div>
       <Paginado
         totalProducts={products.length}
