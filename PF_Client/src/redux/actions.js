@@ -5,6 +5,7 @@ export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_SERVICES = "GET_SERVICES";
 export const SEARCH_PRODUCT_BY_NAME = "SEARCH_PRODUCT_BY_NAME";
 export const GET_PRODUCT_QUESTION = "GET_PRODUCT_QUESTION";
+export const GET_SERVICE_QUESTION = "GET_SERVICE_QUESTION";
 export const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID";
 export const GET_PROMOTIONS = "GET_PROMOTIONS";
 export const ORDER_BY_ALPHABET = "ORDER_BY_ALPHABET";
@@ -21,6 +22,8 @@ export const FILTER_BY_COUNTRY = "FILTER_BY_COUNTRY";
 export const GET_CART = "GET_CART";
 export const POST_CART = "POST_CART";
 export const DELETE_CART = "DELETE_CART";
+export const UPDATE_CART= "UPDATE_CART";
+export const UPDATE_CART_SET = "UPDATE_CART_SET";
 
 export const getUsers = () => {
   return async function (dispatch) {
@@ -69,8 +72,8 @@ export const searchProductByName = (search) => {
 
 export const getServiceById = (id) => {
   return async function (dispatch) {
-    const json = await axios.get(`/service/${id}`);
-    const details = json.data;
+    const res = await axios.get(`/service/${id}`);
+    const details = res.data;
     dispatch({ type: GET_SERVICE_BY_ID, payload: details });
   };
 };
@@ -91,6 +94,17 @@ export const getProductQuestions = (pId) => {
     );
     const ProductQuestions = productQuestionData.data;
     dispatch({ type: GET_PRODUCT_QUESTION, payload: ProductQuestions });
+  };
+};
+
+export const getServiceQuestions = (pId) => {
+  console.log("getServQ pre axios", pId);
+  return async function (dispatch) {
+    const ServiceQuestionData = await axios.get(
+      `/questserv/service/?offerId=${pId}`
+    );
+    const ServiceQuestions = ServiceQuestionData.data;
+    dispatch({ type: GET_SERVICE_QUESTION, payload: ServiceQuestions });
   };
 };
 
@@ -204,5 +218,11 @@ export const deleteCart = (id) => {
   }
 };
 
-
-
+export const update_cart = (value) => ({
+  type: UPDATE_CART,
+  payload: value,
+});
+export const update_cart_set = (value)=>({
+  type: UPDATE_CART_SET,
+  payload: value,
+});

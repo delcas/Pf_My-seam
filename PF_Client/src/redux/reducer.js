@@ -1,47 +1,49 @@
 import {GET_PRODUCTS,    
-        GET_SERVICES, 
-        SEARCH_PRODUCT_BY_NAME,
-        GET_PROMOTIONS,
-        GET_PRODUCT_QUESTION,
-        ORDER_BY_ALPHABET,
-        GET_PRODUCT_BY_ID,
-        FILTER_BY_PRICE,
-        FILTER_BY_RANGE,
-        SET_PRODUCT_CHANGE,
-        GET_USERS,
-        GET_USER,
-        GET_SERVICE_BY_ID,
-        GET_USER_BY_EMAIL,
-        FILTER_BY_CATEGORY,
-        FILTER_BY_GENDER,
-        FILTER_BY_TYPE_SERVICE,
-        FILTER_BY_COUNTRY,
-        GET_CART,
-        POST_CART,
-        DELETE_CART,
-        } from "./actions";
-
-
-  import { nameAlphabet } from "./actions";
+    GET_SERVICES, 
+    SEARCH_PRODUCT_BY_NAME,
+    GET_PROMOTIONS,
+    GET_PRODUCT_QUESTION,
+  GET_SERVICE_QUESTION,
+    ORDER_BY_ALPHABET,
+    GET_PRODUCT_BY_ID,
+    FILTER_BY_PRICE,
+    FILTER_BY_RANGE,
+    SET_PRODUCT_CHANGE,
+    GET_USERS,
+    GET_USER,
+    GET_SERVICE_BY_ID,
+    GET_USER_BY_EMAIL,
+    FILTER_BY_CATEGORY,
+    FILTER_BY_GENDER,
+    FILTER_BY_TYPE_SERVICE,
+    FILTER_BY_COUNTRY,
+    GET_CART,
+    POST_CART,
+    DELETE_CART,
+    UPDATE_CART,
+    UPDATE_CART_SET,
+   nameAlphabet } from "./actions";
 
 const initialState = {
-    products: [],
-    allProducts: [],
-    filterProducts: [],
-    services: [],
-    allServices: [],
-    details: [],
-    productQuestions: [],  
-    promotions: [],  
-    cart: [],
-    users: [],
-    userInfo: {},
-    user: {},
-    favourites: []
+products: [],
+allProducts: [],
+filterProducts: [],
+services: [],
+allServices: [],
+details: [],
+productQuestions: [],  
+serviceQuestions: [],
+promotions: [],  
+cart: [],
+users: [],
+userInfo: {},
+user: {},
+favourites: [],
+cartLength: 0
 };
 
 const rootReducer = (state = initialState, action) => {
-   // let aux = [];   
+  // let aux = [];
 
     switch (action.type){
         case GET_PRODUCTS:
@@ -71,9 +73,14 @@ const rootReducer = (state = initialState, action) => {
         case GET_PRODUCT_QUESTION:
             return {...state, 
                 productQuestions: action.payload}; 
+                case GET_SERVICE_QUESTION:
+                  return { ...state, serviceQuestions: action.payload };
         case GET_PRODUCT_BY_ID:
             return {...state,
                 details: action.payload };  
+                case GET_SERVICE_BY_ID: {
+                  return { ...state, details: action.payload };
+                }
         case SET_PRODUCT_CHANGE:
             return {...state,
                 details: action.payload }; 
@@ -203,31 +210,38 @@ const rootReducer = (state = initialState, action) => {
             return {...state, 
                 users: action.payload}; 
             }
-            case GET_SERVICE_BY_ID:{
-                return {...state,
-                    details: action.payload };  
-            }
 
-        case GET_USER_BY_EMAIL:{
-            return { ...state, userInfo: action.payload}
-        }
-        case GET_CART:
-            return {
-                ...state,
-                cart: action.payload
-            }
-        case POST_CART:
-            return {
-                ...state,
-            }
-        case DELETE_CART:
-            return {
-                ...state,
-            }
-
-        default:
-            return {...state};
+    case GET_USER_BY_EMAIL:{
+        return { ...state, userInfo: action.payload}
     }
+    case GET_CART:
+        return {
+            ...state,
+            cart: action.payload
+        }
+    case POST_CART:
+        return {
+            ...state,
+        }
+    case DELETE_CART:
+        return {
+            ...state,
+        }
+    case UPDATE_CART:
+            localStorage.setItem('cantidad', action.payload);
+            return{
+                ...state,
+                cartLength: state.cartLength + action.payload
+            }
+    case UPDATE_CART_SET:
+            return{
+                ...state,
+                 cartLength: action.payload
+            }
+
+    default:
+      return { ...state };
+  }
 };
 
-export default rootReducer
+export default rootReducer;

@@ -14,13 +14,15 @@ import {
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { getProductQuestions, getServiceQuestions } from "../../redux/actions";
 
-export default function ModalBtn({ userId, ver, id, name }) {
+export default function ModalBtn({ sell, userId, ver, id, name }) {
   const dispatch = useDispatch();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = useRef(null);
   const finalRef = useRef(null);
   const [sndquest, setSndQuest] = useState({});
+  const route = sell === 'service' ? 'questserv' : 'questprod';
 
   useEffect(()=>{
     name === "question" &&
@@ -38,16 +40,22 @@ export default function ModalBtn({ userId, ver, id, name }) {
 
   const sendHandler = async (onClose) => {
     if (userId) {
-      if (name === "answer") {
-      console.log("envío respuesta: ", sndquest);
+      if (name === "answer") {   
       await axios
-      .put(`/questprod/product/${id}`, sndquest)
-      .then(alert('Se ha enviado su respuesta'));
-    } else {
-      console.log("envío pregunta: ", sndquest);
+      .put(`/${route}/${sell}/${id}`, sndquest)
+      .then(console.log("envío respuesta: ", sndquest))
+      .then(setSndQuest({}))
+      .then(sell === 'service' ? 
+      dispatch(getServiceQuestions(id)) : 
+      dispatch(getProductQuestions(id)));
+    } else {      
       await axios
-      .post(`/questprod/product/${id}`, sndquest)
-      .then(dispatch(getProductQuestions(id)));
+      .post(`/${route}/${sell}/${id}`, sndquest)
+      .then(console.log("envío pregunta: ", sndquest))
+      .then(setSndQuest({}))
+      .then(sell === 'service' ? 
+      dispatch(getServiceQuestions(id)) : 
+      dispatch(getProductQuestions(id)));
     }     
     } else {alert('Debe registrarse para realizar una pregunta');}
   };

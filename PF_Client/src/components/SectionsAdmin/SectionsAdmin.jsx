@@ -27,7 +27,9 @@ export const SectionsAdmin = () => {
           {/* Imagen 2 */}
           <div className={styles.containerImg}>
             <img className={styles.homeImage} src={imgHome} alt='imgCostura'/>
-            <p className={styles.titleImage}>Publicaciones</p>
+             <Link to="/productList">
+              <p className={styles.titleImage}>Productos</p>
+            </Link>
           </div>
 
           {/* Imagen 3 */}
@@ -39,8 +41,10 @@ export const SectionsAdmin = () => {
 
             {/* Imagen 4 */}
             <div className={styles.containerImg}>
-              <img className={styles.seamImage2} src={imgCostura2} alt='imgCostura'/>
-              <p className={styles.titleImage}>Estadísticas</p>
+              <img className={styles.seamImage2} src={imgCostura2} alt='imgCostura' />
+               <Link to="/serviceList">
+              <p className={styles.titleImage}>Servicios</p>
+            </Link>
             </div>
           </div>
 
