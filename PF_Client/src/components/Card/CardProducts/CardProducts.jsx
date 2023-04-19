@@ -3,7 +3,7 @@ import styles from './CardProducts.module.css';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
-import { getProducts, postCart, getUserByEmail } from '../../../redux/actions';
+import { getProducts, postCart, getUserByEmail, update_cart } from '../../../redux/actions';
 //Chakra
 import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
 import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
@@ -52,10 +52,26 @@ export const CardProducts = ({ id, image, name, price, description }) => {
 
   // Agregar producto al carrito de compras
   const handleCart =  () => {
-    const newProductCart = allProducts.find(el => el.id == id)
+    const cartProduct = allProducts.find(el => el.id == id)
     // Validar si ya existe el producto en el carrito de compras
-    if (cart.find(el => el === newProductCart)) {  
-      newProductCart.quantity +=  1 
+    if (cart.find(el => el === cartProduct)) {   
+      cartProduct.quantity +=  1 
+      let add=1;
+      dispatch(update_cart(add));
+    } else {
+        cartProduct.quantity = 1 
+        let add=1;
+        cart.push(cartProduct);
+        dispatch(update_cart(add));   
+      }
+    localStorage.setItem("cart", JSON.stringify(cart))       
+    showNotify();
+  }
+  // const handleCart =  () => {
+  //   const newProductCart = allProducts.find(el => el.id == id)
+  //   // Validar si ya existe el producto en el carrito de compras
+  //   if (cart.find(el => el === newProductCart)) {  
+  //     newProductCart.quantity +=  1 
       // dispatch(postCart({
       //   customer_id: userInfo.id,
       //   prods: [
@@ -65,9 +81,9 @@ export const CardProducts = ({ id, image, name, price, description }) => {
       //     }
       //   ]
       // }))
-    } else {
-        newProductCart.quantity = 1 
-        cart.push(newProductCart)   
+    // } else {
+    //     newProductCart.quantity = 1 
+    //     cart.push(newProductCart)   
         // dispatch(postCart({
         //   customer_id: userInfo.id,
         //   prods: [
@@ -77,10 +93,10 @@ export const CardProducts = ({ id, image, name, price, description }) => {
         //     }
         //   ]
         // }))
-      }
-    localStorage.setItem("cart", JSON.stringify(cart))       
-    showNotify();
-  }
+  //     }
+  //   localStorage.setItem("cart", JSON.stringify(cart))       
+  //   showNotify();
+  // }
 
   // Agregar producto a favoritos
   const handleFavourites =  () => { 
