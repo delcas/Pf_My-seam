@@ -10,31 +10,52 @@ import {
 } from "@chakra-ui/react";
 import ModalBtn from "./ModalBtn.jsx";
 
-export default function Questions({ userId, details, ver }) {
-  const pId = details.id;
-  const productQuestions = useSelector((state) => state.productQuestions);
- console.log(ver);
-  
-  //       
+export default function Questions({ sell, userId, details, ver }) {
+  const dId = details.id;
+  const product = useSelector((state) => state.productQuestions);
+  const service = useSelector((state) => state.serviceQuestions);
+  let detailQuestions = sell === "product" ? product : service;
+  console.log(ver);
+
+  //
   return (
     <div className={questyle.detailTable}>
       <div>
         <label colSpan="2">Preguntas:</label>
         <span>
-        {ver ? '' : <ModalBtn userId={userId} ver={ver} id={pId} name='question'/>}
+          {ver ? (
+            ""
+          ) : (
+            <ModalBtn
+              sell={sell}
+              userId={userId}
+              ver={ver}
+              id={dId}
+              name="question"
+            />
+          )}
         </span>
       </div>
       <div>
-        {productQuestions.length > 0 ? (
+        {detailQuestions.length > 0 ? (
           <Accordion>
-            {productQuestions.map((q) => (
+            {detailQuestions.map((q) => (
               <AccordionItem>
                 <h2>
                   <AccordionButton>
                     <Box as="span" flex="1" textAlign="left">
                       {q.question}
                     </Box>
-                    {ver ? <ModalBtn userId={userId} ver={ver} id={q.id} name='answer'/> : ''}
+                    {ver ? (
+                      <ModalBtn
+                        userId={userId}
+                        ver={ver}
+                        id={q.id}
+                        name="answer"
+                      />
+                    ) : (
+                      ""
+                    )}
                     <AccordionIcon />
                   </AccordionButton>
                 </h2>

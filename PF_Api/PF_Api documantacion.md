@@ -63,9 +63,9 @@
     POST (/questserv/service/:offerId) -id of the Service by param-
 ------------------{ question, customerId } = req.body
 
-    GET (/questprod/service/?customerId=...) -by Customer-
-    GET (/questprod/service/?offerId=...) -by Product-
-    GET (/questprod/service/?sellerId=...) -by Seller-
+    GET (/questserv/service/?customerId=...) -by Customer-
+    GET (/questserv/service/?offerId=...) -by Service-
+    GET (/questserv/service/?sellerId=...) -by Seller-
     GET (/questserv/service/?questId=...) -By id-
 
     PUT (/questserv/service/:id)
@@ -91,3 +91,13 @@
     DELETE (/cart/:id)
 ```
 
+const cartProduct = allProducts.find(el => el.id == id)
+    // Validar si ya existe el producto en el carrito de compras
+    if (cart.find(el => el === cartProduct)) {
+      cartProduct.quantity +=  1 
+    } else {
+        cartProduct.quantity = 1 
+        cart.push(cartProduct)
+      }
+
+      npm i express-oauth2-jwt-bearer
