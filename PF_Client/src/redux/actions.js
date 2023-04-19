@@ -70,8 +70,8 @@ export const searchProductByName = (search) => {
 
 export const getServiceById = (id) => {
   return async function (dispatch) {
-    const json = await axios.get(`/service/${id}`);
-    const details = json.data;
+    const res = await axios.get(`/service/${id}`);
+    const details = res.data;
     dispatch({ type: GET_SERVICE_BY_ID, payload: details });
   };
 };

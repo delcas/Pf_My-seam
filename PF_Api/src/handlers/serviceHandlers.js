@@ -3,8 +3,8 @@ const {serviceCreator, getAService, getServices, deleteService, updateService} =
 const getAServiceHandler = async (req,res) => {
   const { id } = req.params;
   try {
-    const service = await getAService(id);
-    res.status(200).json(service);
+    console.log('Service Id Handler: ', id);
+    res.status(200).json(await getAService(id));
   }
   catch(error) {
     res.status(404).json({ error: error.message });

@@ -2,7 +2,11 @@ import React, { useState,useEffect } from 'react';
 import styles from "./ServiceDetail.module.css"
 import { useSelector, useDispatch } from "react-redux";
 import { NavBar } from '../../components/NavBar/NavBar'
-import { getServiceById } from '../../redux/actions';
+import { 
+    getServiceById, 
+    getUserByEmail, 
+    getServiceQuestions 
+} from '../../redux/actions';
 import Review from '../../components/Review/Review';
 import Questions from '../../components/Questions/Questions';
 
@@ -11,8 +15,8 @@ import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
 import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
 
 export const ServiceDetail =({ isAuthenticated, user })=>{
-    const dispatch = useDispatch()
-    const details = useSelector(state=>state.details)
+    const dispatch = useDispatch();
+    const details = useSelector(state=>state.details);
     const cart = useSelector(state => state.cart);
     const userInfo = useSelector((state) => state.userInfo);
     const userId = userInfo.id;
@@ -42,9 +46,10 @@ export const ServiceDetail =({ isAuthenticated, user })=>{
 
  useEffect(()=>{    
     const urlID = (window.location.href)
-    let prodID =urlID.split('/')
+    let servID =urlID.split('/')
     // eslint-disable-next-line
-    dispatch(getServiceById(prodID[prodID.length -1]));
+    dispatch(getServiceById(servID[servID.length -1]));
+    dispatch(getServiceQuestions(servID[servID.length - 1]));
     dispatch(getUserByEmail(user?.email));
   },[dispatch])  
 
