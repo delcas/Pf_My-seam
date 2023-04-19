@@ -4,6 +4,7 @@ import {
   SEARCH_PRODUCT_BY_NAME,
   GET_PROMOTIONS,
   GET_PRODUCT_QUESTION,
+  GET_SERVICE_QUESTION,
   ORDER_BY_ALPHABET,
   GET_PRODUCT_BY_ID,
   FILTER_BY_PRICE,
@@ -28,6 +29,7 @@ const initialState = {
   allServices: [],
   details: [],
   productQuestions: [],
+  serviceQuestions: [],
   promotions: [],
   cart: [],
   users: [],
@@ -66,6 +68,8 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, products: action.payload };
     case GET_PRODUCT_QUESTION:
       return { ...state, productQuestions: action.payload };
+    case GET_SERVICE_QUESTION:
+      return { ...state, serviceQuestions: action.payload };
     case GET_PRODUCT_BY_ID:
       return { ...state, details: action.payload };
     case SET_PRODUCT_CHANGE:

@@ -5,6 +5,7 @@ export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_SERVICES = "GET_SERVICES";
 export const SEARCH_PRODUCT_BY_NAME = "SEARCH_PRODUCT_BY_NAME";
 export const GET_PRODUCT_QUESTION = "GET_PRODUCT_QUESTION";
+export const GET_SERVICE_QUESTION = "GET_SERVICE_QUESTION";
 export const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID";
 export const GET_PROMOTIONS = "GET_PROMOTIONS";
 export const ORDER_BY_ALPHABET = "ORDER_BY_ALPHABET";
@@ -88,6 +89,17 @@ export const getProductQuestions = (pId) => {
     );
     const ProductQuestions = productQuestionData.data;
     dispatch({ type: GET_PRODUCT_QUESTION, payload: ProductQuestions });
+  };
+};
+
+export const getServiceQuestions = (pId) => {
+  console.log("getServQ pre axios", pId);
+  return async function (dispatch) {
+    const ServiceQuestionData = await axios.get(
+      `/questserv/service/?offerId=${pId}`
+    );
+    const ServiceQuestions = ServiceQuestionData.data;
+    dispatch({ type: GET_SERVICE_QUESTION, payload: ServiceQuestions });
   };
 };
 

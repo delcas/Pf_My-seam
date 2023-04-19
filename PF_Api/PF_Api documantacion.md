@@ -63,9 +63,9 @@
     POST (/questserv/service/:offerId) -id of the Service by param-
 ------------------{ question, customerId } = req.body
 
-    GET (/questprod/service/?customerId=...) -by Customer-
-    GET (/questprod/service/?offerId=...) -by Product-
-    GET (/questprod/service/?sellerId=...) -by Seller-
+    GET (/questserv/service/?customerId=...) -by Customer-
+    GET (/questserv/service/?offerId=...) -by Service-
+    GET (/questserv/service/?sellerId=...) -by Seller-
     GET (/questserv/service/?questId=...) -By id-
 
     PUT (/questserv/service/:id)
