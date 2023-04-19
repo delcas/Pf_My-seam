@@ -50,6 +50,7 @@
   font-size: 1rem;
   height: 1.7rem;
   width: 1.7rem;
+  margin-bottom: 2px;
 }
 
 .quantity input {
@@ -60,6 +61,8 @@
   outline-offset: -2px;
   text-align: center;
   width: 2rem;
+  height: 1.7rem;
+  margin-bottom: 2px;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -72,8 +75,13 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: 15px;
 }
 
+.buttonAdd {
+  margin-left: 0px;
+}
+
 .buttonDeleteItem {
-  margin-bottom: 15px;
+  margin-bottom: 14px;
+  margin-right: 15px;
 }
 
 /* CartElements */
@@ -91,14 +99,17 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .textBig {
+  display: flex;
   font-size: 18px;
+  margin-left: 15px;
+  margin-top: 10px;
   width: 200px;
-  padding-left: 15px;
 }
 
 .textMedium {
-  font-size: 19px;
+  font-size: 17px;
   margin-right: 5px;
+  margin-top: 10px;
 }
 
 

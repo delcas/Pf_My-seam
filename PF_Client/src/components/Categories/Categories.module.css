@@ -1,24 +1,65 @@
-.containerCategories {
+/* Containers */
+.containerMain {
+  margin: 0 auto;
+  width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
+.containerCategories {
+  display: flex;
+  flex-direction: column;
+  max-width: 25%;
+  margin: 30px 0 0 0;
+}
+
+.containerCategories h4 {
+  margin: 50px 0 5px 20px;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, min(min(100%, 33%)));
+  transition: all 0.8s ease;
+  min-width: 70%;
+  margin: 90px 0 0 0;
+}
+
+/* General */
 .currentCategory {
   text-align: center;
   font-weight: bolder;
-  margin: 30px 0;
+  font-size: 25px;
+  margin: 0 0 30px 30px;
 }
 
 .buttonCategorie {
   margin: 0 20px 20px 20px;
 }
 
-/* Card */
+.hide {
+  display: none;
+}
 
-.cardContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, min(min(100%, 25%)));
-  transition: all 0.8s ease;
+.inputPrice1 {
+  max-width: 55px;
+  min-height: 30px;
+  border: 1px solid rgb(255, 196, 0);
+  margin-left: 20px;
+}
+
+.inputPrice2 {
+  max-width: 55px;
+  min-height: 30px;
+  border: 1px solid rgb(255, 196, 0);
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.buttonPrice {
+  cursor: pointer;
 }
 
 /* Loading */
@@ -58,10 +99,16 @@
   .cardContainer {
     grid-template-columns: repeat(auto-fill, min(min(100%, 50%)));
   }  
+  .buttonCategorie {
+    width: 100px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
   .cardContainer {
     grid-template-columns: repeat(auto-fill, min(min(100%, 100%)));
+  }
+  .buttonCategorie {
+    width: 80px;
   }  
 }

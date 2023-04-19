@@ -9,6 +9,8 @@
 .page {
   color: orange;
   background-color: white;
+  border-radius: 5px;
+  height: 40px;
 }
 
 .page:hover {
@@ -18,23 +20,26 @@
 
 .pageActive {
   background-color: orange;
-  width: 30px;
+  width: 40px;
   height: 40px;
   color: white;
-  margin: auto;
-}
-
-.anteriorSiguiente {
-  background-color: orange;
-  color: white;
-  height: 40px;
-  max-width: 90px;
-  padding: 5px;
+  margin: 0 auto;
   border-radius: 5px;
 }
 
-.anteriorSiguiente:hover {
-  color: orange;
+.anteriorSiguiente {
   background-color: white;
+  color: orange;
+  height: 38px;
+  max-width: 90px;
+  padding: 5px;
+  border: 1px solid rgb(218, 218, 218);
+  border-radius: 5px;
+  margin: 0;
+}
+
+.anteriorSiguiente:hover {
+  color: white;
+  background-color: orange;
 }
   

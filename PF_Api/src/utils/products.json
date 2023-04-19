@@ -1,0 +1,267 @@
+[
+  {
+    "nombre": "Camiseta blanca",
+    "descripcion": "Camiseta básica de algodón en color blanco",
+    "imagenes": [
+      "https://shop.iturri.com/7831-large_default/camisa-laboral-blanca-manga-larga-con-tejido-fresh.jpg",
+      "https://casadelasbatas.com/41563-large_default/camisa-basic-blanca-de-hombre-manga-larga-delon-roger.jpg"
+    ],
+    "cantidad": 10,
+    "precio": 15.99,
+    "userid": 1
+  },
+  {
+    "nombre": "Camiseta negra",
+    "descripcion": "Camiseta básica de algodón en color negro",
+    "imagenes": [
+      "https://www.dtiendaslinares.es/Files/Images/References/2021/02/a9a5cda4-6fe9-4225-b622-b5c33fd7cd7d/cea52007-f45f-49e5-b00d-1b4f330bcc72.png",
+      "https://www.masuniformes.com/cdnassets/camisa-negra-camarero_l.jpg",
+      "https://www.masuniformes.com/cdnassets/camisa-camarero-negra_ad_l.jpg"
+    ],
+    "cantidad": 5,
+    "precio": 15.99,
+    "userid": 2
+  },
+  {
+    "nombre": "Polo rojo",
+    "descripcion": "Polo clásico en color rojo",
+    "imagenes": [
+      "https://www.thekooples.com/dw/image/v2/BGQL_PRD/on/demandware.static/-/Sites-skp-master-catalog/default/dw4c5fa803/images/hi-res/HTKC2103SSBISRED19_F.jpg?sw=2025&sh=2501",
+      "https://www.thekooples.com/dw/image/v2/BGQL_PRD/on/demandware.static/-/Sites-skp-master-catalog/default/dw8c3f22d2/images/hi-res/HTKC2103SSBISRED19_G.jpg?sw=2025&sh=2501"
+    ],
+    "cantidad": 7,
+    "precio": 25.99,
+    "userid": 3
+  },
+  {
+    "nombre": "Polo azul",
+    "descripcion": "Polo clásico en color azul",
+    "imagenes": [
+      "https://www.lolitamoda.com/uploads/photo/image/57258/M091212_1.JPG",
+      "https://www.lolitamoda.com/uploads/photo/image/57259/M091212_2.JPG",
+      "https://www.lolitamoda.com/uploads/photo/image/57261/M091212_4.JPG"
+    ],
+    "cantidad": 2,
+    "precio": 25.99,
+    "userid": 5
+  },
+  {
+    "nombre": "Jeans ajustados",
+    "descripcion": "Jeans ajustados de tiro alto en color azul oscuro",
+    "imagenes": [
+      "https://m.media-amazon.com/images/I/61WCkDEjcSL._AC_UX466_.jpg",
+      "https://m.media-amazon.com/images/I/61xaH0FdRIL._AC_UX425_.jpg",
+      "https://m.media-amazon.com/images/I/718oUMs51rL._AC_UY500_.jpg"
+    ],
+    "cantidad": 3,
+    "precio": 39.99,
+    "userid": 3
+  },
+  {
+    "nombre": "Shorts deportivos",
+    "descripcion": "Shorts deportivos en color negro con detalles en blanco",
+    "imagenes": [
+      "https://m.media-amazon.com/images/I/71UJTAGryVL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/71k76syGrSL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/81PZ7CMZrxL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/61yuPyC7qlL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/61WTe0OBm0L._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/91Gm9COpeHS._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/41noHDDqbjL._AC_.jpg",
+      "https://m.media-amazon.com/images/I/61IZnTnJTmL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/41noHDDqbjL._AC_.jpg"
+    ],
+    "cantidad": 12,
+    "precio": 19.99,
+    "userid": 3
+  },
+  {
+    "nombre": "Chaqueta de cuero",
+    "descripcion": "Chaqueta de cuero negra con cierre de cremallera",
+    "imagenes": [
+      "https://www.e-gothiczone.com/24348-thickbox_default/cazadora-de-cuero-clasica-cruzada.jpg",
+      "https://www.e-gothiczone.com/13769-thickbox_default/cazadora-de-cuero-clasica-cruzada.jpg",
+      "https://www.e-gothiczone.com/25484-thickbox_default/cazadora-de-cuero-clasica-cruzada.jpg",
+      "https://www.e-gothiczone.com/25485-thickbox_default/cazadora-de-cuero-clasica-cruzada.jpg",
+      "https://www.e-gothiczone.com/25486-thickbox_default/cazadora-de-cuero-clasica-cruzada.jpg"
+    ],
+    "cantidad": 1,
+    "precio": 149.99,
+    "userid": 5
+  },
+  {
+    "nombre": "Sudadera con capucha",
+    "descripcion": "Sudadera con capucha en color gris oscuro",
+    "imagenes": [
+      "https://wordans-a1a5.kxcdn.com/files/models/2015/10/7/32781/32781_big.jpg?1630310289",
+      "https://wordans-a1a5.kxcdn.com/files/model_specifications/2015/10/7/162030/162030_back_big.jpg?1669900571"
+    ],
+    "cantidad": 8,
+    "precio": 29.99,
+    "userid": 2
+  },
+  {
+    "nombre": "Jersey de lana",
+    "descripcion": "Jersey de lana en color beige",
+    "imagenes": [
+      "https://dhb3yazwboecu.cloudfront.net/1500/APC-SUELO-01-17_l-2.jpg",
+      "https://dhb3yazwboecu.cloudfront.net/1500/jersey-apc-lana-rojo-beige-hombreadl.jpg",
+      "https://dhb3yazwboecu.cloudfront.net/1500/jersey-apc-lana-rojo-beige-hombre-2adl.jpg",
+      "https://dhb3yazwboecu.cloudfront.net/1500/jersey-apc-lana-rojo-beige-hombre-3adl.jpg"
+    ],
+    "cantidad": 4,
+    "precio": 49.99,
+    "userid": 1
+  },
+  {
+    "nombre": "Abrigo de invierno",
+    "descripcion": "Abrigo de invierno acolchado en color negro",
+    "imagenes": [
+      "https://m.media-amazon.com/images/I/51RKinkCK-L._AC_UX569_.jpg",
+      "https://m.media-amazon.com/images/I/51LczEvnBnL._AC_UX569_.jpg",
+      "https://m.media-amazon.com/images/I/513vwtpA1FL._AC_UX569_.jpg",
+      "https://m.media-amazon.com/images/I/61zAzCVas5L._AC_UX569_.jpg"
+    ],
+    "cantidad": 2,
+    "precio": 99.99,
+    "userid": 2
+  },
+  {
+    "nombre": "Botas de cuero",
+    "descripcion": "Botas de cuero en color marrón oscuro",
+    "imagenes": [
+      "https://img01.ztat.net/article/spp-media-p1/fa3e8d01648640e7b61673e7a30168d3/352868a21de040e99f0a0d9083838890.jpg?imwidth=1800",
+      "https://img01.ztat.net/article/spp-media-p1/565d1e27fa3c4f52a76305c5a9b2ddf6/aff71015088742f3ae82cbeb3e2e3fc4.jpg?imwidth=762&filter=packshot",
+      "https://img01.ztat.net/article/spp-media-p1/bb25bd96f4b649bdb794bbbbe0ca14f2/72eca9272b6946138fb3cce66bc51722.jpg?imwidth=762",
+      "https://img01.ztat.net/article/spp-media-p1/f25156198e7d4cd78ed8f16895a11c60/0aff9e7152884a63bc32686f98cb43e3.jpg?imwidth=1800"
+    ],
+    "cantidad": 6,
+    "precio": 79.99,
+    "userid": 2
+  },
+  {
+    "nombre": "Zapatillas deportivas",
+    "descripcion": "Zapatillas deportivas en color blanco con detalles en rojo",
+    "imagenes": [
+      "https://www.lidl.es/media/product/0/0/3/9/8/4/6/zapatillas-deportivas-para-hombre-zoom.jpg",
+      "https://www.lidl.es/media/product/0/0/3/9/8/4/6/zapatillas-deportivas-para-hombre-zoom--2.jpg",
+      "https://www.lidl.es/media/product/0/0/3/9/8/4/6/zapatillas-deportivas-para-hombre-zoom--1.jpg",
+      "https://www.lidl.es/media/product/0/0/3/9/8/4/6/zapatillas-deportivas-para-hombre-zoom--4.jpg"
+    ],
+    "cantidad": 15,
+    "precio": 49.99,
+    "userid": 3
+  },
+  {
+    "nombre": "Vestido negro",
+    "descripcion": "Vestido de noche negro con escote en V",
+    "imagenes": [
+      "https://puravidaclothes.com/17051-product_zoom/vestido-loubel-negro.jpg",
+      "https://puravidaclothes.com/17539-product_zoom/vestido-loubel-negro.jpg",
+      "https://puravidaclothes.com/17539-product_zoom/vestido-loubel-negro.jpg",
+      "https://puravidaclothes.com/17052-product_zoom/vestido-loubel-negro.jpg"
+    ],
+    "cantidad": 3,
+    "precio": 79.99,
+    "userid": 4
+  },
+  {
+    "nombre": "Vestido rojo",
+    "descripcion": "Vestido de noche rojo con escote en V",
+    "imagenes": [
+      "https://invitadisima.com/18464-thickbox_default/vestido-largo-rojo-escote-corazon-invitada-perfecta.jpg",
+      "https://invitadisima.com/18464-thickbox_default/vestido-largo-rojo-escote-corazon-invitada-perfecta.jpg",
+      "https://invitadisima.com/18467-thickbox_default/vestido-largo-rojo-escote-corazon-invitada-perfecta.jpg",
+      "https://invitadisima.com/18464-thickbox_default/vestido-largo-rojo-escote-corazon-invitada-perfecta.jpg",
+      "https://invitadisima.com/18466-thickbox_default/vestido-largo-rojo-escote-corazon-invitada-perfecta.jpg",
+      "https://invitadisima.com/18465-thickbox_default/vestido-largo-rojo-escote-corazon-invitada-perfecta.jpg"
+    ],
+    "cantidad": 10,
+    "precio": 89.99,
+    "userid": 4
+  },
+  {
+    "nombre": "Falda de cuero",
+    "descripcion": "Falda de cuero en color negro",
+    "imagenes": [
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61kBQHiUoVL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71fIJf5x17L._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81Rwq1xl5OL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71KTjjIZfwL._AC_UL1500_.jpg"
+    ],
+    "cantidad": 4,
+    "precio": 59.99,
+    "userid": 3
+  },
+  {
+    "nombre": "Blusa de seda",
+    "descripcion": "Blusa de seda en color rosa pálido",
+    "imagenes": [
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61kdhhbmF-L._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71-2zmPSAAL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61hHeuXD99L._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41wvRBV4OIL._AC_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61qSVNLyoBL._AC_.jpg"
+    ],
+    "cantidad": 7,
+    "precio": 34.99,
+    "userid": 4
+  },
+  {
+    "nombre": "Pantalón gris",
+    "descripcion": "Pantalón de vestir en color gris",
+    "imagenes": [
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81hs8bpLVvL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/91ZeNJJH49L._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81+vRDkCe2L._AC_UL1500_.jpg"
+    ],
+    "cantidad": 6,
+    "precio": 49.99,
+    "userid": 3
+  },
+  {
+    "nombre": "Chaleco",
+    "descripcion": "Chaleco en color azul marino",
+    "imagenes": [
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81NBPJpyGgL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71AebOWIXzL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71AebOWIXzL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61Or82Z7BIL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81K40+ds00L._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71LrWgWolTL._AC_UL1500_.jpg"
+    ],
+    "cantidad": 8,
+    "precio": 29.99,
+    "userid": 4
+  },
+  {
+    "nombre": "Camisa de lino",
+    "descripcion": "Camisa de lino en color blanco",
+    "imagenes": [
+      "hhttps://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/615Cby-DciL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61ASIQkFS8L._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81w5XJSBHKL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71wAWw9Ez+L._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/714skKdCkeL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61BFBDFZYaL._AC_UL1149_.jpg"
+    ],
+    "cantidad": 9,
+    "precio": 39.99,
+    "userid": 3
+  },
+  {
+    "nombre": "Bufanda",
+    "descripcion": "Bufanda de lana en color gris",
+    "imagenes": [
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81AJnpCwZ+L._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81L1idzIbhL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81sKJN0z6oL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41oizUthKwL._AC_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/91jBbcWNdwL._AC_UL1500_.jpg",
+      "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71sxN0GPb5L._AC_UL1500_.jpg"
+    ],
+    "cantidad": 12,
+    "precio": 19.99,
+    "userid": 1
+  }
+]

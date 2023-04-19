@@ -30,6 +30,7 @@
 .buttonCart {
   cursor: pointer;
   margin-right: 20px;
+  margin-top: 15px;
 }
 
 .buttonClose {
@@ -44,6 +45,7 @@
 
 .notificationsCart {
   left: 50%;
+  margin-top: 15px;
 }
 
 .titleCart {
@@ -59,9 +61,14 @@
 }
 
 /* Responsive */
+@media only screen and (max-width: 422px) {
+  .titleCart {
+    font-size: 20px;
+  }
+}
 
-@media only screen and (max-width: 990px) {
-  .containerIconCart {
-    margin: 20px 0 10px 0;
+@media only screen and (max-width: 355px) {
+  .titleCart {
+    font-size: 16px;
   }
 }

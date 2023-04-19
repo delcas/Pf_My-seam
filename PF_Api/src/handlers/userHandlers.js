@@ -43,7 +43,6 @@ module.exports = {
       const { email } = req.query;
       // const allUsers = await getUsers();
       const results = email ? await getUserByEmail(email) : await getUsers();
-      
       res.status(200).send(results);
     } catch (error) {
       res.status(400).send("User no encontrado");

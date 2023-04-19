@@ -1,13 +1,4 @@
-.containerSections {
-  width: 100%;
-  height: 400px;
-  display: flex;
-}
-
-.containerImg {
-  position: relative;
-}
-
+/* General */
 .titleImage {
   display: block;
   font-size: 2rem;
@@ -30,37 +21,58 @@
   display: none;
 }
 
+/* Containers */
+.mainContainer {
+  margin-bottom: 150px;
+}
+
+.containerSections {
+  width: 100%;
+  height: 400px;
+  display: flex;
+}
+
+.containerImgVestidos {
+  position: relative;
+}
+
+.containerImg {
+  position: relative;
+}
+
+
+
 /* Imagenes */
 
-.techImage {
+.vestidosImg {
   height: 400px;
-  width: 300px;
+  width: 100%;
   padding: 10px 7px 20px 30px;
   cursor: pointer;
 }
 
-.homeImage {
+.pantalonesImg {
   height: 400px;
-  width: 600px;
+  width: 100%;
   padding: 10px 7px 20px 7px;
   cursor: pointer;
 }
 
-.seamImage {
+.faldasImg {
   height: 200px;
-  width: 450px;
+  width: 100%;
   padding: 10px 30px 7px 7px;
   cursor: pointer;
 }
 
-.seamImage2 {
+.serviciosImg {
   height: 200px;
-  width: 450px;
+  width: 100%;
   padding: 7px 30px 20px 7px;
   cursor: pointer;
 }
 
-.techImage:hover, .homeImage:hover, .seamImage:hover, .seamImage2:hover {
+.vestidosImg:hover, .pantalonesImg:hover, .faldasImg:hover, .serviciosImg:hover {
   opacity: 40%;
 }
 
@@ -73,20 +85,20 @@
   .containerImg3Y4 {
     display: flex;
   }
-  .techImage {
+  .vestidosImg {
     width: 300px;
     height: 200px;
   }
-  .homeImage {
+  .pantalonesImg {
     width: 300px;
     height: 200px;
   }
-  .seamImage {
+  .faldasImg {
     width: 295px;
     height: 200px;
     padding: 0 0 0 30px;
   }
-  .seamImage2 {
+  .serviciosImg {
     width: 300px;
     height: 200px;
     padding: 0 0 0 15px;
@@ -94,22 +106,22 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .techImage {
-    width: 200px;
-    height: 200px;
+  .vestidosImg {
+    width: 250px;
+    height: 250px;
   }
-  .homeImage {
-    width: 200px;
-    height: 200px;
+  .pantalonesImg {
+    width: 250px;
+    height: 250px;
   }
-  .seamImage {
-    width: 195px;
-    height: 200px;
+  .faldasImg {
+    width: 245px;
+    height: 250px;
     padding: 0 0 0 30px;
   }
-  .seamImage2 {
-    width: 200px;
-    height: 200px;
+  .serviciosImg {
+    width: 250px;
+    height: 250px;
     padding: 0 0 0 15px;
   }
   .titleImage {
@@ -117,22 +129,22 @@
   }
 }
 
-@media only screen and (max-width: 420px) {
-  .techImage {
-    width: 150px;
+@media only screen and (max-width: 500px) {
+  .vestidosImg {
+    width: 200px;
     height: 200px;
   }
-  .homeImage {
-    width: 150px;
+  .pantalonesImg {
+    width: 200px;
     height: 200px;
   }
-  .seamImage {
-    width: 145px;
+  .faldasImg {
+    width: 195px;
     height: 200px;
     padding: 0 0 0 30px;
   }
-  .seamImage2 {
-    width: 150px;
+  .serviciosImg {
+    width: 200px;
     height: 200px;
     padding: 0 0 0 15px;
   }
@@ -141,23 +153,23 @@
   }
 }
 
-@media only screen and (max-width: 310px) {
-  .techImage {
-    width: 120px;
-    height: 200px;
+@media only screen and (max-width: 400px) {
+  .vestidosImg {
+    width: 170px;
+    height: 170px;
   }
-  .homeImage {
-    width: 120px;
-    height: 200px;
+  .pantalonesImg {
+    width: 170px;
+    height: 170px;
   }
-  .seamImage {
-    width: 115px;
-    height: 200px;
+  .faldasImg {
+    width: 165px;
+    height: 170px;
     padding: 0 0 0 30px;
   }
-  .seamImage2 {
-    width: 120px;
-    height: 200px;
+  .serviciosImg {
+    width: 170px;
+    height: 170px;
     padding: 0 0 0 15px;
   }
   .titleImage {

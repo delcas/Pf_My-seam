@@ -31,11 +31,36 @@ module.exports = (sequelize) => {
       stock: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        validate: {
+          min: 0,
+        },
+      },
+      gender: {
+        type: DataTypes.ENUM("Mujer", "Hombre", "Niño", "Niña", "All"),
+        allowNull: false,
+        defaultValue: "All"
+      },
+      category: {
+        type: DataTypes.ENUM(
+          "Blusas",
+          "Vestidos",
+          "Faldas",
+          "Buzos",
+          "Camperas",
+          "Pantalones",
+          "Remeras",
+          "Bermudas",
+          "Sweaters",
+          "Camisas",
+          "Musculosas",
+          "All"
+        ),
+        allowNull: false,
+        defaultValue: "All"
       },
     },
     {
-      timestamps: true,
-      updatedAt: false,
+      paranoid: true,
     }
   );
 };

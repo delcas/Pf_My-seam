@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import styles from "./CardService.module.css"
+import StarRank from "../../StarRank/StarRank.jsx"
 
 import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
 import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
@@ -11,6 +12,9 @@ export const CardService =({name, description,price,image,id})=>{
      // Me traigo el estado del reducer 
     const services = useSelector(state=>state.services)
     const cart = useSelector(state=>state.cart)
+    if (name.length > 20){
+      name = name.slice(0,19) + "..."    
+    }
 
     const { toggleColorMode, colorMode } = useColorMode();  
     const currentTheme = useColorMode().colorMode
@@ -46,11 +50,12 @@ export const CardService =({name, description,price,image,id})=>{
       </div>
             <li className={currentTheme === "dark" ? styles.cardDarkTheme : styles.cardLightTheme}>   
             <div key={id}>
-            <Link  to= {`/ServiceDetail/${id}`}>
+            <Link  to= {`/ServiceDetail/${id}`}>            
             <img className={styles.imgCenter} src={image} alt={name} width='200px' height='200px' />
+            <StarRank />
             </Link>
             <Icon as={BsFillCartPlusFill} w={8} h={8} className={styles.buttonCart} onClick={handleCart} title="Agregar al carrito"/>
-          <Icon as={BsFillHeartFill} w={8} h={8} className={styles.buttonFavourites} title="Agregar a favoritos"/>
+            <Icon as={BsFillHeartFill} w={8} h={8} className={styles.buttonFavourites} title="Agregar a favoritos"/>
             <Link>
             <h1 className={styles.textMedium}>{name}</h1>
             <h2 className={styles.textMedium}> ${price}</h2>

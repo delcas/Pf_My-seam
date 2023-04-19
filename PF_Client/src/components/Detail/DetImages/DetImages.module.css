@@ -1,38 +1,40 @@
-.row {
-    width: 45vw;
-}
-
-.ArrowButton{ 
-    margin: 1px;
-    border: 2px solid #ffffff;
-    border-radius: 12px; 
-    height: 30vh;   
-    transition-duration: 0.4s;
-}
-
-.ArrowButton:hover{ 
-    background-color: white; 
-    color: black;
-}
-.ArrowButton:active{ 
-    color: red; 
-    background-color: orange; 
-}
-.ArrowButtonDisabled {
-    cursor: not-allowed;
-    background-color: grey;
-    border: 2px solid #3d3c3c;
-    color: #3d3c3c;
-    border-radius: 12px; 
-    height: 30vh;       
-}
-
-.FlagImg{ 
-    padding: 2px;
-    box-shadow: 5px 5px 5px 0px rgba(216, 206, 206, 0.3); 
-    overflow-clip-margin: unset;     
-}
-
-.box{
-    width: 25em;     
-}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .main_screen {
+    margin-bottom: 20px;
+  }
+  
+  .grid_four_column {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    max-width: 800px;
+    width: 50%;
+  }
+  .main_image {
+    width: 400px;
+    height: 400px;
+    background-color: white;
+  }
+  
+  .grid_item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .grid_item img {
+    display: block;
+    width: 10rem;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  

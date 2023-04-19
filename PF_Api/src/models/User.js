@@ -61,16 +61,37 @@ module.exports = (sequelize) => {
       isActive:{
         type: DataTypes.BOOLEAN,
         allowNull: true,
+        defaultValue:true
       },
 
       image: {
         type: DataTypes.STRING(500),
         allowNull: true,
       },
+
+      MPAccessToken: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+
+      MPUserId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+
+      MPRefreshToken: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+
+      MPExpiresIn: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      }
     },
     {
       timestamps: true,
-      updatedAt: false,
+      paranoid: true  
     }
   );
 };

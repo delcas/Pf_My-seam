@@ -8,7 +8,7 @@ import { Spinner } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserByEmail } from "../../../Redux/actions";
+import { getUserByEmail } from "../../../redux/actions";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -16,21 +16,20 @@ const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const myState = JSON.parse(localStorage.getItem('myState'));
   const userInfo = useSelector((state)=>state.userInfo);
   const [form, setForm]= useState({
-      username: userInfo.username,
-      name: userInfo.name,
-      email: userInfo.email,
-      birthdate: userInfo.birthdate,
-      country: userInfo.country,
-      city: userInfo.city,
-      address: userInfo.address,
-      image: userInfo.image
+      username: myState.username,
+      name: myState.name,
+      email: myState.email,
+      birthdate: myState.birthdate,
+      country: myState.country,
+      city: myState.city,
+      address: myState.address,
+      image: myState.image
   })
 
   console.log(userInfo);
-
-
 
   const changeHandler = (event) => {
     const property = event.target.name;
@@ -44,7 +43,6 @@ const Profile = () => {
       .put(`/users/${userInfo.id}`, form)
       .then((res) => alert(res))
       .catch((err) => alert(err));
-    
 
     setForm({
       username: userInfo.username,
@@ -56,14 +54,10 @@ const Profile = () => {
       address: userInfo.address,
       image: userInfo.image
     });
-    setTimeout(() => {
+    
       dispatch(getUserByEmail(user.email));
-      navigate('/home');
-    }, 1500);
-  }
-
-
-
+      window.location.reload();
+  };
 
   if (isLoading) {
     return <Spinner color="red.500" size="xl" />;
@@ -72,7 +66,7 @@ const Profile = () => {
   return (
     isAuthenticated && (
       <div>
-        <NavBar />
+        <NavBar isAuthenticated={isAuthenticated} user={user}/>
         <Box>
           <Box
             borderWidth="3px"

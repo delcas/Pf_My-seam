@@ -23,13 +23,15 @@ export default function Detail({
   SendCange,
   EditionPDetail,
   edit,
+  image,
+  ver
 }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <div>
-      {userId === details.userid ? (
+      {ver ? (
         <div>
-          <button onClick={handleEdition}>Habilitar Edición 🖊</button>
+          <button onClick={handleEdition}>Habilitar Edición ✍</button>
           <Button onClick={onOpen}>Eliminar</Button>
           <Modal isOpen={isOpen}>
             <ModalContent>
@@ -57,9 +59,7 @@ export default function Detail({
       <table className={st.detailTable}>
         <tr>
           <DetImage
-            details={details}
-            setCurrentImg={setCurrentImg}
-            currentImg={currentImg}
+            image={image}
           />
           <DetailText
             details={details}

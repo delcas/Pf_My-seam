@@ -1,10 +1,10 @@
 const { User } = require("../db.js");
 const nodemailer = require("nodemailer");
-const users = require('../utils/users.json');
+const users = require("../utils/users.json");
 
 module.exports = {
   userCreator: async (name, password, birthdate, username, email, image) => {
-    return await User.findOrCreate({
+    return await User.create({
       name,
       password,
       birthdate,
@@ -35,35 +35,29 @@ module.exports = {
   },
 
   getUsers: async () => {
-    users.forEach( async (user) => {
-      await User.findOrCreate({
-        where: {
-          name: user.name,
-          birthdate: user.birthdate,
-          address: user.address,
-          access_level: user.access_level,
-          username: user.username,
-          password: user.password,
-          email: user.email,
-          country: user.country,
-          city: user.city,
-          isActive: user.isActive,
-          image: user.image
-        },
-      });
+    const finduser = await User.findOne({
+      where: {
+      name: users[4].name,
+    },
+  })
+  !finduser && await User.bulkCreate(users)
+    .then(() => {
+      console.log("Usuarios creados exitosamente");
+    })
+    .catch((error) => {
+      console.error("Error al crear usuarios:", error);
     });
-    return await User.findAll();
+    return await User.findAll({
+      order: [["id", "ASC"]],
+    });
   },
 
-  getUserByEmail: async (email) =>{
+  getUserByEmail: async (email) => {
     console.log("ENTRÉ a esta funcion");
     let userDb = await User.findOne({
       where: { email: email },
-    
-    } )
+    });
     return userDb.dataValues;
-
-
   },
 
   enviarMail: async (email, name) => {
@@ -91,8 +85,6 @@ module.exports = {
     const transport = nodemailer.createTransport(config);
     const info = await transport.sendMail(mensaje);
 
-    console.log("Message sent: "+ info.messageId);
+    console.log("Message sent: " + info.messageId);
   },
 };
-
-

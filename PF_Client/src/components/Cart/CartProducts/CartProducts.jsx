@@ -9,7 +9,7 @@ export const CartProducts = ({ cart, totalPrice, setTotalPrice, totalQuantity, s
   
   const addQuantity = () => {
     el.quantity = Number(el.quantity) + 1
-    setTotalPrice(totalPrice + el.price)
+    setTotalPrice(totalPrice + Math.round(el.price))
     setItemsPerProduct(Number(itemsPerProduct) + 1)
     setTotalQuantity(Number(totalQuantity) + 1)
   }
@@ -18,7 +18,7 @@ export const CartProducts = ({ cart, totalPrice, setTotalPrice, totalQuantity, s
     if (itemsPerProduct > 1) {
       el.quantity = Number(el.quantity) - 1
       setTotalQuantity(Number(totalQuantity) - 1)
-      setTotalPrice(totalPrice - el.price)
+      setTotalPrice(totalPrice - Math.round(el.price))
       setItemsPerProduct(Number(itemsPerProduct) - 1)
     }
   }
@@ -36,12 +36,13 @@ export const CartProducts = ({ cart, totalPrice, setTotalPrice, totalQuantity, s
     } 
     setTotalPrice(totalPrice)
     setTotalQuantity(totalQuantity)
+    localStorage.removeItem("cart", JSON.stringify(cart.indexProduct))
   }
 
   const handleChangeQuantity = (e) => {
     el.quantity = Number(e.target.value)
     setTotalPrice(cart.reduce((accumulator, currentValue) => 
-      accumulator + (currentValue.price * currentValue.quantity), 0))
+      accumulator + Math.round(currentValue.price * currentValue.quantity), 0))
 
     setTotalQuantity(cart.reduce((accumulator, currentValue) => 
       accumulator + currentValue.quantity, 0))
@@ -66,13 +67,13 @@ export const CartProducts = ({ cart, totalPrice, setTotalPrice, totalQuantity, s
               <div className={styles.quantity}>
                 <button title='Restar 1 unidad' className={styles.buttonLess} onClick={reduceQuantity}>-</button>
                 <input type='number' value={itemsPerProduct} onChange={(e) => handleChangeQuantity(e)}></input>
-                <button title='Sumar 1 unidad' onClick={addQuantity}>+</button>
+                <button title='Sumar 1 unidad' className={styles.buttonAdd} onClick={addQuantity}>+</button>
               </div>
             </div>
 
             {/* Subtotal y elminar producto */}
             <div className={styles.cartRight}>
-              <h2 className={styles.textMedium}> <b>Subtotal: ${el.price * el.quantity}</b></h2>
+              <h2 className={styles.textMedium}> <b>Subtotal: ${Math.round(el.price) * el.quantity}</b></h2>
               <button title='Quitar producto' className={styles.buttonDeleteItem} onClick={handleDeleteItem}><DeleteIcon /></button>
             </div>
         </li>                      

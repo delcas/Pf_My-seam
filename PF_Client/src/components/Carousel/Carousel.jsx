@@ -1,6 +1,7 @@
 import React from 'react'
 import promo1 from '../../images/promociones1.jpg'
-import promo2 from '../../images/promociones2.jpg'
+// import promo2 from '../../images/promociones2.jpg'
+import promo2 from '../../assets/images/finTemporada.png'
 import promo3 from '../../images/promociones3.jpg'
 import styles from './Carousel.module.css'
 import { useSelector } from 'react-redux';
@@ -25,7 +26,6 @@ export const Carousel = () => {
             <div className= "carousel-item active">
               <img src={promo1} className={styles.imgCarousel} alt="promo1" title="Haz clic para ver más detalles"/>
               <div className="carousel-caption d-md-block">
-                <h5 className={styles.promocion1}>ENVÍOS EN <p className={styles.descuento1}>24 HORAS</p></h5>
                 <p className={styles.terminosCondiciones}>Aplican términos y condiciones.</p>
               </div>
             </div>
