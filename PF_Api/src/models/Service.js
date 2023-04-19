@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
         autoIncrement: true,
       },
       name: {
-        type: DataTypes.ENUM("Arreglo de ropa", "Confección de ropa", "Bordado", "Decoración de ropa", "Todos"),
+        type: DataTypes.STRING,
         allowNull: false,
         defaultValue: "Todos"
       },

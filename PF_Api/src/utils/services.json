@@ -41,6 +41,50 @@
 	"country": "Colombia",
 	"city": "Medellin",
     "image": ["https://gdurl.com/RdMH"],
+    "userid": 3
+},
+{
+   "name": "Diseño trajes a medida", 
+	"price": "Negociable", 
+	"description": "Los mejores trajes del país, utilizamos lana de oveja merino y de alpacas locales", 
+	"number": "3516483312",
+	"email": "gloriacuscumanta@gmail.com",
+	"country": "Perú",
+	"city": "Cusco",
+    "image": ["https://gdurl.com/pZhU"],
     "userid": 4
+},
+{
+   "name": "Alta costura casera", 
+	"price": "Negociable", 
+	"description": "La mayor elegancia para miss universo, a la vuelta de su casa", 
+	"number": "3516483312",
+	"email": "gloriacuscumanta@gmail.com",
+	"country": "Perú",
+	"city": "Cusco",
+    "image": ["https://gdurl.com/pQ-a"],
+    "userid": 4
+},
+{
+   "name": "Arreglos y diseños para Bodas", 
+	"price": "Negociable", 
+	"description": "Vestidos y arreglos de Fiesta", 
+	"number": "3514234512",
+	"email": "otaku2023@gmail.com",
+	"country": "Colombia",
+	"city": "Medellin",
+    "image": ["https://gdurl.com/xdgkh"],
+    "userid": 2
+},
+{
+   "name": "Zapatero - Confeccion y arreglos", 
+	"price": "Negociable", 
+	"description": "Trabajo cuero, cuerina y telas para zapatos y zapatillas", 
+	"number": "3514234512",
+	"email": "gperetti@ucasal.edu.ar",
+	"country": "Argentina",
+	"city": "Salta",
+    "image": ["https://gdurl.com/lZcy"],
+    "userid": 6
 }
 ]

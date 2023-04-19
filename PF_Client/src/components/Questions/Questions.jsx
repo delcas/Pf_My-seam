@@ -48,9 +48,11 @@ export default function Questions({ sell, userId, details, ver }) {
                     </Box>
                     {ver ? (
                       <ModalBtn
+                      sell={sell}
                         userId={userId}
                         ver={ver}
-                        id={q.id}
+                        q_id={q.id}
+                        id={dId}
                         name="answer"
                       />
                     ) : (
