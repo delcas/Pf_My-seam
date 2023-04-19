@@ -74,7 +74,8 @@ export const Card = () => {
 
                    const user = activeUsers.find((user) => user.id === product.userid);
 
-                if(user) (
+                if (user) {
+                return (
                   <CardProducts
                     id={product.id}
                     key={product.id}
@@ -84,6 +85,7 @@ export const Card = () => {
                     description={product.description}
                   />
                 );
+              }
             })
           ) : (
             <Loading />
@@ -97,7 +99,8 @@ export const Card = () => {
 
                  const user = activeUsers.find((user) => user.id === product.userid);
 
-                if(user) (
+                if (user) {
+                return (
                   <CardProducts
                     id={product.id}
                     key={product.id}
@@ -107,6 +110,7 @@ export const Card = () => {
                     description={product.description}
                   />
                 );
+              }
             })
           ) : (
             <Loading />
