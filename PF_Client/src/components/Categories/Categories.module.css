@@ -31,6 +31,7 @@
 .currentCategory {
   text-align: center;
   font-weight: bolder;
+  font-size: 25px;
   margin: 0 0 30px 30px;
 }
 
@@ -40,6 +41,25 @@
 
 .hide {
   display: none;
+}
+
+.inputPrice1 {
+  max-width: 55px;
+  min-height: 30px;
+  border: 1px solid rgb(255, 196, 0);
+  margin-left: 20px;
+}
+
+.inputPrice2 {
+  max-width: 55px;
+  min-height: 30px;
+  border: 1px solid rgb(255, 196, 0);
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.buttonPrice {
+  cursor: pointer;
 }
 
 /* Loading */
