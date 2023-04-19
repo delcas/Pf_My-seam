@@ -11,10 +11,11 @@ module.exports = (sequelize) => {
             autoIncrement: true,
           },
         text: {//para usar mas adelante aqui va una reseña
-            type: DataTypes.TEXT,            
+            type: DataTypes.TEXT,
+            allowNull: true,            
         },
         kind: {//aqui va el tipo de producto al que se asocia el review en principio Service o Product
-            type: DataTypes.TEXT,
+            type: DataTypes.ENUM("Service", "Product"),
             allowNull: false,
         },
         kindID:{//Aqui va el id del servicio/producto rateado

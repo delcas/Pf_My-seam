@@ -1,5 +1,15 @@
 const {putReview, getOneReview, getReview, postReview, deleteReview} = require("../controllers/reviewControllers.js");
 
+const postReviewHandler = async (req,res) => {
+  const data = req.body;
+  try {
+    const service = await postReview(data);
+    return res.status(201).json(service);
+  }
+  catch(error) {
+    res.status(400).json({ error: error.message });
+  }
+}
 const getOneReviewHandler = async (req,res) => {
   const { id } = req.params;
   try {
@@ -22,16 +32,6 @@ const getReviewHandler = async (req,res) => {
   }
 }
 
-const postReviewHandler = async (req,res) => {
-  const data = req.body;
-  try {
-    const service = await postReview(data);
-    res.status(201).json(service);
-  }
-  catch(error) {
-    res.status(400).json({ error: error.message });
-  }
-}
 
 const deleteReviewHandler = async (req,res) => {
   const { id } = req.params;
