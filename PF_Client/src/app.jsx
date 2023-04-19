@@ -19,6 +19,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { MercadoPago } from './views/Checkout/MercadoPago'
 import { UserProductList } from './components/UserProductList/UserProductList';
 import { UserServiceList } from './components/UserServiceList/UserServiceList';
+import { Contacto } from './components/Contacto/Contacto';
 
 const backend =import.meta.env.VITE_BACKEND_URL;
 axios.defaults.baseURL = backend
@@ -51,6 +52,7 @@ function App() {
       <Route path = '/service' element={<Service />}/>
       <Route path = '/users' element={<UserList />}/>
       <Route path = '/favourites' element={<Favourites />}/>
+      <Route path = '/contacto' element = {<Contacto />}/> 
       <Route path = '*' element = {<Error404 />}/> 
     </Routes >
   );
