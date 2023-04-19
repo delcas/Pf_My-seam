@@ -9,13 +9,13 @@ const Review = ()=>{
   const [rating, setRating] = useState(0);
 
   const locationData = (window.location.href).split('/')
-  let tipo = locationData[(locationData.length)-2]
+  let tipo = locationData[(locationData.length)-2].slice(0,7)
   let ratedId =  locationData[(locationData.length)-1]
   
   function rate (){
     try {
       
-      alert(`Su review de ${rating} estrellas \nfue agregado con exito \nen el ${tipo.slice(0,7)} con id:${ratedId}`)
+      alert(`Su review de ${rating} estrellas \nfue agregado con exito \nen el ${tipo} con id:${ratedId}`)
     } catch (error) {
       alert(error.message)
     }    
