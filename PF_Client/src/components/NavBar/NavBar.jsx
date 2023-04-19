@@ -182,6 +182,8 @@ export const NavBar = () => {
 
             {!isSmallScreen && <Cart />}
 
+            <NavLink className="nav-link active" to="/contacto">Contáctanos</NavLink>
+
             {isAuthenticated ? (
               <>
                 {/* <Profile /> */}
