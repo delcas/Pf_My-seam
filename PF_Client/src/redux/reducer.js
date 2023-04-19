@@ -8,6 +8,7 @@ import {
   ORDER_BY_ALPHABET,
   GET_PRODUCT_BY_ID,
   FILTER_BY_PRICE,
+  FILTER_BY_RANGE,
   SET_PRODUCT_CHANGE,
   GET_USERS,
   GET_USER,
@@ -18,6 +19,8 @@ import {
   FILTER_BY_TYPE_SERVICE,
   FILTER_BY_COUNTRY,
   GET_CART,
+  POST_CART,
+  DELETE_CART,
 } from "./actions";
 
 import { nameAlphabet } from "./actions";
@@ -25,6 +28,7 @@ import { nameAlphabet } from "./actions";
 const initialState = {
   products: [],
   allProducts: [],
+  filterProducts: [],
   services: [],
   allServices: [],
   details: [],
@@ -47,6 +51,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         products: action.payload,
         allProducts: action.payload,
+        filterProducts: action.payload,
       };
     case GET_USER:
       return {
@@ -77,20 +82,44 @@ const rootReducer = (state = initialState, action) => {
     case GET_PROMOTIONS:
       return { ...state, promotions: action.payload };
     case FILTER_BY_PRICE:
-      let productsShown = state.allProducts;
+      let productsShown = state.filterProducts;
       let productsFiltered = [];
-      if (action.payload === "none") {
-        productsFiltered = productsShown;
-      } else if (action.payload === "Hasta $ 100") {
-        productsFiltered = productsShown.filter((p) => p.price < 100);
-      } else if (action.payload === "$ 100 a $ 500") {
+      if (action.payload === "Hasta $50") {
+        productsFiltered = productsShown.filter((p) => p.price < 50);
+      } else if (action.payload === "$50 a $100") {
         productsFiltered = productsShown.filter(
-          (p) => p.price > 100 && p.price < 500
+          (p) => p.price >= 50 && p.price <= 100
         );
       } else {
-        productsFiltered = productsShown.filter((p) => p.price > 500);
+        productsFiltered = productsShown.filter((p) => p.price > 100);
+        if (productsFiltered.length === 0) {
+          productsFiltered = state.products;
+          alert("No hay productos con ese rango de precios");
+        }
       }
       return { ...state, products: productsFiltered };
+    case FILTER_BY_RANGE:
+      let productsByRange = state.filterProducts;
+      let filterRange = [];
+      if ((action.min < 1 && action.max < 1) || action.min > action.max) {
+        alert("No hay productos con ese rango de precios");
+        filterRange = state.products;
+      } else if (action.min === action.max) {
+        filterRange = productsByRange.filter((p) => p.price === action.max);
+        if (filterRange.length === 0) {
+          filterRange = state.products;
+          alert("No hay productos con ese rango de precios");
+        }
+      } else {
+        filterRange = productsByRange.filter(
+          (p) => p.price > action.min && p.price < action.max
+        );
+        if (filterRange.length === 0) {
+          filterRange = state.products;
+          alert("No hay productos con ese rango de precios");
+        }
+      }
+      return { ...state, products: filterRange };
     case ORDER_BY_ALPHABET: {
       if (action.payload === "a-z") {
         return {
@@ -107,12 +136,16 @@ const rootReducer = (state = initialState, action) => {
 
     case FILTER_BY_CATEGORY: {
       const category = action.payload;
-      let productCategory = state.allProducts;
+      let productCategory = state.filterProducts;
       let filterCategory = [];
       if (category === "All") {
         filterCategory = productCategory;
       } else {
         filterCategory = productCategory.filter((p) => p.category === category);
+        if (filterCategory.length === 0) {
+          filterCategory = state.products;
+          alert("No hay productos de esa categoría");
+        }
       }
       return {
         ...state,
@@ -122,12 +155,16 @@ const rootReducer = (state = initialState, action) => {
 
     case FILTER_BY_GENDER: {
       const gender = action.payload;
-      let productGender = state.allProducts;
+      let productGender = state.filterProducts;
       let filterByGender = [];
       if (gender === "All") {
         filterByGender = productGender;
       } else {
         filterByGender = productGender.filter((p) => p.gender === gender);
+        if (filterByGender.length === 0) {
+          filterByGender = state.products;
+          alert("No hay productos de ese género");
+        }
       }
       return {
         ...state,
@@ -177,6 +214,14 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         cart: action.payload,
+      };
+    case POST_CART:
+      return {
+        ...state,
+      };
+    case DELETE_CART:
+      return {
+        ...state,
       };
 
     default:

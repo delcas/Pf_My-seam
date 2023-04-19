@@ -10,6 +10,7 @@ export const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID";
 export const GET_PROMOTIONS = "GET_PROMOTIONS";
 export const ORDER_BY_ALPHABET = "ORDER_BY_ALPHABET";
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
+export const FILTER_BY_RANGE = "FILTER_BY_RANGE";
 export const SET_PRODUCT_CHANGE = "SET_PRODUCT_CHANGE";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const GET_SERVICE_BY_ID = "GET_SERVICE_BY_ID";
@@ -19,6 +20,8 @@ export const FILTER_BY_GENDER = "FILTER_BY_GENDER";
 export const FILTER_BY_TYPE_SERVICE = "FILTER_BY_TYPE_SERVICE";
 export const FILTER_BY_COUNTRY = "FILTER_BY_COUNTRY";
 export const GET_CART = "GET_CART";
+export const POST_CART = "POST_CART";
+export const DELETE_CART = "DELETE_CART";
 
 export const getUsers = () => {
   return async function (dispatch) {
@@ -144,6 +147,14 @@ export function filterByPrice(payload) {
   };
 }
 
+export function filterByRange(min, max) {
+  // console.log('action por price')
+  return {
+    type: FILTER_BY_RANGE,
+    min, max
+  };
+}
+
 export const filterByTypeService = (type) => {
   return { type: FILTER_BY_TYPE_SERVICE, payload: type };
 };
@@ -190,3 +201,20 @@ export function getCart(id) {
     dispatch({ type: GET_CART, payload: infoCart });
   };
 }
+
+export const postCart = (payload) => {
+  return async function ()  {
+    const newCart = await axios.post('/cart', payload);
+    return newCart;
+  }
+};
+
+export const deleteCart = (id) => {
+  return async function() {
+    const deleteCart = await axios.put(`/cart${id}`);
+    return deleteCart;
+  }
+};
+
+
+

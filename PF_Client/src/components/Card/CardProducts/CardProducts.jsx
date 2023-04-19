@@ -3,7 +3,7 @@ import styles from './CardProducts.module.css';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
-import { getProducts, getCart } from '../../../redux/actions';
+import { getProducts, postCart, getUserByEmail } from '../../../redux/actions';
 //Chakra
 import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
 import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
@@ -26,7 +26,9 @@ export const CardProducts = ({ id, image, name, price, description }) => {
   const allProducts = useSelector(state => state.allProducts)
   const cart = useSelector(state => state.cart)
   const favourites = useSelector(state => state.favourites)
-
+  const userInfo = useSelector(state => state.userInfo)  
+  
+  
   // Buscar si el producto esta en favoritos
   const favProduct = allProducts.find(el => el.id == id)
   const indexProduct = favourites.findIndex(el => el.id == favProduct.id)
@@ -50,13 +52,31 @@ export const CardProducts = ({ id, image, name, price, description }) => {
 
   // Agregar producto al carrito de compras
   const handleCart =  () => {
-    const cartProduct = allProducts.find(el => el.id == id)
+    const newProductCart = allProducts.find(el => el.id == id)
     // Validar si ya existe el producto en el carrito de compras
-    if (cart.find(el => el === cartProduct)) {   
-      cartProduct.quantity +=  1 
+    if (cart.find(el => el === newProductCart)) {  
+      newProductCart.quantity +=  1 
+      // dispatch(postCart({
+      //   customer_id: userInfo.id,
+      //   prods: [
+      //     {
+      //       productid: newProductCart.id,
+      //       quantity:  newProductCart.quantity +=  1
+      //     }
+      //   ]
+      // }))
     } else {
-        cartProduct.quantity = 1 
-        cart.push(cartProduct)   
+        newProductCart.quantity = 1 
+        cart.push(newProductCart)   
+        // dispatch(postCart({
+        //   customer_id: userInfo.id,
+        //   prods: [
+        //     {
+        //       productid: newProductCart.id,
+        //       quantity:  1
+        //     }
+        //   ]
+        // }))
       }
     localStorage.setItem("cart", JSON.stringify(cart))       
     showNotify();

@@ -99,3 +99,5 @@ const cartProduct = allProducts.find(el => el.id == id)
         cartProduct.quantity = 1 
         cart.push(cartProduct)
       }
+
+      npm i express-oauth2-jwt-bearer
