@@ -1,7 +1,8 @@
 const { DataTypes } = require("sequelize");
-const { Product, Service } = require("../db.js");
 
 module.exports = (sequelize) => {
+  const Product = sequelize.models.product;
+  const Service = sequelize.models.service; 
   sequelize.define(
     "review",
     {
@@ -31,7 +32,7 @@ module.exports = (sequelize) => {
           },
           validate: {
             isKindIdValid(value) {
-              const Model = sequelize.models[this.kind];
+              const Model = this.kind === "Service" ? Service : Product;
               return Model.findByPk(value)
               .then((instance) => {
                 if (!instance) {
