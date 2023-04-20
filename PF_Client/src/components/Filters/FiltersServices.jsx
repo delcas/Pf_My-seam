@@ -37,6 +37,9 @@ const handleFilterByCountrys = (e) => {
     setCurrentPage(1)
 };
 
+// const OptionsRender = ()=> {
+
+// }
 
   return (
     <div className={services.length > 0 ? `${styles.containerFilters} filtrado` : styles.hideFilters}>
@@ -60,11 +63,12 @@ const handleFilterByCountrys = (e) => {
                 <label>Por tipo de servicio</label>
                 <br />
                 <select>
+                  {/* {OptionsRender} */}
                  <option value='Todos'>Todos</option>
-                 <option value='Arreglo de ropa'>Arreglo de ropa</option>
-                 <option value='Confección de ropa'>Confección de ropa</option>
+                 <option value='Arreglos'>Arreglos</option>
+                 <option value='Confección'>Confección</option>
                  <option value='Bordado'>Bordado</option>
-                 <option value='Decoración de ropa'>Decoración de ropa</option>               
+                 <option value='Decoración'>Decoración</option>               
                 </select>
             </div>
              
@@ -72,6 +76,7 @@ const handleFilterByCountrys = (e) => {
                <label>Por paises</label>
                <br />
               <select onChange={(e) => handleFilterByCountrys(e)}> 
+                  {/* {OptionsRender} */}
                <option value="All">Todos</option>
                <option value='Argentina'>Argentina</option>
                <option value='Bolivia'>Bolivia</option>
