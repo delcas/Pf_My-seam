@@ -1,10 +1,21 @@
-.tdLeft{
-    text-align: left;
-    padding: 20px;
-    background-color: rgba(255, 81, 0, 0.986); 
-    font-size: 30px;
-}.buttonCart {
-    background-color: #4CAF50;
+.main {
+  padding: 40px;
+  font-size: 30px;
+  height: auto;
+  width: 650px;
+  background-color: rgba(0, 0, 0, 0.038);
+  border-radius: 20px;
+}
+
+.name {
+  margin: -60px 0 0 -30px;
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+
+.buttonCart {
+  background-color: #4CAF50;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -12,13 +23,15 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 25px 20px 25px 0;
   cursor: pointer;
   border-radius: 4px;
   }
+
   .buttonCart:hover{
     color: black;
   }
+
   .buttonFavourites {
     background-color: rgb(255, 255, 255);
   border: none;
@@ -69,3 +82,54 @@
   .buttonDeleteItem {
     margin-bottom: 15px;
   }
+
+  /* Responsive */
+@media only screen and (max-width: 1100px) {
+  .main {
+    max-width: 500px;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .main {
+    font-size: 25px;
+    max-width: 370px;
+  }
+  .name {
+    margin: -50px 0 0 -30px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .main {
+    font-size: 15px;
+    max-width: 300px;
+  }
+  .name {
+    margin: -50px 0 0 -30px;
+    font-size: 25px;
+  }
+  .buttonCart {
+    font-size: 12px;
+    width: 120px;
+    margin-bottom: 10px;
+    padding: 5px 20px;
+
+    }
+    .buttonFavourites {
+    font-size: 12px;
+    width: 120px;
+    padding: 5px 20px;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+  .main {
+    font-size: 14px;
+    max-width: 250px;
+  }
+  .name {
+    font-size: 22px;
+  }
+}
+

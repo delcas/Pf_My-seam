@@ -9,6 +9,7 @@
 
   .field h2 {
     padding-top: 50px;
+    font-size: 50px;
   }
   
   .field label {
@@ -26,6 +27,7 @@
     font-size: 22px;
     background-color: white;
     color: black;
+    padding: 10px 15px;
   }
 
   .field textarea{
@@ -35,6 +37,7 @@
     height: 150px;
     background-color: white;
     color: black;
+    padding: 10px 15px;
   }
   
   input[type="submit"] {

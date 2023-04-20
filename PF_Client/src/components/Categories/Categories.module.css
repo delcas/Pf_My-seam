@@ -31,12 +31,16 @@
 .currentCategory {
   text-align: center;
   font-weight: bolder;
-  font-size: 25px;
-  margin: 0 0 30px 30px;
+  font-size: 20px;
+  margin: 0 0 0px 30px;
 }
 
 .buttonCategorie {
   margin: 0 20px 20px 20px;
+}
+
+.buttonCategorieTodos {
+  margin: 80px 20px 20px 20px;
 }
 
 .hide {

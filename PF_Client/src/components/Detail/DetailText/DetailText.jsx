@@ -3,7 +3,6 @@ import txtstyle from "./DetailText.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import Review from '../../../components/Review/Review';
 //Chakra
-import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
 import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
 
 export default function DetailText({
@@ -31,7 +30,7 @@ export default function DetailText({
           }
       };
  
-    return <td className={txtstyle.tdLeft}>
+    return <td className={txtstyle.main}>
     <tr>
       <h1>
         <td>
@@ -45,7 +44,7 @@ export default function DetailText({
               <button onClick={SendCange}>OK</button>
             </span>
           ) : (
-            details.name
+            <p className={txtstyle.name}>{details.name}</p>
           )}
         </td>
       </h1>
@@ -90,7 +89,7 @@ export default function DetailText({
       </tr>
        <tr>
       <td>
-        Ropa de:
+     Ropa de:
         {edit.s === "gender" ? (
           <span>
             <input
@@ -118,7 +117,7 @@ export default function DetailText({
 
        <tr>
       <td>
-        Categoria:
+      Categoria:
         {edit.s === "category" ? (
           <span>
             <input
