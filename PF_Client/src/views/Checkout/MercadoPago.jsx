@@ -32,32 +32,6 @@ export const MercadoPago = () => {
     })
   });
 
-  
-  // const handleClick = () => {
-  //   setIsLoading(true);    
-  //   fetch("http://localhost:3001/payment", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     "grant_type": "refresh_token",
-  //     "client_id": "$APP_ID",
-  //     "client_secret": "$SECRET_KEY",
-  //     "refresh_token": "$REFRESH_TOKEN",
-  //     body: JSON.stringify(orderData),
-  //   })
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((preference) => {
-  //       setPreferenceId(preference.global);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     }).finally(() => {
-  //       setIsLoading(false);
-  //     })
-  // };
 
   const handleClick = () => {
     setIsLoading(true);  

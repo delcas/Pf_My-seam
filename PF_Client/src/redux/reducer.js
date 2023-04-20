@@ -110,8 +110,8 @@ const rootReducer = (state = initialState, action) => {
             if (action.min < 1 && action.max < 1 || action.min > action.max) {
                 alert('No hay productos con ese rango de precios')
                  filterRange = state.products
-            } else if(action.min === action.max) {
-                filterRange = productsByRange.filter( p => p.price === action.max)
+            } else if (action.min === action.max) {
+                filterRange = productsByRange.filter(p => p.price == action.min)
                 if (filterRange.length === 0) {
                     filterRange = state.products 
                     alert('No hay productos con ese rango de precios') 
