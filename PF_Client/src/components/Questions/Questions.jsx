@@ -21,7 +21,7 @@ export default function Questions({ sell, userId, details, ver }) {
   return (
     <div className={questyle.detailTable}>
       <div>
-        <label colSpan="2">Preguntas:</label>
+        <label className={questyle.Preguntas} colSpan="2">Preguntas:</label>
         <span>
           {ver ? (
             ""

@@ -20,7 +20,6 @@ export const Cart = () => {
   let stateCart = useSelector(state => state.cart)
   let userInfo = useSelector(state => state.userInfo) 
   let qty=useSelector(state => state.cartLength) 
-  console.log(qty);
 
   // Estado del Carrito de compras
   const [cart, setCart] = useState(stateCart)

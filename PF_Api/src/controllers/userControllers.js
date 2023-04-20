@@ -66,19 +66,19 @@ module.exports = {
       port: 465,
       secure: true,
       auth: {
-        user: "myseampt10a@gmail.com",
-        pass: "phejeewjpzlxihkg",
+        user: "pruebaseam1@gmail.com",
+        pass: "pghpgqjinjytagvi",
       },
     };
 
     const mensaje = {
-      from: "myseampt10a@gmail.com",
+      from: "pruebaseam1@gmail.com",
       to: email,
-      subject: "Gracias por Registrarte!",
-      html: `<p style="text-align:center;">Bienvenido ${name} a My Seam!!!, su registro fue completado con exito</p>
+      subject: "Información modificada",
+      html: `<p style="text-align:center;">Bienvenido ${name} a My Seam!!!, su información de perfil has sido Actualizada con exito</p>
       </br>
       <div style="text-align:center;">
-      <img src="https://isewa.org.in/wp-content/uploads/2021/06/success.gif" alt="thanks!" />
+      <img src="https://i.gifer.com/7efs.gif" alt="thanks!" />
       </div>`,
     };
 

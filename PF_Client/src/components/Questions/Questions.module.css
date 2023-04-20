@@ -2,3 +2,9 @@
     display: flex;
     justify-content: center;
   }
+
+  @media only screen and (max-width: 400px) {
+    .Preguntas {
+        margin-left: 150px;
+    }
+  }

@@ -176,3 +176,27 @@
     font-size: 0.7rem;
   }
 }
+
+@media only screen and (max-width: 350px) {
+  .vestidosImg {
+    width: 150px;
+    height: 150px;
+  }
+  .pantalonesImg {
+    width: 150px;
+    height: 150px;
+  }
+  .faldasImg {
+    width: 145px;
+    height: 150px;
+    padding: 0 0 0 30px;
+  }
+  .serviciosImg {
+    width: 150px;
+    height: 150px;
+    padding: 0 0 0 15px;
+  }
+  .titleImage {
+    font-size: 0.7rem;
+  }
+}

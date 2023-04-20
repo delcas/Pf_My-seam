@@ -10,6 +10,7 @@ import { getUserByEmail } from "../../redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import { SectionsAdmin } from "../../components/SectionsAdmin/SectionsAdmin";
+import { Contacto } from '../../components/Contacto/Contacto'
 
 export const Home = () => {
   const { isAuthenticated, user } = useAuth0();
@@ -28,11 +29,12 @@ export const Home = () => {
   
   } else {
     return (
-      <div>
+      <div id="home">
         <NavBar isAuthenticated={isAuthenticated} user={user} />
         <Carousel />
         <Sections />
         <Card />
+        <Contacto />
         <BotonIrInicio />
         <Footer />
       </div>

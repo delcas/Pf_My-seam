@@ -1,0 +1,57 @@
+.field {
+    margin: 120px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.093);
+  }
+
+  .field h2 {
+    padding-top: 50px;
+    font-size: 50px;
+  }
+  
+  .field label {
+    display: block;
+    font-size: 20px;
+    margin-top: 23px;
+  }
+  
+  .field input {
+    border: 1px black solid;
+    border-radius: 15px;
+    display: block;
+    min-width: 500px;
+    line-height: 1.5;
+    font-size: 22px;
+    background-color: white;
+    color: black;
+    padding: 10px 15px;
+  }
+
+  .field textarea{
+    border: 1px black solid;
+    border-radius: 15px;
+    width: 500px;
+    height: 150px;
+    background-color: white;
+    color: black;
+    padding: 10px 15px;
+  }
+  
+  input[type="submit"] {
+    display: block;
+    padding: 10px 15px;
+    font-size: 25px;
+    border-radius: 15px;
+    background-color: #4460AA;
+    color: #fff;
+    border: none;
+    margin-top: 30px;
+    margin-bottom: 70px;
+  }
+
+  .hide {
+    display: none;
+  }

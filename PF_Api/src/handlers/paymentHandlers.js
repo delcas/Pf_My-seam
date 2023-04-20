@@ -1,4 +1,4 @@
-const { CLIENT_ID, CLIENT_SECRET, ACCESS_TOKEN, REDIRECT_URI} = process.env;
+const { CLIENT_ID, CLIENT_SECRET, ACCESS_TOKEN, REDIRECT_URI, SUCCESS,FAILURE,PENDING } = process.env;
 const { User } = require("../db.js");
 const mercadopago = require("mercadopago");
 const axios = require('axios');
@@ -11,9 +11,9 @@ const postPaymentHandler = async (req, res) => {
   });
   let preference = {
     back_urls: {
-      success: "https://my-seam.vercel.app/",
-      failure: "http://localhost:3000/checkout/failure",
-      pending: "http://localhost:3000/checkout/pending",
+      success: SUCCESS,
+      failure: FAILURE,
+      pending: PENDING,
     },
     auto_return: "approved",
     items: [],

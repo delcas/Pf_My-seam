@@ -70,10 +70,13 @@ module.exports = {
   },
   setUserHandler: async (req, res, next) => {
     const update = req.body;
+    const {name, email} = req.body;
+    console.log(update);
     const { id } = req.params;
     console.log(update, id);
     try {
       await editUser(update, id);
+      enviarMail(email, name).catch((e) => console.log(e));
       res.send("Successfully edited");
     } catch (error) {
       res.status(400).json({ error: error.message });

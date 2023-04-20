@@ -21,7 +21,7 @@ export const BotonIrInicio = () => {
     })
   };
 
-  irArriba(500);
+  irArriba(2500);
 
   return (
     <div>
