@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CardUser.module.css";
@@ -43,9 +42,9 @@ export const CardUser = ({
       console.error(error);
     }
   };
-
+ 
   console.log(isBlock);
-  // console.log(isBlock)
+  //console.log(isBlock)
   return (
     <div>
       <li
@@ -57,9 +56,9 @@ export const CardUser = ({
       >
         <div key={id}>
           {isBlock ? (
-            <button onClick={() => handleBlock()}>🚫</button>
-          ) : (
             <button onClick={() => handleBlock()}>✅</button>
+          ) : (
+            <button onClick={() => handleBlock()}>🚫</button>
           )}
           <Link to={`/UserDetail/${id}`}>
             <img
@@ -82,3 +81,4 @@ export const CardUser = ({
     </div>
   );
 };
+
