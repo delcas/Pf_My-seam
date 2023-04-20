@@ -11,7 +11,7 @@ export default function DetImage({ image }) {
 
  return (
   <div className={imstyle.wrapper}>
-    <div className={imstyle.main_screen}>
+    <div className={imstyle.main}>
       <img src={mainImage} alt={mainImage} className={imstyle.main_image}></img>
     </div>
     <div className={imstyle.grid_four_column}>

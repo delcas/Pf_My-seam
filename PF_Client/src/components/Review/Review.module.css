@@ -38,3 +38,23 @@
     align-items:center;
     padding-top: 0%;    
 }
+
+/* Responsive */
+@media only screen and (max-width: 530px) {
+    .review {
+      margin-left: -180px !important;
+    }
+    .rating{
+        font-size: 10px;
+    }
+    .starRat{
+        max-height: 30px;
+        max-width: 30px;
+    }
+    .buttonEnviar {
+        max-height: 30px;
+        max-width: 60px;
+        margin-top: -140px;
+        margin-left: -30px;
+    }
+  }
