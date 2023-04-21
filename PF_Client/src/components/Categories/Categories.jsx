@@ -91,8 +91,8 @@ export const Categories = () => {
       <div id='categories' className={styles.containerMain}>
         
         <div className={styles.containerCategories}>
-          <h1 className={styles.currentCategory}>{category}</h1>
-          <Button value='Todos' onClick={(e) => handleAll(e)} className={styles.buttonCategorie} colorScheme='orange'>Todos</Button>
+          <h1 className={styles.currentCategory}>{category !== 'Todos' && products.length} {category !== 'Todos' && 'Resultados'}</h1>
+          <Button value='Todos' onClick={(e) => handleAll(e)} className={styles.buttonCategorieTodos} colorScheme='orange'>Todos</Button>
                     
           <h4>Precio</h4>
           <Button value='Hasta $50' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='orange'>Hasta $50</Button>
@@ -100,8 +100,8 @@ export const Categories = () => {
           <Button value='Mas de $100' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='orange'>Más de $100</Button> 
           
           <div>
-            <Input variant='unstyled' className={styles.inputPrice1} size='xs' placeholder='Min' value={currentPriceMin} onChange={(e) => handleChangePriceMin(e)}></Input>
-            <Input variant='unstyled' className={styles.inputPrice2} size='xs' placeholder='Max' value={currentPriceMax} onChange={(e) => handleChangePriceMax(e)}></Input>
+            <Input variant='unstyled' className={styles.inputPrice1} size='xs' placeholder='Mínimo' value={currentPriceMin} onChange={(e) => handleChangePriceMin(e)}></Input>
+            <Input variant='unstyled' className={styles.inputPrice2} size='xs' placeholder='Máximo' value={currentPriceMax} onChange={(e) => handleChangePriceMax(e)}></Input>
             <ArrowForwardIcon className={styles.buttonPrice} onClick={(e) => handleFilterByRange(e)}/>
           </div>
 
@@ -125,8 +125,8 @@ export const Categories = () => {
         {/* Cards */}
         <ul className={styles.cardContainer}>
         {
-     currentProducts.length > 0 ? 
-      currentProducts.map((el) => {
+        currentProducts.length > 0 ? 
+        currentProducts.map((el) => {
         
          const user = activeUsers.find((user) => user.id === el.userid);
          if (user) { 
@@ -145,8 +145,8 @@ export const Categories = () => {
          }
       }) 
       : <span className={styles.loader}></span>
-}
-</ul>
+      }
+        </ul>
       </div>
       <Paginado
         totalProducts={products.length}

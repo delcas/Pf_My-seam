@@ -21,7 +21,7 @@ export default function Questions({ sell, userId, details, ver }) {
   return (
     <div className={questyle.detailTable}>
       <div>
-        <label colSpan="2">Preguntas:</label>
+        <label className={questyle.Preguntas} colSpan="2">Preguntas:</label>
         <span>
           {ver ? (
             ""
@@ -48,9 +48,11 @@ export default function Questions({ sell, userId, details, ver }) {
                     </Box>
                     {ver ? (
                       <ModalBtn
+                      sell={sell}
                         userId={userId}
                         ver={ver}
-                        id={q.id}
+                        q_id={q.id}
+                        id={dId}
                         name="answer"
                       />
                     ) : (

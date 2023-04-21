@@ -52,6 +52,7 @@ export const CardUsers =()=>{
                             address={el.address}
                             username={el.username}
                             email={el.email}
+                            isActive={el.isActive}
                             />
                         )
                     })

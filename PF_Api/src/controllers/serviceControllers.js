@@ -69,9 +69,9 @@ module.exports = {
     return `id ${id} successfully deleted`;
   },
   updateService: async (id, data) => {
-    const { name, description, price, number, email, country, city, } = data;
+    const { name, description, price, number, email, country, city, image} = data;
     const service = await Service.update(
-      { name, description, price,  number, email, country, city, },
+      { name, description, price,  number, email, country, city, image},
       {
         where: {
           id: id,

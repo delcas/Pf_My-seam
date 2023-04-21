@@ -1,6 +1,6 @@
 [
     {
-    "name": "Arreglo de ropa", 
+    "name": "Arreglos", 
 	"price": "A convenir", 
 	"description": "4 años de experiencia", 
 	"number": "3513458523",
@@ -11,7 +11,7 @@
     "userid": 1
 },
 {
-    "name": "Confección de ropa", 
+    "name": "Confección", 
 	"price": "Negociable", 
 	"description": "2 años de experiencia en el rubro", 
 	"number": "3516237896",
@@ -33,7 +33,7 @@
     "userid": 3
 },
 {
-   "name": "Decoración de ropa", 
+   "name": "Decoración", 
 	"price": "Negociable", 
 	"description": "Mi especialidad es decoracion de prendas para fiestas elegantes", 
 	"number": "3514234512",
@@ -41,6 +41,50 @@
 	"country": "Colombia",
 	"city": "Medellin",
     "image": ["https://gdurl.com/RdMH"],
+    "userid": 3
+},
+{
+   "name": "Confección", 
+	"price": "Negociable", 
+	"description": "Los mejores trajes del país, utilizamos lana de oveja merino y de alpacas locales", 
+	"number": "3516483312",
+	"email": "gloriacuscumanta@gmail.com",
+	"country": "Perú",
+	"city": "Cusco",
+    "image": ["https://gdurl.com/pZhU"],
     "userid": 4
+},
+{
+   "name": "Decoración", 
+	"price": "Negociable", 
+	"description": "La mayor elegancia para miss universo, a la vuelta de su casa", 
+	"number": "3516483312",
+	"email": "gloriacuscumanta@gmail.com",
+	"country": "Perú",
+	"city": "Cusco",
+    "image": ["https://gdurl.com/pQ-a"],
+    "userid": 4
+},
+{
+   "name": "Arreglos", 
+	"price": "Negociable", 
+	"description": "Vestidos y arreglos de Fiesta", 
+	"number": "3514234512",
+	"email": "otaku2023@gmail.com",
+	"country": "Colombia",
+	"city": "Medellin",
+    "image": ["https://gdurl.com/xdgkh"],
+    "userid": 2
+},
+{
+   "name": "Todos", 
+	"price": "Negociable", 
+	"description": "Zapatero - Trabajo cuero, cuerina y telas para zapatos y zapatillas", 
+	"number": "3514234512",
+	"email": "gperetti@ucasal.edu.ar",
+	"country": "Argentina",
+	"city": "Salta",
+    "image": ["https://gdurl.com/lZcy"],
+    "userid": 6
 }
 ]

@@ -29,7 +29,7 @@ const Review = () => {
     <table className={styles.review}>
       <tr>
         <td rowSpan={3}>
-          <BsEmojiLaughing size={70} />
+          <BsEmojiLaughing size={60} />
         </td>
       </tr>
       <tr className={styles.negrita}>
@@ -38,9 +38,9 @@ const Review = () => {
           Deja tu puntuacion del servicio : {rating}
         </td>
         <td className={styles.star}>
-          <Star rating={rating} onRating={(rate) => setRating(rate)} />
+          <Star className={styles.starRat} rating={rating} onRating={(rate) => setRating(rate)} />
           <Link to="/home">
-            <Button colorScheme="orange" onClick={rate}>
+            <Button className={styles.buttonEnviar} colorScheme="orange" onClick={rate}>
               Enviar
             </Button>
           </Link>
