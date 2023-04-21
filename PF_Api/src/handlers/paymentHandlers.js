@@ -5,7 +5,6 @@ const axios = require('axios');
 
 const postPaymentHandler = async (req, res) => {
   const { items, seller_id } = req.body;
-  console.log(req.body);
   const seller = await User.findByPk(seller_id);
   mercadopago.configure({
     access_token: seller.MPAccessToken,
@@ -28,7 +27,7 @@ const postPaymentHandler = async (req, res) => {
       .create(preference)
       .then(function (response) {
         res.json({
-          global: response.body.id,
+          global: response.body,
         });
       })
       .catch(function (error) {
