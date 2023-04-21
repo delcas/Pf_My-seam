@@ -13,36 +13,22 @@ export const MercadoPago = () => {
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
  
-  let cart = useSelector(state => state.cart)
+  let cart = useSelector(state => state.cart);
 
-  const [orderData, setOrderData] = useState({
-    "external_reference": "default",
-    "preference_id": "Preference identification",
-    "payer": {
-      "id": 123,
-      "nickname": "JOHN"
-    },
-    "items": cart.map(el => {
+  const items = cart.map(el => {
       return {
-        "id": el.id,
-        "name":el.name,
-        "unit_price": el.price,
-        "quantity": el.quantity
+        id: el.id,
+        name: el.name,
+        unit_price: el.price,
+        quantity: el.quantity
       }
     })
-  });
-
 
   const handleClick = () => {
     setIsLoading(true);  
-    axios.post('/payment', orderData, {
-      headers: {
-        'Content-Type': 'application/json',
-        'grant_type': 'refresh_token',
-        'client_id': '$APP_ID',
-        'client_secret': '$SECRET_KEY',
-        'refresh_token': '$REFRESH_TOKEN',
-      }
+    axios.post('/payment', {
+      items: items,
+      seller_id: seller_id
     })
       .then(response => {
         setPreferenceId(response.data.global);
@@ -65,7 +51,7 @@ export const MercadoPago = () => {
 
   return (
     <div>
-      <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData }}>
+      <InternalProvider context={{ preferenceId, isLoading }}>
         <main>
           {renderSpinner()}
           <Checkout onClick={handleClick} description cart={cart}/>

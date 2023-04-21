@@ -52,8 +52,8 @@ export const Iconos = () => {
 
       {/* Usuario SIN MERCADOPAGO */}
       <div className={!user.MPAccessToken ? styles.LogIn : styles.hide}>
-        <p>¿Tienes una cuenta en MercadoPago?</p>
-        <Link to={linkMercadoPago}><u>Inicia sesión aquí</u></Link> para poder vender.
+        <p>Para poder recibir cobros necesitas vincular tu cuenta de MercadoPago</p>
+        <Link to={linkMercadoPago}><u>Vincular mi cuenta</u></Link> para poder vender.
       </div>
     </div>
 

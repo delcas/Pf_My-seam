@@ -57,9 +57,9 @@ export const CardService =({name, description,price,image,id})=>{
             <Icon as={BsFillCartPlusFill} w={8} h={8} className={styles.buttonCart} onClick={handleCart} title="Agregar al carrito"/>
             <Icon as={BsFillHeartFill} w={8} h={8} className={styles.buttonFavourites} title="Agregar a favoritos"/>
             <Link>
-            <h1 className={styles.textMedium}>{name}</h1>
+            <h1 className={styles.textSmall}> {description}</h1>
             <h2 className={styles.textMedium}> ${price}</h2>
-            <h3 className={styles.textSmall}> {description}</h3>
+            <h3 className={styles.textMedium}>{name}</h3>
             </Link>
             </div>
             </li>

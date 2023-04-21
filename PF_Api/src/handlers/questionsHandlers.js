@@ -70,7 +70,7 @@ module.exports = {
         if (isNaN(offerId))
           throw new Error(`The ${offertype} Id must be a number`);
         const quest = await getOfferQuestions({ offertype, offerId });
-        res.status(200).json(quest);
+        return res.status(200).json(quest);
       }
       if (customerId) {
         if (isNaN(customerId))
