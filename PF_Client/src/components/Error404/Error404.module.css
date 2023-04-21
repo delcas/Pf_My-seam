@@ -32,3 +32,6 @@ body {
   padding: 10px 15px;
   border-radius: 5px;
 }
+.image404{
+  display: flex;
+}
