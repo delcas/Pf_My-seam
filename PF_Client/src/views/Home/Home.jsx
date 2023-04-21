@@ -34,7 +34,6 @@ export const Home = () => {
         <Carousel />
         <Sections />
         <Card />
-        <Contacto />
         <BotonIrInicio />
         <Footer />
       </div>

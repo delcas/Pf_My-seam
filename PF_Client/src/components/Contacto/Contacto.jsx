@@ -23,7 +23,9 @@ export const Contacto = () =>{
 
 
     return (
-      <div className={!products.length > 0 && styles.hide}>   
+      <div>        
+        <NavBar isAuthenticated={isAuthenticated} user={user} />
+         <div className={!products.length > 0 && styles.hide}>   
         <form ref={form} onSubmit={sendEmail} className={styles.field}>
           <h2>¡Contáctanos!</h2>
           <label>Name</label>
@@ -37,5 +39,7 @@ export const Contacto = () =>{
           <input type="submit" value="Send" />
         </form>
       </div>
+      </div>
+     
     )
 }
