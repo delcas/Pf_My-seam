@@ -24,6 +24,7 @@ export const POST_CART = "POST_CART";
 export const DELETE_CART = "DELETE_CART";
 export const UPDATE_CART= "UPDATE_CART";
 export const UPDATE_CART_SET = "UPDATE_CART_SET";
+export const UPDATE_FAVOURITES = "UPDATE_FAVOURITES";
 
 export const getUsers = () => {
   return async function (dispatch) {
@@ -222,7 +223,13 @@ export const update_cart = (value) => ({
   type: UPDATE_CART,
   payload: value,
 });
+
 export const update_cart_set = (value)=>({
   type: UPDATE_CART_SET,
+  payload: value,
+});
+
+export const updateFavourites = (value)=>({
+  type: UPDATE_FAVOURITES,
   payload: value,
 });

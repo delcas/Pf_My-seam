@@ -21,7 +21,7 @@ export const Footer = () => {
         <i className="bi bi-github"></i>
       </Link>
       {/* Correo */}
-      <Link to="mailto:" target="_blank" rel="noopener noreferrer">
+      <Link to="/contacto" >
         <i className="bi bi-envelope"></i>
       </Link>
     </div>
