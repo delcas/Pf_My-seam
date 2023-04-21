@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react'
 import styles from './Favourites.module.css'
 import { NavBar } from '../../components/NavBar/NavBar'
 import { CardProducts } from '../../components/Card/CardProducts/CardProducts'
+import { getProducts  } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const Favourites = () => {
+  const dispatch = useDispatch()
 
   const favourites = useSelector(state => state.favourites)
-  let allFavourites = useSelector(state => state.allFavourites) 
   const [stateFavourites, setStateFavourites] = useState(favourites)
 
   useEffect(() => {
-    allFavourites > 0 &&
-    setStateFavourites(favourites)
-  }, [allFavourites])
+    dispatch(getProducts());
+  }, [])
 
   return (
     <div>

@@ -55,14 +55,14 @@ export const Checkout = ({ onClick, cart  }) => {
       <div className={!isAuthenticated ? styles.hide : ''}>
         <FormCheckout err={err} setErr={setErr} input={input} setInput={setInput} cart={cart} />
         <Wallet initialization={{ preferenceId: preferenceId }} />
-        {/* <button
+        <button
           className="btn btn-primary btn-lg btn-block"
           onClick={onClick}
           id="checkout-btn"
           disabled={disabled || cart.length < 1}
         >
           Pagar
-        </button> */}
+        </button>
       </div>
       
     </div>

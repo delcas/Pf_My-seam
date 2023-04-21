@@ -4,9 +4,9 @@ import Payment from "./Payment/Payment";
 import { Checkout } from "./Checkout";
 import InternalProvider from "../../hooks/ContextProvider";
 import { Loading } from '../../components/Loading/Loading'
-import axios from 'axios'
 // MercadoPago
 import { initMercadoPago } from "@mercadopago/sdk-react";
+import axios from "axios"
 const VITE_PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
 initMercadoPago(VITE_PUBLIC_KEY);
 
@@ -16,18 +16,16 @@ export const MercadoPago = () => {
  
   let cart = useSelector(state => state.cart);
 
-  const items = cart.map(el => {
-    return {
-      id: el.id,
-      name: el.name,
-      unit_price: el.price,
-      quantity: el.quantity,
-      userid: el.userid
-    }
-  })
-  
+  const items = cart?.map(el => {
+      return {
+        id: el.id,
+        name: el.name,
+        unit_price: el.price,
+        quantity: el.quantity,
+        userid: el.userid
+      }
+    })
   const seller_id = items[0].userid;
-
   const handleClick = () => {
     setIsLoading(true);  
     axios.post('/payment', {

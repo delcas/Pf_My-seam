@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export const CartProducts = ({ cart, totalPrice, setTotalPrice, totalQuantity, setTotalQuantity, el }) => {
   // Estado de la cantidad de artículos por producto
   const [itemsPerProduct, setItemsPerProduct] = useState(el.quantity)
-
+  
   const addQuantity = () => {
     el.quantity = Number(el.quantity) + 1
     setTotalPrice(totalPrice + Math.round(el.price))
@@ -36,7 +36,6 @@ export const CartProducts = ({ cart, totalPrice, setTotalPrice, totalQuantity, s
     } 
     setTotalPrice(totalPrice)
     setTotalQuantity(totalQuantity)
-
     localStorage.removeItem("cart", JSON.stringify(cart.indexProduct))
   }
 

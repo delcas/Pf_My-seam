@@ -11,7 +11,7 @@ import { Avatar } from "@chakra-ui/react";
 import LoginButton from '../Auth0/Logiin/LoginButton';
 import LogoutButton from '../Auth0/Logout/LogoutButton';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getUserByEmail } from '../../redux/actions';
 
@@ -52,9 +52,9 @@ export const NavBar = () => {
     >
     <div className="container-fluid">
       {/* Logo */}
-      <Link to={"/home"}>
+      <NavLink to={"/home"}>
         <img className={styles.imgLogo} src={Logo} alt="Logo My Seam" />
-      </Link>
+      </NavLink>
 
        {isSmallScreen && <Cart />}
        {isSmallScreen && <SearchBar />}
