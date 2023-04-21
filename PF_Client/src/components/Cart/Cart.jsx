@@ -4,12 +4,10 @@ import styles from './Cart.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import EmptyCart from '../../images//empty-cart.png'
 import { CartProducts } from './CartProducts/CartProducts';
-import { getCart, update_cart_set } from '../../redux/actions'
+import { update_cart_set } from '../../redux/actions'
 // Chakra
 import { BsFillCartFill } from "react-icons/bs";
 import { Icon, useDisclosure, Button, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent } from '@chakra-ui/react'
-// Estado del Local Storage del Carrito de compras
-// const cartLocalStorage = JSON.parse(localStorage.getItem("cart") || [])
 
 export const Cart = () => {
   // Menú desplegable Chakra
@@ -18,20 +16,17 @@ export const Cart = () => {
   
   // Estados del reducer
   let stateCart = useSelector(state => state.cart)
-  let userInfo = useSelector(state => state.userInfo) 
-  let qty=useSelector(state => state.cartLength) 
+  let qty = useSelector(state => state.cartLength) 
 
   // Estado del Carrito de compras
-  const [cart, setCart] = useState(stateCart)
+  const [cart, setCart] = useState([])
   // Estado del precio total del carrito de compras
   const [totalPrice, setTotalPrice] = useState(0);
   // Estado de la cantidad de productos en el carrito de compras
   const [totalQuantity, setTotalQuantity] = useState(qty);
-  console.log(totalQuantity);
 
   const dispatch = useDispatch()
   const disabled = cart.find((el) => el.quantity < 1);
-
 
   // Calcular el total del precio y cantidad de productos del carrito
   const calculatePriceQuantity = () => {
@@ -49,6 +44,11 @@ export const Cart = () => {
   useEffect(() => {      
     setTotalQuantity(qty)
   }, [qty])
+
+  // useEffect(() => {
+  //   const localStorageCart = JSON.parse(localStorage.getItem("cartStorage")) ?? []
+  //   setCart(localStorageCart)
+  // }, [])
 
 
   return (
@@ -128,7 +128,8 @@ export const Cart = () => {
                       })
                     : ""}
                 </ul>
-                <div>
+              <div>
+
                   <h4 className={disabled ? "" : styles.hide}>
                     Todos los productos deben tener al menos 1 unidad
                   </h4>
