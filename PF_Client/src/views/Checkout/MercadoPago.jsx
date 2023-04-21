@@ -51,7 +51,7 @@ export const MercadoPago = () => {
 
   return (
     <div>
-      <InternalProvider context={{ preferenceId, isLoading, orderData, setOrderData }}>
+      <InternalProvider context={{ preferenceId, isLoading }}>
         <main>
           {renderSpinner()}
           <Checkout onClick={handleClick} description cart={cart}/>
