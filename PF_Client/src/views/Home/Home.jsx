@@ -31,8 +31,8 @@ export const Home = () => {
     return (
       <div id="home">
         <NavBar isAuthenticated={isAuthenticated} user={user} />
-        {/* <Carousel />
-        <Sections /> */}
+        <Carousel />
+        <Sections />
         <Card />
         <BotonIrInicio />
         <Footer />
