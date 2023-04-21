@@ -32,7 +32,7 @@ export const MercadoPago = () => {
       items: items,
     })
       .then(response => {
-        setPreferenceId(response.data.global);
+        window.location.href = response.data.global.init_point;
       })
       .catch(error => {
         console.error(error);
@@ -56,7 +56,6 @@ export const MercadoPago = () => {
         <main>
           {renderSpinner()}
           <Checkout onClick={handleClick} description cart={cart}/>
-          <Payment />
         </main>
       </InternalProvider>
     </div>
