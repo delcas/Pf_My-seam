@@ -37,16 +37,17 @@ module.exports = {
   getUsers: async () => {
     const finduser = await User.findOne({
       where: {
-      name: users[4].name,
-    },
-  })
-  !finduser && await User.bulkCreate(users)
-    .then(() => {
-      console.log("Usuarios creados exitosamente");
-    })
-    .catch((error) => {
-      console.error("Error al crear usuarios:", error);
+        name: users[4].name,
+      },
     });
+    !finduser &&
+      (await User.bulkCreate(users)
+        .then(() => {
+          console.log("Usuarios creados exitosamente");
+        })
+        .catch((error) => {
+          console.error("Error al crear usuarios:", error);
+        }));
     return await User.findAll({
       order: [["id", "ASC"]],
     });
@@ -61,18 +62,19 @@ module.exports = {
   },
 
   enviarMail: async (email, name) => {
+    console.log("enviar email");
     const config = {
       host: "smtp.gmail.com",
       port: 465,
       secure: true,
       auth: {
-        user: "pruebaseam1@gmail.com",
-        pass: "pghpgqjinjytagvi",
+        user: "myseamprueba1@gmail.com",
+        pass: "wixjpmkrswevqeni",
       },
     };
 
     const mensaje = {
-      from: "pruebaseam1@gmail.com",
+      from: "myseamprueba1@gmail.com",
       to: email,
       subject: "Información modificada",
       html: `<p style="text-align:center;">Bienvenido ${name} a My Seam!!!, su información de perfil has sido Actualizada con exito</p>

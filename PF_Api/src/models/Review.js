@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
           validate: {
             isKindIdValid(value) {
               const Model = this.kind === "Service" ? Service : Product;
-              return Model.findByPk(value)
+              return Model?.findByPk(value)
               .then((instance) => {
                 if (!instance) {
                   throw new Error(`Invalid ${this.kind}_id: ${value}`);

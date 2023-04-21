@@ -30,9 +30,8 @@ body {
   
   .textSmall {
     font-size: 15px;
-    color: black;
+    color: rgb(185, 182, 182);
     text-align: center;
-    display: none;
   }
   
   .imgCenter {
