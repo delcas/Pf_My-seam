@@ -6,6 +6,7 @@ import InternalProvider from "../../hooks/ContextProvider";
 import { Loading } from '../../components/Loading/Loading'
 // MercadoPago
 import { initMercadoPago } from "@mercadopago/sdk-react";
+import axios from "axios"
 const VITE_PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
 initMercadoPago(VITE_PUBLIC_KEY);
 
