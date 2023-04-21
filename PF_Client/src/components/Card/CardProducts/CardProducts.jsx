@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './CardProducts.module.css';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
-import { getProducts, postCart, getUserByEmail, update_cart } from '../../../redux/actions';
+import { getProducts, addCart, getUserByEmail, update_cart, update_cart_set } from '../../../redux/actions';
 //Chakra
 import { useColorMode, Icon, Alert, AlertIcon } from '@chakra-ui/react'
 import { BsFillCartPlusFill, BsFillHeartFill } from "react-icons/bs";
 import StarRank from "../../StarRank/StarRank.jsx"
+import { ButtonCart } from '../../Cart/ButtonCart/ButtonCart';
 
 export const CardProducts = ({ id, image, name, price, description }) => {
   // Cambiar , id, image, name, price, d tema entre oscuro/claro 
@@ -24,14 +25,14 @@ export const CardProducts = ({ id, image, name, price, description }) => {
 
   // Me traigo los estado del reducer 
   const allProducts = useSelector(state => state.allProducts)
-  const cart = useSelector(state => state.cart)
+  let cart = useSelector(state => state.cart)
   const favourites = useSelector(state => state.favourites)
   
   
   // Buscar si el producto esta en favoritos
   const favProduct = allProducts.find(el => el.id == id)
   const indexProduct = favourites.findIndex(el => el.id == favProduct.id)
-
+  
   // Muestra alerta/notificación del producto añadido al carrito de compras/Favoritos
   const [notify, setNotify] = useState(false);
   const [notifyFav, setNotifyFav] = useState(false);
@@ -49,24 +50,15 @@ export const CardProducts = ({ id, image, name, price, description }) => {
     setNotifyDeleteFav(!notifyDeleteFav);
   };
 
+  
   // Agregar producto al carrito de compras
   const handleCart =  () => {
     const cartProduct = allProducts.find(el => el.id == id)
-    // Validar si ya existe el producto en el carrito de compras
-    if (cart.find(el => el === cartProduct)) {   
-      cartProduct.quantity +=  1 
-      let add = 1;
-      dispatch(update_cart(add));
-    } else {
-        cartProduct.quantity = 1 
-        let add = 1;
-        cart.push(cartProduct);
-        dispatch(update_cart(add));   
-      }
-    // localStorage.setItem("cart", JSON.stringify(cart))       
+    dispatch(addCart(cartProduct));
+    dispatch(update_cart());
     showNotify();
   }
-  
+
 
   // Agregar producto a favoritos
   const handleFavourites =  () => { 

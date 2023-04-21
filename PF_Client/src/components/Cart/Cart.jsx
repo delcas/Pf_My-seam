@@ -4,7 +4,6 @@ import styles from './Cart.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import EmptyCart from '../../images//empty-cart.png'
 import { CartProducts } from './CartProducts/CartProducts';
-import { update_cart_set } from '../../redux/actions'
 // Chakra
 import { BsFillCartFill } from "react-icons/bs";
 import { Icon, useDisclosure, Button, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent } from '@chakra-ui/react'
@@ -13,21 +12,19 @@ export const Cart = () => {
   // Menú desplegable Chakra
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
+  const dispatch = useDispatch()
   
   // Estados del reducer
-  let stateCart = useSelector(state => state.cart)
+  const cart = useSelector(state => state.cart)
   let userInfo = useSelector(state => state.userInfo) 
-  let qty=useSelector(state => state.cartLength) 
+  let qty = useSelector(state => state.cartLength) 
 
-  // Estado del Carrito de compras
-  const [cart, setCart] = useState(stateCart)
+  const disabled = cart.find((el) => el.quantity < 1);
+
   // Estado del precio total del carrito de compras
   const [totalPrice, setTotalPrice] = useState(0);
   // Estado de la cantidad de productos en el carrito de compras
   const [totalQuantity, setTotalQuantity] = useState(qty);
-
-  const dispatch = useDispatch()
-  const disabled = cart.find((el) => el.quantity < 1);
 
 
   // Calcular el total del precio y cantidad de productos del carrito
@@ -38,19 +35,26 @@ export const Cart = () => {
     setTotalQuantity(cart.reduce((accumulator, currentValue) => 
       accumulator + currentValue.quantity, 0))
 
-      dispatch(update_cart_set(totalQuantity))
-
     onOpen()
   }
 
+  let cartLength = cart.reduce((accumulator, currentValue) => 
+        accumulator + currentValue.quantity, 0)
+
   useEffect(() => {      
     setTotalQuantity(qty)
-  }, [qty])
+  }, [qty]);
+
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
 
 
   return (
     <div>
-      {/* Ícono NavBar */}
+    {/* Ícono NavBar */}
       <button
         type="button"
         className={`${styles.containerIconCart} position-relative`}
@@ -65,7 +69,7 @@ export const Cart = () => {
         <span
           className={`${styles.notificationsCart} position-absolute translate-middle badge rounded-pill bg-danger`}
         >
-          {totalQuantity}
+          {cartLength}
         </span>
       </button>
 
@@ -78,10 +82,11 @@ export const Cart = () => {
       >
         <DrawerOverlay />
         <DrawerContent>
+
           {/* Header */}
           <DrawerHeader>
             <p className={styles.titleCart}>
-              Tu carrito de compras ({totalQuantity})
+              Tu carrito de compras ({ cartLength })
               <Button colorScheme='orange' className={styles.buttonClose} onClick={onClose}>
                 X
               </Button>
@@ -131,12 +136,15 @@ export const Cart = () => {
                   </h4>
                   -----------------------------------------------
                 </div>
+
+                {/* Footer */}
                 <div>
                   <p>
                     <b>Total: ${Math.round(totalPrice)}</b>
                   </p>
                 </div>
 
+                {/* Botones */}
                 <div>
                   <Link to={"/checkout"}>
                     <Button
