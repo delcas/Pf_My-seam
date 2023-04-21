@@ -14,7 +14,7 @@ initMercadoPago(VITE_PUBLIC_KEY);
 export const Checkout = ({ onClick, cart  }) => {
 
   const [isVisible, setIsVisible] = useState(true);
-  const { preferenceId, isLoading: disabled, orderData, setOrderData } = useContext(Context);
+  const { preferenceId, isLoading: disabled } = useContext(Context);
 
   useEffect(() => {
     if (preferenceId) setIsVisible(false);
