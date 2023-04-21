@@ -18,7 +18,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@mercadopago/sdk-react": "^0.0.3",
+    "@mercadopago/sdk-react": "^0.0.8",
     "@reduxjs/toolkit": "^1.9.3",
     "@supabase/supabase-js": "^2.14.0",
     "auth0": "^3.3.0",
