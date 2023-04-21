@@ -28,15 +28,15 @@ export const Contacto = () =>{
          <div className={!products.length > 0 && styles.hide}>   
         <form ref={form} onSubmit={sendEmail} className={styles.field}>
           <h2>¡Contáctanos!</h2>
-          <label>Nombre</label>
+          <label>Name</label>
           <input type="text" name="name" />
 
-          <label>Correo</label>
+          <label>Email</label>
           <input type="email" name="email" />
 
-          <label>Mensaje</label>
+          <label>Message</label>
           <textarea name="message" rows="4" cols="30"/>
-          <input type="submit" value="Enviar" />
+          <input type="submit" value="Send" />
         </form>
       </div>
       </div>

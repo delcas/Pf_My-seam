@@ -22,7 +22,6 @@ import {GET_PRODUCTS,
     DELETE_CART,
     UPDATE_CART,
     UPDATE_CART_SET,
-    UPDATE_FAVOURITES,
    nameAlphabet } from "./actions";
 
 const initialState = {
@@ -40,7 +39,6 @@ users: [],
 userInfo: {},
 user: {},
 favourites: [],
-allFavourites: 0,
 cartLength: 0
 };
 
@@ -239,11 +237,6 @@ const rootReducer = (state = initialState, action) => {
             return{
                 ...state,
                  cartLength: action.payload
-            }
-    case UPDATE_FAVOURITES:
-            return{
-                ...state,
-                allFavourites: action.payload
             }
 
     default:
