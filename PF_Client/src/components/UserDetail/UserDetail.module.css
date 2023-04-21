@@ -1,0 +1,43 @@
+/* User profile component styles */
+
+/* Styling for the NavBar component */
+
+  
+  /* Styling for the container div */
+   .container{
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+    border-width: 3px;
+    border-radius: 10px;
+  }
+  
+  /* Styling for the user profile section */
+  .name {
+    font-size: 2rem;
+    margin-top: 20px;
+  }
+  
+  .img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-top: 20px;
+  }
+  
+  .h3 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+  
+  /* Styling for the 'not found' section */
+  .container:nth-of-type(2) h1 {
+    font-size: 2rem;
+    margin-top: 20px;
+  }
+  .cardContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, min(min(100%, 25%)));
+    transition: all 0.8s ease;
+  }
+  
