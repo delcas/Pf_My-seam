@@ -30,7 +30,6 @@ export const MercadoPago = () => {
     setIsLoading(true);  
     axios.post('/payment', {
       items: items,
-      seller_id: seller_id
     })
       .then(response => {
         setPreferenceId(response.data.global);

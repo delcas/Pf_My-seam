@@ -85,12 +85,13 @@ export const SearchBar = () => {
         
         {/* Search results */}
         {allProducts &&
-        <a href="#categories"><Results 
-         allProducts={allProducts} 
-         onItemSelected={handleItemSelected} 
-         search={search} 
-         onResultsCalculated={handleResults}
-        />
+        <a href="#categories">
+          <Results 
+          allProducts={allProducts} 
+          onItemSelected={handleItemSelected} 
+          search={search} 
+          onResultsCalculated={handleResults}
+          />
         </a>
         }
       </div>
