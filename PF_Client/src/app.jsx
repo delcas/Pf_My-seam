@@ -20,6 +20,7 @@ import { MercadoPago } from './views/Checkout/MercadoPago'
 import { UserProductList } from './components/UserProductList/UserProductList';
 import { UserServiceList } from './components/UserServiceList/UserServiceList';
 import { Contacto } from './components/Contacto/Contacto';
+import { UserDetail } from './components/UserDetail/UserDetail';
 
 const backend =import.meta.env.VITE_BACKEND_URL;
 axios.defaults.baseURL = backend
@@ -54,6 +55,8 @@ function App() {
       <Route path = '/favourites' element={<Favourites />}/>
       <Route path = '/contacto' element = {<Contacto />}/> 
       <Route path = '*' element = {<Error404 />}/> 
+      <Route path = '/UserDetail/:id' element={<UserDetail isAuthenticated={isAuthenticated} user={user}/> }/>
+
     </Routes >
   );
 }
