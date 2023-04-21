@@ -64,7 +64,7 @@ export const CardProducts = ({ id, image, name, price, description }) => {
         dispatch(update_cart(add));   
       }
 
-    // localStorage.setItem("cartStorage", JSON.stringify(cart))
+    localStorage.setItem("cartStorage", JSON.stringify(cart))
     showNotify();
   }
 

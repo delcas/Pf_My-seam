@@ -19,7 +19,7 @@ export const Cart = () => {
   let qty = useSelector(state => state.cartLength) 
 
   // Estado del Carrito de compras
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState(stateCart)
   // Estado del precio total del carrito de compras
   const [totalPrice, setTotalPrice] = useState(0);
   // Estado de la cantidad de productos en el carrito de compras

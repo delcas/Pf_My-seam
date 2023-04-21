@@ -1,14 +1,13 @@
 body {
-  font-size: 25px;
+  font-size: 18px;
 }
 
 .mainContainer {
-  width: 100% !important;
+  width: 100%;
 }
 
 .imgLogo {
-  width: auto;
-  border-radius: 5px;
+  max-width: 200px;
   margin-right: 15px;
   cursor: pointer;
 }

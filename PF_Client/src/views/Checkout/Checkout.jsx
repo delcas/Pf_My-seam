@@ -7,7 +7,7 @@ import { Context } from "../../hooks/ContextProvider";
 // Auth0
 import { useAuth0 } from '@auth0/auth0-react';
 // MercadoPago
-import { initMercadoPago } from "@mercadopago/sdk-react";
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 const VITE_PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
 initMercadoPago(VITE_PUBLIC_KEY);
 
@@ -54,14 +54,15 @@ export const Checkout = ({ onClick, cart  }) => {
       {/* Usuario Registrado */}
       <div className={!isAuthenticated ? styles.hide : ''}>
         <FormCheckout err={err} setErr={setErr} input={input} setInput={setInput} cart={cart} />
-        <button
+        <Wallet initialization={{ preferenceId: preferenceId }} />
+        {/* <button
           className="btn btn-primary btn-lg btn-block"
           onClick={onClick}
           id="checkout-btn"
           disabled={disabled || cart.length < 1}
         >
           Pagar
-        </button>
+        </button> */}
       </div>
       
     </div>
