@@ -18,7 +18,7 @@ import {GET_PRODUCTS,
     FILTER_BY_TYPE_SERVICE,
     FILTER_BY_COUNTRY,
     GET_CART,
-    POST_CART,
+    ADD_CART,
     DELETE_CART,
     UPDATE_CART,
     UPDATE_CART_SET,
@@ -34,12 +34,13 @@ details: [],
 productQuestions: [],  
 serviceQuestions: [],
 promotions: [],  
-cart: [],
+cart: localStorage.hasOwnProperty("cart")
+            ? JSON.parse(localStorage.getItem("cart"))
+            : [],
 users: [],
 userInfo: {},
 user: {},
 favourites: [],
-cartLength: 0
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -219,19 +220,37 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             cart: action.payload
         }
-    case POST_CART:
-        return {
-            ...state,
-        }
+    case ADD_CART: 
+            
+            let itemInCart = state.cart.find(
+                (product) => product.id === action.payload.id
+            );
+            return itemInCart
+                ? {
+                    ...state,
+                    cart: state.cart.map((product) =>
+                        product.id === action.payload.id
+                            ? { ...product, quantity: product.quantity + 1 }
+                            : product
+                    ),
+                  }
+                : {
+                    ...state,
+                    cart: [...state.cart, { ...action.payload, quantity: 1 }],
+                  };
+        
     case DELETE_CART:
+        let deleteProduct = state.cart.filter((p) => p.id !== action.payload);
         return {
             ...state,
+            cart: deleteProduct
         }
     case UPDATE_CART:
-            localStorage.setItem('cantidad', action.payload);
+        let cartLength = state.cart.reduce((accumulator, currentValue) => 
+        accumulator + currentValue.quantity, 0)
             return{
                 ...state,
-                cartLength: state.cartLength + action.payload
+                cartLength: cartLength 
             }
     case UPDATE_CART_SET:
             return{

@@ -17,7 +17,7 @@ import { useDispatch } from "react-redux";
 import { getProductQuestions, getServiceQuestions } from "../../redux/actions";
 
 export default function ModalBtn({ sell, userId, ver, q_id, id, name }) {
-  console.log(id);
+  // console.log(id);
   const dispatch = useDispatch();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = useRef(null);

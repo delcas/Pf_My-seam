@@ -15,7 +15,7 @@ export default function Questions({ sell, userId, details, ver }) {
   const product = useSelector((state) => state.productQuestions);
   const service = useSelector((state) => state.serviceQuestions);
   let detailQuestions = sell === "product" ? product : service;
-  console.log(ver);
+  // console.log(ver);
 
   //
   return (

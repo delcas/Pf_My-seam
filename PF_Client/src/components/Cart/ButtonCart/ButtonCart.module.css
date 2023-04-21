@@ -1,0 +1,42 @@
+/* General */
+.hide {
+  display: none;
+}
+
+/* Buttons */
+
+.buttonCart {
+  cursor: pointer;
+  margin: 3px 0 3px 5px;
+}
+
+.buttonCart:hover {
+  color: rgb(40, 63, 167);
+}
+
+/* Alerta producto agregado al carrito */
+.notifySlideIn {
+  animation-duration: 4s;
+  animation-delay: -1s;
+  animation-name: slidein;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slidein {
+  0% {
+      top: -100%;
+  }
+
+  40% {
+      top: 90px;
+  }
+
+  60% {
+      top: 90px;
+  }
+
+  100% {
+      top: -100%;
+  }
+}

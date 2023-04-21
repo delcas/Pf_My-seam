@@ -25,8 +25,8 @@ export const NavBar = () => {
   const { isAuthenticated, user } = useAuth0();
 
   useEffect(() => {
+    isAuthenticated &&
     dispatch(getUserByEmail(user?.email));
-    // dispatch(getProductById(id));
   }, [dispatch]);
 
   // Estado para mostar elementos de acuerdo al max-width de la pantalla

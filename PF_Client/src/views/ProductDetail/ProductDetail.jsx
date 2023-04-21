@@ -25,7 +25,7 @@ export const ProductDetail = ({ isAuthenticated, user }) => {
   const userId = userInfo.id;
   
   let ver;
-  console.log('Usuario actual: ',userId, '. Oferente del producto: ', details.userid);
+  // console.log('Usuario actual: ',userId, '. Oferente del producto: ', details.userid);
   userId === details.userid ? (ver = true) : (ver = false);
   
   const [edit, setEdit] = useState({

@@ -20,7 +20,7 @@ export const FILTER_BY_GENDER = "FILTER_BY_GENDER";
 export const FILTER_BY_TYPE_SERVICE = "FILTER_BY_TYPE_SERVICE";
 export const FILTER_BY_COUNTRY = "FILTER_BY_COUNTRY";
 export const GET_CART = "GET_CART";
-export const POST_CART = "POST_CART";
+export const ADD_CART = "ADD_CART";
 export const DELETE_CART = "DELETE_CART";
 export const UPDATE_CART= "UPDATE_CART";
 export const UPDATE_CART_SET = "UPDATE_CART_SET";
@@ -87,7 +87,7 @@ export const getProductById = (ID) => {
 };
 
 export const getProductQuestions = (pId) => {
-  console.log("getProdQ pre axios", pId);
+  // console.log("getProdQ pre axios", pId);
   return async function (dispatch) {
     const productQuestionData = await axios.get(
       `/questprod/product/?offerId=${pId}`
@@ -98,7 +98,7 @@ export const getProductQuestions = (pId) => {
 };
 
 export const getServiceQuestions = (pId) => {
-  console.log("getServQ pre axios", pId);
+  // console.log("getServQ pre axios", pId);
   return async function (dispatch) {
     const ServiceQuestionData = await axios.get(
       `/questserv/service/?offerId=${pId}`
@@ -204,17 +204,17 @@ export function getCart(id) {
   };
 }
 
-export const postCart = (payload) => {
-  return async function ()  {
-    const newCart = await axios.post('/cart', payload);
-    return newCart;
+export const addCart = (payload) => {
+  return function (dispatch)  {    
+    dispatch({ type: ADD_CART, payload: payload });
   }
 };
 
 export const deleteCart = (id) => {
-  return async function() {
-    const deleteCart = await axios.put(`/cart${id}`);
-    return deleteCart;
+  return function (dispatch)  {  
+    console.log(id);
+      
+    dispatch({ type: DELETE_CART, payload: id });
   }
 };
 
