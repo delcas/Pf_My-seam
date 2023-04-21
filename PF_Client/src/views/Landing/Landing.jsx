@@ -10,10 +10,10 @@ import axios from 'axios';
 export const Landing = () => {
   const dispatch = useDispatch();
   const {isAuthenticated, user}= useAuth0();
-  console.log(user, isAuthenticated);
+  // console.log(user, isAuthenticated);
 
   if (isAuthenticated){
-    console.log("Entro a este condicional");
+    // console.log("Entro a este condicional");
     const post={
       name:user.name,
       email: user.email,
@@ -21,7 +21,7 @@ export const Landing = () => {
       image: user.picture
     }
    axios.post("/users", post);
-   console.log(post);
+  //  console.log(post);
    if(user["https://example.com/roles"] && user["https://example.com/roles"].includes("admin")){
     alert("Welcome Admin!");
    }

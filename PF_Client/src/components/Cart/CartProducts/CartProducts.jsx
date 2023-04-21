@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import styles from './CartProducts.module.css';
 import { DeleteIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { update_cart } from '../../../redux/actions';
 
 export const CartProducts = ({ cart, totalPrice, setTotalPrice, totalQuantity, setTotalQuantity, el }) => {
   // Estado de la cantidad de artículos por producto
   const [itemsPerProduct, setItemsPerProduct] = useState(el.quantity)
-  
+  const dispatch = useDispatch()
+
   const addQuantity = () => {
     el.quantity = Number(el.quantity) + 1
     setTotalPrice(totalPrice + Math.round(el.price))
@@ -25,22 +28,23 @@ export const CartProducts = ({ cart, totalPrice, setTotalPrice, totalQuantity, s
 
   const handleDeleteItem = () => {
     const indexProduct = cart.findIndex(e => e.id == el.id)
+    let add = Number(el.quantity - (el.quantity * 2))
+    dispatch(update_cart(add));
+
     cart.splice(indexProduct, 1)
     // Recalcular total de dinero y Cantidad de productos
-    let totalPrice = 0
-    let totalQuantity = 0
+    setTotalPrice(cart.reduce((accumulator, currentValue) => 
+      accumulator + Math.round(currentValue.price * currentValue.quantity), 0))
 
-    for (let i = 0; i < cart.length; i++) {
-      totalPrice += cart[i].price * cart[i].quantity
-      totalQuantity += cart[i].quantity
-    } 
-    setTotalPrice(totalPrice)
-    setTotalQuantity(totalQuantity)
+    setTotalQuantity(cart.reduce((accumulator, currentValue) => 
+      accumulator + currentValue.quantity, 0))
+
     localStorage.removeItem("cart", JSON.stringify(cart.indexProduct))
   }
 
   const handleChangeQuantity = (e) => {
     el.quantity = Number(e.target.value)
+
     setTotalPrice(cart.reduce((accumulator, currentValue) => 
       accumulator + Math.round(currentValue.price * currentValue.quantity), 0))
 

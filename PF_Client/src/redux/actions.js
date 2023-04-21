@@ -87,7 +87,7 @@ export const getProductById = (ID) => {
 };
 
 export const getProductQuestions = (pId) => {
-  console.log("getProdQ pre axios", pId);
+  // console.log("getProdQ pre axios", pId);
   return async function (dispatch) {
     const productQuestionData = await axios.get(
       `/questprod/product/?offerId=${pId}`
@@ -98,7 +98,7 @@ export const getProductQuestions = (pId) => {
 };
 
 export const getServiceQuestions = (pId) => {
-  console.log("getServQ pre axios", pId);
+  // console.log("getServQ pre axios", pId);
   return async function (dispatch) {
     const ServiceQuestionData = await axios.get(
       `/questserv/service/?offerId=${pId}`

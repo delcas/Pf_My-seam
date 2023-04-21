@@ -26,7 +26,6 @@ export const CardProducts = ({ id, image, name, price, description }) => {
   const allProducts = useSelector(state => state.allProducts)
   const cart = useSelector(state => state.cart)
   const favourites = useSelector(state => state.favourites)
-  const userInfo = useSelector(state => state.userInfo)  
   
   
   // Buscar si el producto esta en favoritos
@@ -56,47 +55,18 @@ export const CardProducts = ({ id, image, name, price, description }) => {
     // Validar si ya existe el producto en el carrito de compras
     if (cart.find(el => el === cartProduct)) {   
       cartProduct.quantity +=  1 
-      let add=1;
+      let add = 1;
       dispatch(update_cart(add));
     } else {
         cartProduct.quantity = 1 
-        let add=1;
+        let add = 1;
         cart.push(cartProduct);
         dispatch(update_cart(add));   
       }
-    localStorage.setItem("cart", JSON.stringify(cart))       
+    // localStorage.setItem("cart", JSON.stringify(cart))       
     showNotify();
   }
-  // const handleCart =  () => {
-  //   const newProductCart = allProducts.find(el => el.id == id)
-  //   // Validar si ya existe el producto en el carrito de compras
-  //   if (cart.find(el => el === newProductCart)) {  
-  //     newProductCart.quantity +=  1 
-      // dispatch(postCart({
-      //   customer_id: userInfo.id,
-      //   prods: [
-      //     {
-      //       productid: newProductCart.id,
-      //       quantity:  newProductCart.quantity +=  1
-      //     }
-      //   ]
-      // }))
-    // } else {
-    //     newProductCart.quantity = 1 
-    //     cart.push(newProductCart)   
-        // dispatch(postCart({
-        //   customer_id: userInfo.id,
-        //   prods: [
-        //     {
-        //       productid: newProductCart.id,
-        //       quantity:  1
-        //     }
-        //   ]
-        // }))
-  //     }
-  //   localStorage.setItem("cart", JSON.stringify(cart))       
-  //   showNotify();
-  // }
+  
 
   // Agregar producto a favoritos
   const handleFavourites =  () => { 

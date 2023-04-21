@@ -4,12 +4,10 @@ import styles from './Cart.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import EmptyCart from '../../images//empty-cart.png'
 import { CartProducts } from './CartProducts/CartProducts';
-import { getCart, update_cart_set } from '../../redux/actions'
+import { update_cart_set } from '../../redux/actions'
 // Chakra
 import { BsFillCartFill } from "react-icons/bs";
 import { Icon, useDisclosure, Button, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent } from '@chakra-ui/react'
-// Estado del Local Storage del Carrito de compras
-// const cartLocalStorage = JSON.parse(localStorage.getItem("cart") || [])
 
 export const Cart = () => {
   // Menú desplegable Chakra
@@ -27,7 +25,6 @@ export const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   // Estado de la cantidad de productos en el carrito de compras
   const [totalQuantity, setTotalQuantity] = useState(qty);
-  console.log(totalQuantity);
 
   const dispatch = useDispatch()
   const disabled = cart.find((el) => el.quantity < 1);
