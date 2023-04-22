@@ -44,10 +44,10 @@ export const NavBar = () => {
   }, []);
 
   return (
-    <div className={styles.mainContainer}>
+    <div className={styles.main}>
     {/* NavBar */}
     <nav
-      className="navbar navbar-expand-xl bg-body-tertiary"
+      className="navbar navbar-expand-xl bg-body-tertiary w-100"
       data-bs-theme={currentTheme === "dark" ? "dark" : "light"}
     >
     <div className="container-fluid">
@@ -56,8 +56,8 @@ export const NavBar = () => {
         <img className={styles.imgLogo} src={Logo} alt="Logo My Seam" />
       </NavLink>
 
-       {isSmallScreen && <Cart />}
        {isSmallScreen && <SearchBar />}
+       {isSmallScreen && <Cart />}
 
       <button
         className="navbar-toggler"

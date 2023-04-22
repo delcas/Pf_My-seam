@@ -55,7 +55,6 @@ export const CardProducts = ({ id, image, name, price, description }) => {
   const handleCart =  () => {
     const cartProduct = allProducts.find(el => el.id == id)
     dispatch(addCart(cartProduct));
-    dispatch(update_cart());
     showNotify();
   }
 

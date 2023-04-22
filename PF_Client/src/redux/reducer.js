@@ -250,7 +250,7 @@ const rootReducer = (state = initialState, action) => {
         accumulator + currentValue.quantity, 0)
             return{
                 ...state,
-                cartLength: cartLength 
+                cartLength: cartLength ,
             }
     case UPDATE_CART_SET:
             return{

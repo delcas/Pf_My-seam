@@ -104,16 +104,25 @@
   .cardContainer {
     grid-template-columns: repeat(auto-fill, min(min(100%, 50%)));
   }  
+  .inputPrice2 {
+    margin-left: 20px;
+    margin-top: 15px;
+  }
   .buttonCategorie {
     width: 100px;
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
   .cardContainer {
     grid-template-columns: repeat(auto-fill, min(min(100%, 100%)));
   }
   .buttonCategorie {
     width: 80px;
+    display: flex;
+    flex-wrap: wrap;
   }  
+  .buttonPrice {
+    margin-left: 40px;
+  }
 }

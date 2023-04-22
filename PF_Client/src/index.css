@@ -3,6 +3,7 @@
   src: url('./ruta/de/la/fuente/MiFuentePersonalizada.ttf') format('truetype');
 }
 
+
 * {
   font-family: 'Quicksand', cursive, sans-serif;
 }
