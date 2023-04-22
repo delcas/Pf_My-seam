@@ -30,6 +30,7 @@ export const MercadoPago = () => {
     setIsLoading(true);  
     axios.post('/payment', {
       items: items,
+      seller_id: seller_id,
     })
       .then(response => {
         window.location.href = response.data.global.init_point;

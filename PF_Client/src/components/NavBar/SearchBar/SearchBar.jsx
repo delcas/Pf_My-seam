@@ -45,6 +45,8 @@ export const SearchBar = () => {
     endpoint === 'home' ? '' : navigate('/home')
     dispatch(searchProductByName(search));
     setSearch('');
+    const categories = document.getElementById('categories');
+    categories.scrollIntoView({ behavior: 'smooth' });
     // setCurrentPage(1);
   };
 
@@ -66,16 +68,14 @@ export const SearchBar = () => {
       <form className={`${styles.containerSerchBar} d-flex`} role="search" onSubmit={handleSubmit}>
         {/* Input search & Button Search */}
         <Input className={styles.inputSearch} mr={3} width='240px' placeholder='Buscar productos...' onChange={(e) => handleChange(e)} value={search} type="search" />
-        <Link to="#categories">
           <IconButton
           className={styles.buttonSearch}
           mr={3}
           rounded="full"
           icon={<SearchIcon />}
           isDisabled={disabled}
-         onClick={handleSubmit}
+          onClick={handleSubmit}
          />
-       </Link>
           
       </form>
 
