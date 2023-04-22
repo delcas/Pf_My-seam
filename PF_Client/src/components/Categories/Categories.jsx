@@ -49,12 +49,16 @@ export const Categories = () => {
     const category = e.target.value;
     dispatch(filterByCategory(category));
     setCurrentPage(1)
+    const categories = document.getElementById('categories');
+    categories.scrollIntoView({ behavior: 'smooth' });
 };
 
   const handleFilterByGender = (e) => {
     const gender = e.target.value;
     dispatch(filterByGender(gender));
     setCurrentPage(1)
+    const categories = document.getElementById('categories');
+    categories.scrollIntoView({ behavior: 'smooth' });
 };
 
   // Mostrar todos los productos
@@ -112,14 +116,16 @@ export const Categories = () => {
           <Button value='Faldas' onClick={(e) => handleFilterByCategory(e)} className={styles.buttonCategorie} colorScheme='orange'>Faldas</Button>
           <Button value='Pantalones' onClick={(e) => handleFilterByCategory(e)} className={styles.buttonCategorie} colorScheme='orange'>Pantalones</Button>
           <Button value='Camisas' onClick={(e) => handleFilterByCategory(e)} className={styles.buttonCategorie} colorScheme='orange'>Camisas</Button>
-          <Button value='Sueters' onClick={(e) => handleFilterByCategory(e)} className={styles.buttonCategorie} colorScheme='orange'>Sueters</Button>
-          
+          <Button value='Sweaters' onClick={(e) => handleFilterByCategory(e)} className={styles.buttonCategorie} colorScheme='orange'>Sueters</Button>
+          <Button value='Bermudas' onClick={(e) => handleFilterByCategory(e)} className={styles.buttonCategorie} colorScheme='orange'>Bermudas</Button>
+          <Button value='Camperas' onClick={(e) => handleFilterByCategory(e)} className={styles.buttonCategorie} colorScheme='orange'>Camperas</Button>
+
           <h4>Género</h4>
           <Button value='Todos' onClick={(e) => handleAll(e)} className={styles.buttonCategorie} colorScheme='orange'>Todos</Button>
-          <Button value='Masculino' onClick={(e) => handleFilterByGender(e)} className={styles.buttonCategorie} colorScheme='orange'>Masculino</Button>
-          <Button value='Femenino' onClick={(e) => handleFilterByGender(e)} className={styles.buttonCategorie} colorScheme='orange'>Femenino</Button>
-          <Button value='Nino' onClick={(e) => handleFilterByGender(e)} className={styles.buttonCategorie} colorScheme='orange'>Niño</Button>
-          <Button value='Nina' onClick={(e) => handleFilterByGender(e)} className={styles.buttonCategorie} colorScheme='orange'>Niña</Button>
+          <Button value='Hombre' onClick={(e) => handleFilterByGender(e)} className={styles.buttonCategorie} colorScheme='orange'>Hombre</Button>
+          <Button value='Mujer' onClick={(e) => handleFilterByGender(e)} className={styles.buttonCategorie} colorScheme='orange'>Mujer</Button>
+          <Button value='Niño' onClick={(e) => handleFilterByGender(e)} className={styles.buttonCategorie} colorScheme='orange'>Niño</Button>
+          <Button value='Niña' onClick={(e) => handleFilterByGender(e)} className={styles.buttonCategorie} colorScheme='orange'>Niña</Button>
         </div>
 
         {/* Cards */}

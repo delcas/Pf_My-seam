@@ -176,9 +176,9 @@
             <h3>Total: <b>${Math.round(cart.reduce((accumulator, currentValue) => 
               accumulator + (currentValue.price * currentValue.quantity), 0))}</b></h3>
           </div>
-          <div className={styles.conatinerButtton}>
+          {/* <div className={styles.conatinerButtton}>
             <Button className={styles.buttonContinue} title='Completa todos los campos' isDisabled={disabled} size='lg' >Continuar</Button>
-          </div>
+          </div> */}
       </div>
     )
   }

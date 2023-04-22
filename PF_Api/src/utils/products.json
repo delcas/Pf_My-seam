@@ -6,6 +6,8 @@
       "https://shop.iturri.com/7831-large_default/camisa-laboral-blanca-manga-larga-con-tejido-fresh.jpg",
       "https://casadelasbatas.com/41563-large_default/camisa-basic-blanca-de-hombre-manga-larga-delon-roger.jpg"
     ],
+    "gender": "Hombre",
+    "category": "Camisas",
     "cantidad": 10,
     "precio": 15.99,
     "userid": 1
@@ -18,6 +20,8 @@
       "https://www.masuniformes.com/cdnassets/camisa-negra-camarero_l.jpg",
       "https://www.masuniformes.com/cdnassets/camisa-camarero-negra_ad_l.jpg"
     ],
+    "gender": "Hombre",
+    "category": "Camisas",
     "cantidad": 5,
     "precio": 15.99,
     "userid": 2
@@ -29,6 +33,8 @@
       "https://www.thekooples.com/dw/image/v2/BGQL_PRD/on/demandware.static/-/Sites-skp-master-catalog/default/dw4c5fa803/images/hi-res/HTKC2103SSBISRED19_F.jpg?sw=2025&sh=2501",
       "https://www.thekooples.com/dw/image/v2/BGQL_PRD/on/demandware.static/-/Sites-skp-master-catalog/default/dw8c3f22d2/images/hi-res/HTKC2103SSBISRED19_G.jpg?sw=2025&sh=2501"
     ],
+    "gender": "Hombre",
+    "category": "Camisas",
     "cantidad": 7,
     "precio": 25.99,
     "userid": 3
@@ -41,6 +47,8 @@
       "https://www.lolitamoda.com/uploads/photo/image/57259/M091212_2.JPG",
       "https://www.lolitamoda.com/uploads/photo/image/57261/M091212_4.JPG"
     ],
+    "gender": "Niño",
+    "category": "Camisas",
     "cantidad": 2,
     "precio": 25.99,
     "userid": 5
@@ -53,6 +61,8 @@
       "https://m.media-amazon.com/images/I/61xaH0FdRIL._AC_UX425_.jpg",
       "https://m.media-amazon.com/images/I/718oUMs51rL._AC_UY500_.jpg"
     ],
+    "gender": "Mujer",
+    "category": "Pantalones",
     "cantidad": 3,
     "precio": 39.99,
     "userid": 3
@@ -71,6 +81,8 @@
       "https://m.media-amazon.com/images/I/61IZnTnJTmL._AC_SL1500_.jpg",
       "https://m.media-amazon.com/images/I/41noHDDqbjL._AC_.jpg"
     ],
+    "gender": "Hombre",
+    "category": "Bermudas",
     "cantidad": 12,
     "precio": 19.99,
     "userid": 3
@@ -85,6 +97,8 @@
       "https://www.e-gothiczone.com/25485-thickbox_default/cazadora-de-cuero-clasica-cruzada.jpg",
       "https://www.e-gothiczone.com/25486-thickbox_default/cazadora-de-cuero-clasica-cruzada.jpg"
     ],
+    "gender": "Hombre",
+    "category": "Camperas",
     "cantidad": 1,
     "precio": 149.99,
     "userid": 5
@@ -96,6 +110,8 @@
       "https://wordans-a1a5.kxcdn.com/files/models/2015/10/7/32781/32781_big.jpg?1630310289",
       "https://wordans-a1a5.kxcdn.com/files/model_specifications/2015/10/7/162030/162030_back_big.jpg?1669900571"
     ],
+    "gender": "Hombre",
+    "category": "Camperas",
     "cantidad": 8,
     "precio": 29.99,
     "userid": 2
@@ -109,6 +125,8 @@
       "https://dhb3yazwboecu.cloudfront.net/1500/jersey-apc-lana-rojo-beige-hombre-2adl.jpg",
       "https://dhb3yazwboecu.cloudfront.net/1500/jersey-apc-lana-rojo-beige-hombre-3adl.jpg"
     ],
+    "gender": "Niña",
+    "category": "Blusas",
     "cantidad": 4,
     "precio": 49.99,
     "userid": 1
@@ -122,6 +140,8 @@
       "https://m.media-amazon.com/images/I/513vwtpA1FL._AC_UX569_.jpg",
       "https://m.media-amazon.com/images/I/61zAzCVas5L._AC_UX569_.jpg"
     ],
+    "gender": "Niña",
+    "category": "Sweaters",
     "cantidad": 2,
     "precio": 99.99,
     "userid": 2
@@ -135,6 +155,8 @@
       "https://img01.ztat.net/article/spp-media-p1/bb25bd96f4b649bdb794bbbbe0ca14f2/72eca9272b6946138fb3cce66bc51722.jpg?imwidth=762",
       "https://img01.ztat.net/article/spp-media-p1/f25156198e7d4cd78ed8f16895a11c60/0aff9e7152884a63bc32686f98cb43e3.jpg?imwidth=1800"
     ],
+    "gender": "Mujer",
+    "category": "All",
     "cantidad": 6,
     "precio": 79.99,
     "userid": 2
@@ -148,6 +170,8 @@
       "https://www.lidl.es/media/product/0/0/3/9/8/4/6/zapatillas-deportivas-para-hombre-zoom--1.jpg",
       "https://www.lidl.es/media/product/0/0/3/9/8/4/6/zapatillas-deportivas-para-hombre-zoom--4.jpg"
     ],
+    "gender": "Hombre",
+    "category": "All",
     "cantidad": 15,
     "precio": 49.99,
     "userid": 3
@@ -161,6 +185,8 @@
       "https://puravidaclothes.com/17539-product_zoom/vestido-loubel-negro.jpg",
       "https://puravidaclothes.com/17052-product_zoom/vestido-loubel-negro.jpg"
     ],
+    "gender": "Mujer",
+    "category": "Vestidos",
     "cantidad": 3,
     "precio": 79.99,
     "userid": 4
@@ -176,6 +202,8 @@
       "https://invitadisima.com/18466-thickbox_default/vestido-largo-rojo-escote-corazon-invitada-perfecta.jpg",
       "https://invitadisima.com/18465-thickbox_default/vestido-largo-rojo-escote-corazon-invitada-perfecta.jpg"
     ],
+    "gender": "Mujer",
+    "category": "Vestidos",
     "cantidad": 10,
     "precio": 89.99,
     "userid": 4
@@ -189,6 +217,8 @@
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81Rwq1xl5OL._AC_UL1500_.jpg",
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71KTjjIZfwL._AC_UL1500_.jpg"
     ],
+    "gender": "Mujer",
+    "category": "Faldas",
     "cantidad": 4,
     "precio": 59.99,
     "userid": 3
@@ -203,6 +233,8 @@
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41wvRBV4OIL._AC_.jpg",
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61qSVNLyoBL._AC_.jpg"
     ],
+    "gender": "Mujer",
+    "category": "Blusas",
     "cantidad": 7,
     "precio": 34.99,
     "userid": 4
@@ -215,6 +247,8 @@
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/91ZeNJJH49L._AC_UL1500_.jpg",
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81+vRDkCe2L._AC_UL1500_.jpg"
     ],
+    "gender": "Niño",
+    "category": "Pantalones",
     "cantidad": 6,
     "precio": 49.99,
     "userid": 3
@@ -230,6 +264,8 @@
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81K40+ds00L._AC_UL1500_.jpg",
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71LrWgWolTL._AC_UL1500_.jpg"
     ],
+    "gender": "Niño",
+    "category": "Camperas",
     "cantidad": 8,
     "precio": 29.99,
     "userid": 4
@@ -245,6 +281,8 @@
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/714skKdCkeL._AC_UL1500_.jpg",
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61BFBDFZYaL._AC_UL1149_.jpg"
     ],
+    "gender": "Niño",
+    "category": "Camisas",
     "cantidad": 9,
     "precio": 39.99,
     "userid": 3
@@ -260,6 +298,8 @@
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/91jBbcWNdwL._AC_UL1500_.jpg",
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71sxN0GPb5L._AC_UL1500_.jpg"
     ],
+    "gender": "Hombre",
+    "category": "Sweaters",
     "cantidad": 12,
     "precio": 19.99,
     "userid": 1

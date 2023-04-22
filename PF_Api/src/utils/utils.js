@@ -41,6 +41,8 @@ async function fillTableProducts() {
         description: e.description,
         price: e.price,
         image: e.image,
+        gender: e.gender,
+        category: e.category,
         stock: e.stock,
         userid: e.userid,
       },
@@ -80,6 +82,8 @@ const getJson = (product) => {
     description: product.descripcion,
     price: product.precio,
     image: product.imagenes,
+    gender: product.gender,
+    category: product.category,
     stock: product.cantidad,
     userid: product.userid,
   };

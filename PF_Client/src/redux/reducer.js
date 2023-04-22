@@ -147,7 +147,7 @@ const rootReducer = (state = initialState, action) => {
             let filterCategory = [];
             if (category === "All") {
                 filterCategory = productCategory
-            } else {
+            } else {                
                 filterCategory = productCategory.filter((p) => p.category === category)
                 if (filterCategory.length === 0) {
                     filterCategory = state.products 
