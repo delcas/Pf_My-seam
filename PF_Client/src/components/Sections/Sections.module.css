@@ -37,13 +37,12 @@
 }
 
 .containerImg3Y4 {
+  min-width: 30%;
 }
 
 .containerImg {
   position: relative;
 }
-
-
 
 /* Imagenes */
 
@@ -64,18 +63,18 @@
 .faldasImg {
   height: 200px;
   width: 100%;
-  padding: 10px 30px 7px 7px;
+  padding: 10px 10px 7px 7px;
   cursor: pointer;
 }
 
 .serviciosImg {
   height: 200px;
   width: 100%;
-  padding: 7px 30px 20px 7px;
+  padding: 7px 10px 20px 7px;
   cursor: pointer;
 }
 
-.vestidosImg:hover, .pantalonesImg:hover, .faldasImg:hover, .serviciosImg:hover {
+.containerImgVestidos:hover img, .containerImg:hover img, .faldasImg:hover img, .serviciosImg:hover img {
   opacity: 40%;
 }
 
@@ -175,9 +174,6 @@
     height: 170px;
     padding: 0 0 0 15px;
   }
-  .titleImage {
-    font-size: 0.7rem;
-  }
 }
 
 @media only screen and (max-width: 350px) {
@@ -198,8 +194,5 @@
     width: 150px;
     height: 150px;
     padding: 0 0 0 15px;
-  }
-  .titleImage {
-    font-size: 0.7rem;
   }
 }

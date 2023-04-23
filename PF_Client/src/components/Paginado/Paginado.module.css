@@ -23,7 +23,7 @@
   width: 40px;
   height: 40px;
   color: white;
-  margin: 0 auto;
+  margin: 0;
   border-radius: 5px;
 }
 
@@ -31,9 +31,9 @@
   background-color: white;
   color: orange;
   height: 38px;
+  font-size: 18px;
   max-width: 90px;
   padding: 5px;
-  border: 1px solid rgb(218, 218, 218);
   border-radius: 5px;
   margin: 0;
 }
@@ -41,5 +41,15 @@
 .anteriorSiguiente:hover {
   color: white;
   background-color: orange;
+}
+
+/* Responsive */
+@media only screen and (max-width: 550px) {
+  .page, .pageActive {
+    font-size: 15px;
+  }
+  .anteriorSiguiente {
+    font-size: 15px;
+  }
 }
   

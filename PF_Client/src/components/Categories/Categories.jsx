@@ -49,6 +49,7 @@ export const Categories = () => {
     const category = e.target.value;
     dispatch(filterByCategory(category));
     setCurrentPage(1)
+    setCategory(e.target.value)
     const categories = document.getElementById('categories');
     categories.scrollIntoView({ behavior: 'smooth' });
 };
@@ -57,6 +58,7 @@ export const Categories = () => {
     const gender = e.target.value;
     dispatch(filterByGender(gender));
     setCurrentPage(1)
+    setCategory(e.target.value)
     const categories = document.getElementById('categories');
     categories.scrollIntoView({ behavior: 'smooth' });
 };
@@ -65,7 +67,7 @@ export const Categories = () => {
   const handleAll = (e) => {
     e.preventDefault();
     dispatch(getProducts())
-    setCategory(e.target.value)
+    setCategory(currentProducts.length)
     setCurrentPage(1)
   }
 
@@ -82,6 +84,7 @@ export const Categories = () => {
     dispatch(filterByRange(currentPriceMin, currentPriceMax)) 
     setCurrentPriceMin('')
     setCurrentPriceMax('')
+    setCategory(currentProducts.length)
     setCurrentPage(1)
   }
 
@@ -100,8 +103,8 @@ export const Categories = () => {
                     
           <h4>Precio</h4>
           <Button value='Hasta $50' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='orange'>Hasta $50</Button>
-          <Button value='$50 a $100' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='orange'>Entre $50-$100</Button>
-          <Button value='Mas de $100' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='orange'>Más de $100</Button> 
+          <Button value='$50 a $100' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='orange'> $50 a $100</Button>
+          <Button value='Mas de $100' onClick={(e) => handleFilterByPrice(e)} className={styles.buttonCategorie} colorScheme='orange'>Más $100</Button> 
           
           <div>
             <Input variant='unstyled' className={styles.inputPrice1} size='xs' placeholder='Mínimo' value={currentPriceMin} onChange={(e) => handleChangePriceMin(e)}></Input>

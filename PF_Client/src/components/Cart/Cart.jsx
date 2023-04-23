@@ -39,7 +39,10 @@ export const Cart = () => {
   }
 
   let cartLength = cart.reduce((accumulator, currentValue) => 
-        accumulator + currentValue.quantity, 0)
+    accumulator + currentValue.quantity, 0)
+
+  let cartPrice = cart.reduce((accumulator, currentValue) => 
+    accumulator + Math.round(currentValue.price * currentValue.quantity), 0)
 
   useEffect(() => {      
     setTotalQuantity(qty)
@@ -140,7 +143,7 @@ export const Cart = () => {
                 {/* Footer */}
                 <div>
                   <p>
-                    <b>Total: ${Math.round(totalPrice)}</b>
+                    <b>Total: ${Math.round(cartPrice)}</b>
                   </p>
                 </div>
 

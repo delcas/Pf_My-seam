@@ -3,7 +3,7 @@ import styles from './CartProducts.module.css';
 import { DeleteIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { deleteCart } from '../../../redux/actions';
+import { deleteCart, update_cart } from '../../../redux/actions';
 
 export const CartProducts = ({ cart, totalPrice, setTotalPrice, totalQuantity, setTotalQuantity, el }) => {
   // Estado de la cantidad de artículos por producto
@@ -30,7 +30,6 @@ export const CartProducts = ({ cart, totalPrice, setTotalPrice, totalQuantity, s
     const indexProduct = cart.find(e => e.id == el.id)
     dispatch(deleteCart(indexProduct.id))
 
-    
     // Recalcular total de dinero y Cantidad de productos
     setTotalPrice(cart.reduce((accumulator, currentValue) => 
       accumulator + Math.round(currentValue.price * currentValue.quantity), 0))

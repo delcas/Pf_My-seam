@@ -12,10 +12,6 @@ export const Footer = () => {
   <footer className="d-flex flex-column align-items-center justify-content-center">
     
     <div className={styles.containerFooterIcons}>
-      {/* Linkedin */}
-      <Link to="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-        <i className="bi bi-linkedin"></i>
-      </Link>
       {/* Github */}
       <Link to="https://github.com/delcas/Pf_My-seam" target="_blank" rel="noopener noreferrer" >
         <i className="bi bi-github"></i>
