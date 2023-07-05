@@ -14,7 +14,6 @@ import { ServiceDetail } from './views/ServiceDetail/ServiceDetail';
 import { Service } from './views/Service/Service';
 import { Favourites } from './views/Favourites/Favourites';
 import { UserList } from './components/UserList/UserList'
-import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
 import { MercadoPago } from './views/Checkout/MercadoPago'
 import { UserProductList } from './components/UserProductList/UserProductList';
@@ -22,15 +21,11 @@ import { UserServiceList } from './components/UserServiceList/UserServiceList';
 import { Contacto } from './components/Contacto/Contacto';
 import { UserDetail } from './components/UserDetail/UserDetail';
 
-const backend =import.meta.env.VITE_BACKEND_URL;
-axios.defaults.baseURL = backend
-//axios.defaults.baseURL = 'http://localhost:3001/';
-
 
 function App() {
   const location = useLocation();
   const { isAuthenticated, user } = useAuth0();
-  
+
   return (
     <Routes>
       <Route exact path = '/' element = {<Landing />}/>
